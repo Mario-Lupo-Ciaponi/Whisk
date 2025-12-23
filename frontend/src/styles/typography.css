@@ -1,0 +1,10 @@
+*,
+*:before,
+*:after {
+  font-family: "Vend Sans", sans-serif;
+}
+
+ul,
+ol {
+  list-style-type: none;
+}

@@ -1,0 +1,45 @@
+@import url('https://fonts.googleapis.com/css2?family=Vend+Sans:ital,wght@0,300..700;1,300..700&display=swap');
+
+:root {
+  --pewter-color: #EAEAF1;
+  --tan-color: #74503c;
+}
+
+.navbar {
+  width: 100%;
+  padding: 1.25rem 4rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: var(--pewter-color);
+}
+
+.navbar .logo {
+  width: 4rem;
+  height: 4rem;
+  aspect-ratio: 1 / 1;
+  border-radius: 50%;
+}
+
+.navbar .links {
+  display: flex;
+  gap: 2rem;
+}
+
+.navbar .links .item {
+  transition: transform 500ms ease-in-out;
+}
+
+.navbar .links .item:hover {
+  transform: scale(1.25);
+}
+
+.navbar .links .item .link {
+  text-decoration: none;
+  color: var(--tan-color);
+}
+
+.navbar .profile-links {
+  display: flex;
+  gap: 0.5rem;
+}
