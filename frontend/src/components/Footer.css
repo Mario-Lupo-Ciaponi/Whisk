@@ -1,0 +1,54 @@
+:root {
+  --pewter-color: #EAEAF1;
+  --tan-color: #74503c;
+}
+
+.footer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2.5rem;
+  background-color: var(--pewter-color);
+  padding: 2rem;
+}
+
+.footer .wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.footer .wrapper .logo {
+  width: 5rem;
+  height: 5rem;
+  aspect-ratio: 1 / 1;
+  border-radius: 50%;
+}
+
+.footer .wrapper .links {
+  display: flex;
+  gap: 2rem;
+}
+
+.footer .wrapper .links .item {
+  transition: transform 500ms ease-in-out;
+}
+
+.footer .wrapper .links .item:hover {
+  transform: scale(1.25);
+}
+
+.footer .wrapper .links .item .link {
+  text-decoration: none;
+  color: var(--tan-color);
+}
+
+.footer .rights-reserved {
+  margin: 0 auto;
+  padding-top: 3rem;
+  border-top: 1px solid black;
+  width: 90%;
+  text-align: center;
+  font-size: 0.75rem;
+}
