@@ -1,0 +1,85 @@
+:root {
+  --charcoal-color: #BFC2D4;
+  --coffee-pot-color: #67595E;
+}
+
+.post-card {
+  border-radius: 1rem;
+  width: 412px;
+  background-color: var(--charcoal-color);
+  color: var(--coffee-pot-color);
+}
+
+.post-card .top > *,
+.post-card .caption > * {
+  font-size: 1rem;
+}
+
+.post-card .top,
+.post-card .caption {
+  padding: 0.5rem 1rem;
+}
+
+.post-card .top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 1rem;
+}
+
+.post-card .top .user-container{
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+.post-card .top .user-container .profile-image{
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 50%;
+}
+
+.post-card .top .user-container .username{
+  font-weight: bold;
+  font-style: italic;
+}
+
+.post-card .top .show-more{
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: inherit;
+}
+
+.post-card .post-image{
+  width: 100%;
+}
+
+.post-card .caption {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.5rem;
+}
+
+.post-card .actions {
+  padding: 1rem;
+  display: flex;
+  justify-content: space-between;
+}
+
+.post-card .actions .action {
+  background: none;
+  border: none;
+  color: inherit;
+  cursor: pointer;
+  transition: background-color 500ms ease-in-out;
+}
+
+.post-card .actions .action:hover {
+  background: #a8aabd;
+}
+
+.post-card .divider {
+  border: 1px solid var(--coffee-pot-color);
+}

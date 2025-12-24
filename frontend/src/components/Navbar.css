@@ -37,6 +37,10 @@
   color: var(--tan-color);
 }
 
+.navbar .links .item .link.active {
+  text-decoration: underline;
+}
+
 .navbar .profile-links {
   display: flex;
   gap: 0.5rem;

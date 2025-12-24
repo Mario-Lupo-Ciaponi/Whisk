@@ -1,3 +1,4 @@
+import { Link } from "react-router";
 import Logo from "../assets/logo.png";
 import "./Footer.css";
 
@@ -8,11 +9,11 @@ function Footer() {
                 <img className="logo" src={Logo} alt="logo"/>
 
                 <ul className="links">
-                    <li className="item"><a href="#" className="link">Home</a></li>
-                    <li className="item"><a href="#" className="link">Search</a></li>
-                    <li className="item"><a href="#" className="link">Groups</a></li>
-                    <li className="item"><a href="#" className="link">Create Post</a></li>
-                    <li className="item"><a href="#" className="link">Help</a></li>
+                    <li className="item"><Link to="#" className="link">Home</Link></li>
+                    <li className="item"><Link to="#" className="link">Search</Link></li>
+                    <li className="item"><Link to="#" className="link">Groups</Link></li>
+                    <li className="item"><Link to="#" className="link">Create Post</Link></li>
+                    <li className="item"><Link to="#" className="link">Help</Link></li>
                 </ul>
             </div>
 

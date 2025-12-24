@@ -1,5 +1,7 @@
+import { Routes, Route} from "react-router";
 import Navbar from "./components/Navbar.jsx";
 import Footer from "./components/Footer.jsx";
+import HomePage from "./pages/HomePage.jsx"
 import "./styles/reset.css"
 import "./styles/typography.css"
 import './App.css'
@@ -9,7 +11,9 @@ function App() {
     <>
       <Navbar />
       <main>
-          <h1>test</h1>
+          <Routes>
+              <Route index element={<HomePage />} />
+          </Routes>
       </main>
       <Footer />
     </>
