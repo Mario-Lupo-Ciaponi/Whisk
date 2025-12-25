@@ -1,18 +1,47 @@
+import { useRef } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEllipsisVertical, faMapLocationDot, faComment, faBookmark } from "@fortawesome/free-solid-svg-icons";
 import "./PostCard.css";
 
 function PostCard({ post }) {
+    const moreOptionsRef = useRef(null);
+
+    function showActions() {
+        moreOptionsRef.current.classList.toggle("active")
+    }
+
     return (
         <article className="post-card">
             <div className="top">
                 <div className="user-container">
                     <img className="profile-image" src="/images/default-profile-img.jpeg" alt="profile image"/>
                     <p className="username">{post.username}</p>
+                    <span className="city">({post.city})</span>
                 </div>
-                <button className="show-more">
-                    <FontAwesomeIcon icon={faEllipsisVertical} />
-                </button>
+
+                <div className="more-options-container">
+                    <button onClick={showActions} className="show-more">
+                        <FontAwesomeIcon icon={faEllipsisVertical} />
+                    </button>
+                    <ul ref={moreOptionsRef} className="more-options-menu">
+                      <li className="option-item">
+                          <button className="option">Save</button>
+                      </li>
+                      <li className="option-item">
+                          <button className="option">Share</button>
+                      </li>
+                      <li className="option-item">
+                          <button className="option">Update status</button>
+                      </li>
+                      <li className="option-item">
+                          <button className="option">Edit</button>
+                      </li>
+                      <li className="option-item">
+                          <button className="option danger">Delete</button>
+                      </li>
+                    </ul>
+                </div>
+
             </div>
 
             <img className="post-image" src="/images/test-image.webp" alt="post-image"/>

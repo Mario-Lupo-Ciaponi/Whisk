@@ -6,7 +6,11 @@
   font-family: "Vend Sans", sans-serif;
 }
 
-ul,
-ol {
+ul{
   list-style-type: none;
+}
+
+ul,
+ol{
+  padding: 0;
 }

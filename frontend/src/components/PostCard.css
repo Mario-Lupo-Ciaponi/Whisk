@@ -41,15 +41,65 @@
 
 .post-card .top .user-container .username{
   font-weight: bold;
-  font-style: italic;
 }
 
-.post-card .top .show-more{
+.post-card .top .user-container .city{
+  font-style: italic;
+  font-weight: lighter;
+}
+
+.post-card .top .more-options-container {
+  position: relative;
+}
+
+.post-card .top .more-options-container .show-more{
   background: none;
   border: none;
   cursor: pointer;
   color: inherit;
+  z-index: 100;
 }
+
+.post-card .top .more-options-container .more-options-menu {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #EFEAEA;
+  border-radius: 1.25rem;
+  width: 9rem;
+  overflow: hidden;
+}
+
+.post-card .top .more-options-container .more-options-menu.active {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.post-card .top .more-options-container .more-options-menu .option-item {
+  width: 100%;
+  padding: 0.5rem 0;
+  border-bottom: 1px solid var(--coffee-pot-color);
+  text-align: center;
+}
+
+.post-card .top .more-options-container .more-options-menu .option-item:hover {
+ background-color: #cecbcb;
+}
+
+.post-card .top .more-options-container .more-options-menu .option-item:last-child {
+  border-bottom: none;
+}
+
+.post-card .top .more-options-container .more-options-menu .option-item .option {
+  width: 100%;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
 
 .post-card .post-image{
   width: 100%;
