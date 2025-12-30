@@ -13,6 +13,7 @@ function App() {
       <main>
           <Routes>
               <Route index element={<HomePage />} />
+              <Route path="create-post/" />
           </Routes>
       </main>
       <Footer />

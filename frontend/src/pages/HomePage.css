@@ -1,0 +1,15 @@
+.feed-container {
+  display: flex;
+  justify-content: center;
+}
+
+.feed-select {
+  font-size: 2rem;
+  background: none;
+  border: none;
+  border-bottom: 3px solid black;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  text-align: center;
+}

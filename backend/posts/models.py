@@ -1,7 +1,9 @@
+from django.contrib.auth import get_user_model
 from django.db import models
 from django.utils import timezone
 
-from .choices import StatusChoices
+
+User = get_user_model()
 
 
 class Post(models.Model):
@@ -12,12 +14,14 @@ class Post(models.Model):
     city = models.CharField(
         max_length=70,
     )
-    status = models.CharField(
-        max_length=10,
-        choices=StatusChoices.choices,
-        default=StatusChoices.NOT_FOUND,
+    found = models.BooleanField(
+        default=False,
     )
     posted_on = models.DateTimeField(
         auto_now_add=True,
     )
-    # TODO: add author field
+    author = models.ForeignKey(
+        User,
+        related_name="posts",
+        on_delete=models.CASCADE,
+    )

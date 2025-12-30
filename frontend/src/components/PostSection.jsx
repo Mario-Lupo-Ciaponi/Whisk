@@ -1,37 +1,33 @@
-import  { useState } from "react";
+import  { useState, useEffect } from "react";
+import axios from "axios";
 import PostCard from "./PostCard.jsx";
 import "./PostSection.css";
 
 function PostSection() {
-    const [ posts, setPosts ] = useState([
-        {
-          title: "Lost Kitten",
-          description: "Tiny gray kitten with white paws, last seen near Maple Street. Very shy but responds to 'Mittens'.",
-          username: "cat_enthusiast",
-          city: "Vratsa",
-          id: crypto.randomUUID(),
-        },
-        {
-          title: "Lost Golden Retriever",
-          description: "Buddy, a friendly golden retriever, went missing near Central Park. He has a red collar with a name tag.",
-          username: "animal_rescue_team",
-          city: "Sofia",
-          id: crypto.randomUUID(),
-        },
-        {
-          title: "Missing Parrot",
-          description: "A colorful African Grey parrot named Kiwi escaped from my balcony in downtown. Answers to 'Kiwi'.",
-          username: "parrot_lover",
-          city: "Varna",
-          id: crypto.randomUUID(),
-        },
-    ]);
+    const [ posts, setPosts ] = useState([]);
+
+    useEffect(() => {
+        async function getPosts() {
+            try {
+                const response = await axios.get("api/posts/");
+                setPosts(response.data)
+            } catch (error) {
+                console.log(error)
+            }
+        }
+
+        getPosts();
+    }, []);
+    // !!! This is for test purposes
+    // const userCity = "Vratsa";
+    // const choice = "city";
 
     return (
         <section className="post-section">
             {posts.map((post) => {
+                console.log(post)
                 return (
-                    <PostCard post={post} key={post.id} />
+                    <PostCard post={post} />
                 )
             })}
         </section>
