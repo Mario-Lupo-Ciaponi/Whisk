@@ -1,0 +1,20 @@
+.empty-state {
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+  align-items: center;
+  margin: 5rem;
+}
+
+.empty-state .illustration {
+  width: 15rem;
+}
+
+.empty-state .text-wrapper {
+  text-align: center;
+  color: #988686;
+}
+
+.empty-state .text-wrapper .empty-title{
+  font-size: 2rem;
+}

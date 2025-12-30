@@ -1,21 +1,67 @@
+import {useEffect, useState, useRef } from "react";
+import axios from "axios";
 import PostSection from "../components/PostSection.jsx";
 import "./HomePage.css";
 
+
 function HomePage() {
+    const [ posts, setPosts ] = useState([]);
+    const feedSelectRef = useRef(null);
+
+    const BASE_URL = "api/posts/"
+
+    // NOTE: This is purely for test purposes and it will change to check the real users city and groups!
+    const userInfo = {
+        city: "Plovdiv",
+    }
+
+    async function getPosts() {
+        try {
+            const response = await axios.get(BASE_URL);
+            setPosts(response.data);
+        } catch (error) {
+            console.log(error);
+        }
+    }
+
+    async function filterPosts(query) {
+        try {
+            const response = await  axios.get(`${BASE_URL}?${query}=${userInfo[query]}`);
+            setPosts(response.data)
+        } catch (error) {
+            console.log(error);
+        }
+    }
+
+    useEffect(() => {
+        getPosts();
+    }, []);
+
+    function filterFeed() {
+        const selectValue = feedSelectRef.current.value;
+
+       if (selectValue === "all") getPosts();
+       else filterPosts(selectValue);
+    }
+
     return (
         <>
             <title>Whisk</title>
             <link rel="shortcut icon" href="images/favicons/favicon-32x32.png" type="image/x-icon"/>
 
             <div className="feed-container">
-                <select name="feed-select" className="feed-select">
+                <select
+                    onChange={filterFeed}
+                    ref={feedSelectRef}
+                    name="feed-select"
+                    className="feed-select">
                     <option value="all">All</option>
                     <option value="groups">Groups</option>
                     <option value="city">City</option>
                 </select>
             </div>
 
-            <PostSection />
+            <PostSection posts={posts} />
         </>
     );
 }
