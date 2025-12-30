@@ -48,6 +48,22 @@
   font-weight: lighter;
 }
 
+.post-card .top .user-container .status{
+  padding: 0.4rem;
+  border: 3px solid;
+  border-radius: 3rem;
+}
+
+.post-card .top .user-container .status.found{
+  color: #009E60;
+  border-color: #009E60;
+}
+
+.post-card .top .user-container .status.not-found{
+  color: #D22B2B;
+  border-color: #D22B2B;
+}
+
 .post-card .top .more-options-container {
   position: relative;
 }
