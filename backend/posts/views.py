@@ -19,4 +19,5 @@ class PostListView(ListCreateAPIView):
 class PostApiView(RetrieveUpdateDestroyAPIView):
     queryset = Post.objects.all()
     serializer_class = PostModelSerializer
+    # Test only:
     permission_classes = [AllowAny]

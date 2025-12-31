@@ -49,6 +49,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'django_filters',
     'rest_framework',
+    'rest_framework_simplejwt',
 ] + PROJECT_APPS
 
 MIDDLEWARE = [
@@ -90,6 +91,9 @@ REST_FRAMEWORK = {
         'django_filters.rest_framework.DjangoFilterBackend',
         # ...
     ),
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework_simplejwt.authentication.JWTAuthentication',
+    )
 }
 
 WSGI_APPLICATION = 'config.wsgi.application'
