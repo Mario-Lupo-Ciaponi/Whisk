@@ -1,4 +1,4 @@
-import PostForm from "../components/PostForm.jsx";
+import PostForm from "../components/forms/PostForm.jsx";
 
 function CreatePostPage() {
     return (

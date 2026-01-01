@@ -6,8 +6,13 @@ import CreatePostPage from "./pages/CreatePostPage.jsx";
 import "./styles/reset.css"
 import "./styles/typography.css"
 import './App.css'
+import RegisterPage from "./pages/RegisterPage.jsx";
+import LoginPage from "./pages/LoginPage.jsx";
+import {useState} from "react";
 
 function App() {
+    const [authTokens, setAuthTokens] = useState(null);
+
   return (
     <>
       <Navbar />
@@ -15,6 +20,8 @@ function App() {
           <Routes>
               <Route index element={<HomePage />} />
               <Route path="create-post/" element={<CreatePostPage />} />
+              <Route path="register/" element={<RegisterPage />} />
+              <Route path="login/"  element={<LoginPage setAuthTokens={setAuthTokens} />}  />
           </Routes>
       </main>
       <Footer />

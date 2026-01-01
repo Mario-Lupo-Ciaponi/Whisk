@@ -1,5 +1,5 @@
 from rest_framework.generics import ListCreateAPIView, RetrieveUpdateDestroyAPIView
-from rest_framework.permissions import AllowAny
+from rest_framework.permissions import IsAuthenticatedOrReadOnly, AllowAny
 from django_filters import rest_framework as filter
 
 from .models import Post
@@ -12,12 +12,13 @@ class PostListView(ListCreateAPIView):
     serializer_class = PostModelSerializer
     filter_backends = [filter.DjangoFilterBackend]
     filterset_class = PostFilter
-    # Test only:
-    permission_classes = [AllowAny]
+    permission_classes = [IsAuthenticatedOrReadOnly]
+
+    def perform_create(self, serializer):
+        serializer.save(author=self.request.user)
 
 
 class PostApiView(RetrieveUpdateDestroyAPIView):
     queryset = Post.objects.all()
     serializer_class = PostModelSerializer
-    # Test only:
     permission_classes = [AllowAny]

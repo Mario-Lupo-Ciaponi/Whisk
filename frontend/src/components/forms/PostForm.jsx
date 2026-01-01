@@ -1,5 +1,6 @@
 import { useState } from "react";
 import axios from "axios";
+import api from "../../api/api.js";
 
 function PostForm() {
     const [title, setTitle] = useState("");
@@ -11,14 +12,13 @@ function PostForm() {
 
         if (title && description && city) {
             try {
-                await axios.post("api/posts/", {
+                await api.post("http://localhost:8000/api/posts/", {
                     title,
                     description,
                     city,
-                    author: 1,
-                })
+                });
             } catch(err) {
-                console.log(err)
+                console.log(err);
             }
         }
     }
