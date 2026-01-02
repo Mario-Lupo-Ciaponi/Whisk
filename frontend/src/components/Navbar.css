@@ -95,13 +95,7 @@
   color: var(--tan-color);
 }
 
-.navbar .auth-links {
-  display: flex;
-  gap: 0.5rem;
-  align-items: center;
-}
-
-.navbar .auth-links .auth-link{
+.navbar .auth-link{
   background-color: #BB8B5A;
   border-radius: 1rem;
   padding: 0.5rem 1rem;
@@ -109,6 +103,6 @@
   transition: background-color 500ms ease-in-out;
 }
 
-.navbar .auth-links .auth-link:hover{
+.navbar .auth-link:hover{
   background-color: #8C6741;
 }

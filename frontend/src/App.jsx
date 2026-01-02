@@ -6,7 +6,7 @@ import CreatePostPage from "./pages/CreatePostPage.jsx";
 import "./styles/reset.css"
 import "./styles/typography.css"
 import './App.css'
-import RegisterPage from "./pages/RegisterPage.jsx";
+import AuthPage from "./pages/AuthPage.jsx";
 import LoginPage from "./pages/LoginPage.jsx";
 import {useState} from "react";
 
@@ -21,8 +21,7 @@ function App() {
           <Routes>
               <Route index element={<HomePage />} />
               <Route path="create-post/" element={<CreatePostPage />} />
-              <Route path="register/" element={<RegisterPage navigate={navigate} />} />
-              <Route path="login/"  element={<LoginPage setAuthTokens={setAuthTokens} navigate={navigate} />}  />
+              <Route path="login/" element={<AuthPage navigate={navigate} setAuthTokens={setAuthTokens} />} />
           </Routes>
       </main>
       <Footer />

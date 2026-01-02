@@ -53,10 +53,7 @@ function Navbar({ navigate }) {
                     </div>
                 </div>
                 :
-                <div className="auth-links">
-                    <Link to="login/" className="login-btn auth-link">Login</Link>
-                    <Link to="register/" className="register-btn auth-link">Register</Link>
-                </div>
+                <Link to="login/" className="login-btn auth-link">Login</Link>
             }
         </nav>
     )

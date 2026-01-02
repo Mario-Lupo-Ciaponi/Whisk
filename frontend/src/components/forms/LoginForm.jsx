@@ -1,7 +1,6 @@
 import { useState } from "react";
-import { useNavigate } from "react-router";
-import axios from "axios";
 import api from "../../api/api.js";
+import "./AuthForm.css";
 
 
 function LoginForm({ setAuthTokens, navigate }) {
@@ -29,31 +28,37 @@ function LoginForm({ setAuthTokens, navigate }) {
     }
 
     return (
-        <form onSubmit={handleLogin} className="login-form">
-            <label htmlFor="username">Username</label>
-            <input
-                id="username"
-                name="username"
-                type="text"
-                value={username}
-                onChange={(event) => {
-                    setUsername(event.target.value);
-                }}
+        <form onSubmit={handleLogin} className="login-form auth-form">
+            <div className="auth-field">
+                <label htmlFor="username" className="auth-label">Username</label>
+                <input
+                    id="username"
+                    name="username"
+                    type="text"
+                    value={username}
+                    className="auth-input"
+                    onChange={(event) => {
+                        setUsername(event.target.value);
+                    }}
 
-            />
+                />
+            </div>
 
-            <label htmlFor="password">Password</label>
-            <input
-                id="password"
-                name="password"
-                type="password"
-                value={password}
-                onChange={(event) => {
-                    setPassword(event.target.value);
-                }}
-            />
+            <div className="auth-field">
+                <label htmlFor="password" className="auth-label">Password</label>
+                <input
+                    id="password"
+                    name="password"
+                    type="password"
+                    value={password}
+                    className="auth-input"
+                    onChange={(event) => {
+                        setPassword(event.target.value);
+                    }}
+                />
+            </div>
 
-            <button className="submit-btn">Submit</button>
+            <button className="submit-btn">Login</button>
         </form>
     );
 }
