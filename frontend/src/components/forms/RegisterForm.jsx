@@ -3,11 +3,10 @@ import { useNavigate } from "react-router";
 import axios from "axios";
 import api from "../../api/api.js";
 
-function RegisterForm() {
+function RegisterForm({ navigate }) {
     const [username, setUsername] = useState("");
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
-    const navigate = useNavigate()
 
     async function handleLogin(event) {
         event.preventDefault();
@@ -43,7 +42,7 @@ function RegisterForm() {
             <input
                 id="email"
                 name="email"
-                type="emaol"
+                type="email"
                 value={email}
                 onChange={(event) => {
                     setEmail(event.target.value);

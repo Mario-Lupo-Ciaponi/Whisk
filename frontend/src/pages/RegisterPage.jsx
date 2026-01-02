@@ -1,10 +1,10 @@
 import RegisterForm from "../components/forms/RegisterForm.jsx";
 
-function RegisterPage() {
+function RegisterPage({ navigate }) {
     return (
         <>
             <h1 className="register-title">Register</h1>
-            <RegisterForm />
+            <RegisterForm navigate={navigate} />
         </>
     )
 }

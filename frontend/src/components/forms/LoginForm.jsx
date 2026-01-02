@@ -4,10 +4,9 @@ import axios from "axios";
 import api from "../../api/api.js";
 
 
-function LoginForm({ setAuthTokens }) {
+function LoginForm({ setAuthTokens, navigate }) {
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
-    const navigate = useNavigate();
 
     async function handleLogin(event) {
         event.preventDefault();

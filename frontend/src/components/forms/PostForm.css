@@ -1,0 +1,13 @@
+.form-wrapper {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  padding: 3rem;
+}
+
+.create-post-form {
+  display: flex;
+  flex-direction: column;
+  background-color: #eaeaf1;
+  padding: 1rem;
+}

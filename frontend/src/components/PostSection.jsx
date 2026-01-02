@@ -14,7 +14,7 @@ function PostSection({ posts }) {
                     {posts.map((post) => {
                         console.log(post)
                         return (
-                            <PostCard post={post} />
+                            <PostCard key={post.id} post={post} />
                         )
                     })}
                 </section>

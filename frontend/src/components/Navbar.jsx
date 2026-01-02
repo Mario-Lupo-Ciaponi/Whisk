@@ -1,10 +1,26 @@
-import { NavLink } from "react-router"
+import { NavLink, Link, useNavigate } from "react-router"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import api from "../api/api.js";
 import { faUser, faBell } from '@fortawesome/free-solid-svg-icons'
 import LogoImage from "../assets/logo.png"
 import "./Navbar.css";
 
-function Navbar() {
+function Navbar({ navigate }) {
+    async function logout() {
+        try {
+            await api.post("token/blacklist/", {
+                refresh: localStorage.getItem("refresh")
+            });
+        } catch {}
+
+        localStorage.removeItem("access");
+        localStorage.removeItem("refresh");
+
+        navigate("/");
+    }
+
+    const isLoggedIn = localStorage.getItem("access") !== null;
+
     return (
         <nav className="navbar">
             <img className="logo" src={LogoImage} alt="logo"/>
@@ -17,10 +33,31 @@ function Navbar() {
                 <li className="item"><NavLink to="/help" className="link">Help</NavLink></li>
             </ul>
 
-            <div className="profile-links">
-                <FontAwesomeIcon icon={faBell} />
-                <FontAwesomeIcon icon={faUser} />
-            </div>
+            {isLoggedIn ?
+                <div className="user-menu">
+                    {/*<FontAwesomeIcon icon={faBell} />*/}
+                    <div className="dropdown user-options">
+                        <button className="user-toggle"><FontAwesomeIcon icon={faUser}/></button>
+
+                        <ul className="menu-list">
+                            <li className="dropdown-item">
+                                <Link to="#" className="dropdown-link">Profile</Link>
+                            </li>
+                            <li className="dropdown-item">
+                                <Link to="#" className="dropdown-link">Test</Link>
+                            </li>
+                            <li className="dropdown-item">
+                                <button onClick={logout} className="logout-btn">Logout</button>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                :
+                <div className="auth-links">
+                    <Link to="login/" className="login-btn auth-link">Login</Link>
+                    <Link to="register/" className="register-btn auth-link">Register</Link>
+                </div>
+            }
         </nav>
     )
 }

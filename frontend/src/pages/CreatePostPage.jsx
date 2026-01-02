@@ -1,9 +1,9 @@
 import PostForm from "../components/forms/PostForm.jsx";
 
-function CreatePostPage() {
+function CreatePostPage({ navigate }) {
     return (
         <>
-            <PostForm />
+            <PostForm navigate={navigate}  />
         </>
     )
 }

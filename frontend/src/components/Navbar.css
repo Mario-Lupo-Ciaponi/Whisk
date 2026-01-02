@@ -1,5 +1,7 @@
 :root {
   --pewter-color: #EAEAF1;
+  --dark-pewter-color: #BEBED4;
+  --darker-pewter-color: #8F8FAF;
   --tan-color: #74503c;
 }
 
@@ -41,7 +43,72 @@
   text-decoration: underline;
 }
 
-.navbar .profile-links {
+.navbar .user-menu {
   display: flex;
   gap: 0.5rem;
+}
+
+.navbar .user-menu .dropdown .user-toggle {
+  color: var(--tan-color);
+  font-size: 1.5rem;
+  height: 100%;
+}
+
+.navbar .user-menu .dropdown {
+  position: relative;
+}
+
+.navbar .user-menu .dropdown .user-toggle,
+.navbar .user-menu .dropdown:hover .menu-list .dropdown-item .logout-btn{
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+.navbar .user-menu .dropdown .menu-list {
+  position: absolute;
+  display: none;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: var(--dark-pewter-color);
+  flex-direction: column;
+  min-width: 150px;
+  z-index: 10;
+}
+
+.navbar .user-menu .dropdown:hover .menu-list {
+  display: flex;
+}
+
+.navbar .user-menu .dropdown:hover .menu-list .dropdown-item{
+  text-align: center;
+  padding: 0.8rem 1rem;
+  width: 100%;
+}
+
+.navbar .user-menu .dropdown:hover .menu-list .dropdown-item:hover {
+  background-color: var(--darker-pewter-color);
+}
+
+.navbar .user-menu .dropdown:hover .menu-list .dropdown-item .dropdown-link,
+.navbar .user-menu .dropdown:hover .menu-list .dropdown-item .logout-btn{
+  color: var(--tan-color);
+}
+
+.navbar .auth-links {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+.navbar .auth-links .auth-link{
+  background-color: #BB8B5A;
+  border-radius: 1rem;
+  padding: 0.5rem 1rem;
+  color: white;
+  transition: background-color 500ms ease-in-out;
+}
+
+.navbar .auth-links .auth-link:hover{
+  background-color: #8C6741;
 }
