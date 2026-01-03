@@ -12,6 +12,7 @@ import AuthPage from "./pages/AuthPage.jsx";
 function App() {
   const [authTokens, setAuthTokens] = useState(null);
   const navigate = useNavigate();
+  const [errors, setErrors] = useState({});
 
   return (
     <>
@@ -19,8 +20,20 @@ function App() {
       <main>
           <Routes>
               <Route index element={<HomePage />} />
-              <Route path="create-post/" element={<CreatePostPage />} />
-              <Route path="login/" element={<AuthPage navigate={navigate} setAuthTokens={setAuthTokens} />} />
+              <Route
+                  path="create-post/"
+                  element={<CreatePostPage  errors={errors} setErrors={setErrors} />}
+              />
+              <Route
+                  path="login/"
+                  element=
+                      {<AuthPage
+                          navigate={navigate}
+                          setAuthTokens={setAuthTokens}
+                          errors={errors}
+                          setErrors={setErrors}/>
+                      }
+              />
           </Routes>
       </main>
       <Footer />

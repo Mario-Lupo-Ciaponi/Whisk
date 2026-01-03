@@ -26,6 +26,8 @@ function LoginForm({ setAuthTokens, navigate, errors, setErrors }) {
             if (e.response.status === 400){
                 setErrors(e.response.data);
             }
+
+            console.log(e)
         }
     }
 

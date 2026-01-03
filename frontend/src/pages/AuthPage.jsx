@@ -3,9 +3,8 @@ import LoginForm from "../components/forms/LoginForm.jsx";
 import {useState} from "react";
 import "./AuthPage.css"
 
-function AuthPage({ setAuthTokens, navigate }) {
+function AuthPage({ setAuthTokens, navigate, errors, setErrors }) {
     const [showLogin, setShowLogin] = useState(true);
-    const [errors, setErrors] = useState({});
 
     function toggleShowLogin(event) {
         setShowLogin("login" === event.target.value);

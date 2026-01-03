@@ -1,20 +1,23 @@
 from rest_framework import serializers
 from .models import Post
-
-from profanity_check import predict, predict_prob
+from .validators import ProfanityCheckValidator
 
 
 class PostModelSerializer(serializers.ModelSerializer):
+    title = serializers.CharField(
+        validators=[
+            ProfanityCheckValidator(),
+        ]
+    )
+    description = serializers.CharField(
+        validators=[
+            ProfanityCheckValidator(),
+        ]
+    )
     author = serializers.CharField(
         source="author.username",
         read_only=True
     )
-
-    def validate(self, data):
-        if predict([data["title"], data["description"]]).any():
-            raise serializers.ValidationError("Profanity is not allowed in the posts!")
-
-        return data
 
     class Meta:
         model = Post
