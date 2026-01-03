@@ -2,7 +2,7 @@ import {useState} from "react";
 import api from "../../api/api.js";
 import "./AuthForm.css";
 
-function RegisterForm({ navigate }) {
+function RegisterForm({ navigate, errors, setErrors }) {
     const [username, setUsername] = useState("");
     const [email, setEmail] = useState("");
     const [firstPassword, setFirstPassword] = useState("");
@@ -18,11 +18,13 @@ function RegisterForm({ navigate }) {
                 email,
                 password1: firstPassword,
                 password2: secondPassword,
-            })
+            });
 
             navigate("login/");
         } catch (e) {
-            console.log("Error", e.response.data["non_field_errors"])
+            if (e.response.status === 400) {
+                setErrors(e.response.data);
+            }
         }
     }
 
@@ -35,7 +37,7 @@ function RegisterForm({ navigate }) {
                     name="username"
                     type="text"
                     value={username}
-                    className="auth-input"
+                    className={`auth-input ${errors.username ? "error-input" : ""}`}
                     onChange={(event) => {
                         setUsername(event.target.value);
                     }}
@@ -50,7 +52,7 @@ function RegisterForm({ navigate }) {
                     name="email"
                     type="email"
                     value={email}
-                    className="auth-input"
+                    className={`auth-input ${errors.email ? "error-input" : ""}`}
                     onChange={(event) => {
                         setEmail(event.target.value);
                     }}
@@ -65,7 +67,7 @@ function RegisterForm({ navigate }) {
                     name="password1"
                     type="password"
                     value={firstPassword}
-                    className="auth-input"
+                    className={`auth-input ${errors.password1 ? "error-input" : ""}`}
                     onChange={(event) => {
                         setFirstPassword(event.target.value);
                     }}
@@ -79,7 +81,7 @@ function RegisterForm({ navigate }) {
                     name="password2"
                     type="password"
                     value={secondPassword}
-                    className="auth-input"
+                    className={`auth-input ${errors.password2 ? "error-input" : ""}`}
                     onChange={(event) => {
                         setSecondPassword(event.target.value);
                     }}

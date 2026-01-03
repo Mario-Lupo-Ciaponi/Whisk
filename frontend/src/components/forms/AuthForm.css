@@ -19,6 +19,15 @@
   padding-left: 0.5rem;
 }
 
+.auth-form .auth-field .auth-input.error-input {
+  border: 1px solid #FF3131;
+}
+
+.auth-form .auth-field .auth-input.error-input:focus {
+  outline: 1px solid #FF3131;
+}
+
+
 .auth-form .submit-btn {
   background-color: #988686;
   border: none;

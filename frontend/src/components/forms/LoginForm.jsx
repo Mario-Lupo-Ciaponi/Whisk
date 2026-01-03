@@ -1,9 +1,9 @@
-import { useState } from "react";
+import { useState, useRef } from "react";
 import api from "../../api/api.js";
 import "./AuthForm.css";
 
 
-function LoginForm({ setAuthTokens, navigate }) {
+function LoginForm({ setAuthTokens, navigate, errors, setErrors }) {
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
 
@@ -22,8 +22,10 @@ function LoginForm({ setAuthTokens, navigate }) {
             setAuthTokens(response.data);
 
             navigate("/");
-        } catch (e) {
-            console.log("Error", e)
+        } catch (e){
+            if (e.response.status === 400){
+                setErrors(e.response.data);
+            }
         }
     }
 
@@ -36,7 +38,7 @@ function LoginForm({ setAuthTokens, navigate }) {
                     name="username"
                     type="text"
                     value={username}
-                    className="auth-input"
+                    className={`auth-input ${errors.username ? "error-input" : ""}`}
                     onChange={(event) => {
                         setUsername(event.target.value);
                     }}
@@ -51,7 +53,7 @@ function LoginForm({ setAuthTokens, navigate }) {
                     name="password"
                     type="password"
                     value={password}
-                    className="auth-input"
+                    className={`auth-input ${errors.password ? "error-input" : ""}`}
                     onChange={(event) => {
                         setPassword(event.target.value);
                     }}

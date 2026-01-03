@@ -1,3 +1,4 @@
+import {useState} from "react";
 import {Routes, Route, useNavigate} from "react-router";
 import Navbar from "./components/Navbar.jsx";
 import Footer from "./components/Footer.jsx";
@@ -7,8 +8,6 @@ import "./styles/reset.css"
 import "./styles/typography.css"
 import './App.css'
 import AuthPage from "./pages/AuthPage.jsx";
-import LoginPage from "./pages/LoginPage.jsx";
-import {useState} from "react";
 
 function App() {
   const [authTokens, setAuthTokens] = useState(null);

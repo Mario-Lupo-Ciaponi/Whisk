@@ -5,6 +5,7 @@ import "./AuthPage.css"
 
 function AuthPage({ setAuthTokens, navigate }) {
     const [showLogin, setShowLogin] = useState(true);
+    const [errors, setErrors] = useState({});
 
     function toggleShowLogin(event) {
         setShowLogin("login" === event.target.value);
@@ -46,9 +47,18 @@ function AuthPage({ setAuthTokens, navigate }) {
 
                 {
                     showLogin ?
-                        <LoginForm setAuthTokens={setAuthTokens} navigate={navigate} />
+                        <LoginForm
+                            setAuthTokens={setAuthTokens}
+                            navigate={navigate}
+                            errors={errors}
+                            setErrors={setErrors}
+                        />
                         :
-                        <RegisterForm navigate={navigate} />
+                        <RegisterForm
+                            navigate={navigate}
+                            errors={errors}
+                            setErrors={setErrors}
+                        />
                 }
             </article>
         </div>
