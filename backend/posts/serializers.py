@@ -26,7 +26,6 @@ class PostModelSerializer(serializers.ModelSerializer):
 
         return obj.image.url
 
-
     class Meta:
         model = Post
         fields = ["id", "title", "description", "city", "found", "posted_on", "author", "image",]

@@ -10,12 +10,14 @@ function PostCard({ post }) {
         moreOptionsRef.current.classList.toggle("active")
     }
 
+    console.log(post.image)
+
     return (
         <article className="post-card" key={post.id}>
             <div className="top">
                 <div className="user-container">
                     <img className="profile-image" src="/images/default-profile-img.jpeg" alt="profile image"/>
-                    <p className="username">{post.author_username}</p>
+                    <p className="username">{post.author}</p>
                     <span className="city">({post.city})</span>
                     {post.found ?
                         <span className="status found">Found</span>
