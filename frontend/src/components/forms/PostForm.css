@@ -11,3 +11,7 @@
   background-color: #eaeaf1;
   padding: 1rem;
 }
+
+.create-post-form .post-field .post-label {
+  display: block;
+}

@@ -18,7 +18,15 @@ class PostModelSerializer(serializers.ModelSerializer):
         source="author.username",
         read_only=True
     )
+    image = serializers.SerializerMethodField()
+
+    def get_image(self, obj):
+        if not obj.image:
+            return None
+
+        return obj.image.url
+
 
     class Meta:
         model = Post
-        fields = ["id", "title", "description", "city", "found", "posted_on", "author",]
+        fields = ["id", "title", "description", "city", "found", "posted_on", "author", "image",]

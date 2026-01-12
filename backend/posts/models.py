@@ -1,5 +1,6 @@
 from django.contrib.auth import get_user_model
 from django.db import models
+from cloudinary.models import CloudinaryField
 
 from .validators import ProfanityCheckValidator
 
@@ -25,4 +26,7 @@ class Post(models.Model):
         User,
         related_name="posts",
         on_delete=models.CASCADE,
+    )
+    image = CloudinaryField(
+        "image",
     )

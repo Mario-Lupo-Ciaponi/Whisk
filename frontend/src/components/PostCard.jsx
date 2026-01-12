@@ -49,7 +49,7 @@ function PostCard({ post }) {
 
             </div>
 
-            <img className="post-image" src="/images/test-image.webp" alt="post-image"/>
+            <img className="post-image" src={post.image} alt="post-image"/>
 
             <div className="caption">
                 <h3 className="title">{post.title}</h3>

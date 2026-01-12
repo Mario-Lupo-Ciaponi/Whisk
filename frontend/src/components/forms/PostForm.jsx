@@ -7,21 +7,34 @@ function PostForm({ navigate, errors, setErrors }) {
     const [title, setTitle] = useState("");
     const [description, setDescription] = useState("");
     const [city, setCity] = useState("");
+    const [image, setImage] = useState(null);
 
     async function createPost(event) {
         event.preventDefault();
 
-        if (title && description && city) {
-            try {
-                await api.post("posts/", {
-                    title: title.trim(),
-                    description: description.trim(),
-                    city: city.trim(),
-                });
+        if (!title || !description || !city || !image) {
+            setErrors({ detail: "All fields are required." })
+            return;
+        }
 
-                navigate("/");
-            } catch(e) {
-                if (e.response.status === 400) setErrors(e.response?.data);
+        const formData = new FormData();
+
+        formData.append("title", title.trim())
+        formData.append("description", description.trim())
+        formData.append("city", city.trim())
+        formData.append("image", image)
+
+        try {
+            await api.post("posts/", formData, {
+                headers: {
+                    "Content-Type": "multipart/form-data",
+                }
+            });
+
+            navigate("/");
+        } catch(e) {
+            if (e.response?.status === 400){
+                setErrors(e.response.data);
             }
         }
     }
@@ -32,8 +45,10 @@ function PostForm({ navigate, errors, setErrors }) {
                { errors && <ErrorList errors={errors} /> }
 
                <div className="post-field">
-                   <label htmlFor="title">Title:</label>
+                   <label className="post-label" htmlFor="title">Title:</label>
                     <input
+                        id="title"
+                        className="post-input"
                         name="title"
                         type="text"
                         onChange={(event) => {
@@ -41,8 +56,10 @@ function PostForm({ navigate, errors, setErrors }) {
                     }}/>
                </div>
                <div className="post-field">
-                   <label htmlFor="description">Description:</label>
+                   <label className="post-label" htmlFor="description">Description:</label>
                     <textarea
+                        id="description"
+                        className="post-input"
                         name="description"
                         cols="30"
                         rows="10"
@@ -51,12 +68,26 @@ function PostForm({ navigate, errors, setErrors }) {
                     }}></textarea>
                </div>
                <div className="post-field">
-                    <label htmlFor="city">City:</label>
+                    <label className="post-label" htmlFor="city">City:</label>
                     <input
+                        id="city"
+                        className="post-input"
                         name="city"
                         type="text"
                         onChange={(event) => {
                         setCity(event.target.value);
+                    }}/>
+               </div>
+
+               <div className="post-field">
+                    <label className="post-label" htmlFor="image">Image:</label>
+                    <input
+                        id="image"
+                        className="post-input"
+                        name="image"
+                        type="file"
+                        onChange={(event) => {
+                        setImage(event.target.files[0]);
                     }}/>
                </div>
 
