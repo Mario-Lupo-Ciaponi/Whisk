@@ -43,6 +43,7 @@ ALLOWED_HOSTS = []
 PROJECT_APPS = [
     "accounts",
     "posts",
+    "groups",
 ]
 
 INSTALLED_APPS = [
