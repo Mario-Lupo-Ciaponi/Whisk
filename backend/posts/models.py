@@ -30,3 +30,9 @@ class Post(models.Model):
     image = CloudinaryField(
         "image",
     )
+
+    class Meta:
+        ordering = ["posted_on",]
+
+    def __str__(self):
+        return f"{self.title} - {self.author.username}"

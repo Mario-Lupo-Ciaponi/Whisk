@@ -25,6 +25,9 @@ class CityGroup(models.Model):
         through="CityGroupMember",
     )
 
+    class Meta:
+        ordering = ["name",]
+
     def __str__(self):
         return self.name
 
@@ -42,3 +45,14 @@ class CityGroupMember(models.Model):
         verbose_name="member",
         on_delete=models.CASCADE,
     )
+    joined_on = models.DateTimeField(
+        auto_now_add=True,
+    )
+    is_admin = models.BooleanField(
+        default=False,
+    )
+
+    class Meta:
+        unique_together = ("group", "member",)
+        verbose_name = "City Group Membership"
+
