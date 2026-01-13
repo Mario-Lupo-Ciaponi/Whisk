@@ -31,6 +31,8 @@ function PostForm({ navigate, errors, setErrors }) {
                 }
             });
 
+            console.log("Hi")
+
             navigate("/");
         } catch(e) {
             if (e.response?.status === 400){

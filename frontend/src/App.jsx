@@ -22,7 +22,7 @@ function App() {
               <Route index element={<HomePage />} />
               <Route
                   path="create-post/"
-                  element={<CreatePostPage  errors={errors} setErrors={setErrors} />}
+                  element={<CreatePostPage  navigate={navigate} errors={errors} setErrors={setErrors} />}
               />
               <Route
                   path="login/"
