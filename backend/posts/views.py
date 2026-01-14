@@ -9,7 +9,7 @@ from .filters import PostFilter
 
 
 
-class PostListView(ListCreateAPIView):
+class PostListCreateAPIView(ListCreateAPIView):
     queryset = Post.objects.all()
     serializer_class = PostModelSerializer
     filter_backends = [filter.DjangoFilterBackend]
@@ -21,7 +21,7 @@ class PostListView(ListCreateAPIView):
         serializer.save(author=self.request.user)
 
 
-class PostApiView(RetrieveUpdateDestroyAPIView):
+class PostRetrieveUpdateDestroyAPIView(RetrieveUpdateDestroyAPIView):
     queryset = Post.objects.all()
     serializer_class = PostModelSerializer
     permission_classes = [AllowAny]
