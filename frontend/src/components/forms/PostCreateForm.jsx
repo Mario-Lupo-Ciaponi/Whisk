@@ -1,9 +1,9 @@
 import { useState } from "react";
 import ErrorList from "../ErrorList.jsx";
 import api from "../../api/api.js";
-import "./PostForm.css";
+import "./PostCreateForm.css";
 
-function PostForm({ navigate, errors, setErrors }) {
+function PostCreateForm({ navigate, errors, setErrors }) {
     const [title, setTitle] = useState("");
     const [description, setDescription] = useState("");
     const [city, setCity] = useState("");
@@ -99,4 +99,4 @@ function PostForm({ navigate, errors, setErrors }) {
     )
 }
 
-export default PostForm;
+export default PostCreateForm;

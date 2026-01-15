@@ -1,9 +1,9 @@
-import PostForm from "../components/forms/PostForm.jsx";
+import PostCreateForm from "../components/forms/PostCreateForm.jsx";
 
 function CreatePostPage({ navigate, errors, setErrors }) {
     return (
         <>
-            <PostForm navigate={navigate}  errors={errors} setErrors={setErrors} />
+            <PostCreateForm navigate={navigate} errors={errors} setErrors={setErrors} />
         </>
     )
 }

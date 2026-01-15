@@ -1,0 +1,49 @@
+import { useState } from "react";
+import api from "../../api/api.js";
+import "./GroupCreateForm.css";
+import ErrorList from "../ErrorList.jsx";
+
+export default function GroupCreateForm ({ errors, setErrors }) {
+    const [name, setName] = useState("");
+    const [description, setDescription] = useState("");
+
+    async function createPost(event) {
+        event.preventDefault();
+
+        if (!name || !description) {
+            setErrors({ detail: "All fields are required." })
+            return;
+        }
+
+        const formData = new FormData();
+        formData.append("name", name);
+
+        try {
+            await api.post("groups/", formData, {
+                headers: {
+                    "Content-Type": "application/json",
+                }
+            })
+        } catch (e) {
+            setErrors(e.data);
+        }
+    }
+
+    return (
+        <form onSubmit={createPost}>
+            { errors && <ErrorList errors={errors} /> }
+
+            <label htmlFor="name">Name:</label>
+            <input id="name" name="name" type="text" onChange={(event) => {
+                setName(event.target.value.trim());
+            }}/>
+
+            <label htmlFor="name">Description:</label>
+            <textarea name="description" id="description" onChange={(event) => {
+                setDescription(event.target.value.trim());
+            }}></textarea>
+
+            <button className="create-btn">Create</button>
+        </form>
+    );
+}

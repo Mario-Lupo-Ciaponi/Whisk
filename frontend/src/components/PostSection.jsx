@@ -1,6 +1,6 @@
 import  { useState, useEffect } from "react";
 import axios from "axios";
-import PostCard from "./PostCard.jsx";
+import PostCard from "./cards/PostCard.jsx";
 import NoResult from "./NoResult.jsx";
 import NoResultImage from "../assets/no-result-search.svg";
 import "./PostSection.css";
