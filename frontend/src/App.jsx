@@ -1,5 +1,6 @@
 import {useState} from "react";
 import {Routes, Route, useNavigate} from "react-router";
+import PrivateRoutes from "./utils/PrivateRoutes.jsx";
 import Navbar from "./components/Navbar.jsx";
 import Footer from "./components/Footer.jsx";
 import HomePage from "./pages/HomePage.jsx"
@@ -22,12 +23,18 @@ function App() {
       <main>
           <Routes>
               <Route index element={<HomePage />} />
-              <Route
-                  path="create-post/"
-                  element={<CreatePostPage  navigate={navigate} errors={errors} setErrors={setErrors} />}
-              />
+              <Route element={<PrivateRoutes />}>
+                  <Route
+                      path="create-post/"
+                      element={<CreatePostPage  navigate={navigate} errors={errors} setErrors={setErrors} />}
+                  />
+                  <Route
+                      path="create-group/"
+                      element={<CreateGroupPage navigate={navigate()} errors={errors} setErrors={setErrors} />}
+                  />
+              </Route>
+
               <Route path="groups/" element={<GroupsPage  />}/>
-              <Route path="create-group/" element={<CreateGroupPage errors={errors} setErrors={setErrors} />} />
               <Route
                   path="login/"
                   element=

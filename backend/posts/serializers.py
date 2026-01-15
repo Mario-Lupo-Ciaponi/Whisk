@@ -16,9 +16,11 @@ class PostModelSerializer(serializers.ModelSerializer):
     )
     author = serializers.CharField(
         source="author.username",
-        read_only=True
+        read_only=True,
     )
-    image = serializers.ImageField(required=True)
+    image = serializers.ImageField(
+        required=True,
+    )
 
     class Meta:
         model = Post

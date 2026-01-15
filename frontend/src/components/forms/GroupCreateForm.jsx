@@ -3,7 +3,7 @@ import api from "../../api/api.js";
 import "./GroupCreateForm.css";
 import ErrorList from "../ErrorList.jsx";
 
-export default function GroupCreateForm ({ errors, setErrors }) {
+export default function GroupCreateForm ({ navigate, errors, setErrors }) {
     const [name, setName] = useState("");
     const [description, setDescription] = useState("");
 
@@ -25,6 +25,10 @@ export default function GroupCreateForm ({ errors, setErrors }) {
                 }
             })
         } catch (e) {
+            if (e.response?.status === 401) {
+                navigate("login/");
+            }
+
             setErrors(e.data);
         }
     }

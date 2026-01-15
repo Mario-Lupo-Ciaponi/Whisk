@@ -37,6 +37,8 @@ function PostCreateForm({ navigate, errors, setErrors }) {
         } catch(e) {
             if (e.response?.status === 400){
                 setErrors(e.response.data);
+            } else if (e.response?.status === 401){
+                navigate("login/");
             }
         }
     }

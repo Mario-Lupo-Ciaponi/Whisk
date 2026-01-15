@@ -1,10 +1,10 @@
 import GroupCreateForm from "../components/forms/GroupCreateForm.jsx";
 import "./CreateGroupPage.css";
 
-export default function CreateGroupPage({ errors, setErrors }) {
+export default function CreateGroupPage({ navigate, errors, setErrors }) {
     return (
         <>
-            <GroupCreateForm errors={errors} setErrors={setErrors} />
+            <GroupCreateForm navigate={navigate} errors={errors} setErrors={setErrors} />
         </>
     )
 }
