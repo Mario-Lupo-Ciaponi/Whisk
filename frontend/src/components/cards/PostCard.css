@@ -146,6 +146,10 @@
   background: #a8aabd;
 }
 
+.post-card .actions .count{
+  margin-left: 0.25rem;
+}
+
 .post-card .divider {
   border: 1px solid var(--coffee-pot-color);
 }

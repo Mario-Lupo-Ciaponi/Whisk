@@ -1,6 +1,7 @@
 import { useRef } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEllipsisVertical, faMapLocationDot, faComment, faBookmark } from "@fortawesome/free-solid-svg-icons";
+import LocationSection from "../LocationSection.jsx";
 import "./PostCard.css";
 
 function PostCard({ post }) {
@@ -59,10 +60,22 @@ function PostCard({ post }) {
             </div>
             <hr className="divider"/>
             <div className="actions">
-                <button className="action mark-position"><FontAwesomeIcon icon={faMapLocationDot} /></button>
-                <button className="action comment-post"><FontAwesomeIcon icon={faComment} /></button>
-                <button className="action mark-position"><FontAwesomeIcon icon={faBookmark} /></button>
+                <button className="action mark-position">
+                    <FontAwesomeIcon icon={faMapLocationDot} />
+                    <span className="count">0</span>
+                </button>
+                <button className="action comment-post">
+                    <FontAwesomeIcon icon={faComment} />
+                    <span className="count">0</span>
+                </button>
+                <button className="action mark-position">
+                    <FontAwesomeIcon icon={faBookmark} />
+                    <span className="count">0</span>
+                </button>
             </div>
+
+            {/*TODO: let it show up only on click on the map button*/}
+            <LocationSection />
         </article>
     )
 }
