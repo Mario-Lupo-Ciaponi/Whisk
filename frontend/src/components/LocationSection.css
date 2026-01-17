@@ -1,0 +1,11 @@
+.location-section {
+  display: none;
+}
+
+.location-section.active {
+  display: block;
+}
+
+.location-section .leaflet-container {
+  height: 300px;
+}

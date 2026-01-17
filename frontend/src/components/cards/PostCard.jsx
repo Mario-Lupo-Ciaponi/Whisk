@@ -6,12 +6,15 @@ import "./PostCard.css";
 
 function PostCard({ post }) {
     const moreOptionsRef = useRef(null);
+    const mapSectionRef = useRef(null);
 
     function showActions() {
         moreOptionsRef.current.classList.toggle("active")
     }
 
-    console.log(post.image)
+    function toggleMapSection() {
+        mapSectionRef.current.classList.toggle("active");
+    }
 
     return (
         <article className="post-card" key={post.id}>
@@ -60,7 +63,7 @@ function PostCard({ post }) {
             </div>
             <hr className="divider"/>
             <div className="actions">
-                <button className="action mark-position">
+                <button onClick={toggleMapSection} className="action mark-position">
                     <FontAwesomeIcon icon={faMapLocationDot} />
                     <span className="count">0</span>
                 </button>
@@ -75,7 +78,7 @@ function PostCard({ post }) {
             </div>
 
             {/*TODO: let it show up only on click on the map button*/}
-            <LocationSection />
+            <LocationSection mapSectionRef={mapSectionRef} />
         </article>
     )
 }
