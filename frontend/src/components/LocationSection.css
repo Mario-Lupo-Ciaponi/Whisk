@@ -1,10 +1,18 @@
 .location-section {
   display: none;
+  padding: 0.5rem 2rem;
+  width: 100%;
+  border-top: 2px solid black;
 }
 
 .location-section.active {
   display: block;
 }
+
+.location-section .section-header{
+  text-align: center;
+}
+
 
 .location-section .leaflet-container {
   height: 300px;

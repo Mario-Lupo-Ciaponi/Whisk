@@ -14,12 +14,19 @@ export default function LocationSection ({ mapSectionRef }) {
                     Select a location where you have seen the pet
                 </p>
             </header>
-            <MapContainer center={[51.505, -0.09]} zoom={13} scrollWheelZoom={false}>
+
+
+            <MapContainer center={[0, 0]} zoom={1} scrollWheelZoom={false}>
                 <TileLayer
                     attribution='<a href="https://www.maptiler.com/copyright/" target="_blank">&copy; MapTiler</a> <a href="https://www.openstreetmap.org/copyright" target="_blank">&copy; OpenStreetMap contributors</a>'
                     url="https://api.maptiler.com/maps/base-v4/{z}/{x}/{y}.png?key=sEQcJLkXBPo4v8VsuE7h"
                 />
             </MapContainer>
+
+
+            <button className="add-location-btn">
+                Add Location
+            </button>
         </section>
     );
 }
