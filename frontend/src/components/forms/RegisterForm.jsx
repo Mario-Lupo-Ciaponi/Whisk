@@ -1,32 +1,62 @@
-import {useState} from "react";
+import {useEffect, useState} from "react";
+import countries from "i18n-iso-countries";
+import enLocale from "i18n-iso-countries/langs/en.json";
 import api from "../../api/api.js";
 import "./AuthForm.css";
 
+// This gives access to all the countries in english
+countries.registerLocale(enLocale);
+
 function RegisterForm({ navigate, errors, setErrors }) {
+    // Declaration of states:
     const [username, setUsername] = useState("");
     const [email, setEmail] = useState("");
+    const [countrySelected, setCountrySelected] = useState("");
     const [firstPassword, setFirstPassword] = useState("");
     const [secondPassword, setSecondPassword] = useState("");
+    const [allCountries, setAllCountries] = useState({});
 
+    function getAllCountries() {
+        return countries.getNames("en", {select: "official"});
+    }
 
     async function handleRegister(event) {
         event.preventDefault();
 
+        if (!username || !email || !countrySelected || !firstPassword || !secondPassword) {
+            setErrors({ detail: "All fields are required." });
+            return;
+        }
+
+        const formData = new FormData();
+
+        formData.append("username", username);
+        formData.append("email", email);
+        formData.append("country", countrySelected);
+        formData.append("password1", firstPassword);
+        formData.append("password2", secondPassword);
+
         try {
-            await api.post("accounts/register/", {
-                username,
-                email,
-                password1: firstPassword,
-                password2: secondPassword,
+            await api.post("accounts/register/", formData, {
+                headers: {
+                    "Content-Type": "application/json",
+                },
             });
 
-            navigate("login/");
+            navigate("/login");
         } catch (e) {
             if (e.response.status === 400) {
                 setErrors(e.response.data);
             }
+
+            console.log(e)
         }
     }
+
+    useEffect(() => {
+        const countryData = getAllCountries();
+        setAllCountries(countryData);
+    }, []);
 
     return (
         <form onSubmit={handleRegister} className="register-form auth-form">
@@ -58,6 +88,21 @@ function RegisterForm({ navigate, errors, setErrors }) {
                     }}
 
                 />
+            </div>
+
+            <div className="auth-field">
+                <label htmlFor="country" className="auth-label">Country:</label>
+                <select
+                    id="country"
+                    name="country"
+                    onChange={(event) => {
+                        setCountrySelected(event.target.value);
+                    }}>
+                    <option disabled value=""> -- select a country -- </option>
+                    {Object.entries(allCountries).map(([countryCode, countryName]) => {
+                        return <option value={countryCode}>{countryName}</option>
+                    })}
+                </select>
             </div>
 
             <div className="auth-field">

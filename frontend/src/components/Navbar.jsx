@@ -53,7 +53,7 @@ function Navbar({ navigate }) {
                     </div>
                 </div>
                 :
-                <Link to="login/" className="login-btn auth-link">Login</Link>
+                <Link to="/login" className="login-btn auth-link">Login</Link>
             }
         </nav>
     )

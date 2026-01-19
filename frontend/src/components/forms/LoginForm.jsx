@@ -10,10 +10,21 @@ function LoginForm({ setAuthTokens, navigate, errors, setErrors }) {
     async function handleLogin(event) {
         event.preventDefault();
 
+        const formData = new FormData();
+
+        if (!username || !password) {
+            setErrors({ detail: "All fields are required." });
+            return;
+        }
+
+        formData.append("username", username);
+        formData.append("password", password);
+
         try {
-            const response = await api.post("token/", {
-                username,
-                password
+            const response = await api.post("token/", formData, {
+                headers: {
+                    "Content-Type": "application/json",
+                },
             });
 
             localStorage.setItem("access", response.data.access);
