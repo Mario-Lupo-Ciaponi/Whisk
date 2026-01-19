@@ -9,11 +9,11 @@ function Footer() {
                 <img className="logo" src={Logo} alt="logo"/>
 
                 <ul className="links">
-                    <li className="item"><Link to="#" className="link">Home</Link></li>
-                    <li className="item"><Link to="#" className="link">Search</Link></li>
-                    <li className="item"><Link to="#" className="link">Groups</Link></li>
-                    <li className="item"><Link to="#" className="link">Create Post</Link></li>
-                    <li className="item"><Link to="#" className="link">Help</Link></li>
+                    <li className="item"><Link to="/" className="link">Home</Link></li>
+                    <li className="item"><Link to="/search" className="link">Search</Link></li>
+                    <li className="item"><Link to="/groups" className="link">Groups</Link></li>
+                    <li className="item"><Link to="/create-post" className="link">Create Post</Link></li>
+                    <li className="item"><Link to="/help" className="link">Help</Link></li>
                 </ul>
             </div>
 

@@ -30,7 +30,7 @@ function App() {
                   />
                   <Route
                       path="create-group/"
-                      element={<CreateGroupPage navigate={navigate()} errors={errors} setErrors={setErrors} />}
+                      element={<CreateGroupPage navigate={navigate} errors={errors} setErrors={setErrors} />}
                   />
               </Route>
 

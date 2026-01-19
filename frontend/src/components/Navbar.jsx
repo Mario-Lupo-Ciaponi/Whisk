@@ -1,4 +1,4 @@
-import { NavLink, Link, useNavigate } from "react-router"
+import { NavLink, Link } from "react-router"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import api from "../api/api.js";
 import { faUser, faBell } from '@fortawesome/free-solid-svg-icons'
@@ -26,7 +26,7 @@ function Navbar({ navigate }) {
             <img className="logo" src={LogoImage} alt="logo"/>
             
             <ul className="links">
-                <li className="item"><NavLink to="/" className="link">Home</NavLink></li>
+                <li className="item"><NavLink to="/" end className="link">Home</NavLink></li>
                 <li className="item"><NavLink to="/search" className="link">Search</NavLink></li>
                 <li className="item"><NavLink to="/groups" className="link">Groups</NavLink></li>
                 <li className="item"><NavLink to="/create-post" className="link">Create Post</NavLink></li>
