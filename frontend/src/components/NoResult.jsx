@@ -1,7 +1,7 @@
 import NoResultImage from "../assets/no-result-search.svg";
 import "./NoResult.css";
 
-function NoResult() {
+const NoResult = () => {
     return (
         <div className="empty-state">
             <img className="illustration" src={NoResultImage} alt="no result image"/>
@@ -14,4 +14,4 @@ function NoResult() {
     )
 }
 
-export default NoResult
+export default NoResult;

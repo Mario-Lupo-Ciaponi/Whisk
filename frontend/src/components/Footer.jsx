@@ -2,7 +2,7 @@ import { Link } from "react-router";
 import Logo from "../assets/logo.png";
 import "./Footer.css";
 
-function Footer() {
+const Footer = () =>  {
     return (
         <footer className="footer">
             <div className="wrapper">

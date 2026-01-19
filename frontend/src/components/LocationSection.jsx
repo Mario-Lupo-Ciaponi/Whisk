@@ -3,7 +3,7 @@ import "./LocationSection.css";
 import "leaflet/dist/leaflet.css";
 
 
-export default function LocationSection ({ mapSectionRef }) {
+const LocationSection = ({ mapSectionRef }) => {
     return (
         <section ref={mapSectionRef} className="location-section">
             <header className="section-header">
@@ -30,3 +30,5 @@ export default function LocationSection ({ mapSectionRef }) {
         </section>
     );
 }
+
+export default LocationSection;

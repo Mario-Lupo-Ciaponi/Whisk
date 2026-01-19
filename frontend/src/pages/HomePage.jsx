@@ -5,7 +5,7 @@ import "./HomePage.css";
 import api from "../api/api.js";
 
 
-function HomePage() {
+const HomePage = () => {
     const [ posts, setPosts ] = useState([]);
     const BASE_URL = "posts/"
 
@@ -14,7 +14,7 @@ function HomePage() {
         city: "Vratsa",
     }
 
-    async function getPosts() {
+    const getPosts = async () => {
         try {
             const response = await api.get(BASE_URL);
             setPosts(response.data);
@@ -23,7 +23,7 @@ function HomePage() {
         }
     }
 
-    async function filterPosts(query) {
+    const filterPosts = async(query) => {
         try {
             const response = await api.get(`${BASE_URL}?${query}=${userInfo[query]}`);
             setPosts(response.data)
@@ -36,7 +36,7 @@ function HomePage() {
         getPosts();
     }, []);
 
-    async function filterFeed(event) {
+    const filterFeed = async(event) => {
         const selectValue = event.target.value;
 
         if (selectValue === "all") await getPosts();

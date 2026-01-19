@@ -3,11 +3,11 @@ import api from "../../api/api.js";
 import "./GroupCreateForm.css";
 import ErrorList from "../ErrorList.jsx";
 
-export default function GroupCreateForm ({ navigate, errors, setErrors }) {
+const GroupCreateForm = ({ navigate, errors, setErrors }) => {
     const [name, setName] = useState("");
     const [description, setDescription] = useState("");
 
-    async function createPost(event) {
+     const createPost = async (event) => {
         event.preventDefault();
 
         if (!name || !description) {
@@ -51,3 +51,5 @@ export default function GroupCreateForm ({ navigate, errors, setErrors }) {
         </form>
     );
 }
+
+export default GroupCreateForm;

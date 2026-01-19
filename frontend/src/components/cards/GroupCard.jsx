@@ -1,6 +1,6 @@
 import "./GroupCard.css";
 
-export default function GroupCard({ group }) {
+const GroupCard = ({ group }) => {
     return (
         <article key={group.id} className="group-card">
             <img src="images/default-group-image.png" alt="group image" className="group-image"/>
@@ -16,3 +16,5 @@ export default function GroupCard({ group }) {
         </article>
     )
 }
+
+export default GroupCard;

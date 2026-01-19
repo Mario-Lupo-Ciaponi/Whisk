@@ -3,13 +3,13 @@ import ErrorList from "../ErrorList.jsx";
 import api from "../../api/api.js";
 import "./PostCreateForm.css";
 
-function PostCreateForm({ navigate, errors, setErrors }) {
+const PostCreateForm = ({ navigate, errors, setErrors }) => {
     const [title, setTitle] = useState("");
     const [description, setDescription] = useState("");
     const [city, setCity] = useState("");
     const [image, setImage] = useState(null);
 
-    async function createPost(event) {
+    const createPost = async (event) => {
         event.preventDefault();
 
         if (!title || !description || !city || !image) {

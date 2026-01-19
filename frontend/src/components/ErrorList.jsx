@@ -1,5 +1,5 @@
-function ErrorList({ errors }) {
-    function normalizeError(value) {
+const ErrorList = ({ errors }) => {
+    const normalizeError = (value) => {
         if (Array.isArray(value)) return value.join(", ")
         if (typeof value === "object") return Object.values(value).join(", ");
 

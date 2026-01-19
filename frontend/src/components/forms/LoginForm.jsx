@@ -3,11 +3,11 @@ import api from "../../api/api.js";
 import "./AuthForm.css";
 
 
-function LoginForm({ setAuthTokens, navigate, errors, setErrors }) {
+const LoginForm = ({ setAuthTokens, navigate, errors, setErrors }) => {
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
 
-    async function handleLogin(event) {
+    const handleLogin = async (event) => {
         event.preventDefault();
 
         const formData = new FormData();

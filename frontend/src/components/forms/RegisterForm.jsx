@@ -7,7 +7,7 @@ import "./AuthForm.css";
 // This gives access to all the countries in english
 countries.registerLocale(enLocale);
 
-function RegisterForm({ navigate, errors, setErrors }) {
+const RegisterForm = ({ navigate, errors, setErrors }) => {
     // Declaration of states:
     const [username, setUsername] = useState("");
     const [email, setEmail] = useState("");
@@ -16,11 +16,10 @@ function RegisterForm({ navigate, errors, setErrors }) {
     const [secondPassword, setSecondPassword] = useState("");
     const [allCountries, setAllCountries] = useState({});
 
-    function getAllCountries() {
-        return countries.getNames("en", {select: "official"});
-    }
+    const getAllCountries = () =>
+        countries.getNames("en", {select: "official"});
 
-    async function handleRegister(event) {
+    const handleRegister = async (event) => {
         event.preventDefault();
 
         if (!username || !email || !countrySelected || !firstPassword || !secondPassword) {

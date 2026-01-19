@@ -5,8 +5,8 @@ import { faUser, faBell } from '@fortawesome/free-solid-svg-icons'
 import LogoImage from "../assets/logo.png"
 import "./Navbar.css";
 
-function Navbar({ navigate }) {
-    async function logout() {
+const Navbar = ({ navigate }) => {
+    const logout =  async() => {
         try {
             await api.post("token/blacklist/", {
                 refresh: localStorage.getItem("refresh")

@@ -4,17 +4,12 @@ import { faEllipsisVertical, faMapLocationDot, faComment, faBookmark } from "@fo
 import LocationSection from "../LocationSection.jsx";
 import "./PostCard.css";
 
-function PostCard({ post }) {
+const PostCard = ({ post }) => {
     const moreOptionsRef = useRef(null);
     const mapSectionRef = useRef(null);
 
-    function showActions() {
-        moreOptionsRef.current.classList.toggle("active")
-    }
-
-    function toggleMapSection() {
-        mapSectionRef.current.classList.toggle("active");
-    }
+    const showActions = () => moreOptionsRef.current.classList.toggle("active");
+    const toggleMapSection = () => mapSectionRef.current.classList.toggle("active");
 
     return (
         <article className="post-card" key={post.id}>

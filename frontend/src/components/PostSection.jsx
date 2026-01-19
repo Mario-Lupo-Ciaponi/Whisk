@@ -5,7 +5,7 @@ import NoResult from "./NoResult.jsx";
 import NoResultImage from "../assets/no-result-search.svg";
 import "./PostSection.css";
 
-function PostSection({ posts }) {
+const PostSection = ({ posts }) => {
 
     return (
         <>

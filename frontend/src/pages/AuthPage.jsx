@@ -3,12 +3,10 @@ import LoginForm from "../components/forms/LoginForm.jsx";
 import {useState} from "react";
 import "./AuthPage.css"
 
-function AuthPage({ setAuthTokens, navigate, errors, setErrors }) {
+const AuthPage = ({ setAuthTokens, navigate, errors, setErrors }) => {
     const [showLogin, setShowLogin] = useState(true);
 
-    function toggleShowLogin(event) {
-        setShowLogin("login" === event.target.value);
-    }
+    const toggleShowLogin = (event) => setShowLogin("login" === event.target.value);
 
     return (
         <div className="auth-wrapper">

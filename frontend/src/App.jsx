@@ -12,7 +12,7 @@ import "./styles/typography.css"
 import './App.css'
 import AuthPage from "./pages/AuthPage.jsx";
 
-function App() {
+const App = () => {
   const [authTokens, setAuthTokens] = useState(null);
   const navigate = useNavigate();
   const [errors, setErrors] = useState({});
@@ -52,4 +52,4 @@ function App() {
   )
 }
 
-export default App
+export default App;

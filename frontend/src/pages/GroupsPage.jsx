@@ -1,7 +1,7 @@
 import { Link } from "react-router";
 import GroupSection from "../components/GroupSection.jsx";
 
-export default function GroupsPage () {
+const GroupsPage = () => {
     return (
         <>
             {/*TODO: Rest of the page*/}
@@ -11,3 +11,5 @@ export default function GroupsPage () {
         </>
     )
 }
+
+export default GroupsPage;
