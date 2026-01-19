@@ -70,7 +70,6 @@ const RegisterForm = ({ navigate, errors, setErrors }) => {
                     onChange={(event) => {
                         setUsername(event.target.value);
                     }}
-
                 />
             </div>
 
@@ -85,7 +84,6 @@ const RegisterForm = ({ navigate, errors, setErrors }) => {
                     onChange={(event) => {
                         setEmail(event.target.value);
                     }}
-
                 />
             </div>
 
@@ -94,10 +92,11 @@ const RegisterForm = ({ navigate, errors, setErrors }) => {
                 <select
                     id="country"
                     name="country"
+                    className={`auth-input ${errors.email ? "error-input" : ""}`}
                     onChange={(event) => {
                         setCountrySelected(event.target.value);
                     }}>
-                    <option disabled value=""> -- select a country -- </option>
+                    <option disabled selected value> -- select a country -- </option>
                     {Object.entries(allCountries).map(([countryCode, countryName]) => {
                         return <option value={countryCode}>{countryName}</option>
                     })}
