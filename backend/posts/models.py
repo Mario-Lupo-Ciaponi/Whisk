@@ -55,6 +55,12 @@ class PetLocation(models.Model):
     date_seen = models.DateTimeField(
         auto_now_add=True,
     )
+    author = models.ForeignKey(
+        User,
+        related_name="gave_locations",
+        on_delete=models.SET_NULL,
+        null=True,
+    )
 
     def __str__(self):
         return  f"{self.latitude}, {self.latitude} seen on {self.date_seen}"
