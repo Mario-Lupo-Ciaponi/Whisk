@@ -15,7 +15,7 @@ const MapEvents = ({ onClick }) => {
     return null;
 }
 
-const LocationSection = ({ mapSectionRef, post }) => {
+const LocationSection = ({ mapSectionRef, post, locations, setLocations }) => {
     const [selectedPosition, setSelectedPosition] = useState(null);
 
     const addLocation = async () => {
@@ -29,11 +29,13 @@ const LocationSection = ({ mapSectionRef, post }) => {
                 post_id: post.id,
             }
 
-            await api.post("posts/location/", data, {
+            const response = await api.post("posts/location/", data, {
                 headers: {
                     "Content-Type": "application/json",
                 }
             });
+
+            setLocations(prev => [...locations, response.data.id])
             alert("Location added successfully!")
         } catch (e) {
             console.log(e)

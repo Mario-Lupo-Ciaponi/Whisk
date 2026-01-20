@@ -1,4 +1,4 @@
-import { useRef } from "react";
+import {useRef, useState} from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEllipsisVertical, faMapLocationDot, faComment, faBookmark } from "@fortawesome/free-solid-svg-icons";
 import api from "../../api/api.js";
@@ -6,6 +6,7 @@ import LocationSection from "../LocationSection.jsx";
 import "./PostCard.css";
 
 const PostCard = ({ post }) => {
+    const [locations, setLocations] = useState(post.locations || []);
     const moreOptionsRef = useRef(null);
     const mapSectionRef = useRef(null);
 
@@ -67,7 +68,7 @@ const PostCard = ({ post }) => {
             <div className="actions">
                 <button onClick={toggleMapSection} className="action mark-position">
                     <FontAwesomeIcon icon={faMapLocationDot} />
-                    <span className="count">{post.locations.length}</span>
+                    <span className="count">{locations.length}</span>
                 </button>
                 <button className="action comment-post">
                     <FontAwesomeIcon icon={faComment} />
@@ -79,7 +80,11 @@ const PostCard = ({ post }) => {
                 </button>
             </div>
 
-            <LocationSection mapSectionRef={mapSectionRef} post={post} />
+            <LocationSection
+                mapSectionRef={mapSectionRef}
+                post={post} locations={locations}
+                setLocations={setLocations}
+            />
         </article>
     )
 }
