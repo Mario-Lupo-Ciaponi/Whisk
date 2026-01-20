@@ -1,6 +1,7 @@
 import { useRef } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEllipsisVertical, faMapLocationDot, faComment, faBookmark } from "@fortawesome/free-solid-svg-icons";
+import api from "../../api/api.js";
 import LocationSection from "../LocationSection.jsx";
 import "./PostCard.css";
 
@@ -10,6 +11,12 @@ const PostCard = ({ post }) => {
 
     const showActions = () => moreOptionsRef.current.classList.toggle("active");
     const toggleMapSection = () => mapSectionRef.current.classList.toggle("active");
+
+    const deletePost = async () => {
+        await api.delete(`posts/${post.id}/`);
+        alert("Post deleted successfully!");
+        window.location.reload();
+    }
 
     return (
         <article className="post-card" key={post.id}>
@@ -42,7 +49,7 @@ const PostCard = ({ post }) => {
                       <li className="option-item">
                           <button className="option">Edit</button>
                       </li>
-                      <li className="option-item">
+                      <li onClick={deletePost} className="option-item">
                           <button className="option danger">Delete</button>
                       </li>
                     </ul>
