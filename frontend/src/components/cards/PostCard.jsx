@@ -7,8 +7,11 @@ import "./PostCard.css";
 
 const PostCard = ({ post }) => {
     const [locations, setLocations] = useState(post.locations || []);
+    const [found, setFound] = useState(post.found);
     const moreOptionsRef = useRef(null);
     const mapSectionRef = useRef(null);
+
+    const statusText = found ? "Found" : "Not Found"
 
     const showActions = () => moreOptionsRef.current.classList.toggle("active");
     const toggleMapSection = () => mapSectionRef.current.classList.toggle("active");
@@ -19,6 +22,12 @@ const PostCard = ({ post }) => {
         window.location.reload();
     }
 
+    const changePostStatus = async () => {
+        console.log("hi")
+        await api.patch(`posts/${post.id}/`, {found: !found})
+        setFound(!found);
+    }
+
     return (
         <article className="post-card" key={post.id}>
             <div className="top">
@@ -26,11 +35,9 @@ const PostCard = ({ post }) => {
                     <img className="profile-image" src="/images/default-profile-img.jpeg" alt="profile image"/>
                     <p className="username">{post.author}</p>
                     <span className="city">({post.city})</span>
-                    {post.found ?
-                        <span className="status found">Found</span>
-                        :
-                        <span className="status not-found">Not Found</span>
-                    }
+                    <span className={`status ${found ? 'found' : 'not-found'}`}>
+                        {statusText}
+                    </span>
                 </div>
 
                 <div className="more-options-container">
@@ -45,7 +52,7 @@ const PostCard = ({ post }) => {
                           <button className="option">Share</button>
                       </li>
                       <li className="option-item">
-                          <button className="option">Update status</button>
+                          <button onClick={changePostStatus} className="option">Update status</button>
                       </li>
                       <li className="option-item">
                           <button className="option">Edit</button>
