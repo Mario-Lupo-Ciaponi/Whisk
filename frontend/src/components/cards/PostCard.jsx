@@ -60,7 +60,7 @@ const PostCard = ({ post }) => {
             <div className="actions">
                 <button onClick={toggleMapSection} className="action mark-position">
                     <FontAwesomeIcon icon={faMapLocationDot} />
-                    <span className="count">0</span>
+                    <span className="count">{post.locations.length}</span>
                 </button>
                 <button className="action comment-post">
                     <FontAwesomeIcon icon={faComment} />
