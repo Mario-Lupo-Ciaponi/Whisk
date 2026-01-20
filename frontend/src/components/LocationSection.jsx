@@ -19,7 +19,25 @@ const LocationSection = ({ mapSectionRef }) => {
     const [selectedPosition, setSelectedPosition] = useState(null);
 
     const addLocation = async () => {
-        // TODO: send request to api endpoint and save location
+        try {
+            const latitude = selectedPosition.lat;
+            const longitude = selectedPosition.lng;
+
+            const data = {
+                latitude: latitude.toFixed(6),
+                longitude: longitude.toFixed(6),
+            }
+
+            await api.post("posts/location/", data, {
+                headers: {
+                    "Content-Type": "application/json",
+                }
+            });
+            alert("Location added successfully!")
+        } catch (e) {
+            console.log(e)
+            alert("An Error occurred!")
+        }
     }
 
     return (

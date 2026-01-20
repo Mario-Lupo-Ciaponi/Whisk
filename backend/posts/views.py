@@ -30,7 +30,10 @@ class PostRetrieveUpdateDestroyAPIView(RetrieveUpdateDestroyAPIView):
 class PetLocationListCreateAPIView(ListCreateAPIView):
     queryset = PetLocation.objects.all()
     serializer_class = PetLocationModelSerializer
-    permission_classes =  [IsAuthenticatedOrReadOnly]
+    permission_classes =  [AllowAny,]
 
     def perform_create(self, serializer):
-        serializer.save(author=self.request.user)
+        if self.request.user.is_authenticated:
+            serializer.save(author=self.request.user)
+        else:
+            serializer.save(author=None)
