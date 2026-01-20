@@ -15,7 +15,7 @@ const MapEvents = ({ onClick }) => {
     return null;
 }
 
-const LocationSection = ({ mapSectionRef }) => {
+const LocationSection = ({ mapSectionRef, post }) => {
     const [selectedPosition, setSelectedPosition] = useState(null);
 
     const addLocation = async () => {
@@ -26,6 +26,7 @@ const LocationSection = ({ mapSectionRef }) => {
             const data = {
                 latitude: latitude.toFixed(6),
                 longitude: longitude.toFixed(6),
+                post_id: post.id,
             }
 
             await api.post("posts/location/", data, {

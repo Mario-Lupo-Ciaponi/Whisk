@@ -61,6 +61,10 @@ class PetLocation(models.Model):
         on_delete=models.SET_NULL,
         null=True,
     )
+    posts = models.ManyToManyField(
+        Post,
+        related_name="locations",
+    )
 
     def __str__(self):
         return  f"{self.latitude}, {self.latitude} seen on {self.date_seen}"

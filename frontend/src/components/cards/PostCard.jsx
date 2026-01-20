@@ -72,8 +72,7 @@ const PostCard = ({ post }) => {
                 </button>
             </div>
 
-            {/*TODO: let it show up only on click on the map button*/}
-            <LocationSection mapSectionRef={mapSectionRef} />
+            <LocationSection mapSectionRef={mapSectionRef} post={post} />
         </article>
     )
 }
