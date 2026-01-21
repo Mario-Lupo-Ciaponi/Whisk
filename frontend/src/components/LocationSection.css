@@ -1,48 +1,8 @@
-:root {
-  --coffee-pot-color: #67595E;
-  --brown-color: #8c5826;
-  --darker-bronw-color: #503618;
-  --light-brown-color: #ea9c58;
-}
-
 .location-section {
   display: none;
-  padding: 0.5rem 2rem;
-  width: 100%;
-  border-top: 2px solid var(--coffee-pot-color);
 }
 
 .location-section.active {
-  display: block;
-}
-
-.location-section .section-header{
-  text-align: center;
-}
-
-
-.location-section .leaflet-container {
-  margin-top: 0.5rem;
-  height: 300px;
-  border-radius: 2rem;
-}
-
-.location-section .add-location-btn {
-  margin: 1.5rem auto;
-  display: block;
-  background-color: var(--brown-color);
-  border: none;
-  border-radius: 2rem;
-  color: white;
-  padding: 0.5rem 1rem;
-  cursor: pointer;
-  transition: background-color 500ms ease-in-out;
-}
-
-.location-section .add-location-btn:hover {
-  background-color: var(--darker-bronw-color);
-}
-
-.location-section .add-location-btn:active {
-  background-color: var(--light-brown-color);
+  display: flex;
+  flex-direction: column;
 }

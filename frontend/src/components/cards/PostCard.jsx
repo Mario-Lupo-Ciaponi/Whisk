@@ -1,17 +1,31 @@
-import {useRef, useState} from "react";
+import {useEffect, useRef, useState} from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEllipsisVertical, faMapLocationDot, faComment, faBookmark } from "@fortawesome/free-solid-svg-icons";
 import api from "../../api/api.js";
-import LocationSection from "../LocationSection.jsx";
+import MapSection from "../MapSection.jsx";
 import "./PostCard.css";
 
 const PostCard = ({ post }) => {
-    const [locations, setLocations] = useState(post.locations || []);
+    const [locations, setLocations] = useState([]);
     const [found, setFound] = useState(post.found);
     const moreOptionsRef = useRef(null);
     const mapSectionRef = useRef(null);
 
-    const statusText = found ? "Found" : "Not Found"
+    useEffect(() => {
+        const getPostLocations = async () => {
+            const response = await api.get(`posts/location/?post=${post.id}`);
+            setLocations(response.data);
+        }
+
+        try {
+            getPostLocations();
+        } catch (e) {
+            console.log(e.response.data);
+        }
+
+    }, []);
+
+    const statusText = found ? "Found" : "Not Found";
 
     const showActions = () => moreOptionsRef.current.classList.toggle("active");
     const toggleMapSection = () => mapSectionRef.current.classList.toggle("active");
@@ -87,7 +101,7 @@ const PostCard = ({ post }) => {
                 </button>
             </div>
 
-            <LocationSection
+            <MapSection
                 mapSectionRef={mapSectionRef}
                 post={post} locations={locations}
                 setLocations={setLocations}
