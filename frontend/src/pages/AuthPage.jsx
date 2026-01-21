@@ -55,6 +55,7 @@ const AuthPage = ({ setAuthTokens, navigate, errors, setErrors }) => {
                             navigate={navigate}
                             errors={errors}
                             setErrors={setErrors}
+                            setShowLogin={setShowLogin}
                         />
                 }
             </article>

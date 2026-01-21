@@ -7,7 +7,7 @@ import "./AuthForm.css";
 // This gives access to all the countries in english
 countries.registerLocale(enLocale);
 
-const RegisterForm = ({ navigate, errors, setErrors }) => {
+const RegisterForm = ({ navigate, errors, setErrors, setShowLogin }) => {
     // Declaration of states:
     const [username, setUsername] = useState("");
     const [email, setEmail] = useState("");
@@ -42,7 +42,7 @@ const RegisterForm = ({ navigate, errors, setErrors }) => {
                 },
             });
 
-            navigate("/login");
+            setShowLogin(true);
         } catch (e) {
             if (e.response.status === 400) {
                 setErrors(e.response.data);
