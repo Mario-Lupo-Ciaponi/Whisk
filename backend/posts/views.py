@@ -27,11 +27,12 @@ class PostRetrieveUpdateDestroyAPIView(PostAPIViewMixin, RetrieveUpdateDestroyAP
     # Inherits IsAuthenticatedOrReadOnly permission then adds a custom one
     permission_classes = PostAPIViewMixin.permission_classes + [IsOwner]
 
-
 class PetLocationListCreateAPIView(ListCreateAPIView):
     queryset = PetLocation.objects.all()
     serializer_class = PetLocationModelSerializer
     permission_classes =  [AllowAny,] # TODO: add proper permission classes!
+    filter_backends = [filter.DjangoFilterBackend, ]
+    filterset_fields = ["post",]
 
     def perform_create(self, serializer):
         """

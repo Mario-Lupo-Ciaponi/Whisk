@@ -38,9 +38,7 @@ class PetLocationModelSerializer(serializers.ModelSerializer):
         read_only=True,
     )
 
-    post_id = serializers.IntegerField(
-        write_only=True,
-    )
+    post_id = serializers.IntegerField()
 
     def create(self, validated_data):
         post_id = validated_data.pop("post_id")
