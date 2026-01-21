@@ -5,6 +5,7 @@ from rest_framework.parsers import MultiPartParser, FormParser
 
 from .models import Post, PetLocation
 from .serializers import PostModelSerializer, PetLocationModelSerializer
+from .permissions import IsOwner
 from .filters import PostFilter
 
 # TODO: add mixins for repeated code
@@ -15,7 +16,10 @@ class PostListCreateAPIView(ListCreateAPIView):
     filter_backends = [filter.DjangoFilterBackend]
     filterset_class = PostFilter
     permission_classes = [IsAuthenticatedOrReadOnly]
-    parser_classes = [MultiPartParser, FormParser]
+    parser_classes = [
+        MultiPartParser,
+        FormParser,
+    ]
 
     def perform_create(self, serializer):
         serializer.save(author=self.request.user)
@@ -24,15 +28,23 @@ class PostListCreateAPIView(ListCreateAPIView):
 class PostRetrieveUpdateDestroyAPIView(RetrieveUpdateDestroyAPIView):
     queryset = Post.objects.all()
     serializer_class = PostModelSerializer
-    permission_classes = [AllowAny]
+    permission_classes = [
+        IsAuthenticatedOrReadOnly,
+        IsOwner,
+    ]
 
 
 class PetLocationListCreateAPIView(ListCreateAPIView):
     queryset = PetLocation.objects.all()
     serializer_class = PetLocationModelSerializer
-    permission_classes =  [AllowAny,]
+    permission_classes =  [AllowAny,] # TODO: add proper permission classes!
 
     def perform_create(self, serializer):
+        """
+        This checks if the POST request was made by an authenticated user.
+        Anonymous users can also add a location.
+        """
+
         if self.request.user.is_authenticated:
             serializer.save(author=self.request.user)
         else:
