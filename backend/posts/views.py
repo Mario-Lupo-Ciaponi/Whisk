@@ -7,15 +7,13 @@ from .models import Post, PetLocation
 from .serializers import PostModelSerializer, PetLocationModelSerializer
 from .permissions import IsOwner
 from .filters import PostFilter
+from .mixins import PostAPIViewMixin
 
 # TODO: add mixins for repeated code
 
-class PostListCreateAPIView(ListCreateAPIView):
-    queryset = Post.objects.all()
-    serializer_class = PostModelSerializer
+class PostListCreateAPIView(PostAPIViewMixin, ListCreateAPIView):
     filter_backends = [filter.DjangoFilterBackend]
     filterset_class = PostFilter
-    permission_classes = [IsAuthenticatedOrReadOnly]
     parser_classes = [
         MultiPartParser,
         FormParser,
@@ -25,13 +23,9 @@ class PostListCreateAPIView(ListCreateAPIView):
         serializer.save(author=self.request.user)
 
 
-class PostRetrieveUpdateDestroyAPIView(RetrieveUpdateDestroyAPIView):
-    queryset = Post.objects.all()
-    serializer_class = PostModelSerializer
-    permission_classes = [
-        IsAuthenticatedOrReadOnly,
-        IsOwner,
-    ]
+class PostRetrieveUpdateDestroyAPIView(PostAPIViewMixin, RetrieveUpdateDestroyAPIView):
+    # Inherits IsAuthenticatedOrReadOnly permission then adds a custom one
+    permission_classes = PostAPIViewMixin.permission_classes + [IsOwner]
 
 
 class PetLocationListCreateAPIView(ListCreateAPIView):
