@@ -47,13 +47,12 @@ class PetLocationModelSerializer(serializers.ModelSerializer):
 
         try:
             post = Post.objects.get(pk=post_id)
-        except Post.DoesNotExists: #TODO: change the expected error
+        except Post.DoesNotExist: #TODO: change the expected error
             raise serializers.ValidationError(f"Post with id {post_id} does not exist.")
 
         # If the M2M fails, it will roll back
         with transaction.atomic():
-            pet_location = PetLocation.objects.create(**validated_data)
-            post.locations.add(pet_location)
+            pet_location = PetLocation.objects.create(**validated_data, post=post)
 
         return pet_location
 

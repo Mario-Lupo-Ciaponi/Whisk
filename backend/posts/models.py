@@ -61,9 +61,10 @@ class PetLocation(models.Model):
         on_delete=models.SET_NULL,
         null=True,
     )
-    posts = models.ManyToManyField(
+    post = models.ForeignKey(
         Post,
         related_name="locations",
+        on_delete=models.CASCADE,
     )
 
     def __str__(self):
