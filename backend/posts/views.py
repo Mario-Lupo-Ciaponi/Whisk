@@ -6,6 +6,7 @@ from rest_framework.parsers import MultiPartParser, FormParser
 from .models import Post, PetLocation
 from .serializers import PostModelSerializer, PetLocationModelSerializer
 from .permissions import IsOwner
+from .pagination import SmallResultsSetPagination
 from .filters import PostFilter
 from .mixins import PostAPIViewMixin
 
@@ -14,6 +15,7 @@ from .mixins import PostAPIViewMixin
 class PostListCreateAPIView(PostAPIViewMixin, ListCreateAPIView):
     filter_backends = [filter.DjangoFilterBackend]
     filterset_class = PostFilter
+    pagination_class = SmallResultsSetPagination
     parser_classes = [
         MultiPartParser,
         FormParser,
