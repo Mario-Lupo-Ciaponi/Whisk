@@ -17,7 +17,7 @@ const Footer = () =>  {
                 </ul>
             </div>
 
-            <p className="rights-reserved">&copy; 2025 Mario Lupo Ciaponi. All rights reserved  </p>
+            <p className="rights-reserved">&copy; 2025 Mario Lupo Fausto Ciaponi. All rights reserved  </p>
         </footer>
     );
 }
