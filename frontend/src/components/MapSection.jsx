@@ -4,7 +4,7 @@ import LocationCard from "./cards/LocationCard.jsx";
 import LocationSection from "./LocationSection.jsx";
 import api from "../api/api.js";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCaretDown } from "@fortawesome/free-solid-svg-icons";
+import { faCaretDown, faCaretUp } from "@fortawesome/free-solid-svg-icons";
 import "./MapSection.css";
 import "leaflet/dist/leaflet.css";
 
@@ -83,11 +83,14 @@ const MapSection = ({ mapSectionRef, post, locations, setLocations }) => {
                 Add Location
             </button>
 
-            <button className="show-locations-btn" onClick={toggleLocationSection}>
-                Show Locations Provided <FontAwesomeIcon icon={faCaretDown} />
-            </button>
+            <div className="locations-wrapper">
+                <button className="show-locations-btn" onClick={toggleLocationSection}>
+                    {showLocationSection ? "Hide" : "Show"} Locations Provided
+                    <FontAwesomeIcon icon={showLocationSection ? faCaretUp : faCaretDown} />
+                </button>
 
-            <LocationSection showSection={showLocationSection} locations={locations} />
+                <LocationSection showSection={showLocationSection} locations={locations} />
+            </div>
         </section>
     );
 }

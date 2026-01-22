@@ -2,7 +2,7 @@
   --coffee-pot-color: #67595E;
   --brown-color: #8c5826;
   --darker-bronw-color: #503618;
-  --light-brown-color: #ea9c58;
+  --light-brown-color: #73675c;
 }
 
 .map-section {
@@ -45,4 +45,22 @@
 
 .map-section .add-location-btn:active {
   background-color: var(--light-brown-color);
+}
+
+.locations-wrapper {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.locations-wrapper .show-locations-btn {
+  background: none;
+  border: none;
+  border-bottom: 1px solid var(--coffee-pot-color);
+  color: var(--coffee-pot-color);
+  width: 85%;
+  margin-bottom: 1rem;
+  padding-bottom: 0.25rem;
+  cursor: pointer;
 }

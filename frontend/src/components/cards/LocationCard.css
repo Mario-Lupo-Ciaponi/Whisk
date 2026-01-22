@@ -1,0 +1,29 @@
+:root {
+  --light-brown-color: #8a7474;
+  --lighter-brown-color: #a18a8a;
+}
+
+.location-card {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.location-card .profile-image {
+  width: 2rem;
+  height: 2rem;
+  border-radius: 1.5rem;
+}
+
+.location-card .location-info-wrapper .pointed-by-text .username {
+  font-weight: bolder;
+}
+
+.location-card .location-info-wrapper .pointed-by-text .location-url {
+  color: var(--light-brown-color);
+  transition: color 500ms ease-in-out;
+}
+
+.location-card .location-info-wrapper .pointed-by-text .location-url:hover {
+  color: var(--lighter-brown-color);
+}
