@@ -62,7 +62,6 @@
 .navbar .user-menu .dropdown:hover .menu-list .dropdown-item .logout-btn{
   background: none;
   border: none;
-  cursor: pointer;
 }
 .navbar .user-menu .dropdown .menu-list {
   position: absolute;

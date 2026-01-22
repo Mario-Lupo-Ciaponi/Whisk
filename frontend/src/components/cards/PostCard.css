@@ -71,7 +71,6 @@
 .post-card .top .more-options-container .show-more{
   background: none;
   border: none;
-  cursor: pointer;
   color: inherit;
   z-index: 100;
 }
@@ -113,7 +112,6 @@
   width: 100%;
   background: none;
   border: none;
-  cursor: pointer;
 }
 
 
@@ -138,7 +136,6 @@
   background: none;
   border: none;
   color: inherit;
-  cursor: pointer;
   transition: background-color 500ms ease-in-out;
 }
 

@@ -35,7 +35,6 @@
   border-radius: 2rem;
   color: white;
   padding: 0.5rem 1rem;
-  cursor: pointer;
   transition: background-color 500ms ease-in-out;
 }
 
@@ -62,5 +61,4 @@
   width: 85%;
   margin-bottom: 1rem;
   padding-bottom: 0.25rem;
-  cursor: pointer;
 }
