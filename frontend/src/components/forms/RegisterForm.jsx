@@ -3,11 +3,12 @@ import countries from "i18n-iso-countries";
 import enLocale from "i18n-iso-countries/langs/en.json";
 import api from "../../api/api.js";
 import "./AuthForm.css";
+import PasswordToggle from "../PasswordToggle.jsx";
 
 // This gives access to all the countries in english
 countries.registerLocale(enLocale);
 
-const RegisterForm = ({ navigate, errors, setErrors, setShowLogin }) => {
+const RegisterForm = ({ errors, setErrors, setShowLogin, showPassword, setShowPassword }) => {
     // Declaration of states:
     const [username, setUsername] = useState("");
     const [email, setEmail] = useState("");
@@ -70,6 +71,7 @@ const RegisterForm = ({ navigate, errors, setErrors, setShowLogin }) => {
                     onChange={(event) => {
                         setUsername(event.target.value);
                     }}
+                    required
                 />
             </div>
 
@@ -84,6 +86,7 @@ const RegisterForm = ({ navigate, errors, setErrors, setShowLogin }) => {
                     onChange={(event) => {
                         setEmail(event.target.value);
                     }}
+                    required
                 />
             </div>
 
@@ -95,7 +98,8 @@ const RegisterForm = ({ navigate, errors, setErrors, setShowLogin }) => {
                     className={`auth-input ${errors.email ? "error-input" : ""}`}
                     onChange={(event) => {
                         setCountrySelected(event.target.value);
-                    }}>
+                    }}
+                    required>
                     <option disabled selected value> -- select a country -- </option>
                     {Object.entries(allCountries).map(([countryCode, countryName]) => {
                         return <option value={countryCode}>{countryName}</option>
@@ -105,33 +109,50 @@ const RegisterForm = ({ navigate, errors, setErrors, setShowLogin }) => {
 
             <div className="auth-field">
                 <label htmlFor="password1" className="auth-label">Password</label>
-                <input
-                    id="password1"
-                    name="password1"
-                    type="password"
-                    value={firstPassword}
-                    className={`auth-input ${errors.password1 ? "error-input" : ""}`}
-                    onChange={(event) => {
-                        setFirstPassword(event.target.value);
-                    }}
-                />
+
+                <div className="input-container">
+                    <input
+                        id="password1"
+                        name="password1"
+                        type={showPassword ? "text" : "password"}
+                        value={firstPassword}
+                        className={`auth-input ${errors.password1 ? "error-input" : ""}`}
+                        onChange={(event) => {
+                            setFirstPassword(event.target.value);
+                        }}
+                        required
+                    />
+
+                    <PasswordToggle showPassword={showPassword} setShowPassword={setShowPassword} />
+                </div>
             </div>
 
             <div className="auth-field">
                 <label htmlFor="password2" className="auth-label">Repeat Password:</label>
-                <input
-                    id="password2"
-                    name="password2"
-                    type="password"
-                    value={secondPassword}
-                    className={`auth-input ${errors.password2 ? "error-input" : ""}`}
-                    onChange={(event) => {
-                        setSecondPassword(event.target.value);
-                    }}
-                />
+
+                <div className="input-container">
+                    <input
+                        id="password2"
+                        name="password2"
+                        type={showPassword ? "text" : "password"}
+                        value={secondPassword}
+                        className={`auth-input ${errors.password2 ? "error-input" : ""}`}
+                        onChange={(event) => {
+                            setSecondPassword(event.target.value);
+                        }}
+                        required
+                    />
+
+                    <PasswordToggle showPassword={showPassword} setShowPassword={setShowPassword} />
+                </div>
             </div>
 
-            <button className="submit-btn">Register</button>
+            <button
+                type="submit"
+                className="submit-btn"
+            >
+                Register
+            </button>
         </form>
     );
 }

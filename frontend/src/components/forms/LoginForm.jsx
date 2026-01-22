@@ -1,9 +1,10 @@
-import { useState, useRef } from "react";
+import {useState, useRef } from "react";
 import api from "../../api/api.js";
 import "./AuthForm.css";
+import PasswordToggle from "../PasswordToggle.jsx";
 
 
-const LoginForm = ({ setAuthTokens, navigate, errors, setErrors }) => {
+const LoginForm = ({ setAuthTokens, navigate, errors, setErrors, showPassword, setShowPassword }) => {
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
 
@@ -55,25 +56,31 @@ const LoginForm = ({ setAuthTokens, navigate, errors, setErrors }) => {
                     onChange={(event) => {
                         setUsername(event.target.value);
                     }}
-
+                    required
                 />
             </div>
 
             <div className="auth-field">
                 <label htmlFor="password" className="auth-label">Password</label>
-                <input
-                    id="password"
-                    name="password"
-                    type="password"
-                    value={password}
-                    className={`auth-input ${errors.password ? "error-input" : ""}`}
-                    onChange={(event) => {
-                        setPassword(event.target.value);
-                    }}
-                />
+
+                <div className="input-container">
+                    <input
+                        id="password"
+                        name="password"
+                        type={showPassword ? "text" : "password"}
+                        value={password}
+                        className={`auth-input ${errors.password ? "error-input" : ""}`}
+                        onChange={(event) => {
+                            setPassword(event.target.value);
+                        }}
+                        required
+                    />
+
+                    <PasswordToggle showPassword={showPassword} setShowPassword={setShowPassword}/>
+                </div>
             </div>
 
-            <button className="submit-btn">Login</button>
+            <button type="submit" className="submit-btn">Login</button>
         </form>
     );
 }

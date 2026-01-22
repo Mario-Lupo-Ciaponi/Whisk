@@ -5,6 +5,8 @@ import "./AuthPage.css"
 
 const AuthPage = ({ setAuthTokens, navigate, errors, setErrors }) => {
     const [showLogin, setShowLogin] = useState(true);
+    // Lifting the state up to prevent redundancy
+    const [showPassword, setShowPassword] = useState(false);
 
     const toggleShowLogin = (event) => setShowLogin("login" === event.target.value);
 
@@ -49,6 +51,8 @@ const AuthPage = ({ setAuthTokens, navigate, errors, setErrors }) => {
                             navigate={navigate}
                             errors={errors}
                             setErrors={setErrors}
+                            showPassword={showPassword}
+                            setShowPassword={setShowPassword}
                         />
                         :
                         <RegisterForm
@@ -56,6 +60,8 @@ const AuthPage = ({ setAuthTokens, navigate, errors, setErrors }) => {
                             errors={errors}
                             setErrors={setErrors}
                             setShowLogin={setShowLogin}
+                            showPassword={showPassword}
+                            setShowPassword={setShowPassword}
                         />
                 }
             </article>

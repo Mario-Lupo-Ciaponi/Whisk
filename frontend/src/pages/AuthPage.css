@@ -41,6 +41,7 @@
 .auth-wrapper .auth-card .segmented-control .toggle-option .control-label{
   display: block;
   color: #2C3E50;
+  cursor: pointer;
 }
 
 .auth-wrapper .auth-card .segmented-control .toggle-option .control-input{

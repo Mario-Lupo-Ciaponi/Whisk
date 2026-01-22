@@ -1,3 +1,9 @@
+:root {
+  --brown-color: #988686;
+  --dark-brown-color: #7A6B6B;
+  --red-color: #FF3131;
+}
+
 .auth-form {
   display: flex;
   flex-direction: column;
@@ -7,30 +13,33 @@
 
 .auth-form .auth-field .auth-label{
   display: block;
-  color: #988686;
+  color: var(--brown-color);
+}
+
+.auth-form .auth-field .input-container {
+  position: relative;
 }
 
 .auth-form .auth-field .auth-input {
   background: none;
   width: 100%;
-  border: 1px solid #988686;
+  border: 1px solid var(--brown-color);
   border-radius: 0.5rem;
   font-size: 1.3rem;
-  color: #988686;
+  color: var(--brown-color);
   padding-left: 0.5rem;
 }
 
 .auth-form .auth-field .auth-input.error-input {
-  border: 1px solid #FF3131;
+  border: 1px solid var(--red-color);
 }
 
 .auth-form .auth-field .auth-input.error-input:focus {
-  outline: 1px solid #FF3131;
+  outline: 1px solid var(--red-color);
 }
 
-
 .auth-form .submit-btn {
-  background-color: #988686;
+  background-color: var(--brown-color);
   border: none;
   border-radius: 1.5rem;
   color: white;
@@ -40,5 +49,5 @@
 }
 
 .auth-form .submit-btn:hover {
-  background: #7A6B6B;
+  background-color: var(--dark-brown-color);
 }
