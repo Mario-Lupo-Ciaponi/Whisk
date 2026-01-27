@@ -1,15 +1,14 @@
-import {useEffect, useState, useRef } from "react";
-import axios from "axios";
+import {useEffect, useState } from "react";
 import PostSection from "../components/PostSection.jsx";
-import "./HomePage.css";
+import NoResult from "../components/NoResult.jsx";
 import api from "../api/api.js";
-
+import "./HomePage.css";
 
 const HomePage = () => {
     const [ posts, setPosts ] = useState([]);
     const BASE_URL = "posts/"
 
-    // NOTE: This is purely for test purposes and it will change to check the real users city and groups!
+    // NOTE: This is purely for test purposes, and it will change to check the real users city and groups!
     const userInfo = {
         city: "Vratsa",
     }
@@ -25,7 +24,11 @@ const HomePage = () => {
 
     const filterPosts = async(query) => {
         try {
-            const response = await api.get(`${BASE_URL}?${query}=${userInfo[query]}`);
+            const response = await api.get(BASE_URL, {
+                params: {
+                    [query]: userInfo[query],
+                }
+            });
             setPosts(response.data)
         } catch (error) {
             console.log(error);
@@ -58,7 +61,7 @@ const HomePage = () => {
                 </select>
             </div>
 
-            <PostSection posts={posts} />
+            {posts.length ? <PostSection posts={posts} /> : <NoResult />}
         </>
     );
 }
