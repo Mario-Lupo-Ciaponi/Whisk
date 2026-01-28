@@ -52,6 +52,7 @@
   padding: 0.4rem;
   border: 3px solid;
   border-radius: 3rem;
+  margin: 0;
 }
 
 .post-card .top .user-container .status.found{
