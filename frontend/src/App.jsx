@@ -7,10 +7,9 @@ import HomePage from "./pages/HomePage.jsx"
 import CreatePostPage from "./pages/CreatePostPage.jsx";
 import GroupsPage from "./pages/GroupsPage.jsx";
 import CreateGroupPage from "./pages/CreateGroupPage.jsx";
-import "./styles/reset.css"
-import "./styles/typography.css"
-import './App.css'
 import AuthPage from "./pages/AuthPage.jsx";
+import NotFound from "./components/NotFound.jsx";
+import './App.css'
 
 const App = () => {
   const [authTokens, setAuthTokens] = useState(null);
@@ -22,6 +21,7 @@ const App = () => {
       <Navbar navigate={navigate} />
       <main>
           <Routes>
+              <Route path="*" element={<NotFound />} />
               <Route index element={<HomePage />} />
               <Route element={<PrivateRoutes />}>
                   <Route

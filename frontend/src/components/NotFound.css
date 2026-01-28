@@ -1,0 +1,26 @@
+:root {
+  --tan-color: #74503c;
+}
+
+.not-found {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3rem;
+  margin: 2rem 0;
+  color: var(--tan-color);
+}
+
+.not-found .not-found-image {
+  width: 55%;
+}
+
+.not-found .title {
+  font-size: 4rem;
+}
+
+.not-found .go-back-to-home {
+  font-size: 1.15rem;
+  color: inherit;
+  border-bottom: 1px solid var(--tan-color);
+}

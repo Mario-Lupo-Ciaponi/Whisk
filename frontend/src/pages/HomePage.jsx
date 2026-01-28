@@ -1,5 +1,5 @@
 import {useEffect, useState } from "react";
-import PostSection from "../components/PostSection.jsx";
+import PostSection from "../components/sections/PostSection.jsx";
 import NoResult from "../components/NoResult.jsx";
 import api from "../api/api.js";
 import "./HomePage.css";
