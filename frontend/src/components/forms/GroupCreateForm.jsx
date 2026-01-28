@@ -1,7 +1,7 @@
 import { useState } from "react";
+import ErrorList from "../ErrorList.jsx";
 import api from "../../api/api.js";
 import "./GroupCreateForm.css";
-import ErrorList from "../ErrorList.jsx";
 
 const GroupCreateForm = ({ navigate, errors, setErrors }) => {
     const [name, setName] = useState("");

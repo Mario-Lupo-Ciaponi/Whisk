@@ -1,7 +1,7 @@
 import {useState, useRef } from "react";
+import PasswordToggle from "../PasswordToggle.jsx";
 import api from "../../api/api.js";
 import "./AuthForm.css";
-import PasswordToggle from "../PasswordToggle.jsx";
 
 
 const LoginForm = ({ setAuthTokens, navigate, errors, setErrors, showPassword, setShowPassword }) => {

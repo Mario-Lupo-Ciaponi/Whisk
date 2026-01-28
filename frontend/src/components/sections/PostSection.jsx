@@ -1,4 +1,4 @@
-import PostCard from "./cards/PostCard.jsx";
+import PostCard from "../cards/PostCard.jsx";
 import "./PostSection.css";
 
 const PostSection = ({ posts }) => {

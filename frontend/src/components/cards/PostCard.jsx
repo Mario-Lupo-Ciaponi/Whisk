@@ -2,7 +2,7 @@ import {useEffect, useRef, useState} from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEllipsisVertical, faMapLocationDot, faComment, faBookmark } from "@fortawesome/free-solid-svg-icons";
 import api from "../../api/api.js";
-import MapSection from "../MapSection.jsx";
+import MapSection from "../sections/MapSection.jsx";
 import "./PostCard.css";
 
 const PostCard = ({ post }) => {

@@ -1,9 +1,9 @@
 import {useEffect, useState} from "react";
+import PasswordToggle from "../PasswordToggle.jsx";
 import countries from "i18n-iso-countries";
 import enLocale from "i18n-iso-countries/langs/en.json";
 import api from "../../api/api.js";
 import "./AuthForm.css";
-import PasswordToggle from "../PasswordToggle.jsx";
 
 // This gives access to all the countries in english
 countries.registerLocale(enLocale);

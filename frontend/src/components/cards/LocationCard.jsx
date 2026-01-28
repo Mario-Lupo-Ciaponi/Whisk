@@ -1,5 +1,4 @@
 import "./LocationCard.css";
-import {useEffect} from "react";
 
 const LocationCard = ({ location }) => {
     const latitude = location.latitude;

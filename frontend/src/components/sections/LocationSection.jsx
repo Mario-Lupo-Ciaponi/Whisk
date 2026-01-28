@@ -1,4 +1,4 @@
-import LocationCard from "./cards/LocationCard.jsx";
+import LocationCard from "../cards/LocationCard.jsx";
 import "./LocationSection.css";
 
 const LocationSection = ({ showSection, locations }) => {

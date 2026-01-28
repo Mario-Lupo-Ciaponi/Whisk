@@ -1,8 +1,8 @@
 import {useState} from "react";
 import { MapContainer, TileLayer, Marker, useMapEvents } from 'react-leaflet';
-import LocationCard from "./cards/LocationCard.jsx";
+import LocationCard from "../cards/LocationCard.jsx";
 import LocationSection from "./LocationSection.jsx";
-import api from "../api/api.js";
+import api from "../../api/api.js";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCaretDown, faCaretUp } from "@fortawesome/free-solid-svg-icons";
 import "./MapSection.css";
