@@ -63,10 +63,10 @@ const PostCreateForm = ({ navigate, errors, setErrors }) => {
                    <label className="post-label" htmlFor="description">Description:</label>
                     <textarea
                         id="description"
-                        className="post-input"
+                        className="post-input textarea"
                         name="description"
                         cols="30"
-                        rows="10"
+                        rows="5"
                         onChange={(event) => {
                         setDescription(event.target.value);
                     }}></textarea>

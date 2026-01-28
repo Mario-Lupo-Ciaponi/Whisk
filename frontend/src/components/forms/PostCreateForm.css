@@ -8,10 +8,39 @@
 .create-post-form {
   display: flex;
   flex-direction: column;
+  gap: 1.25rem;
   background-color: #eaeaf1;
-  padding: 1rem;
+  padding: 1rem 3rem;
 }
 
 .create-post-form .post-field .post-label {
   display: block;
 }
+
+.create-post-form .post-field .post-input {
+  background: none;
+  border-radius: 0.31rem;
+  border: 1px solid var(--tan-color);
+  width: 100%;
+}
+
+.create-post-form .post-field .post-input.textarea {
+  resize: none;
+  display: block;
+}
+
+.create-post-form .submit-btn {
+  padding: 0.5rem;
+  font-weight: bolder;
+  font-style: italic;
+  color: white;
+  background-color: var(--brown-color);
+  border: none;
+  border-radius: 0.31rem;
+  transition: background-color 500ms ease-in-out;
+}
+
+.create-post-form .submit-btn:hover {
+  background-color: var(--dark-brown-color);
+}
+
