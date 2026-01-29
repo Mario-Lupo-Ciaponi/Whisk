@@ -95,6 +95,18 @@ const PostCreateForm = ({ navigate, errors, setErrors }) => {
                     }}/>
                </div>
 
+               <div className="post-field">
+                    <label className="post-label" htmlFor="image">Image:</label>
+                    <input
+                        id="image"
+                        className="post-input"
+                        name="image"
+                        type="file"
+                        onChange={(event) => {
+                        setImage(event.target.files[0]);
+                    }}/>
+               </div>
+
                <button className="submit-btn">Submit</button>
             </form>
         </div>
