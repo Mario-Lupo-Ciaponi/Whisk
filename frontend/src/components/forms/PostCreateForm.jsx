@@ -2,6 +2,7 @@ import {useEffect, useState} from "react";
 import ErrorList from "../ErrorList.jsx";
 import api from "../../api/api.js";
 import "./PostCreateForm.css";
+import UploadBox from "../UploadBox.jsx";
 
 const PostCreateForm = ({ navigate, errors, setErrors }) => {
     const [title, setTitle] = useState("");
@@ -12,8 +13,6 @@ const PostCreateForm = ({ navigate, errors, setErrors }) => {
 
     const addCities = async () => {
         const response = await api.get("cities/");
-
-        console.log(response.data)
 
         setCities(response.data);
     }
@@ -93,24 +92,14 @@ const PostCreateForm = ({ navigate, errors, setErrors }) => {
                            setSelectedCity(event.target.value);
                        }}
                    >
-                       <option disabled selected value> -- select a city -- </option>
+                       <option className="select-option" disabled selected value> Select </option>
                        {cities.map(city => {
-                           return <option value={city.id}>{city.name}</option>
+                           return <option className="select-option" value={city.id}>{city.name}</option>
                        })}
                    </select>
                </div>
 
-               <div className="post-field">
-                    <label className="post-label" htmlFor="image">Image:</label>
-                    <input
-                        id="image"
-                        className="post-input"
-                        name="image"
-                        type="file"
-                        onChange={(event) => {
-                        setImage(event.target.files[0]);
-                    }}/>
-               </div>
+               <UploadBox image={image} setImage={setImage} />
 
                <button className="submit-btn">Submit</button>
             </form>

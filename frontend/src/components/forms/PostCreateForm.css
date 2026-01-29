@@ -15,6 +15,8 @@
 
 .create-post-form .post-field .post-label {
   display: block;
+  margin-bottom: 0.5rem;
+  color: var(--tan-color);
 }
 
 .create-post-form .post-field .post-input {
@@ -22,11 +24,27 @@
   border-radius: 0.31rem;
   border: 1px solid var(--tan-color);
   width: 100%;
+  padding: 0.65rem 1rem;
+}
+
+.create-post-form .post-field .post-input:focus {
+  outline: none;
 }
 
 .create-post-form .post-field .post-input.textarea {
   resize: none;
   display: block;
+}
+
+.create-post-form .post-field .post-input.select .select-option {
+  color: var(--tan-color);
+}
+
+.create-post-form .file-field {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
 .create-post-form .submit-btn {
