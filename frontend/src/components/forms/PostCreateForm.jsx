@@ -1,4 +1,4 @@
-import { useState } from "react";
+import {useEffect, useState} from "react";
 import ErrorList from "../ErrorList.jsx";
 import api from "../../api/api.js";
 import "./PostCreateForm.css";
@@ -6,8 +6,15 @@ import "./PostCreateForm.css";
 const PostCreateForm = ({ navigate, errors, setErrors }) => {
     const [title, setTitle] = useState("");
     const [description, setDescription] = useState("");
-    const [city, setCity] = useState("");
+    const [cities, setCities] = useState([]);
+    const [selectedCity, setSelectedCity] = useState("");
     const [image, setImage] = useState(null);
+
+    const addCities = async () => {
+        const response = await api.get("cities/");
+
+        setCities(response.data);
+    }
 
     const createPost = async (event) => {
         event.preventDefault();
@@ -21,7 +28,7 @@ const PostCreateForm = ({ navigate, errors, setErrors }) => {
 
         formData.append("title", title.trim())
         formData.append("description", description.trim())
-        formData.append("city", city.trim())
+        formData.append("city", selectedCity)
         formData.append("image", image)
 
         try {
@@ -43,6 +50,10 @@ const PostCreateForm = ({ navigate, errors, setErrors }) => {
         }
     }
 
+    useEffect(() => {
+        addCities();
+    }, []);
+
     return (
         <div className="form-wrapper">
            <form className="create-post-form" onSubmit={createPost}>
@@ -50,7 +61,7 @@ const PostCreateForm = ({ navigate, errors, setErrors }) => {
 
                <div className="post-field">
                    <label className="post-label" htmlFor="title">Title:</label>
-                    <input
+                   <input
                         id="title"
                         className="post-input"
                         name="title"
@@ -61,7 +72,7 @@ const PostCreateForm = ({ navigate, errors, setErrors }) => {
                </div>
                <div className="post-field">
                    <label className="post-label" htmlFor="description">Description:</label>
-                    <textarea
+                   <textarea
                         id="description"
                         className="post-input textarea"
                         name="description"
@@ -72,27 +83,21 @@ const PostCreateForm = ({ navigate, errors, setErrors }) => {
                     }}></textarea>
                </div>
                <div className="post-field">
-                    <label className="post-label" htmlFor="city">City:</label>
-                    <input
-                        id="city"
-                        className="post-input"
-                        name="city"
-                        type="text"
-                        onChange={(event) => {
-                        setCity(event.target.value);
-                    }}/>
-               </div>
+                   <label className="post-label" htmlFor="city">City:</label>
 
-               <div className="post-field">
-                    <label className="post-label" htmlFor="image">Image:</label>
-                    <input
-                        id="image"
-                        className="post-input"
-                        name="image"
-                        type="file"
-                        onChange={(event) => {
-                        setImage(event.target.files[0]);
-                    }}/>
+                   <select
+                       name="city"
+                       id="city"
+                       className="post-input select"
+                       onChange={event => {
+                           setSelectedCity(event.target.value);
+                       }}
+                   >
+                       <option disabled selected value> -- select a city -- </option>
+                       {cities.map(city => {
+                           return <option value={city.id}>{city.name}</option>
+                       })}
+                   </select>
                </div>
 
                <div className="post-field">
