@@ -27,10 +27,11 @@ const PostCreateForm = ({ navigate, errors, setErrors }) => {
 
         const formData = new FormData();
 
-        formData.append("title", title.trim())
-        formData.append("description", description.trim())
-        formData.append("city", selectedCity)
-        formData.append("image", image)
+        formData.append("title", title.trim());
+        formData.append("description", description.trim());
+        formData.append("city", selectedCity);
+        formData.append("image", image);
+        formData.append("city_id", Number(selectedCity));
 
         try {
             await api.post("posts/", formData, {
@@ -46,6 +47,8 @@ const PostCreateForm = ({ navigate, errors, setErrors }) => {
             } else if (e.response?.status === 401){
                 navigate("login/");
             }
+
+            console.log(e)
         }
     }
 

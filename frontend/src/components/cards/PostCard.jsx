@@ -27,8 +27,10 @@ const PostCard = ({ post }) => {
 
     const statusText = found ? "Found" : "Not Found";
 
-    const showActions = () => moreOptionsRef.current.classList.toggle("active");
-    const toggleMapSection = () => mapSectionRef.current.classList.toggle("active");
+    const showActions = () =>
+        moreOptionsRef.current.classList.toggle("active");
+    const toggleMapSection = () =>
+        mapSectionRef.current.classList.toggle("active");
 
     const deletePost = async () => {
         await api.delete(`posts/${post.id}/`);
@@ -37,7 +39,6 @@ const PostCard = ({ post }) => {
     }
 
     const changePostStatus = async () => {
-        console.log("hi")
         await api.patch(`posts/${post.id}/`, {found: !found})
         setFound(!found);
     }

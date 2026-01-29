@@ -1,7 +1,10 @@
 from rest_framework import serializers
 from django.db import transaction
+from django.core.exceptions import ObjectDoesNotExist
 from .models import Post, PetLocation
 from .validators import ProfanityCheckValidator
+
+from cities_light.models import City
 
 
 class PostModelSerializer(serializers.ModelSerializer):
@@ -24,15 +27,22 @@ class PostModelSerializer(serializers.ModelSerializer):
     )
     city = serializers.CharField(
         source="city.name",
+        read_only=True,
+    )
+    city_id = serializers.PrimaryKeyRelatedField(
+        source="city",
+        queryset=City.objects.all(),
+        write_only=True,
     )
     locations = serializers.PrimaryKeyRelatedField(
         many=True,
         queryset=PetLocation.objects.all(),
     )
 
+
     class Meta:
         model = Post
-        fields = ["id", "title", "description", "city", "found", "posted_on", "author", "image", "locations",]
+        fields = ["id", "title", "description", "city", "city_id", "found", "posted_on", "author", "image", "locations",]
 
 
 class PetLocationModelSerializer(serializers.ModelSerializer):
