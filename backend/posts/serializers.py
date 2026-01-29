@@ -22,6 +22,9 @@ class PostModelSerializer(serializers.ModelSerializer):
     image = serializers.ImageField(
         required=True,
     )
+    city = serializers.CharField(
+        source="city.name",
+    )
     locations = serializers.PrimaryKeyRelatedField(
         many=True,
         queryset=PetLocation.objects.all(),

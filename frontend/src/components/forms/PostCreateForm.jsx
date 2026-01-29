@@ -13,6 +13,8 @@ const PostCreateForm = ({ navigate, errors, setErrors }) => {
     const addCities = async () => {
         const response = await api.get("cities/");
 
+        console.log(response.data)
+
         setCities(response.data);
     }
 
@@ -37,8 +39,6 @@ const PostCreateForm = ({ navigate, errors, setErrors }) => {
                     "Content-Type": "multipart/form-data",
                 }
             });
-
-            console.log("Hi")
 
             navigate("/");
         } catch(e) {
