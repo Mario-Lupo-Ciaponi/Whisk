@@ -1,10 +1,3 @@
-:root {
-  --coffee-pot-color: #67595E;
-  --brown-color: #8c5826;
-  --darker-bronw-color: #503618;
-  --light-brown-color: #73675c;
-}
-
 .map-section {
   display: none;
   padding: 0.5rem 2rem;

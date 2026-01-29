@@ -1,7 +1,3 @@
-:root {
-  --tan-color: #74503c;
-}
-
 .not-found {
   display: flex;
   flex-direction: column;

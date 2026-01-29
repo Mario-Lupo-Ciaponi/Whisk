@@ -1,8 +1,3 @@
-:root {
-  --pewter-color: #EAEAF1;
-  --tan-color: #74503c;
-}
-
 .footer {
   display: flex;
   flex-direction: column;
