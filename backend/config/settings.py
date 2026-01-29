@@ -55,6 +55,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'django_filters',
     'django_countries',
+    'cities_light',
     'rest_framework',
     'rest_framework_simplejwt',
     'rest_framework_simplejwt.token_blacklist',
@@ -181,3 +182,9 @@ cloudinary.config(
     api_secret = os.getenv("API_SECRET"),
     secure=True
 )
+
+# City-light setting
+
+CITIES_LIGHT_APP_DEFINED_MODELS = ['Country', 'Region', 'City']
+CITIES_LIGHT_TRANSLATION_LANGUAGES = ['en', 'en']
+CITIES_LIGHT_INCLUDE_CITY_TYPES = ['PPL', 'PPLA', 'PPLA2', 'PPLA3', 'PPLA4', 'PPLC', 'PPLF', 'PPLG', 'PPLL', 'PPLR', 'PPLS', 'STLMT',]

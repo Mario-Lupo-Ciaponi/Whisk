@@ -14,8 +14,9 @@ class Post(models.Model):
         max_length=100,
      )
     description = models.TextField()
-    city = models.CharField(
-        max_length=70,
+    city = models.ForeignKey(
+        "cities_light.City",
+        on_delete=models.CASCADE,
     )
     found = models.BooleanField(
         default=False,
