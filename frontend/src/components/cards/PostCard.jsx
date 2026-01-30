@@ -22,7 +22,6 @@ const PostCard = ({ post }) => {
         } catch (e) {
             console.log(e.response.data);
         }
-
     }, []);
 
     const statusText = found ? "Found" : "Not Found";
@@ -49,7 +48,7 @@ const PostCard = ({ post }) => {
                 <div className="user-container">
                     <img className="profile-image" src="/images/default-profile-img.jpeg" alt="profile image"/>
                     <p className="username">{post.author}</p>
-                    <span className="city">({post.city})</span>
+                    <span className="city">({post.city.name})</span>
                     <span className={`status ${found ? 'found' : 'not-found'}`}>
                         {statusText}
                     </span>
@@ -104,7 +103,8 @@ const PostCard = ({ post }) => {
 
             <MapSection
                 mapSectionRef={mapSectionRef}
-                post={post} locations={locations}
+                post={post}
+                locations={locations}
                 setLocations={setLocations}
             />
         </article>

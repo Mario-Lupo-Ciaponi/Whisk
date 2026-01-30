@@ -57,56 +57,54 @@ const PostCreateForm = ({ navigate, errors, setErrors }) => {
     }, []);
 
     return (
-        <div className="form-wrapper">
-           <form className="create-post-form" onSubmit={createPost}>
-               { errors && <ErrorList errors={errors} /> }
+        <form className="create-post-form" onSubmit={createPost}>
+           { errors && <ErrorList errors={errors} /> }
 
-               <div className="post-field">
-                   <label className="post-label" htmlFor="title">Title:</label>
-                   <input
-                        id="title"
-                        className="post-input"
-                        name="title"
-                        type="text"
-                        onChange={(event) => {
-                        setTitle(event.target.value);
-                    }}/>
-               </div>
-               <div className="post-field">
-                   <label className="post-label" htmlFor="description">Description:</label>
-                   <textarea
-                        id="description"
-                        className="post-input textarea"
-                        name="description"
-                        cols="30"
-                        rows="5"
-                        onChange={(event) => {
-                        setDescription(event.target.value);
-                    }}></textarea>
-               </div>
-               <div className="post-field">
-                   <label className="post-label" htmlFor="city">City:</label>
+           <div className="post-field">
+               <label className="post-label" htmlFor="title">Title:</label>
+               <input
+                    id="title"
+                    className="post-input"
+                    name="title"
+                    type="text"
+                    onChange={(event) => {
+                    setTitle(event.target.value);
+                }}/>
+           </div>
+           <div className="post-field">
+               <label className="post-label" htmlFor="description">Description:</label>
+               <textarea
+                    id="description"
+                    className="post-input textarea"
+                    name="description"
+                    cols="30"
+                    rows="5"
+                    onChange={(event) => {
+                    setDescription(event.target.value);
+                }}></textarea>
+           </div>
+           <div className="post-field">
+               <label className="post-label" htmlFor="city">City:</label>
 
-                   <select
-                       name="city"
-                       id="city"
-                       className="post-input select"
-                       onChange={event => {
-                           setSelectedCity(event.target.value);
-                       }}
-                   >
-                       <option className="select-option" disabled selected value> Select </option>
-                       {cities.map(city => {
-                           return <option className="select-option" value={city.id}>{city.name}</option>
-                       })}
-                   </select>
-               </div>
+               <select
+                   name="city"
+                   id="city"
+                   className="post-input select"
+                   onChange={event => {
+                       setSelectedCity(event.target.value);
+                   }}
+               >
+                   <option className="select-option" disabled selected value> Select </option>
+                   {cities.map(city => {
+                       return <option className="select-option" value={city.id}>{city.name}</option>
+                   })}
+               </select>
+           </div>
 
-               <UploadBox image={image} setImage={setImage} />
+           <UploadBox image={image} setImage={setImage} />
 
-               <button className="submit-btn">Submit</button>
+           <button className="submit-btn">Submit</button>
             </form>
-        </div>
     )
 }
 

@@ -23,6 +23,9 @@ const MapSection = ({ mapSectionRef, post, locations, setLocations }) => {
     const [selectedPosition, setSelectedPosition] = useState(null);
     const [showLocationSection, setShowLocationSection] = useState(false);
 
+    const latitude = Number(post.city.latitude);
+    const longitude = Number(post.city.longitude);
+
     const addLocation = async () => {
         try {
             if (!selectedPosition) {
@@ -66,8 +69,8 @@ const MapSection = ({ mapSectionRef, post, locations, setLocations }) => {
 
 
             <MapContainer
-                center={[0, 0]}
-                zoom={1}
+                center={[latitude, longitude]}
+                zoom={15}
                 scrollWheelZoom={false}>
                 <TileLayer
                     attribution='<a href="https://www.maptiler.com/copyright/" target="_blank">&copy; MapTiler</a> <a href="https://www.openstreetmap.org/copyright" target="_blank">&copy; OpenStreetMap contributors</a>'
