@@ -5,6 +5,7 @@ from .models import Post, PetLocation
 from .validators import ProfanityCheckValidator
 
 from cities_light.models import City
+from common.serializers import CitySerializer
 
 
 class PostModelSerializer(serializers.ModelSerializer):
@@ -25,8 +26,7 @@ class PostModelSerializer(serializers.ModelSerializer):
     image = serializers.ImageField(
         required=True,
     )
-    city = serializers.CharField(
-        source="city.name",
+    city = CitySerializer(
         read_only=True,
     )
     city_id = serializers.PrimaryKeyRelatedField(
