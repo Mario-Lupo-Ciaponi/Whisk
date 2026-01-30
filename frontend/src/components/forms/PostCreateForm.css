@@ -1,16 +1,11 @@
-.form-wrapper {
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  padding: 3rem;
-}
-
 .create-post-form {
   display: flex;
   flex-direction: column;
   gap: 1.25rem;
   background-color: #eaeaf1;
   padding: 1rem 3rem;
+  border-radius: 1.3rem;
+  width: 38%;
 }
 
 .create-post-form .post-field .post-label {

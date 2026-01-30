@@ -70,7 +70,7 @@ const MapSection = ({ mapSectionRef, post, locations, setLocations }) => {
 
             <MapContainer
                 center={[latitude, longitude]}
-                zoom={15}
+                zoom={12}
                 scrollWheelZoom={false}>
                 <TileLayer
                     attribution='<a href="https://www.maptiler.com/copyright/" target="_blank">&copy; MapTiler</a> <a href="https://www.openstreetmap.org/copyright" target="_blank">&copy; OpenStreetMap contributors</a>'

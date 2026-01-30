@@ -1,0 +1,23 @@
+.form-wrapper {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+  padding: 3rem;
+}
+
+.create-post-header {
+  color: var(--tan-color);
+  width: 50%;
+  text-align: center;
+}
+
+.create-post-header .create-post-title {
+  margin-bottom: 0.5rem;
+}
+
+.create-post-header .create-post-description{
+
+}
