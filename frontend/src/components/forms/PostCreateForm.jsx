@@ -4,7 +4,7 @@ import api from "../../api/api.js";
 import "./PostCreateForm.css";
 import UploadBox from "../UploadBox.jsx";
 
-const PostCreateForm = ({ navigate, errors, setErrors }) => {
+const PostCreateForm = ({ currentUser, navigate, errors, setErrors }) => {
     const [title, setTitle] = useState("");
     const [description, setDescription] = useState("");
     const [cities, setCities] = useState([]);
@@ -12,7 +12,13 @@ const PostCreateForm = ({ navigate, errors, setErrors }) => {
     const [image, setImage] = useState(null);
 
     const addCities = async () => {
-        const response = await api.get("cities/");
+        const countryId = currentUser.country;
+
+        const response = await api.get("cities/", {
+            params: {
+                "country": countryId,
+            },
+        });
 
         setCities(response.data);
     }
@@ -53,8 +59,9 @@ const PostCreateForm = ({ navigate, errors, setErrors }) => {
     }
 
     useEffect(() => {
-        addCities();
-    }, []);
+        if (currentUser)
+            addCities();
+    }, [currentUser]);
 
     return (
         <form className="create-post-form" onSubmit={createPost}>

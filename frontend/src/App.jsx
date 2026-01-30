@@ -38,7 +38,13 @@ const App = () => {
               <Route element={<PrivateRoutes />}>
                   <Route
                       path="create-post/"
-                      element={<CreatePostPage  navigate={navigate} errors={errors} setErrors={setErrors} />}
+                      element={
+                          <CreatePostPage
+                              currentUser={currentUser}
+                              navigate={navigate}
+                              errors={errors}
+                              setErrors={setErrors}
+                          />}
                   />
                   <Route
                       path="create-group/"

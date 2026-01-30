@@ -1,12 +1,8 @@
 import {useEffect, useState} from "react";
 import PasswordToggle from "../PasswordToggle.jsx";
-import countries from "i18n-iso-countries";
-import enLocale from "i18n-iso-countries/langs/en.json";
+
 import api from "../../api/api.js";
 import "./AuthForm.css";
-
-// This gives access to all the countries in english
-countries.registerLocale(enLocale);
 
 const RegisterForm = ({ errors, setErrors, setShowLogin, showPassword, setShowPassword }) => {
     // Declaration of states:
@@ -15,10 +11,16 @@ const RegisterForm = ({ errors, setErrors, setShowLogin, showPassword, setShowPa
     const [countrySelected, setCountrySelected] = useState("");
     const [firstPassword, setFirstPassword] = useState("");
     const [secondPassword, setSecondPassword] = useState("");
-    const [allCountries, setAllCountries] = useState({});
+    const [allCountries, setAllCountries] = useState([]);
 
-    const getAllCountries = () =>
-        countries.getNames("en", {select: "official"});
+    const fetchAllCountries = async () => {
+        try {
+            const response = await api.get("countries/");
+            setAllCountries(response.data);
+        } catch (e) {
+            console.log(e)
+        }
+    }
 
     const handleRegister = async (event) => {
         event.preventDefault();
@@ -54,8 +56,7 @@ const RegisterForm = ({ errors, setErrors, setShowLogin, showPassword, setShowPa
     }
 
     useEffect(() => {
-        const countryData = getAllCountries();
-        setAllCountries(countryData);
+        fetchAllCountries();
     }, []);
 
     return (
@@ -101,8 +102,8 @@ const RegisterForm = ({ errors, setErrors, setShowLogin, showPassword, setShowPa
                     }}
                     required>
                     <option disabled selected value> -- select a country -- </option>
-                    {Object.entries(allCountries).map(([countryCode, countryName]) => {
-                        return <option value={countryCode}>{countryName}</option>
+                    {allCountries.map(country => {
+                        return <option value={country.id}>{country.name}</option>
                     })}
                 </select>
             </div>

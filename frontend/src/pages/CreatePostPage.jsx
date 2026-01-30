@@ -1,7 +1,7 @@
 import PostCreateForm from "../components/forms/PostCreateForm.jsx";
 import "./CreatePostPage.css";
 
-const CreatePostPage = ({ navigate, errors, setErrors }) => {
+const CreatePostPage = ({ currentUser, navigate, errors, setErrors }) => {
     return (
         <div className="form-wrapper">
             <header className="create-post-header">
@@ -12,7 +12,7 @@ const CreatePostPage = ({ navigate, errors, setErrors }) => {
                     they were last seen. Every detail helps bring them home!
                 </p>
             </header>
-            <PostCreateForm navigate={navigate} errors={errors} setErrors={setErrors} />
+            <PostCreateForm currentUser={currentUser} navigate={navigate} errors={errors} setErrors={setErrors} />
         </div>
     )
 }
