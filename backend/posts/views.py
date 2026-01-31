@@ -13,6 +13,7 @@ from .pagination import PostResultsSetPagination
 # TODO: add mixins for repeated code
 
 class PostListCreateAPIView(PostAPIViewMixin, ListCreateAPIView):
+    queryset = Post.objects.order_by("-posted_on")
     filter_backends = [filter.DjangoFilterBackend]
     filterset_class = PostFilter
     pagination_class = PostResultsSetPagination
