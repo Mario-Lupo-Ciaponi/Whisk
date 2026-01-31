@@ -120,6 +120,8 @@ const PostCard = ({ post, currentUser }) => {
         post={post}
         locations={locations}
         setLocations={setLocations}
+        currentUser={currentUser}
+        setFound={setFound}
       />
     </article>
   );

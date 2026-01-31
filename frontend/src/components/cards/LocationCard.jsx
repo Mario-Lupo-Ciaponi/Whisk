@@ -1,6 +1,7 @@
 import "./LocationCard.css";
+import api from "../../api/api.js";
 
-const LocationCard = ({ location }) => {
+const LocationCard = ({ post, location, currentUser, setFound }) => {
   const latitude = location.latitude;
   const longitude = location.longitude;
 
@@ -8,6 +9,11 @@ const LocationCard = ({ location }) => {
 
   // This returns more human-readable coordinates
   const formatCoordinates = (c) => Number(c).toFixed(3);
+
+  const markLocationAsValid = () => {
+    api.patch(`posts/${post.id}/`, {found: true});
+    setFound(true);
+  }
 
   return (
     <article className="location-card">
@@ -28,6 +34,8 @@ const LocationCard = ({ location }) => {
           </a>
         </p>
       </div>
+
+      {currentUser.id === post.author.id && <button onClick={markLocationAsValid} className="found-btn">Found</button>}
     </article>
   );
 };

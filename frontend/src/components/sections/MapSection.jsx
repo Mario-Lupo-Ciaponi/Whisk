@@ -19,7 +19,7 @@ const MapEvents = ({ onClick }) => {
   return null;
 };
 
-const MapSection = ({ mapSectionRef, post, locations, setLocations }) => {
+const MapSection = ({ mapSectionRef, post, locations, setLocations, currentUser, setFound }) => {
   const [selectedPosition, setSelectedPosition] = useState(null);
   const [showLocationSection, setShowLocationSection] = useState(false);
 
@@ -93,8 +93,11 @@ const MapSection = ({ mapSectionRef, post, locations, setLocations }) => {
         </button>
 
         <LocationSection
+          post={post}
           showSection={showLocationSection}
           locations={locations}
+          currentUser={currentUser}
+          setFound={setFound}
         />
       </div>
     </section>

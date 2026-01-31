@@ -1,11 +1,11 @@
 import LocationCard from "../cards/LocationCard.jsx";
 import "./LocationSection.css";
 
-const LocationSection = ({ showSection, locations }) => {
+const LocationSection = ({ post, showSection, locations, currentUser, setFound }) => {
   return (
     <section className={`location-section ${showSection && "active"}`}>
       {locations.map((location) => {
-        return <LocationCard location={location} />;
+        return <LocationCard post={post} location={location} currentUser={currentUser} setFound={setFound} />;
       })}
     </section>
   );
