@@ -58,7 +58,7 @@ const HomePage = () => {
     }
 
     return (
-        <>
+        <div className="feed">
             <title>Whisk</title>
 
             <div className="feed-container">
@@ -75,7 +75,7 @@ const HomePage = () => {
             {posts.length ? <PostSection posts={posts} /> : <NoResult />}
 
             <PaginationList currentPage={currentPage} setCurrentPage={setCurrentPage} totalPages={totalPages} />
-        </>
+        </div>
     );
 }
 
