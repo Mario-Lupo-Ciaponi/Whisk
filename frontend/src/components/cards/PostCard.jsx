@@ -5,7 +5,7 @@ import api from "../../api/api.js";
 import MapSection from "../sections/MapSection.jsx";
 import "./PostCard.css";
 
-const PostCard = ({ post }) => {
+const PostCard = ({ post, currentUser }) => {
     const [locations, setLocations] = useState([]);
     const [found, setFound] = useState(post.found);
     const moreOptionsRef = useRef(null);
@@ -42,6 +42,7 @@ const PostCard = ({ post }) => {
         setFound(!found);
     }
 
+    console.log(currentUser)
     return (
         <article className="post-card" key={post.id}>
             <div className="top">
@@ -65,15 +66,19 @@ const PostCard = ({ post }) => {
                       <li className="option-item">
                           <button className="option">Share</button>
                       </li>
-                      <li className="option-item">
-                          <button onClick={changePostStatus} className="option">Update status</button>
-                      </li>
-                      <li className="option-item">
-                          <button className="option">Edit</button>
-                      </li>
-                      <li onClick={deletePost} className="option-item">
-                          <button className="option danger">Delete</button>
-                      </li>
+                        {post.author.id === currentUser.id &&
+                            <>
+                                <li className="option-item">
+                                    <button onClick={changePostStatus} className="option">Update status</button>
+                                </li>
+                                <li className="option-item">
+                                    <button className="option">Edit</button>
+                                </li>
+                                <li onClick={deletePost} className="option-item">
+                                    <button className="option danger">Delete</button>
+                                </li>
+                            </>
+                        }
                     </ul>
                 </div>
 

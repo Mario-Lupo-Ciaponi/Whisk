@@ -34,7 +34,7 @@ const App = () => {
       <main>
           <Routes>
               <Route path="*" element={<NotFound />} />
-              <Route index element={<HomePage />} />
+              <Route index element={<HomePage currentUser={currentUser} />} />
               <Route element={<PrivateRoutes />}>
                   <Route
                       path="create-post/"

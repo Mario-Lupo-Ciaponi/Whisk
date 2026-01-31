@@ -5,7 +5,7 @@ import api from "../api/api.js";
 import "./HomePage.css";
 import PaginationList from "../components/PaginationList.jsx";
 
-const HomePage = () => {
+const HomePage = ({ currentUser }) => {
     const [ posts, setPosts ] = useState([]);
     const [currentPage, setCurrentPage] = useState(1);
     const [totalPages, setTotalPages] = useState(0);
@@ -72,7 +72,7 @@ const HomePage = () => {
                 </select>
             </div>
 
-            {posts.length ? <PostSection posts={posts} /> : <NoResult />}
+            {posts.length ? <PostSection posts={posts} currentUser={currentUser} /> : <NoResult />}
 
             <PaginationList currentPage={currentPage} setCurrentPage={setCurrentPage} totalPages={totalPages} />
         </div>
