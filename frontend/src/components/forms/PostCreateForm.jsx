@@ -1,118 +1,132 @@
-import {useEffect, useState} from "react";
+import { useEffect, useState } from "react";
 import ErrorList from "../ErrorList.jsx";
 import api from "../../api/api.js";
 import "./PostCreateForm.css";
 import UploadBox from "../UploadBox.jsx";
 
 const PostCreateForm = ({ currentUser, navigate, errors, setErrors }) => {
-    const [title, setTitle] = useState("");
-    const [description, setDescription] = useState("");
-    const [cities, setCities] = useState([]);
-    const [selectedCity, setSelectedCity] = useState("");
-    const [image, setImage] = useState(null);
+  const [title, setTitle] = useState("");
+  const [description, setDescription] = useState("");
+  const [cities, setCities] = useState([]);
+  const [selectedCity, setSelectedCity] = useState("");
+  const [image, setImage] = useState(null);
 
-    const addCities = async () => {
-        const countryId = currentUser.country;
+  const addCities = async () => {
+    const countryId = currentUser.country;
 
-        const response = await api.get("cities/", {
-            params: {
-                "country": countryId,
-            },
-        });
+    const response = await api.get("cities/", {
+      params: {
+        country: countryId,
+      },
+    });
 
-        setCities(response.data);
+    setCities(response.data);
+  };
+
+  const createPost = async (event) => {
+    event.preventDefault();
+
+    if (!title || !description || !selectedCity || !image) {
+      setErrors({ detail: "All fields are required." });
+      return;
     }
 
-    const createPost = async (event) => {
-        event.preventDefault();
+    const formData = new FormData();
 
-        if (!title || !description || !city || !image) {
-            setErrors({ detail: "All fields are required." })
-            return;
-        }
+    formData.append("title", title.trim());
+    formData.append("description", description.trim());
+    formData.append("city", selectedCity);
+    formData.append("image", image);
+    formData.append("city_id", Number(selectedCity));
 
-        const formData = new FormData();
+    try {
+      await api.post("posts/", formData, {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+      });
 
-        formData.append("title", title.trim());
-        formData.append("description", description.trim());
-        formData.append("city", selectedCity);
-        formData.append("image", image);
-        formData.append("city_id", Number(selectedCity));
+      navigate("/");
+    } catch (e) {
+      if (e.response?.status === 400) {
+        setErrors(e.response.data);
+      } else if (e.response?.status === 401) {
+        navigate("login/");
+      }
 
-        try {
-            await api.post("posts/", formData, {
-                headers: {
-                    "Content-Type": "multipart/form-data",
-                }
-            });
-
-            navigate("/");
-        } catch(e) {
-            if (e.response?.status === 400){
-                setErrors(e.response.data);
-            } else if (e.response?.status === 401){
-                navigate("login/");
-            }
-
-            console.log(e)
-        }
+      console.log(e);
     }
+  };
 
-    useEffect(() => {
-        if (currentUser)
-            addCities();
-    }, [currentUser]);
+  useEffect(() => {
+    if (currentUser) addCities();
+  }, [currentUser]);
 
-    return (
-        <form className="create-post-form" onSubmit={createPost}>
-           { errors && <ErrorList errors={errors} /> }
+  return (
+    <form className="create-post-form" onSubmit={createPost}>
+      {errors && <ErrorList errors={errors} />}
 
-           <div className="post-field">
-               <label className="post-label" htmlFor="title">Title:</label>
-               <input
-                    id="title"
-                    className="post-input"
-                    name="title"
-                    type="text"
-                    onChange={(event) => {
-                    setTitle(event.target.value);
-                }}/>
-           </div>
-           <div className="post-field">
-               <label className="post-label" htmlFor="description">Description:</label>
-               <textarea
-                    id="description"
-                    className="post-input textarea"
-                    name="description"
-                    cols="30"
-                    rows="5"
-                    onChange={(event) => {
-                    setDescription(event.target.value);
-                }}></textarea>
-           </div>
-           <div className="post-field">
-               <label className="post-label" htmlFor="city">City:</label>
+      <div className="post-field">
+        <label className="post-label" htmlFor="title">
+          Title:
+        </label>
+        <input
+          id="title"
+          className="post-input"
+          name="title"
+          type="text"
+          onChange={(event) => {
+            setTitle(event.target.value);
+          }}
+        />
+      </div>
+      <div className="post-field">
+        <label className="post-label" htmlFor="description">
+          Description:
+        </label>
+        <textarea
+          id="description"
+          className="post-input textarea"
+          name="description"
+          cols="30"
+          rows="5"
+          onChange={(event) => {
+            setDescription(event.target.value);
+          }}
+        ></textarea>
+      </div>
+      <div className="post-field">
+        <label className="post-label" htmlFor="city">
+          City:
+        </label>
 
-               <select
-                   name="city"
-                   id="city"
-                   className="post-input select"
-                   onChange={event => {
-                       setSelectedCity(event.target.value);
-                   }}
-               >
-                   <option className="select-option" disabled selected value> Select </option>
-                   {cities.map(city => {
-                       return <option className="select-option" value={city.id}>{city.name}</option>
-                   })}
-               </select>
-           </div>
+        <select
+          name="city"
+          id="city"
+          className="post-input select"
+          onChange={(event) => {
+            setSelectedCity(event.target.value);
+          }}
+        >
+          <option className="select-option" disabled selected value>
+            {" "}
+            Select{" "}
+          </option>
+          {cities.map((city) => {
+            return (
+              <option className="select-option" value={city.id}>
+                {city.name}
+              </option>
+            );
+          })}
+        </select>
+      </div>
 
-           <UploadBox image={image} setImage={setImage} />
+      <UploadBox image={image} setImage={setImage} />
 
-           <button className="submit-btn">Submit</button>
-            </form>
-    )
-}
+      <button className="submit-btn">Submit</button>
+    </form>
+  );
+};
 
 export default PostCreateForm;

@@ -3,30 +3,30 @@ import GroupCard from "./cards/GroupCard.jsx";
 import api from "../api/api.js";
 
 const GroupSection = () => {
-    const [groups, setGroups] = useState([]);
+  const [groups, setGroups] = useState([]);
 
-    const BASE_URL = "groups/";
+  const BASE_URL = "groups/";
 
-    useEffect(() => {
-         const getGroups = async() => {
-            try {
-                const response = await api.get(BASE_URL);
-                setGroups(response.data);
-            } catch (e) {
-                console.log(e);
-            }
-         }
+  useEffect(() => {
+    const getGroups = async () => {
+      try {
+        const response = await api.get(BASE_URL);
+        setGroups(response.data);
+      } catch (e) {
+        console.log(e);
+      }
+    };
 
-        getGroups();
-    }, []);
+    getGroups();
+  }, []);
 
-    return (
-        <section className="groups-section">
-            {groups.map(group => {
-                return <GroupCard group={group} />;
-            })}
-        </section>
-    );
-}
+  return (
+    <section className="groups-section">
+      {groups.map((group) => {
+        return <GroupCard group={group} />;
+      })}
+    </section>
+  );
+};
 
 export default GroupSection;
