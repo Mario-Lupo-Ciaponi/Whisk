@@ -8,12 +8,14 @@ from .serializers import PostModelSerializer, PetLocationModelSerializer
 from .permissions import IsOwner
 from .filters import PostFilter
 from .mixins import PostAPIViewMixin
+from .pagination import PostResultsSetPagination
 
 # TODO: add mixins for repeated code
 
 class PostListCreateAPIView(PostAPIViewMixin, ListCreateAPIView):
     filter_backends = [filter.DjangoFilterBackend]
     filterset_class = PostFilter
+    pagination_class = PostResultsSetPagination
     parser_classes = [
         MultiPartParser,
         FormParser,
@@ -26,6 +28,7 @@ class PostListCreateAPIView(PostAPIViewMixin, ListCreateAPIView):
 class PostRetrieveUpdateDestroyAPIView(PostAPIViewMixin, RetrieveUpdateDestroyAPIView):
     # Inherits IsAuthenticatedOrReadOnly permission then adds a custom one
     permission_classes = PostAPIViewMixin.permission_classes + [IsOwner]
+
 
 class PetLocationListCreateAPIView(ListCreateAPIView):
     queryset = PetLocation.objects.all()
