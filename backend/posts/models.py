@@ -53,7 +53,7 @@ class PetLocation(models.Model):
             MinValueValidator(-180),
         ],
     )
-    date_seen = models.DateTimeField(
+    created_at = models.DateTimeField(
         auto_now_add=True,
     )
     author = models.ForeignKey(
@@ -67,6 +67,9 @@ class PetLocation(models.Model):
         related_name="locations",
         on_delete=models.CASCADE,
     )
+    is_valid = models.BooleanField(
+        default=False,
+    )
 
     def __str__(self):
-        return  f"{self.latitude}, {self.latitude} seen on {self.date_seen}"
+        return  f"{self.longitude}, {self.latitude} seen on {self.created_at}"
