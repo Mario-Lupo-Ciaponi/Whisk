@@ -70,4 +70,4 @@ class PetLocationModelSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = PetLocation
-        fields = ["id", "latitude", "longitude", "post_id", "created_at", "author",]
+        fields = ["id", "latitude", "longitude", "post_id", "created_at", "is_valid", "author",]

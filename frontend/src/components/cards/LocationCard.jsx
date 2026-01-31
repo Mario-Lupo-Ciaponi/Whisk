@@ -1,7 +1,10 @@
+import { useState } from "react";
 import "./LocationCard.css";
 import api from "../../api/api.js";
 
 const LocationCard = ({ post, location, currentUser, setFound }) => {
+  const [isValid, setIsValid] = useState(location.is_valid); // This is if the pet was found in this location
+
   const latitude = location.latitude;
   const longitude = location.longitude;
 
@@ -12,11 +15,13 @@ const LocationCard = ({ post, location, currentUser, setFound }) => {
 
   const markLocationAsValid = () => {
     api.patch(`posts/${post.id}/`, {found: true});
+    api.patch(`posts/location/${location.id}`, {is_valid: true});
     setFound(true);
+    setIsValid(true);
   }
 
   return (
-    <article className="location-card">
+    <article className={`location-card ${isValid && "valid"}`}>
       <img
         className="profile-image"
         src="images/default-profile-img.jpeg"
@@ -35,7 +40,13 @@ const LocationCard = ({ post, location, currentUser, setFound }) => {
         </p>
       </div>
 
-      {currentUser.id === post.author.id && <button onClick={markLocationAsValid} className="found-btn">Found</button>}
+      {currentUser.id === post.author.id &&
+        <button
+          onClick={markLocationAsValid}
+          className="found-btn">
+          Found
+        </button>
+      }
     </article>
   );
 };
