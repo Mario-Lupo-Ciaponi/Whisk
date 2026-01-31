@@ -1,3 +1,5 @@
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faAngleLeft, faAngleRight } from "@fortawesome/free-solid-svg-icons";
 import "./PaginationList.css";
 
 const PaginationList = ({ currentPage, setCurrentPage, totalPages }) => {
@@ -6,14 +8,14 @@ const PaginationList = ({ currentPage, setCurrentPage, totalPages }) => {
 
     return (
         <div className="pagination-list">
-            <button disabled={currentPage === 1} className="previous-btn" onClick={goToPreviousPage}>
-                Previous
+            <button disabled={currentPage === 1} className="paginate-btn" onClick={goToPreviousPage}>
+                <FontAwesomeIcon icon={faAngleLeft} />
             </button>
 
             <span className="current-page">Page {currentPage} of {totalPages}</span>
 
-            <button disabled={currentPage === totalPages} className="next-btn" onClick={goToNextPage}>
-                Next
+            <button disabled={currentPage === totalPages} className="paginate-btn" onClick={goToNextPage}>
+                <FontAwesomeIcon icon={faAngleRight} />
             </button>
         </div>
     );
