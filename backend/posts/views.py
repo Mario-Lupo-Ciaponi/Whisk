@@ -48,3 +48,9 @@ class PetLocationListCreateAPIView(ListCreateAPIView):
             serializer.save(author=self.request.user)
         else:
             serializer.save(author=None)
+
+
+class PetLocationRetrieveUpdateDestroyAPIView(RetrieveUpdateDestroyAPIView):
+    queryset = PetLocation.objects.all()
+    serializer_class = PetLocationModelSerializer
+    permission_classes = [IsAuthenticatedOrReadOnly,] # TODO: add permission that checks weather the user is the author of the post or location
