@@ -48,7 +48,7 @@
 .locations-wrapper .show-locations-btn {
   background: none;
   border: none;
-  border-bottom: 1px solid var(--coffee-pot-color);
+  border-bottom: var(--border-default-values) var(--coffee-pot-color);
   color: var(--coffee-pot-color);
   width: 85%;
   margin-bottom: 1rem;

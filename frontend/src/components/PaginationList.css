@@ -6,7 +6,7 @@
 
 .pagination-list .paginate-btn {
   background: none;
-  border: 1px solid var(--gray-color);
+  border: var(--border-default-values) var(--gray-color);
   border-radius: 0.25rem;
   padding: 0.5rem;
   width: 2.5rem;

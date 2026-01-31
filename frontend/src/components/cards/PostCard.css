@@ -92,7 +92,7 @@
 .post-card .top .more-options-container .more-options-menu .option-item {
   width: 100%;
   padding: 0.5rem 0;
-  border-bottom: 1px solid var(--coffee-pot-color);
+  border-bottom: var(--border-default-values) var(--coffee-pot-color);
   text-align: center;
 }
 
@@ -144,5 +144,5 @@
 }
 
 .post-card .divider {
-  border: 1px solid var(--coffee-pot-color);
+  border: var(--border-default-values) var(--coffee-pot-color);
 }

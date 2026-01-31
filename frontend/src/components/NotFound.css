@@ -18,5 +18,5 @@
 .not-found .go-back-to-home {
   font-size: 1.15rem;
   color: inherit;
-  border-bottom: 1px solid var(--tan-color);
+  border-bottom: var(--border-default-values) var(--tan-color);
 }

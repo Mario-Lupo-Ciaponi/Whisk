@@ -17,7 +17,7 @@
 .auth-form .auth-field .auth-input {
   background: none;
   width: 100%;
-  border: 1px solid var(--brown-color);
+  border: var(--border-default-values) var(--brown-color);
   border-radius: 0.5rem;
   font-size: 1.3rem;
   color: var(--brown-color);
@@ -25,11 +25,11 @@
 }
 
 .auth-form .auth-field .auth-input.error-input {
-  border: 1px solid var(--red-color);
+  border: var(--border-default-values) var(--red-color);
 }
 
 .auth-form .auth-field .auth-input.error-input:focus {
-  outline: 1px solid var(--red-color);
+  outline: var(--border-default-values)var(--red-color);
 }
 
 .auth-form .submit-btn {
