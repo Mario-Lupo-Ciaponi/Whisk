@@ -7,6 +7,8 @@ from .validators import ProfanityCheckValidator
 from cities_light.models import City
 from common.serializers import CitySerializer
 
+from accounts.serializers import UserSerializer
+
 
 class PostModelSerializer(serializers.ModelSerializer):
     title = serializers.CharField(
@@ -19,8 +21,7 @@ class PostModelSerializer(serializers.ModelSerializer):
             ProfanityCheckValidator(),
         ]
     )
-    author = serializers.CharField(
-        source="author.username",
+    author = UserSerializer(
         read_only=True,
     )
     image = serializers.ImageField(

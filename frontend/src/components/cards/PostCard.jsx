@@ -47,7 +47,7 @@ const PostCard = ({ post }) => {
             <div className="top">
                 <div className="user-container">
                     <img className="profile-image" src="/images/default-profile-img.jpeg" alt="profile image"/>
-                    <p className="username">{post.author}</p>
+                    <p className="username">{post.author.username}</p>
                     <span className="city">({post.city.name})</span>
                     <span className={`status ${found ? 'found' : 'not-found'}`}>
                         {statusText}
