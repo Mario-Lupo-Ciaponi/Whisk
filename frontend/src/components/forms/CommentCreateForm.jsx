@@ -2,7 +2,7 @@ import {useState} from "react";
 import api from "../../api/api.js";
 import "./CommentCreateForm.css";
 
-const CommentCreateForm = ({ post }) => {
+const CommentCreateForm = ({ post, setComments }) => {
   const [content, setContent] = useState("");
 
   const addComment = async (event) => {
@@ -10,9 +10,9 @@ const CommentCreateForm = ({ post }) => {
 
     if (!content) return;
 
-    console.log(post.id)
     try {
-      api.post("posts/comments/", { content, post_input: post.id });
+      const response = await api.post("posts/comments/", { content, post_input: post.id });
+      setComments(prev => [...prev, response.data]);
     } catch (e) {
       console.log(e);
     }

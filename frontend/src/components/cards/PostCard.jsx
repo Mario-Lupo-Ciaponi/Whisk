@@ -13,6 +13,7 @@ import "./PostCard.css";
 
 const PostCard = ({ post, currentUser }) => {
   const [locations, setLocations] = useState([]);
+  const [comments, setComments] = useState([]);
   const [found, setFound] = useState(post.found);
 
   const moreOptionsRef = useRef(null);
@@ -20,17 +21,21 @@ const PostCard = ({ post, currentUser }) => {
   const commentAreaRef = useRef(null);
 
   useEffect(() => {
-    const getPostLocations = async () => {
+    const getPostLocations = async () => { // TODO: optimize
       const response = await api.get(`posts/location/?post=${post.id}`);
       setLocations(response.data);
     };
 
+    const getComments = () =>
+      setComments(post.comments);
+
     try {
       getPostLocations();
+      getComments();
     } catch (e) {
       console.log(e.response.data);
     }
-  }, [found]);
+  }, []);
 
   const statusText = found ? "Found" : "Not Found";
 
@@ -136,6 +141,8 @@ const PostCard = ({ post, currentUser }) => {
       <CommentArea
         commentAreaRef={commentAreaRef}
         post={post}
+        comments={comments}
+        setComments={setComments}
       />
     </article>
   );

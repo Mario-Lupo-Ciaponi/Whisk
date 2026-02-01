@@ -13,10 +13,10 @@ const LocationCard = ({ post, location, currentUser, setFound }) => {
   // This returns more human-readable coordinates
   const formatCoordinates = (c) => Number(c).toFixed(3);
 
-  const markLocationAsValid = () => {
+  const markLocationAsValid = async () => {
     try {
-      api.patch(`posts/${post.id}/`, {found: true});
-      api.patch(`posts/location/${location.id}/`, {is_valid: true});
+      await api.patch(`posts/${post.id}/`, {found: true});
+      await api.patch(`posts/location/${location.id}/`, {is_valid: true});
       setFound(true);
       setIsValid(true);
     } catch (e) {
