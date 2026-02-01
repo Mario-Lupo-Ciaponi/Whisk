@@ -39,11 +39,26 @@ class PostModelSerializer(serializers.ModelSerializer):
         many=True,
         queryset=PetLocation.objects.all(),
     )
-
+    locations_count = serializers.SerializerMethodField()
 
     class Meta:
         model = Post
-        fields = ["id", "title", "description", "city", "city_id", "found", "posted_on", "author", "image", "locations",]
+        fields = [
+            "id",
+            "title",
+            "description",
+            "city",
+            "city_id",
+            "found",
+            "posted_on",
+            "author",
+            "image",
+            "locations",
+            "locations_count",
+        ]
+
+    def get_locations_count(self, obj):
+        return obj.locations.count()
 
 
 class PetLocationModelSerializer(serializers.ModelSerializer):
