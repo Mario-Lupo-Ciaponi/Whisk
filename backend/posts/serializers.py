@@ -9,57 +9,6 @@ from common.serializers import CitySerializer
 from accounts.serializers import UserSerializer
 
 
-class PostModelSerializer(serializers.ModelSerializer):
-    title = serializers.CharField(
-        validators=[
-            ProfanityCheckValidator(),
-        ]
-    )
-    description = serializers.CharField(
-        validators=[
-            ProfanityCheckValidator(),
-        ]
-    )
-    author = UserSerializer(
-        read_only=True,
-    )
-    image = serializers.ImageField(
-        required=True,
-    )
-    city = CitySerializer(
-        read_only=True,
-    )
-    city_id = serializers.PrimaryKeyRelatedField(
-        source="city",
-        queryset=City.objects.all(),
-        write_only=True,
-    )
-    locations = serializers.PrimaryKeyRelatedField(
-        many=True,
-        queryset=PetLocation.objects.all(),
-    )
-    locations_count = serializers.SerializerMethodField()
-
-    class Meta:
-        model = Post
-        fields = [
-            "id",
-            "title",
-            "description",
-            "city",
-            "city_id",
-            "found",
-            "posted_on",
-            "author",
-            "image",
-            "locations",
-            "locations_count",
-        ]
-
-    def get_locations_count(self, obj):
-        return obj.locations.count()
-
-
 class PetLocationModelSerializer(serializers.ModelSerializer):
     author = UserSerializer(
         read_only=True,
@@ -90,10 +39,72 @@ class CommentSerializer(serializers.ModelSerializer):
     author = UserSerializer(
         read_only=True,
     )
-    post = PostModelSerializer(
+    post = serializers.PrimaryKeyRelatedField(
         read_only=True,
+    )
+    post_input = serializers.PrimaryKeyRelatedField(
+        write_only=True,
+        queryset=Post.objects.all(),
+        source="post"
     )
 
     class Meta:
         model = Comment
-        fields = ["id", "content", "author", "post",]
+        fields = ["id", "content", "created_at", "author", "post", "post_input",]
+
+
+class PostModelSerializer(serializers.ModelSerializer):
+    title = serializers.CharField(
+        validators=[
+            ProfanityCheckValidator(),
+        ]
+    )
+    description = serializers.CharField(
+        validators=[
+            ProfanityCheckValidator(),
+        ]
+    )
+    author = UserSerializer(
+        read_only=True,
+    )
+    image = serializers.ImageField(
+        required=True,
+    )
+    city = CitySerializer(
+        read_only=True,
+    )
+    city_id = serializers.PrimaryKeyRelatedField(
+        source="city",
+        queryset=City.objects.all(),
+        write_only=True,
+    )
+    locations = serializers.PrimaryKeyRelatedField(
+        many=True,
+        queryset=PetLocation.objects.all(),
+    )
+    locations_count = serializers.SerializerMethodField()
+    comments = CommentSerializer(
+        read_only=True,
+        many=True,
+    )
+
+    class Meta:
+        model = Post
+        fields = [
+            "id",
+            "title",
+            "description",
+            "city",
+            "city_id",
+            "found",
+            "posted_on",
+            "author",
+            "image",
+            "locations",
+            "locations_count",
+            "comments",
+        ]
+
+    def get_locations_count(self, obj):
+        return obj.locations.count()
+
