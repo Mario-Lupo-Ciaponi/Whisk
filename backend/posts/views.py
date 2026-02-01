@@ -32,7 +32,7 @@ class PostRetrieveUpdateDestroyAPIView(PostAPIViewMixin, RetrieveUpdateDestroyAP
 
 
 class PetLocationListCreateAPIView(ListCreateAPIView):
-    queryset = PetLocation.objects.all()
+    queryset = PetLocation.objects.order_by("-is_valid", "created_at")
     serializer_class = PetLocationModelSerializer
     permission_classes =  [AllowAny,] # TODO: add proper permission classes!
     filter_backends = [filter.DjangoFilterBackend, ]

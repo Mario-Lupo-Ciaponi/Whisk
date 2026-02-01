@@ -13,6 +13,7 @@ import "./PostCard.css";
 const PostCard = ({ post, currentUser }) => {
   const [locations, setLocations] = useState([]);
   const [found, setFound] = useState(post.found);
+
   const moreOptionsRef = useRef(null);
   const mapSectionRef = useRef(null);
 
@@ -27,7 +28,7 @@ const PostCard = ({ post, currentUser }) => {
     } catch (e) {
       console.log(e.response.data);
     }
-  }, []);
+  }, [found]);
 
   const statusText = found ? "Found" : "Not Found";
 
@@ -46,7 +47,6 @@ const PostCard = ({ post, currentUser }) => {
     setFound(!found);
   };
 
-  console.log(currentUser);
   return (
     <article className="post-card" key={post.id}>
       <div className="top">
