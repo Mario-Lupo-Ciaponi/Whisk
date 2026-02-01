@@ -14,10 +14,14 @@ const LocationCard = ({ post, location, currentUser, setFound }) => {
   const formatCoordinates = (c) => Number(c).toFixed(3);
 
   const markLocationAsValid = () => {
-    api.patch(`posts/${post.id}/`, {found: true});
-    api.patch(`posts/location/${location.id}`, {is_valid: true});
-    setFound(true);
-    setIsValid(true);
+    try {
+      api.patch(`posts/${post.id}/`, {found: true});
+      api.patch(`posts/location/${location.id}/`, {is_valid: true});
+      setFound(true);
+      setIsValid(true);
+    } catch (e) {
+      console.log(e);
+    }
   }
 
   return (
