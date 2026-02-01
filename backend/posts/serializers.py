@@ -1,6 +1,6 @@
 from rest_framework import serializers
 from django.db import transaction
-from .models import Post, PetLocation
+from .models import Post, PetLocation, Comment
 from .validators import ProfanityCheckValidator
 
 from cities_light.models import City
@@ -84,3 +84,16 @@ class PetLocationModelSerializer(serializers.ModelSerializer):
     class Meta:
         model = PetLocation
         fields = ["id", "latitude", "longitude", "post_id", "created_at", "is_valid", "author",]
+
+
+class CommentSerializer(serializers.ModelSerializer):
+    author = UserSerializer(
+        read_only=True,
+    )
+    post = PostModelSerializer(
+        read_only=True,
+    )
+
+    class Meta:
+        model = Comment
+        fields = ["id", "content", "author", "post",]

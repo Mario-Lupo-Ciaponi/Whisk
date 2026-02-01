@@ -73,3 +73,26 @@ class PetLocation(models.Model):
 
     def __str__(self):
         return  f"{self.longitude}, {self.latitude} seen on {self.created_at}"
+
+
+class Comment(models.Model):
+    content = models.CharField(
+        max_length=100,
+    )
+    created_at = models.DateTimeField(
+        auto_now_add=True,
+    )
+    author = models.ForeignKey(
+        User,
+        on_delete=models.CASCADE,
+        related_name="comments_created",
+    )
+    post = models.ForeignKey(
+        Post,
+        on_delete=models.CASCADE,
+        related_name="comments",
+    )
+
+    def __str__(self):
+        snippet = (self.content[:20] + "...") if len(self.content) > 20 else self.content
+        return f"{self.author.username}: {snippet}"
