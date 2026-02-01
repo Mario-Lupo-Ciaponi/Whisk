@@ -8,6 +8,7 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import api from "../../api/api.js";
 import MapSection from "../sections/MapSection.jsx";
+import CommentArea from "../CommentArea.jsx";
 import "./PostCard.css";
 
 const PostCard = ({ post, currentUser }) => {
@@ -16,6 +17,7 @@ const PostCard = ({ post, currentUser }) => {
 
   const moreOptionsRef = useRef(null);
   const mapSectionRef = useRef(null);
+  const commentAreaRef = useRef(null);
 
   useEffect(() => {
     const getPostLocations = async () => {
@@ -32,9 +34,12 @@ const PostCard = ({ post, currentUser }) => {
 
   const statusText = found ? "Found" : "Not Found";
 
-  const showActions = () => moreOptionsRef.current.classList.toggle("active");
+  const showActions = () =>
+    moreOptionsRef.current.classList.toggle("active");
   const toggleMapSection = () =>
     mapSectionRef.current.classList.toggle("active");
+  const toggleCommentArea = () =>
+    commentAreaRef.current.classList.toggle("active");
 
   const deletePost = async () => {
     await api.delete(`posts/${post.id}/`);
@@ -43,8 +48,12 @@ const PostCard = ({ post, currentUser }) => {
   };
 
   const changePostStatus = async () => {
-    await api.patch(`posts/${post.id}/`, { found: !found });
-    setFound(!found);
+    try {
+      await api.patch(`posts/${post.id}/`, { found: !found });
+      setFound(!found);
+    } catch (e) {
+      console.log(e);
+    }
   };
 
   return (
@@ -105,7 +114,7 @@ const PostCard = ({ post, currentUser }) => {
           <FontAwesomeIcon icon={faMapLocationDot} />
           <span className="count">{post.locations_count}</span>
         </button>
-        <button className="action comment-post">
+        <button onClick={toggleCommentArea} className="action comment-post">
           <FontAwesomeIcon icon={faComment} />
           <span className="count">0</span>
         </button>
@@ -122,6 +131,11 @@ const PostCard = ({ post, currentUser }) => {
         setLocations={setLocations}
         currentUser={currentUser}
         setFound={setFound}
+      />
+
+      <CommentArea
+        commentAreaRef={commentAreaRef}
+        post={post}
       />
     </article>
   );

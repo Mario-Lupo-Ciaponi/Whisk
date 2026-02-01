@@ -1,0 +1,7 @@
+.comment-area {
+  display: none;
+}
+
+.comment-area.active {
+  display: block;
+}

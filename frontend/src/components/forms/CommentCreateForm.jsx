@@ -1,8 +1,8 @@
-import "CommentCreateForm.css";
 import {useState} from "react";
 import api from "../../api/api.js";
+import "./CommentCreateForm.css";
 
-const CommentCreateForm = () => {
+const CommentCreateForm = ({ post }) => {
   const [content, setContent] = useState("");
 
   const addComment = async (event) => {
@@ -10,8 +10,9 @@ const CommentCreateForm = () => {
 
     if (!content) return;
 
+    console.log(post.id)
     try {
-      api.post("posts/comments", { content });
+      api.post("posts/comments/", { content, post_input: post.id });
     } catch (e) {
       console.log(e);
     }
