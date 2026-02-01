@@ -1,6 +1,5 @@
 from rest_framework import serializers
 from django.db import transaction
-from django.core.exceptions import ObjectDoesNotExist
 from .models import Post, PetLocation
 from .validators import ProfanityCheckValidator
 
@@ -62,8 +61,7 @@ class PostModelSerializer(serializers.ModelSerializer):
 
 
 class PetLocationModelSerializer(serializers.ModelSerializer):
-    author = serializers.CharField(
-        source="author.username",
+    author = UserSerializer(
         read_only=True,
     )
 

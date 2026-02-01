@@ -35,7 +35,7 @@ const LocationCard = ({ post, location, currentUser, setFound }) => {
       <div className="location-info-wrapper">
         <p className="pointed-by-text">
           <span className="username">
-            {location.author || "Anonymous user"}
+            {location.author.username || "Anonymous user"}
           </span>{" "}
           has pointed out the following position:
           <a className="location-url" target="_blank" href={locationUrl}>
