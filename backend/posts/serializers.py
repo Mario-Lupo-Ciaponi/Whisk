@@ -87,6 +87,7 @@ class PostModelSerializer(serializers.ModelSerializer):
         read_only=True,
         many=True,
     )
+    comments_count = serializers.SerializerMethodField()
 
     class Meta:
         model = Post
@@ -103,8 +104,12 @@ class PostModelSerializer(serializers.ModelSerializer):
             "locations",
             "locations_count",
             "comments",
+            "comments_count",
         ]
 
     def get_locations_count(self, obj):
         return obj.locations.count()
+
+    def get_comments_count(self, obj):
+        return obj.comments.count()
 

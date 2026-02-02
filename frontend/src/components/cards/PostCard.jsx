@@ -119,7 +119,7 @@ const PostCard = ({ post, currentUser }) => {
         </button>
         <button onClick={() => toggleSection("comment")} className="action comment-post">
           <FontAwesomeIcon icon={faComment} />
-          <span className="count">0</span>
+          <span className="count">{post.comments_count}</span>
         </button>
         <button className="action mark-position">
           <FontAwesomeIcon icon={faBookmark} />
