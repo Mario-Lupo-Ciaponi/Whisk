@@ -44,7 +44,7 @@ const LocationCard = ({ post, location, currentUser, setFound }) => {
         </p>
       </div>
 
-      {currentUser.id === post.author.id &&
+      {currentUser?.id === post.author.id &&
         <button
           onClick={markLocationAsValid}
           className="found-btn">

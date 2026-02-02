@@ -88,7 +88,7 @@ const PostCard = ({ post, currentUser }) => {
             <li className="option-item">
               <button className="option">Share</button>
             </li>
-            {post.author.id === currentUser.id && (
+            {post.author.id === currentUser?.id && (
               <>
                 <li className="option-item">
                   <button onClick={changePostStatus} className="option">
