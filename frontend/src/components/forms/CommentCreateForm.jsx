@@ -1,12 +1,15 @@
-import {useState} from "react";
+import { useState } from "react";
 import api from "../../api/api.js";
 import "./CommentCreateForm.css";
 
-const CommentCreateForm = ({ post, setComments }) => {
+const CommentCreateForm = ({ post, setComments, currentUser, navigate }) => {
   const [content, setContent] = useState("");
 
-  const addComment = async (event) => {
+  const createComment = async (event) => {
     event.preventDefault();
+
+    if (!currentUser)
+      navigate("/login");
 
     if (!content) return;
 
@@ -19,7 +22,7 @@ const CommentCreateForm = ({ post, setComments }) => {
   }
 
   return (
-    <form onSubmit={addComment} className="comment-create-form">
+    <form onSubmit={createComment} className="comment-create-form">
       <input
         className="comment-content-input"
         placeholder="Add a comment..."

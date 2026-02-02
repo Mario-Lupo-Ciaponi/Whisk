@@ -11,13 +11,11 @@ import MapSection from "../sections/MapSection.jsx";
 import CommentArea from "../CommentArea.jsx";
 import "./PostCard.css";
 
-const PostCard = ({ post, currentUser }) => {
+const PostCard = ({ post, currentUser, navigate }) => {
   const [locations, setLocations] = useState([]);
   const [comments, setComments] = useState([]);
   const [found, setFound] = useState(post.found);
   const [activeSection, setActiveSection] = useState("none");
-
-  console.log(post)
 
   const moreOptionsRef = useRef(null);
 
@@ -137,6 +135,8 @@ const PostCard = ({ post, currentUser }) => {
         post={post}
         comments={comments}
         setComments={setComments}
+        currentUser={currentUser}
+        navigate={navigate}
       />
     </article>
   );
