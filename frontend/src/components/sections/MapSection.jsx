@@ -1,59 +1,15 @@
 import { useState } from "react";
 import { MapContainer, TileLayer, Marker, useMapEvents } from "react-leaflet";
-import LocationCard from "../cards/LocationCard.jsx";
 import LocationSection from "./LocationSection.jsx";
+import LocationPicker from "../LocationPicker.jsx";
 import api from "../../api/api.js";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCaretDown, faCaretUp } from "@fortawesome/free-solid-svg-icons";
 import "./MapSection.css";
-import "leaflet/dist/leaflet.css";
-
-const MapEvents = ({ onClick }) => {
-  useMapEvents({
-    click(event) {
-      // Gives the latitude and longitude from the event object
-      onClick(event.latlng);
-    },
-  });
-
-  return null;
-};
 
 const MapSection = ({ activeSection, post, locations, setLocations, currentUser, setFound }) => {
-  const [selectedPosition, setSelectedPosition] = useState(null);
   const [showLocationSection, setShowLocationSection] = useState(false);
 
-  const latitude = Number(post.city.latitude);
-  const longitude = Number(post.city.longitude);
-
-  const addLocation = async () => {
-    try {
-      if (!selectedPosition) {
-        alert("Please select a location!");
-        return;
-      }
-      const latitude = selectedPosition.lat;
-      const longitude = selectedPosition.lng;
-
-      const data = {
-        latitude: latitude.toFixed(6),
-        longitude: longitude.toFixed(6),
-        post_id: post.id,
-      };
-
-      const response = await api.post("posts/location/", data, {
-        headers: {
-          "Content-Type": "application/json",
-        },
-      });
-
-      setLocations((prev) => [...prev, response.data]);
-      alert("Location added successfully!");
-    } catch (e) {
-      console.log(e);
-      alert("An Error occurred!");
-    }
-  };
   const toggleLocationSection = () =>
     setShowLocationSection(!showLocationSection);
 
@@ -66,23 +22,7 @@ const MapSection = ({ activeSection, post, locations, setLocations, currentUser,
         </p>
       </header>
 
-      <MapContainer
-        center={[latitude, longitude]}
-        zoom={12}
-        scrollWheelZoom={false}
-      >
-        <TileLayer
-          attribution='<a href="https://www.maptiler.com/copyright/" target="_blank">&copy; MapTiler</a> <a href="https://www.openstreetmap.org/copyright" target="_blank">&copy; OpenStreetMap contributors</a>'
-          url="https://api.maptiler.com/maps/base-v4/{z}/{x}/{y}.png?key=sEQcJLkXBPo4v8VsuE7h"
-        />
-        <MapEvents onClick={setSelectedPosition} />
-
-        {selectedPosition && <Marker position={selectedPosition} />}
-      </MapContainer>
-
-      <button onClick={addLocation} className="add-location-btn">
-        Add Location
-      </button>
+      <LocationPicker post={post} setLocations={setLocations} />
 
       <div className="locations-wrapper">
         <button className="show-locations-btn" onClick={toggleLocationSection}>

@@ -1,0 +1,25 @@
+.leaflet-container {
+  margin-top: 0.5rem;
+  height: 300px;
+  width: 100%;
+  border-radius: 2rem;
+}
+
+.add-location-btn {
+  margin: 1.5rem auto;
+  display: block;
+  background-color: var(--brown-color);
+  border: none;
+  border-radius: 2rem;
+  color: white;
+  padding: 0.5rem 1rem;
+  transition: background-color 500ms ease-in-out;
+}
+
+.add-location-btn:hover {
+  background-color: var(--darker-brown-color);
+}
+
+.add-location-btn:active {
+  background-color: var(--light-brown-color);
+}
