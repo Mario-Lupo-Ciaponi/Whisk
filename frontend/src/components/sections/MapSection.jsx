@@ -15,14 +15,21 @@ const MapSection = ({ activeSection, post, locations, setLocations, currentUser,
 
   return (
     <section className={`map-section ${activeSection === "map" ? "active" : "none"}`}>
-      <header className="section-header">
+      {!post.found &&
+        <>
+          <header className="section-header">
         <h3 className="section-title">Pet Location</h3>
         <p className="section-description">
           Select a location where you have seen the pet
         </p>
       </header>
 
-      <LocationPicker post={post} setLocations={setLocations} />
+          <LocationPicker
+            post={post}
+            setLocations={setLocations}
+          />
+        </>
+      }
 
       <div className="locations-wrapper">
         <button className="show-locations-btn" onClick={toggleLocationSection}>
