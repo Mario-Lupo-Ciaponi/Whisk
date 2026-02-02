@@ -26,7 +26,7 @@ const HomePage = ({ currentUser }) => {
       });
 
       setPosts(response.data.results);
-      setTotalPages(response.data.count / itemsPerPage);
+      setTotalPages(Math.ceil(response.data.count / itemsPerPage));
     } catch (error) {
       console.log(error);
     }
