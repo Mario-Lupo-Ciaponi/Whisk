@@ -1,6 +1,6 @@
 .map-section {
   display: none;
-  padding: 0.5rem 2rem;
+  padding: var(--post-bottom-section-padding);
   width: 100%;
   border-top: 2px solid var(--coffee-pot-color);
 }

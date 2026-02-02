@@ -1,0 +1,38 @@
+.comment-create-form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.comment-create-form .comment-content-input {
+  display: block;
+  width: 100%;
+  background: none;
+  border: none;
+  border-bottom: var(--border-default-values) var(--coffee-pot-color);
+  padding-bottom: 0.2rem;
+  transition: border-bottom 500ms ease-in-out;
+}
+
+.comment-create-form .comment-content-input::placeholder {
+  color: var(--coffee-pot-color);
+}
+
+.comment-create-form .comment-content-input:focus {
+  outline: none;
+  border-bottom: 2px solid var(--coffee-pot-color);
+}
+
+.comment-create-form .submit-btn {
+  padding: 0.7rem 0.9rem;
+  border-radius: 2rem;
+  border: none;
+  background-color: var(--coffee-pot-color);
+  color: white;
+  align-self: flex-end;
+  transition: background-color 500ms ease-in-out;
+}
+
+.comment-create-form .submit-btn:hover {
+  background-color: var(--tan-color);
+}

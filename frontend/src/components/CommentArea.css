@@ -1,5 +1,7 @@
 .comment-area {
   display: none;
+  border-top: 2px solid var(--coffee-pot-color);
+  padding: var(--post-bottom-section-padding);
 }
 
 .comment-area.active {
