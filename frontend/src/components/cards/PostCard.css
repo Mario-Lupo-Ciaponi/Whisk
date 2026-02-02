@@ -29,8 +29,8 @@
 }
 
 .post-card .top .user-container .profile-image{
-  width: 2.5rem;
-  height: 2.5rem;
+  width: var(--profile-image-width-and-height);
+  height: var(--profile-image-width-and-height);
   border-radius: 50%;
 }
 

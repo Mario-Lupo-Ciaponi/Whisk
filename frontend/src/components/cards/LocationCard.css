@@ -9,8 +9,8 @@
 }
 
 .location-card .profile-image {
-  width: 2rem;
-  height: 2rem;
+  width: var(--profile-image-width-and-height);
+  height: var(--profile-image-width-and-height);
   border-radius: 1.5rem;
 }
 

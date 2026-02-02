@@ -1,0 +1,39 @@
+.comment-card {
+  display: flex;
+  gap: 1rem;
+}
+
+.comment-card .profile-image {
+  width: var(--profile-image-width-and-height);
+  height: var(--profile-image-width-and-height);
+  border-radius: 2rem;
+}
+
+.comment-card .comment-wrapper {
+  flex-grow: 2;
+  display: flex;
+  gap: 0.25rem;
+  flex-direction: column;
+  align-self: flex-start;
+}
+
+.comment-card .comment-wrapper .comment-header {
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+}
+
+.comment-card .comment-wrapper .comment-header .username {
+  font-size: 1.1rem;
+}
+
+.comment-card .comment-wrapper .comment-header .date-created {
+  font-size: 0.9rem;
+  color: var(--tan-color);
+  font-style: italic;
+}
+
+.comment-card .comment-wrapper .content {
+  padding-left: 0.5rem;
+  border-left: 2px solid var(--coffee-pot-color);
+}

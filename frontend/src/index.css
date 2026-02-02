@@ -7,7 +7,7 @@
   --coffee-pot-color: #67595E;
   --brown-color: #8c5826;
   --dark-brown-color: #7A6B6B;
-  --darker-bronw-color: #503618;
+  --darker-brown-color: #503618;
   --light-brown-color: #73675c;
   --lighter-brown-color: #a18a8a;
   --red-color: #FF3131;
@@ -16,4 +16,6 @@
   --border-default-values: 1px solid;
 
   --post-bottom-section-padding: 0.5rem 1rem;
+
+  --profile-image-width-and-height: 2.5rem
 }
