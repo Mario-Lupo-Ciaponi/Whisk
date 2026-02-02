@@ -2,9 +2,9 @@ import CommentCreateForm from "./forms/CommentCreateForm.jsx";
 import "./CommentArea.css";
 import CommentSection from "./sections/CommentSection.jsx";
 
-const CommentArea = ({ commentAreaRef, post, comments, setComments }) => {
+const CommentArea = ({ activeSection, post, comments, setComments }) => {
   return (
-    <div ref={commentAreaRef} className="comment-area">
+    <div className={`comment-area ${activeSection === "comment" ? "active" : "none"}`}>
       <CommentCreateForm
         post={post}
         setComments={setComments}

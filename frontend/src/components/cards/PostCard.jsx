@@ -15,10 +15,9 @@ const PostCard = ({ post, currentUser }) => {
   const [locations, setLocations] = useState([]);
   const [comments, setComments] = useState([]);
   const [found, setFound] = useState(post.found);
+  const [activeSection, setActiveSection] = useState("none");
 
   const moreOptionsRef = useRef(null);
-  const mapSectionRef = useRef(null);
-  const commentAreaRef = useRef(null);
 
   useEffect(() => {
     const getPostLocations = async () => { // TODO: optimize
@@ -41,10 +40,9 @@ const PostCard = ({ post, currentUser }) => {
 
   const showActions = () =>
     moreOptionsRef.current.classList.toggle("active");
-  const toggleMapSection = () =>
-    mapSectionRef.current.classList.toggle("active");
-  const toggleCommentArea = () =>
-    commentAreaRef.current.classList.toggle("active");
+
+  const toggleSection = (name) =>
+    setActiveSection(prev => prev === name ? "none" : name);
 
   const deletePost = async () => {
     await api.delete(`posts/${post.id}/`);
@@ -115,11 +113,11 @@ const PostCard = ({ post, currentUser }) => {
       </div>
       <hr className="divider" />
       <div className="actions">
-        <button onClick={toggleMapSection} className="action mark-position">
+        <button onClick={() => toggleSection("map")} className="action mark-position">
           <FontAwesomeIcon icon={faMapLocationDot} />
           <span className="count">{post.locations_count}</span>
         </button>
-        <button onClick={toggleCommentArea} className="action comment-post">
+        <button onClick={() => toggleSection("comment")} className="action comment-post">
           <FontAwesomeIcon icon={faComment} />
           <span className="count">0</span>
         </button>
@@ -130,7 +128,7 @@ const PostCard = ({ post, currentUser }) => {
       </div>
 
       <MapSection
-        mapSectionRef={mapSectionRef}
+        activeSection={activeSection}
         post={post}
         locations={locations}
         setLocations={setLocations}
@@ -139,7 +137,7 @@ const PostCard = ({ post, currentUser }) => {
       />
 
       <CommentArea
-        commentAreaRef={commentAreaRef}
+        activeSection={activeSection}
         post={post}
         comments={comments}
         setComments={setComments}

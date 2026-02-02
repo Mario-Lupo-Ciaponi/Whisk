@@ -19,7 +19,7 @@ const MapEvents = ({ onClick }) => {
   return null;
 };
 
-const MapSection = ({ mapSectionRef, post, locations, setLocations, currentUser, setFound }) => {
+const MapSection = ({ activeSection, post, locations, setLocations, currentUser, setFound }) => {
   const [selectedPosition, setSelectedPosition] = useState(null);
   const [showLocationSection, setShowLocationSection] = useState(false);
 
@@ -58,7 +58,7 @@ const MapSection = ({ mapSectionRef, post, locations, setLocations, currentUser,
     setShowLocationSection(!showLocationSection);
 
   return (
-    <section ref={mapSectionRef} className="map-section">
+    <section className={`map-section ${activeSection === "map" ? "active" : "none"}`}>
       <header className="section-header">
         <h3 className="section-title">Pet Location</h3>
         <p className="section-description">
