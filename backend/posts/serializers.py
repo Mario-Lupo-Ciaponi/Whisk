@@ -78,9 +78,9 @@ class PostModelSerializer(serializers.ModelSerializer):
         queryset=City.objects.all(),
         write_only=True,
     )
-    locations = serializers.PrimaryKeyRelatedField(
+    locations = PetLocationModelSerializer(
+        read_only=True,
         many=True,
-        queryset=PetLocation.objects.all(),
     )
     locations_count = serializers.SerializerMethodField()
     comments = CommentSerializer(

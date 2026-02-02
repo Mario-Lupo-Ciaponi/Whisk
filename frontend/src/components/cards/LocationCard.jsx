@@ -5,6 +5,7 @@ import api from "../../api/api.js";
 const LocationCard = ({ post, location, currentUser, setFound }) => {
   const [isValid, setIsValid] = useState(location.is_valid); // This is if the pet was found in this location
 
+  console.log("Location: " + location)
   const latitude = location.latitude;
   const longitude = location.longitude;
 
@@ -35,7 +36,7 @@ const LocationCard = ({ post, location, currentUser, setFound }) => {
       <div className="location-info-wrapper">
         <p className="pointed-by-text">
           <span className="username">
-            {location.author.username || "Anonymous user"}
+            {location.author ? location.author.username : "Anonymous user"}
           </span>{" "}
           has pointed out the following position:
           <a className="location-url" target="_blank" href={locationUrl}>

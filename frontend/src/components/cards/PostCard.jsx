@@ -17,23 +17,19 @@ const PostCard = ({ post, currentUser }) => {
   const [found, setFound] = useState(post.found);
   const [activeSection, setActiveSection] = useState("none");
 
+  console.log(post)
+
   const moreOptionsRef = useRef(null);
 
   useEffect(() => {
-    const getPostLocations = async () => { // TODO: optimize
-      const response = await api.get(`posts/location/?post=${post.id}`);
-      setLocations(response.data);
-    };
+    const getPostLocations = () =>
+      setLocations(post.locations);
 
     const getComments = () =>
       setComments(post.comments);
 
-    try {
-      getPostLocations();
-      getComments();
-    } catch (e) {
-      console.log(e.response.data);
-    }
+    getPostLocations();
+    getComments();
   }, []);
 
   const statusText = found ? "Found" : "Not Found";
