@@ -4,11 +4,13 @@ import NoResult from "../components/NoResult.jsx";
 import api from "../api/api.js";
 import "./HomePage.css";
 import PaginationList from "../components/PaginationList.jsx";
+import Loader from "../components/Loader.jsx";
 
 const HomePage = ({ currentUser, navigate }) => {
   const [posts, setPosts] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [totalPages, setTotalPages] = useState(0);
+  const [isLoading, setIsLoading] = useState(false);
 
   const itemsPerPage = 2;
 
@@ -18,6 +20,8 @@ const HomePage = ({ currentUser, navigate }) => {
   };
 
   const getPosts = async () => {
+    setIsLoading(true);
+
     try {
       const response = await api.get("posts/", {
         params: {
@@ -30,9 +34,12 @@ const HomePage = ({ currentUser, navigate }) => {
     } catch (error) {
       console.log(error);
     }
+    setIsLoading(false);
   };
 
   const filterPosts = async (query) => {
+    setIsLoading(true);
+
     try {
       const response = await api.get("posts/", {
         params: {
@@ -44,6 +51,8 @@ const HomePage = ({ currentUser, navigate }) => {
     } catch (error) {
       console.log(error);
     }
+
+    setIsLoading(false);
   };
 
   useEffect(() => {
@@ -73,17 +82,25 @@ const HomePage = ({ currentUser, navigate }) => {
         </select>
       </div>
 
-      {posts.length ? (
-        <PostSection posts={posts} currentUser={currentUser} navigate={navigate} />
+      {isLoading ? (
+        <Loader />
+      ) : posts.length > 0 ? (
+        <>
+          <PostSection
+            posts={posts}
+            currentUser={currentUser}
+            navigate={navigate}
+          />
+
+          <PaginationList
+            currentPage={currentPage}
+            setCurrentPage={setCurrentPage}
+            totalPages={totalPages}
+          />
+        </>
       ) : (
         <NoResult />
       )}
-
-      <PaginationList
-        currentPage={currentPage}
-        setCurrentPage={setCurrentPage}
-        totalPages={totalPages}
-      />
     </div>
   );
 };
