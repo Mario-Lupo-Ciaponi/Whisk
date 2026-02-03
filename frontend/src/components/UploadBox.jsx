@@ -1,6 +1,10 @@
 import "./UploadBox.css";
 
 const UploadBox = ({ image, setImage }) => {
+  const isFileImage = (file) => {
+    return file.type.includes("images")
+  }
+
   const removeBtn = (event) => {
     event.preventDefault();
     event.stopPropagation();
@@ -13,13 +17,24 @@ const UploadBox = ({ image, setImage }) => {
 
     const droppedImage = event.dataTransfer.files[0];
 
-    if (droppedImage)
+    if (isFileImage(droppedImage))
       setImage(droppedImage);
+    else
+      alert("The file must be an Image!"); // Demo, will change later;
   }
 
   const handleDrag = (event) => {
     event.preventDefault();
     event.stopPropagation();
+  }
+
+  const handleChange = (event) => {
+    const image = event.target.files[0]
+
+    if (isFileImage(image))
+      setImage(image);
+    else
+      alert("The file must be an Image!"); // Demo, will change later
   }
 
   return (
@@ -51,9 +66,7 @@ const UploadBox = ({ image, setImage }) => {
           className="hidden-input"
           name="image-upload"
           type="file"
-          onChange={(event) => {
-            setImage(event.target.files[0]);
-          }}
+          onChange={handleChange}
         />
       </label>
     </div>
