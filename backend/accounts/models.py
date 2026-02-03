@@ -6,6 +6,7 @@ from cloudinary.models import CloudinaryField
 from .choices import AccountTypeChoices
 
 
+# NOTE: After creation a signal triggers that create a profile
 class WhiskUser(AbstractUser):
     country = models.ForeignKey(
         "cities_light.Country",
