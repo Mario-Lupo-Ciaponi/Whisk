@@ -7,6 +7,10 @@
   background-color: var(--pewter-color);
 }
 
+.navbar > * {
+  flex: 1;
+}
+
 .navbar .logo {
   width: 4rem;
   height: 4rem;
@@ -17,6 +21,7 @@
 .navbar .links {
   display: flex;
   gap: 2rem;
+  justify-content: center;
 }
 
 .navbar .links .item {
@@ -38,13 +43,41 @@
 
 .navbar .user-menu {
   display: flex;
-  gap: 0.5rem;
+  align-items: center;
+  justify-content: flex-end;
+  color: var(--tan-color);
+  gap: 1rem;
+}
+.navbar .user-menu .notifications {
+  background: none;
+  border: none;
+  color: inherit;
+}
+
+.navbar .user-menu .dropdown {
+  padding: 0 1rem;
+  border-right: 2px solid var(--tan-color);
+  border-left: 2px solid var(--tan-color);
 }
 
 .navbar .user-menu .dropdown .user-toggle {
   color: var(--tan-color);
   font-size: 1.5rem;
   height: 100%;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.navbar .user-menu .dropdown .user-toggle .profile-image{
+  width: 1.5rem;
+  height: 1.5rem;
+  border-radius: 2rem;
+  border: var(--border-default-values) var(--tan-color);
+}
+
+.navbar .user-menu .dropdown .user-toggle .username {
+  font-size: 0.9rem;
 }
 
 .navbar .user-menu .dropdown {
@@ -85,6 +118,23 @@
 .navbar .user-menu .dropdown:hover .menu-list .dropdown-item .dropdown-link,
 .navbar .user-menu .dropdown:hover .menu-list .dropdown-item .logout-btn{
   color: var(--tan-color);
+}
+
+.navbar .user-menu .create-post-link {
+  background-color: var(--tan-color);
+  color: white;
+  padding: 0.5rem 1rem;
+  border-radius: 1.5rem;
+  transition: background-color 500ms ease-in-out;
+}
+
+.navbar .user-menu .create-post-link:hover {
+  background-color: var(--coffee-pot-color);
+}
+
+.navbar .auth-link-container {
+  display: flex;
+  justify-content: flex-end;
 }
 
 .navbar .auth-link{

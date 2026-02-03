@@ -1,11 +1,11 @@
 import { NavLink, Link } from "react-router";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import api from "../api/api.js";
-import { faUser } from "@fortawesome/free-solid-svg-icons";
+import { faUser, faBell } from "@fortawesome/free-solid-svg-icons";
 import LogoImage from "../assets/logo.png";
 import "./Navbar.css";
 
-const Navbar = ({ navigate }) => {
+const Navbar = ({ navigate, currentUser }) => {
   const logout = async () => {
     try {
       await api.post("token/blacklist/", {
@@ -25,7 +25,9 @@ const Navbar = ({ navigate }) => {
 
   return (
     <nav className="navbar">
-      <img className="logo" src={LogoImage} alt="logo" />
+      <div className="logo-container">
+        <img className="logo" src={LogoImage} alt="logo" />
+      </div>
 
       <ul className="links">
         <li className="item">
@@ -44,11 +46,6 @@ const Navbar = ({ navigate }) => {
           </NavLink>
         </li>
         <li className="item">
-          <NavLink to="/create-post" className="link">
-            Create Post
-          </NavLink>
-        </li>
-        <li className="item">
           <NavLink to="/help" className="link">
             Help
           </NavLink>
@@ -57,10 +54,14 @@ const Navbar = ({ navigate }) => {
 
       {isLoggedIn ? (
         <div className="user-menu">
-          {/*<FontAwesomeIcon icon={faBell} />*/}
+          <button className="notifications">
+            <FontAwesomeIcon icon={faBell} />
+          </button>
+
           <div className="dropdown user-options">
             <button className="user-toggle">
-              <FontAwesomeIcon icon={faUser} />
+              <img className="profile-image" src="images/default-profile-img.jpeg" alt="profile-image"/>
+              <span className="username">{currentUser?.username}</span>
             </button>
 
             <ul className="menu-list">
@@ -81,11 +82,15 @@ const Navbar = ({ navigate }) => {
               </li>
             </ul>
           </div>
+
+          <Link className="create-post-link" to="create-post/">Create Post</Link>
         </div>
       ) : (
-        <Link to="/login" className="login-btn auth-link">
-          Login
-        </Link>
+        <div className="auth-link-container">
+          <Link to="/login" className="login-btn auth-link">
+            Login
+          </Link>
+        </div>
       )}
     </nav>
   );

@@ -30,7 +30,7 @@ const App = () => {
 
   return (
     <>
-      <Navbar navigate={navigate} />
+      <Navbar navigate={navigate} currentUser={currentUser} />
       <main>
           <Routes>
               <Route path="*" element={<NotFound />} />
