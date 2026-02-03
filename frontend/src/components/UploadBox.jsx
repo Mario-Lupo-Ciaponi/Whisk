@@ -6,9 +6,31 @@ const UploadBox = ({ image, setImage }) => {
     event.stopPropagation();
     setImage(null);
   };
+
+  const handleDrop = (event) => {
+    event.preventDefault();
+    event.stopPropagation();
+
+    const droppedImage = event.dataTransfer.files[0];
+
+    if (droppedImage)
+      setImage(droppedImage);
+  }
+
+  const handleDrag = (event) => {
+    event.preventDefault();
+    event.stopPropagation();
+  }
+
   return (
     <div className="upload-container">
-      <label htmlFor="image-upload" className="drop-zone">
+      <label
+        htmlFor="image-upload"
+        className="drop-zone"
+        onDrop={handleDrop}
+        onDragOver={handleDrag}
+        onDragEnter={handleDrag}
+      >
         {image ? (
           <>
             <span className="file-name">{image.name}</span>
