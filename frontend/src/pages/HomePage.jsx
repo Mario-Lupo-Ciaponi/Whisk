@@ -83,7 +83,10 @@ const HomePage = ({ currentUser, navigate }) => {
       </div>
 
       {isLoading ? (
-        <Loader />
+        <Loader
+          width={100}
+          height={100}
+        />
       ) : posts.length > 0 ? (
         <>
           <PostSection

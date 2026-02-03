@@ -51,6 +51,9 @@
   border: none;
   border-radius: 0.31rem;
   transition: background-color 500ms ease-in-out;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .create-post-form .submit-btn:hover {

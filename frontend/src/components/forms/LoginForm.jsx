@@ -2,6 +2,7 @@ import { useState } from "react";
 import PasswordToggle from "../PasswordToggle.jsx";
 import api from "../../api/api.js";
 import "./AuthForm.css";
+import Loader from "../Loader.jsx";
 
 const LoginForm = ({
   setAuthTokens,
@@ -13,6 +14,7 @@ const LoginForm = ({
 }) => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
 
   const handleLogin = async (event) => {
     event.preventDefault();
@@ -27,6 +29,7 @@ const LoginForm = ({
     formData.append("username", username);
     formData.append("password", password);
 
+    setIsLoading(true);
     try {
       const response = await api.post("token/", formData, {
         headers: {
@@ -47,6 +50,8 @@ const LoginForm = ({
 
       console.log(e);
     }
+
+    setIsLoading(false);
   };
 
   return (
@@ -83,6 +88,7 @@ const LoginForm = ({
             onChange={(event) => {
               setPassword(event.target.value);
             }}
+            autoComplete="off"
             required
           />
 
@@ -94,7 +100,13 @@ const LoginForm = ({
       </div>
 
       <button type="submit" className="submit-btn">
-        Login
+        {isLoading ?
+          <Loader
+            height={30}
+            width={30}
+          /> :
+          "Login"
+        }
       </button>
     </form>
   );

@@ -3,6 +3,7 @@ import ErrorList from "../ErrorList.jsx";
 import api from "../../api/api.js";
 import "./PostCreateForm.css";
 import UploadBox from "../UploadBox.jsx";
+import Loader from "../Loader.jsx";
 
 const PostCreateForm = ({ currentUser, navigate, errors, setErrors }) => {
   const [title, setTitle] = useState("");
@@ -10,6 +11,7 @@ const PostCreateForm = ({ currentUser, navigate, errors, setErrors }) => {
   const [cities, setCities] = useState([]);
   const [selectedCity, setSelectedCity] = useState("");
   const [image, setImage] = useState(null);
+  const [isLoading, setIsLoading] = useState(false);
 
   const addCities = async () => {
     const countryId = currentUser.country;
@@ -39,6 +41,8 @@ const PostCreateForm = ({ currentUser, navigate, errors, setErrors }) => {
     formData.append("image", image);
     formData.append("city_id", Number(selectedCity));
 
+    setIsLoading(true);
+
     try {
       await api.post("posts/", formData, {
         headers: {
@@ -56,10 +60,12 @@ const PostCreateForm = ({ currentUser, navigate, errors, setErrors }) => {
 
       console.log(e);
     }
+
+    setIsLoading(false);
   };
 
   useEffect(() => {
-    if (currentUser) addCities();
+    if (currentUser?.country) addCities();
   }, [currentUser]);
 
   return (
@@ -109,8 +115,7 @@ const PostCreateForm = ({ currentUser, navigate, errors, setErrors }) => {
           }}
         >
           <option className="select-option" disabled selected value>
-            {" "}
-            Select{" "}
+            Select
           </option>
           {cities.map((city) => {
             return (
@@ -124,7 +129,15 @@ const PostCreateForm = ({ currentUser, navigate, errors, setErrors }) => {
 
       <UploadBox image={image} setImage={setImage} />
 
-      <button className="submit-btn">Submit</button>
+      <button className="submit-btn">
+        {isLoading ?
+          <Loader
+            height={30}
+            width={30}
+          /> :
+          "Submit"
+        }
+      </button>
     </form>
   );
 };

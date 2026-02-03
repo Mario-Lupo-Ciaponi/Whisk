@@ -3,6 +3,7 @@ import PasswordToggle from "../PasswordToggle.jsx";
 
 import api from "../../api/api.js";
 import "./AuthForm.css";
+import Loader from "../Loader.jsx";
 
 const RegisterForm = ({
   errors,
@@ -18,6 +19,7 @@ const RegisterForm = ({
   const [firstPassword, setFirstPassword] = useState("");
   const [secondPassword, setSecondPassword] = useState("");
   const [allCountries, setAllCountries] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
 
   const fetchAllCountries = async () => {
     try {
@@ -50,6 +52,8 @@ const RegisterForm = ({
     formData.append("password1", firstPassword);
     formData.append("password2", secondPassword);
 
+    setIsLoading(true);
+
     try {
       await api.post("accounts/register/", formData, {
         headers: {
@@ -65,6 +69,8 @@ const RegisterForm = ({
 
       console.log(e);
     }
+
+    setIsLoading(false);
   };
 
   useEffect(() => {
@@ -145,6 +151,7 @@ const RegisterForm = ({
             onChange={(event) => {
               setFirstPassword(event.target.value);
             }}
+            autoComplete="off"
             required
           />
 
@@ -170,6 +177,7 @@ const RegisterForm = ({
             onChange={(event) => {
               setSecondPassword(event.target.value);
             }}
+            autoComplete="off"
             required
           />
 
@@ -181,7 +189,13 @@ const RegisterForm = ({
       </div>
 
       <button type="submit" className="submit-btn">
-        Register
+        {isLoading ?
+          <Loader
+            height={30}
+            width={30}
+          /> :
+          "Register"
+        }
       </button>
     </form>
   );

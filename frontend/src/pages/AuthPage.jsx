@@ -13,6 +13,8 @@ const AuthPage = ({ setAuthTokens, navigate, errors, setErrors }) => {
 
   return (
     <div className="auth-wrapper">
+      <title>Enter in your account</title>
+
       <article className="auth-card">
         <div className="segmented-control">
           <div className={`toggle-option ${showLogin ? "active" : ""}`}>
