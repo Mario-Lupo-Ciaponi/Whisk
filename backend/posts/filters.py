@@ -6,4 +6,4 @@ from .models import Post
 class PostFilter(filters.FilterSet):
     class Meta:
         model = Post
-        fields = ['city', 'found']
+        fields = ["city", "found"]

@@ -9,6 +9,11 @@ class CityGroupSerializer(serializers.ModelSerializer):
         source="owner.username",
         read_only=True,
     )
+
     class Meta:
         model = CityGroup
-        fields = ["name", "description", "owner",]
+        fields = [
+            "name",
+            "description",
+            "owner",
+        ]

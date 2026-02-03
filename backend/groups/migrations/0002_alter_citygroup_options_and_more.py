@@ -8,32 +8,34 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('groups', '0001_initial'),
+        ("groups", "0001_initial"),
         migrations.swappable_dependency(settings.AUTH_USER_MODEL),
     ]
 
     operations = [
         migrations.AlterModelOptions(
-            name='citygroup',
-            options={'ordering': ['name']},
+            name="citygroup",
+            options={"ordering": ["name"]},
         ),
         migrations.AlterModelOptions(
-            name='citygroupmember',
-            options={'verbose_name': 'City Group Membership'},
+            name="citygroupmember",
+            options={"verbose_name": "City Group Membership"},
         ),
         migrations.AddField(
-            model_name='citygroupmember',
-            name='is_admin',
+            model_name="citygroupmember",
+            name="is_admin",
             field=models.BooleanField(default=False),
         ),
         migrations.AddField(
-            model_name='citygroupmember',
-            name='joined_on',
-            field=models.DateTimeField(auto_now_add=True, default=django.utils.timezone.now),
+            model_name="citygroupmember",
+            name="joined_on",
+            field=models.DateTimeField(
+                auto_now_add=True, default=django.utils.timezone.now
+            ),
             preserve_default=False,
         ),
         migrations.AlterUniqueTogether(
-            name='citygroupmember',
-            unique_together={('group', 'member')},
+            name="citygroupmember",
+            unique_together={("group", "member")},
         ),
     ]

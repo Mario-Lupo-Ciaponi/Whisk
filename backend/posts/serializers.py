@@ -21,7 +21,7 @@ class PetLocationModelSerializer(serializers.ModelSerializer):
 
         try:
             post = Post.objects.get(pk=post_id)
-        except Post.DoesNotExist: #TODO: change the expected error
+        except Post.DoesNotExist:  # TODO: change the expected error
             raise serializers.ValidationError(f"Post with id {post_id} does not exist.")
 
         # If the M2M fails, it will roll back
@@ -32,7 +32,15 @@ class PetLocationModelSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = PetLocation
-        fields = ["id", "latitude", "longitude", "post_id", "created_at", "is_valid", "author",]
+        fields = [
+            "id",
+            "latitude",
+            "longitude",
+            "post_id",
+            "created_at",
+            "is_valid",
+            "author",
+        ]
 
 
 class CommentSerializer(serializers.ModelSerializer):
@@ -43,14 +51,19 @@ class CommentSerializer(serializers.ModelSerializer):
         read_only=True,
     )
     post_input = serializers.PrimaryKeyRelatedField(
-        write_only=True,
-        queryset=Post.objects.all(),
-        source="post"
+        write_only=True, queryset=Post.objects.all(), source="post"
     )
 
     class Meta:
         model = Comment
-        fields = ["id", "content", "created_at", "author", "post", "post_input",]
+        fields = [
+            "id",
+            "content",
+            "created_at",
+            "author",
+            "post",
+            "post_input",
+        ]
 
 
 class PostModelSerializer(serializers.ModelSerializer):
@@ -112,4 +125,3 @@ class PostModelSerializer(serializers.ModelSerializer):
 
     def get_comments_count(self, obj):
         return obj.comments.count()
-

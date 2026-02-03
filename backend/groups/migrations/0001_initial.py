@@ -15,25 +15,68 @@ class Migration(migrations.Migration):
 
     operations = [
         migrations.CreateModel(
-            name='CityGroup',
+            name="CityGroup",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('name', models.CharField(max_length=100, unique=True)),
-                ('description', models.TextField(blank=True, null=True)),
-                ('owner', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='groups_owned', to=settings.AUTH_USER_MODEL)),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("name", models.CharField(max_length=100, unique=True)),
+                ("description", models.TextField(blank=True, null=True)),
+                (
+                    "owner",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        related_name="groups_owned",
+                        to=settings.AUTH_USER_MODEL,
+                    ),
+                ),
             ],
         ),
         migrations.CreateModel(
-            name='CityGroupMember',
+            name="CityGroupMember",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('group', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='user_groups', to='groups.citygroup', verbose_name='group')),
-                ('member', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='user_roles', to=settings.AUTH_USER_MODEL, verbose_name='member')),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                (
+                    "group",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        related_name="user_groups",
+                        to="groups.citygroup",
+                        verbose_name="group",
+                    ),
+                ),
+                (
+                    "member",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        related_name="user_roles",
+                        to=settings.AUTH_USER_MODEL,
+                        verbose_name="member",
+                    ),
+                ),
             ],
         ),
         migrations.AddField(
-            model_name='citygroup',
-            name='members',
-            field=models.ManyToManyField(related_name='city_groups', through='groups.CityGroupMember', to=settings.AUTH_USER_MODEL),
+            model_name="citygroup",
+            name="members",
+            field=models.ManyToManyField(
+                related_name="city_groups",
+                through="groups.CityGroupMember",
+                to=settings.AUTH_USER_MODEL,
+            ),
         ),
     ]

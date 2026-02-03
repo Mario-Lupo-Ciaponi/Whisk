@@ -9,19 +9,52 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('accounts', '0002_whiskuser_country'),
-        ('cities_light', '0012_city_translations_country_translations_and_more'),
+        ("accounts", "0002_whiskuser_country"),
+        ("cities_light", "0012_city_translations_country_translations_and_more"),
     ]
 
     operations = [
         migrations.CreateModel(
-            name='Profile',
+            name="Profile",
             fields=[
-                ('user', models.OneToOneField(on_delete=django.db.models.deletion.CASCADE, primary_key=True, serialize=False, to=settings.AUTH_USER_MODEL)),
-                ('profile_image', cloudinary.models.CloudinaryField(blank=True, max_length=255, null=True, verbose_name='image')),
-                ('bio', models.TextField(blank=True, null=True)),
-                ('account_type', models.CharField(blank=True, choices=[('Pet owner', 'Pet owner'), ('Volunteer', 'Volunteer'), ('Shelter', 'Shelter')], max_length=10, null=True)),
-                ('city', models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.CASCADE, to='cities_light.city')),
+                (
+                    "user",
+                    models.OneToOneField(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        primary_key=True,
+                        serialize=False,
+                        to=settings.AUTH_USER_MODEL,
+                    ),
+                ),
+                (
+                    "profile_image",
+                    cloudinary.models.CloudinaryField(
+                        blank=True, max_length=255, null=True, verbose_name="image"
+                    ),
+                ),
+                ("bio", models.TextField(blank=True, null=True)),
+                (
+                    "account_type",
+                    models.CharField(
+                        blank=True,
+                        choices=[
+                            ("Pet owner", "Pet owner"),
+                            ("Volunteer", "Volunteer"),
+                            ("Shelter", "Shelter"),
+                        ],
+                        max_length=10,
+                        null=True,
+                    ),
+                ),
+                (
+                    "city",
+                    models.ForeignKey(
+                        blank=True,
+                        null=True,
+                        on_delete=django.db.models.deletion.CASCADE,
+                        to="cities_light.city",
+                    ),
+                ),
             ],
         ),
     ]

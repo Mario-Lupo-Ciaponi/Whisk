@@ -14,25 +14,56 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
+
 from django.contrib import admin
 from django.urls import path, include
 
-from rest_framework_simplejwt.views import TokenObtainPairView, TokenRefreshView, TokenVerifyView, TokenBlacklistView
-
+from rest_framework_simplejwt.views import (
+    TokenObtainPairView,
+    TokenRefreshView,
+    TokenVerifyView,
+    TokenBlacklistView,
+)
 
 urlpatterns = [
     path("admin/", admin.site.urls),
-    path("api-auth/", include('rest_framework.urls')),
-    path("api/", include([
-        path("", include("common.urls")),
-        path("accounts/", include("accounts.urls")),
-        path("posts/", include("posts.urls")),
-        path("groups/", include("groups.urls")),
-        path("token/", include([
-            path("", TokenObtainPairView.as_view(), name="token_obtain_pair"),
-            path("refresh/", TokenRefreshView.as_view(), name="token_refresh"),
-            path("verify/", TokenVerifyView.as_view(), name="token_verify"),
-            path("blacklist/", TokenBlacklistView.as_view(), name='token_blacklist'),
-        ])),
-    ])),
+    path("api-auth/", include("rest_framework.urls")),
+    path(
+        "api/",
+        include(
+            [
+                path("", include("common.urls")),
+                path("accounts/", include("accounts.urls")),
+                path("posts/", include("posts.urls")),
+                path("groups/", include("groups.urls")),
+                path(
+                    "token/",
+                    include(
+                        [
+                            path(
+                                "",
+                                TokenObtainPairView.as_view(),
+                                name="token_obtain_pair",
+                            ),
+                            path(
+                                "refresh/",
+                                TokenRefreshView.as_view(),
+                                name="token_refresh",
+                            ),
+                            path(
+                                "verify/",
+                                TokenVerifyView.as_view(),
+                                name="token_verify",
+                            ),
+                            path(
+                                "blacklist/",
+                                TokenBlacklistView.as_view(),
+                                name="token_blacklist",
+                            ),
+                        ]
+                    ),
+                ),
+            ]
+        ),
+    ),
 ]

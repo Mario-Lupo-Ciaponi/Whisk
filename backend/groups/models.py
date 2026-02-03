@@ -1,7 +1,6 @@
 from django.contrib.auth import get_user_model
 from django.db import models
 
-
 User = get_user_model()
 
 
@@ -26,7 +25,9 @@ class CityGroup(models.Model):
     )
 
     class Meta:
-        ordering = ["name",]
+        ordering = [
+            "name",
+        ]
 
     def __str__(self):
         return self.name
@@ -53,6 +54,8 @@ class CityGroupMember(models.Model):
     )
 
     class Meta:
-        unique_together = ("group", "member",)
+        unique_together = (
+            "group",
+            "member",
+        )
         verbose_name = "City Group Membership"
-

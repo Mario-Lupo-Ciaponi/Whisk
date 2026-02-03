@@ -5,7 +5,6 @@ from cloudinary.models import CloudinaryField
 
 from .fields import CoordinatesField
 
-
 User = get_user_model()
 
 
@@ -34,7 +33,9 @@ class Post(models.Model):
     )
 
     class Meta:
-        ordering = ["posted_on",]
+        ordering = [
+            "posted_on",
+        ]
 
     def __str__(self):
         return f"{self.title} - {self.author.username}"
@@ -72,7 +73,7 @@ class PetLocation(models.Model):
     )
 
     def __str__(self):
-        return  f"{self.longitude}, {self.latitude} seen on {self.created_at}"
+        return f"{self.longitude}, {self.latitude} seen on {self.created_at}"
 
 
 class Comment(models.Model):
@@ -94,5 +95,7 @@ class Comment(models.Model):
     )
 
     def __str__(self):
-        snippet = (self.content[:20] + "...") if len(self.content) > 20 else self.content
+        snippet = (
+            (self.content[:20] + "...") if len(self.content) > 20 else self.content
+        )
         return f"{self.author.username}: {snippet}"

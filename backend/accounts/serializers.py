@@ -1,7 +1,6 @@
 from django.contrib.auth import get_user_model
 from rest_framework import serializers
 
-
 User = get_user_model()
 
 
@@ -21,7 +20,13 @@ class RegisterSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = User
-        fields = ["username", "email", "country", "password1", "password2",]
+        fields = [
+            "username",
+            "email",
+            "country",
+            "password1",
+            "password2",
+        ]
 
     def validate(self, data):
         if data["password1"] != data["password2"]:
@@ -33,9 +38,6 @@ class RegisterSerializer(serializers.ModelSerializer):
         password = validated_data.pop("password1")
         validated_data.pop("password2")
 
-        user = User.objects.create_user(
-            password=password,
-            **validated_data
-        )
+        user = User.objects.create_user(password=password, **validated_data)
 
         return user

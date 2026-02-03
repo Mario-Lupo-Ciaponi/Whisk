@@ -10,7 +10,9 @@ class CityListAPIView(ListAPIView):
     queryset = City.objects.all()
     serializer_class = CitySerializer
     filter_backends = [filter.DjangoFilterBackend]
-    filterset_fields = ["country",]
+    filterset_fields = [
+        "country",
+    ]
 
 
 class CountryListAPIView(ListAPIView):

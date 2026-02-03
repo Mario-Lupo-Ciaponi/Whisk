@@ -6,18 +6,18 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('posts', '0001_initial'),
+        ("posts", "0001_initial"),
     ]
 
     operations = [
         migrations.RenameField(
-            model_name='petlocation',
-            old_name='date_seen',
-            new_name='created_at',
+            model_name="petlocation",
+            old_name="date_seen",
+            new_name="created_at",
         ),
         migrations.AddField(
-            model_name='petlocation',
-            name='is_valid',
+            model_name="petlocation",
+            name="is_valid",
             field=models.BooleanField(default=False),
         ),
     ]

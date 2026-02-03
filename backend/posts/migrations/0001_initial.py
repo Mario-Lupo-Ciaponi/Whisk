@@ -13,36 +13,101 @@ class Migration(migrations.Migration):
     initial = True
 
     dependencies = [
-        ('cities_light', '0012_city_translations_country_translations_and_more'),
+        ("cities_light", "0012_city_translations_country_translations_and_more"),
         migrations.swappable_dependency(settings.AUTH_USER_MODEL),
     ]
 
     operations = [
         migrations.CreateModel(
-            name='Post',
+            name="Post",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('title', models.CharField(max_length=100)),
-                ('description', models.TextField()),
-                ('found', models.BooleanField(default=False)),
-                ('posted_on', models.DateTimeField(auto_now_add=True)),
-                ('image', cloudinary.models.CloudinaryField(max_length=255, verbose_name='image')),
-                ('author', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='posts', to=settings.AUTH_USER_MODEL)),
-                ('city', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='cities_light.city')),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("title", models.CharField(max_length=100)),
+                ("description", models.TextField()),
+                ("found", models.BooleanField(default=False)),
+                ("posted_on", models.DateTimeField(auto_now_add=True)),
+                (
+                    "image",
+                    cloudinary.models.CloudinaryField(
+                        max_length=255, verbose_name="image"
+                    ),
+                ),
+                (
+                    "author",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        related_name="posts",
+                        to=settings.AUTH_USER_MODEL,
+                    ),
+                ),
+                (
+                    "city",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        to="cities_light.city",
+                    ),
+                ),
             ],
             options={
-                'ordering': ['posted_on'],
+                "ordering": ["posted_on"],
             },
         ),
         migrations.CreateModel(
-            name='PetLocation',
+            name="PetLocation",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('latitude', posts.fields.CoordinatesField(validators=[django.core.validators.MaxValueValidator(90), django.core.validators.MinValueValidator(-90)])),
-                ('longitude', posts.fields.CoordinatesField(validators=[django.core.validators.MaxValueValidator(180), django.core.validators.MinValueValidator(-180)])),
-                ('date_seen', models.DateTimeField(auto_now_add=True)),
-                ('author', models.ForeignKey(null=True, on_delete=django.db.models.deletion.SET_NULL, related_name='gave_locations', to=settings.AUTH_USER_MODEL)),
-                ('post', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='locations', to='posts.post')),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                (
+                    "latitude",
+                    posts.fields.CoordinatesField(
+                        validators=[
+                            django.core.validators.MaxValueValidator(90),
+                            django.core.validators.MinValueValidator(-90),
+                        ]
+                    ),
+                ),
+                (
+                    "longitude",
+                    posts.fields.CoordinatesField(
+                        validators=[
+                            django.core.validators.MaxValueValidator(180),
+                            django.core.validators.MinValueValidator(-180),
+                        ]
+                    ),
+                ),
+                ("date_seen", models.DateTimeField(auto_now_add=True)),
+                (
+                    "author",
+                    models.ForeignKey(
+                        null=True,
+                        on_delete=django.db.models.deletion.SET_NULL,
+                        related_name="gave_locations",
+                        to=settings.AUTH_USER_MODEL,
+                    ),
+                ),
+                (
+                    "post",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        related_name="locations",
+                        to="posts.post",
+                    ),
+                ),
             ],
         ),
     ]

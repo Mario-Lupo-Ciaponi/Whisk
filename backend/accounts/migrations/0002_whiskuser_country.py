@@ -7,15 +7,19 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('accounts', '0001_initial'),
-        ('cities_light', '0012_city_translations_country_translations_and_more'),
+        ("accounts", "0001_initial"),
+        ("cities_light", "0012_city_translations_country_translations_and_more"),
     ]
 
     operations = [
         migrations.AddField(
-            model_name='whiskuser',
-            name='country',
-            field=models.ForeignKey(default=103, on_delete=django.db.models.deletion.CASCADE, to='cities_light.country'),
+            model_name="whiskuser",
+            name="country",
+            field=models.ForeignKey(
+                default=103,
+                on_delete=django.db.models.deletion.CASCADE,
+                to="cities_light.country",
+            ),
             preserve_default=False,
         ),
     ]
