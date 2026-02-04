@@ -11,6 +11,7 @@ const RegisterForm = ({
   setShowLogin,
   showPassword,
   setShowPassword,
+  setMessage,
 }) => {
   // Declaration of states:
   const [username, setUsername] = useState("");
@@ -62,6 +63,7 @@ const RegisterForm = ({
       });
 
       setShowLogin(true);
+      setMessage("Registration successful! Please login!");
     } catch (e) {
       if (e.response.status === 400) {
         setErrors(e.response.data);

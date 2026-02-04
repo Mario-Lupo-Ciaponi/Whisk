@@ -1,12 +1,14 @@
+import { useEffect, useState } from "react";
 import RegisterForm from "../components/forms/RegisterForm.jsx";
 import LoginForm from "../components/forms/LoginForm.jsx";
-import { useState } from "react";
+import NotificationMessage from "../components/NotificationMessage.jsx";
 import "./AuthPage.css";
 
 const AuthPage = ({ setAuthTokens, navigate, errors, setErrors }) => {
   const [showLogin, setShowLogin] = useState(true);
   // Lifting the state up to prevent redundancy
   const [showPassword, setShowPassword] = useState(false);
+  const [message, setMessage] = useState("");
 
   const toggleShowLogin = (event) =>
     setShowLogin("login" === event.target.value);
@@ -47,6 +49,10 @@ const AuthPage = ({ setAuthTokens, navigate, errors, setErrors }) => {
           </div>
         </div>
 
+        {message && (
+          <NotificationMessage messageType="success" text={message} />
+        )}
+
         <header className="auth-header">
           <h2 className="auth-title">{showLogin ? "Login" : "Register"}</h2>
         </header>
@@ -68,6 +74,7 @@ const AuthPage = ({ setAuthTokens, navigate, errors, setErrors }) => {
             setShowLogin={setShowLogin}
             showPassword={showPassword}
             setShowPassword={setShowPassword}
+            setMessage={setMessage}
           />
         )}
       </article>
