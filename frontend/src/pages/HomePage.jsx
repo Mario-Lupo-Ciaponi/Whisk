@@ -71,15 +71,17 @@ const HomePage = ({ currentUser, navigate }) => {
       <title>Whisk</title>
 
       <div className="feed-container">
-        <select
-          onChange={filterFeed}
-          name="feed-select"
-          className="feed-select"
-        >
-          <option value="all">All</option>
-          <option value="groups">Groups</option>
-          <option value="city">City</option>
-        </select>
+        {currentUser &&
+          <select
+            onChange={filterFeed}
+            name="feed-select"
+            className="feed-select"
+          >
+            <option value="all">All</option>
+            <option value="groups">Groups</option>
+            <option value="city">City</option>
+          </select>
+        }
       </div>
 
       {isLoading ? (

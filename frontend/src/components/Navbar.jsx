@@ -19,6 +19,7 @@ const Navbar = ({ navigate, currentUser }) => {
     localStorage.removeItem("refresh");
 
     navigate("/");
+    location.reload();
   };
 
   const isLoggedIn = localStorage.getItem("access") !== null;

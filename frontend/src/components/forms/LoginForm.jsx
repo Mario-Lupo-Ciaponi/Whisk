@@ -43,6 +43,7 @@ const LoginForm = ({
       setAuthTokens(response.data);
 
       navigate("/");
+      location.reload();
     } catch (e) {
       if (e.response.status === 400) {
         setErrors(e.response.data);
