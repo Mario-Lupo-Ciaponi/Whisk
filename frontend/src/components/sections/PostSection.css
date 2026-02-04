@@ -1,9 +1,13 @@
 .post-section {
   width: 100%;
   display: flex;
-  flex-direction: column;
+  flex-wrap: wrap;
   align-items: center;
-  justify-content: center;
   gap: 1rem;
-  padding: 1rem 0;
+  padding: 1rem 2rem;
+}
+
+.post-section > * {
+  width: 32%;
+  flex: 1;
 }
