@@ -5,7 +5,7 @@ import api from "../../api/api.js";
 const LocationCard = ({ post, location, currentUser, setFound }) => {
   const [isValid, setIsValid] = useState(location.is_valid); // This is if the pet was found in this location
 
-  console.log("Location: " + location)
+  console.log("Location: " + location);
   const latitude = location.latitude;
   const longitude = location.longitude;
 
@@ -16,14 +16,14 @@ const LocationCard = ({ post, location, currentUser, setFound }) => {
 
   const markLocationAsValid = async () => {
     try {
-      await api.patch(`posts/${post.id}/`, {found: true});
-      await api.patch(`posts/location/${location.id}/`, {is_valid: true});
+      await api.patch(`posts/${post.id}/`, { found: true });
+      await api.patch(`posts/location/${location.id}/`, { is_valid: true });
       setFound(true);
       setIsValid(true);
     } catch (e) {
       console.log(e);
     }
-  }
+  };
 
   return (
     <article className={`location-card ${isValid && "valid"}`}>
@@ -44,14 +44,11 @@ const LocationCard = ({ post, location, currentUser, setFound }) => {
           </a>
         </p>
       </div>
-
-      {currentUser?.id === post.author.id &&
-        <button
-          onClick={markLocationAsValid}
-          className="found-btn">
+      {currentUser?.id === post.author.id && (
+        <button onClick={markLocationAsValid} className="found-btn">
           Found
         </button>
-      }
+      )}
     </article>
   );
 };

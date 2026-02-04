@@ -69,7 +69,7 @@
   gap: 0.5rem;
 }
 
-.navbar .user-menu .dropdown .user-toggle .profile-image{
+.navbar .user-menu .dropdown .user-toggle .profile-image {
   width: 1.5rem;
   height: 1.5rem;
   border-radius: 2rem;
@@ -85,7 +85,7 @@
 }
 
 .navbar .user-menu .dropdown .user-toggle,
-.navbar .user-menu .dropdown:hover .menu-list .dropdown-item .logout-btn{
+.navbar .user-menu .dropdown:hover .menu-list .dropdown-item .logout-btn {
   background: none;
   border: none;
 }
@@ -105,7 +105,7 @@
   display: flex;
 }
 
-.navbar .user-menu .dropdown:hover .menu-list .dropdown-item{
+.navbar .user-menu .dropdown:hover .menu-list .dropdown-item {
   text-align: center;
   padding: 0.8rem 1rem;
   width: 100%;
@@ -116,7 +116,7 @@
 }
 
 .navbar .user-menu .dropdown:hover .menu-list .dropdown-item .dropdown-link,
-.navbar .user-menu .dropdown:hover .menu-list .dropdown-item .logout-btn{
+.navbar .user-menu .dropdown:hover .menu-list .dropdown-item .logout-btn {
   color: var(--tan-color);
 }
 
@@ -137,14 +137,14 @@
   justify-content: flex-end;
 }
 
-.navbar .auth-link{
-  background-color: #BB8B5A;
+.navbar .auth-link {
+  background-color: #bb8b5a;
   border-radius: 1rem;
   padding: 0.5rem 1rem;
   color: white;
   transition: background-color 500ms ease-in-out;
 }
 
-.navbar .auth-link:hover{
-  background-color: #8C6741;
+.navbar .auth-link:hover {
+  background-color: #8c6741;
 }

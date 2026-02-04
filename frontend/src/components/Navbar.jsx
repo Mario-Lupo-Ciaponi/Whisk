@@ -61,7 +61,11 @@ const Navbar = ({ navigate, currentUser }) => {
 
           <div className="dropdown user-options">
             <button className="user-toggle">
-              <img className="profile-image" src="images/default-profile-img.jpeg" alt="profile-image"/>
+              <img
+                className="profile-image"
+                src="images/default-profile-img.jpeg"
+                alt="profile-image"
+              />
               <span className="username">{currentUser?.username}</span>
             </button>
 
@@ -84,7 +88,9 @@ const Navbar = ({ navigate, currentUser }) => {
             </ul>
           </div>
 
-          <Link className="create-post-link" to="create-post/">Create Post</Link>
+          <Link className="create-post-link" to="create-post/">
+            Create Post
+          </Link>
         </div>
       ) : (
         <div className="auth-link-container">

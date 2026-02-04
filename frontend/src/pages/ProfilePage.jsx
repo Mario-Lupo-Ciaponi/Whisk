@@ -1,7 +1,5 @@
 import "./ProfilePage.css";
 
-const ProfilePage = () => {
-
-}
+const ProfilePage = () => {};
 
 export default ProfilePage;

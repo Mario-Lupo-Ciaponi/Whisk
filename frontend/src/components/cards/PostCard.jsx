@@ -20,11 +20,9 @@ const PostCard = ({ post, currentUser, navigate }) => {
   const moreOptionsRef = useRef(null);
 
   useEffect(() => {
-    const getPostLocations = () =>
-      setLocations(post.locations);
+    const getPostLocations = () => setLocations(post.locations);
 
-    const getComments = () =>
-      setComments(post.comments);
+    const getComments = () => setComments(post.comments);
 
     getPostLocations();
     getComments();
@@ -32,11 +30,10 @@ const PostCard = ({ post, currentUser, navigate }) => {
 
   const statusText = found ? "Found" : "Not Found";
 
-  const showActions = () =>
-    moreOptionsRef.current.classList.toggle("active");
+  const showActions = () => moreOptionsRef.current.classList.toggle("active");
 
   const toggleSection = (name) =>
-    setActiveSection(prev => prev === name ? "none" : name);
+    setActiveSection((prev) => (prev === name ? "none" : name));
 
   const deletePost = async () => {
     await api.delete(`posts/${post.id}/`);
@@ -107,11 +104,17 @@ const PostCard = ({ post, currentUser, navigate }) => {
       </div>
       <hr className="divider" />
       <div className="actions">
-        <button onClick={() => toggleSection("map")} className="action mark-position">
+        <button
+          onClick={() => toggleSection("map")}
+          className="action mark-position"
+        >
           <FontAwesomeIcon icon={faMapLocationDot} />
           <span className="count">{post.locations_count}</span>
         </button>
-        <button onClick={() => toggleSection("comment")} className="action comment-post">
+        <button
+          onClick={() => toggleSection("comment")}
+          className="action comment-post"
+        >
           <FontAwesomeIcon icon={faComment} />
           <span className="count">{post.comments_count}</span>
         </button>

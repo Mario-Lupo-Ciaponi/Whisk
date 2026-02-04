@@ -16,30 +16,30 @@
   max-width: 485px;
 }
 
-.auth-wrapper .auth-card .segmented-control{
+.auth-wrapper .auth-card .segmented-control {
   display: flex;
   align-self: normal;
 }
 
-.auth-wrapper .auth-card .segmented-control .toggle-option{
+.auth-wrapper .auth-card .segmented-control .toggle-option {
   width: 48%;
   flex: 1;
   text-align: center;
-  background-color: #7A8BAE;
+  background-color: #7a8bae;
   padding: 0.4rem;
 }
 
-.auth-wrapper .auth-card .segmented-control .toggle-option.active{
-  background-color: #B0C4DE;
+.auth-wrapper .auth-card .segmented-control .toggle-option.active {
+  background-color: #b0c4de;
 }
 
-.auth-wrapper .auth-card .segmented-control .toggle-option .control-label{
+.auth-wrapper .auth-card .segmented-control .toggle-option .control-label {
   display: block;
-  color: #2C3E50;
+  color: #2c3e50;
   cursor: pointer;
 }
 
-.auth-wrapper .auth-card .segmented-control .toggle-option .control-input{
+.auth-wrapper .auth-card .segmented-control .toggle-option .control-input {
   display: none;
 }
 
@@ -47,6 +47,6 @@
   margin: 1.5rem 0;
 }
 
-.auth-wrapper .auth-card .auth-header .auth-title{
-  color: #74503C;
+.auth-wrapper .auth-card .auth-header .auth-title {
+  color: #74503c;
 }

@@ -101,13 +101,7 @@ const LoginForm = ({
       </div>
 
       <button type="submit" className="submit-btn">
-        {isLoading ?
-          <Loader
-            height={30}
-            width={30}
-          /> :
-          "Login"
-        }
+        {isLoading ? <Loader height={30} width={30} /> : "Login"}
       </button>
     </form>
   );

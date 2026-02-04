@@ -189,13 +189,7 @@ const RegisterForm = ({
       </div>
 
       <button type="submit" className="submit-btn">
-        {isLoading ?
-          <Loader
-            height={30}
-            width={30}
-          /> :
-          "Register"
-        }
+        {isLoading ? <Loader height={30} width={30} /> : "Register"}
       </button>
     </form>
   );

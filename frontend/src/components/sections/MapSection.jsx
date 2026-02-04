@@ -7,29 +7,35 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCaretDown, faCaretUp } from "@fortawesome/free-solid-svg-icons";
 import "./MapSection.css";
 
-const MapSection = ({ activeSection, post, locations, setLocations, currentUser, setFound }) => {
+const MapSection = ({
+  activeSection,
+  post,
+  locations,
+  setLocations,
+  currentUser,
+  setFound,
+}) => {
   const [showLocationSection, setShowLocationSection] = useState(false);
 
   const toggleLocationSection = () =>
     setShowLocationSection(!showLocationSection);
 
   return (
-    <section className={`map-section ${activeSection === "map" ? "active" : "none"}`}>
-      {!post.found &&
+    <section
+      className={`map-section ${activeSection === "map" ? "active" : "none"}`}
+    >
+      {!post.found && (
         <>
           <header className="section-header">
-        <h3 className="section-title">Pet Location</h3>
-        <p className="section-description">
-          Select a location where you have seen the pet
-        </p>
-      </header>
+            <h3 className="section-title">Pet Location</h3>
+            <p className="section-description">
+              Select a location where you have seen the pet
+            </p>
+          </header>
 
-          <LocationPicker
-            post={post}
-            setLocations={setLocations}
-          />
+          <LocationPicker post={post} setLocations={setLocations} />
         </>
-      }
+      )}
 
       <div className="locations-wrapper">
         <button className="show-locations-btn" onClick={toggleLocationSection}>

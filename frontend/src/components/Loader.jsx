@@ -8,7 +8,7 @@ const Loader = ({ width, height }) => {
       height={height}
       visible={true}
     />
-  )
-}
+  );
+};
 
 export default Loader;

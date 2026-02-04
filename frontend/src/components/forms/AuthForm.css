@@ -5,7 +5,7 @@
   width: 70%;
 }
 
-.auth-form .auth-field .auth-label{
+.auth-form .auth-field .auth-label {
   display: block;
   color: var(--brown-color);
 }
@@ -29,7 +29,7 @@
 }
 
 .auth-form .auth-field .auth-input.error-input:focus {
-  outline: var(--border-default-values)var(--red-color);
+  outline: var(--border-default-values) var(--red-color);
 }
 
 .auth-form .submit-btn {

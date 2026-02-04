@@ -1,5 +1,11 @@
 import { useState, useLayoutEffect } from "react";
-import { MapContainer, Marker, TileLayer, useMapEvents, useMap } from "react-leaflet";
+import {
+  MapContainer,
+  Marker,
+  TileLayer,
+  useMapEvents,
+  useMap,
+} from "react-leaflet";
 import api from "../api/api.js";
 import "leaflet/dist/leaflet.css";
 import "./LocationPicker.css";
@@ -21,13 +27,13 @@ const RecalculateView = () => {
   useLayoutEffect(() => {
     const timer = setTimeout(() => {
       map.invalidateSize();
-    }, 200)
+    }, 200);
 
     return () => clearTimeout(timer);
   }, [map]);
 
   return null;
-}
+};
 
 const LocationPicker = ({ post, setLocations }) => {
   const [selectedPosition, setSelectedPosition] = useState(null);
@@ -87,7 +93,7 @@ const LocationPicker = ({ post, setLocations }) => {
         Add Location
       </button>
     </>
-  )
-}
+  );
+};
 
 export default LocationPicker;

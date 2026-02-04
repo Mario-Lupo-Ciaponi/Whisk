@@ -5,7 +5,11 @@ const CommentCard = ({ comment }) => {
   const formatedDate = dayjs(comment.created_at).format("HH:mm DD.MM.YYYY");
   return (
     <article className="comment-card">
-      <img src="/images/default-profile-img.jpeg" alt="profile-image" className="profile-image"/>
+      <img
+        src="/images/default-profile-img.jpeg"
+        alt="profile-image"
+        className="profile-image"
+      />
 
       <div className="comment-wrapper">
         <header className="comment-header">
@@ -16,7 +20,7 @@ const CommentCard = ({ comment }) => {
         <p className="content">{comment.content}</p>
       </div>
     </article>
-  )
-}
+  );
+};
 
 export default CommentCard;

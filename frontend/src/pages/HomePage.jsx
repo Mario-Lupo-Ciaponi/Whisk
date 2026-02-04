@@ -71,7 +71,7 @@ const HomePage = ({ currentUser, navigate }) => {
       <title>Whisk</title>
 
       <div className="feed-container">
-        {currentUser &&
+        {currentUser && (
           <select
             onChange={filterFeed}
             name="feed-select"
@@ -81,14 +81,11 @@ const HomePage = ({ currentUser, navigate }) => {
             <option value="groups">Groups</option>
             <option value="city">City</option>
           </select>
-        }
+        )}
       </div>
 
       {isLoading ? (
-        <Loader
-          width={100}
-          height={100}
-        />
+        <Loader width={100} height={100} />
       ) : posts.length > 0 ? (
         <>
           <PostSection

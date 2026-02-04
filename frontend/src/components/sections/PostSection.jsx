@@ -7,7 +7,14 @@ const PostSection = ({ posts, currentUser, navigate }) => {
     <section className="post-section">
       {posts.map((post) => {
         console.log(post);
-        return <PostCard key={post.id} post={post} currentUser={currentUser} navigate={navigate} />;
+        return (
+          <PostCard
+            key={post.id}
+            post={post}
+            currentUser={currentUser}
+            navigate={navigate}
+          />
+        );
       })}
     </section>
   );
