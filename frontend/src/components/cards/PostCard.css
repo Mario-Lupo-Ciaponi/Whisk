@@ -119,9 +119,15 @@
   border: none;
 }
 
-.post-card .post-image {
+.post-card .image-container {
   width: 100%;
   height: 412px;
+  background-color: black;
+}
+
+.post-card .image-container .post-image {
+  margin: 0 auto;
+  height: 100%;
   object-fit: contain;
 }
 

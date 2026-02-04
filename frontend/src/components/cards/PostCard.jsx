@@ -96,7 +96,9 @@ const PostCard = ({ post, currentUser, navigate }) => {
         </div>
       </div>
 
-      <img className="post-image" src={post.image} alt="post-image" />
+      <div className="image-container">
+        <img className="post-image" src={post.image} alt="post-image" />
+      </div>
 
       <div className="caption">
         <h3 className="title">{post.title}</h3>
