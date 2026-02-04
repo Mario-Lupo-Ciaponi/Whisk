@@ -41,3 +41,10 @@
 .hidden-input {
   display: none;
 }
+
+.upload-container .errors {
+  margin-top: 0.5rem;
+  padding-left: 2rem;
+  list-style-type: disc;
+  color: var(--red-color);
+}

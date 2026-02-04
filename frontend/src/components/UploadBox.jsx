@@ -1,8 +1,77 @@
+import { useState } from "react";
 import "./UploadBox.css";
 
 const UploadBox = ({ image, setImage }) => {
+  const [errors, setErrors] = useState([]);
+
+  const getImageDimensions = (file) => {
+    return new Promise((resolve) => {
+      const img = new Image();
+
+      const objectUrl = URL.createObjectURL(file);
+
+      img.onload = () => {
+        const dimensions = {
+          width: img.width,
+          height: img.height,
+          ratio: img.height / img.width,
+        };
+
+        URL.revokeObjectURL(objectUrl);
+        resolve(dimensions);
+      };
+
+      img.src = objectUrl;
+    });
+  };
+
   const isFileImage = (file) => {
-    return file.type.includes("images");
+    return file.type.includes("image");
+  };
+
+  const areImageDimensionsProportional = async (image) => {
+    const { width, height, ratio } = await getImageDimensions(image);
+
+    return (
+      412 <= width &&
+      width <= 2560 &&
+      200 <= height &&
+      height <= 3000 &&
+      0.5 <= ratio &&
+      ratio <= 1.6
+    );
+  };
+
+  const isImageSizeNormal = (image) => {
+    const imageSizeLimitInMg = 5;
+    const imageSizeInMg = image.size / Math.pow(1024, 2);
+
+    return imageSizeInMg < imageSizeLimitInMg;
+  };
+
+  const isImageValid = async (file) => {
+    setErrors([]);
+    let currentErrors = [];
+
+    if (isFileImage(file)) {
+      if (
+        isImageSizeNormal(file) &&
+        (await areImageDimensionsProportional(file))
+      )
+        return true;
+    }
+
+    if (!isFileImage(file)) currentErrors.push("File must be of type Image.");
+    if (!(await areImageDimensionsProportional(file)))
+      currentErrors.push(
+        "Image is too long or too wide. Please use a more standard aspect ratio.",
+      );
+    if (!isImageSizeNormal(file))
+      currentErrors.push("Image's size must not exceed 5 MB.");
+
+    setErrors(currentErrors);
+
+    return false;
   };
 
   const removeBtn = (event) => {
@@ -11,14 +80,13 @@ const UploadBox = ({ image, setImage }) => {
     setImage(null);
   };
 
-  const handleDrop = (event) => {
+  const handleDrop = async (event) => {
     event.preventDefault();
     event.stopPropagation();
 
     const droppedImage = event.dataTransfer.files[0];
 
-    if (isFileImage(droppedImage)) setImage(droppedImage);
-    else alert("The file must be an Image!"); // Demo, will change later;
+    if (await isImageValid(droppedImage)) setImage(droppedImage);
   };
 
   const handleDrag = (event) => {
@@ -26,11 +94,10 @@ const UploadBox = ({ image, setImage }) => {
     event.stopPropagation();
   };
 
-  const handleChange = (event) => {
+  const handleChange = async (event) => {
     const image = event.target.files[0];
 
-    if (isFileImage(image)) setImage(image);
-    else alert("The file must be an Image!"); // Demo, will change later
+    if (await isImageValid(image)) setImage(image);
   };
 
   return (
@@ -65,6 +132,12 @@ const UploadBox = ({ image, setImage }) => {
           onChange={handleChange}
         />
       </label>
+
+      <ul className="errors">
+        {errors.map((error) => {
+          return <li className="error">{error}</li>;
+        })}
+      </ul>
     </div>
   );
 };
