@@ -13,6 +13,10 @@ const AuthPage = ({ setAuthTokens, navigate, errors, setErrors }) => {
   const toggleShowLogin = (event) =>
     setShowLogin("login" === event.target.value);
 
+  useEffect(() => {
+    setMessage("Hi hello");
+  }, []);
+
   return (
     <div className="auth-wrapper">
       <title>Enter in your account</title>
