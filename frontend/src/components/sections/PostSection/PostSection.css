@@ -8,6 +8,5 @@
 }
 
 .post-section > * {
-  width: 32%;
-  flex: 1;
+  flex: 1 1 30%;
 }

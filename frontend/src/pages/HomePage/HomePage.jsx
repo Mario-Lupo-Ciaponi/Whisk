@@ -12,7 +12,7 @@ const HomePage = ({ currentUser, navigate }) => {
   const [totalPages, setTotalPages] = useState(0);
   const [isLoading, setIsLoading] = useState(false);
 
-  const itemsPerPage = 3;
+  const itemsPerPage = 6;
 
   // NOTE: This is purely for test purposes, and it will change to check the real users city and groups!
   const userInfo = {

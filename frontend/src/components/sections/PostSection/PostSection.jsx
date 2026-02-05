@@ -6,7 +6,6 @@ const PostSection = ({ posts, currentUser, navigate }) => {
   return (
     <section className="post-section">
       {posts.map((post) => {
-        console.log(post);
         return (
           <PostCard
             key={post.id}
