@@ -1,5 +1,5 @@
 from rest_framework.generics import ListCreateAPIView, RetrieveUpdateDestroyAPIView
-from rest_framework.permissions import IsAuthenticatedOrReadOnly, AllowAny
+from rest_framework.permissions import IsAuthenticatedOrReadOnly, AllowAny, IsAdminUser
 from django_filters import rest_framework as filter
 from rest_framework.parsers import MultiPartParser, FormParser
 
@@ -9,7 +9,7 @@ from .serializers import (
     PetLocationModelSerializer,
     CommentSerializer,
 )
-from .permissions import IsOwner
+from .permissions import IsOwnerOrSuperUser
 from .filters import PostFilter
 from .mixins import PostAPIViewMixin
 from .pagination import PostResultsSetPagination
@@ -35,7 +35,7 @@ class PostListCreateAPIView(PostAPIViewMixin, ListCreateAPIView):
 
 class PostRetrieveUpdateDestroyAPIView(PostAPIViewMixin, RetrieveUpdateDestroyAPIView):
     # Inherits IsAuthenticatedOrReadOnly permission then adds a custom one
-    permission_classes = PostAPIViewMixin.permission_classes + [IsOwner]
+    permission_classes = PostAPIViewMixin.permission_classes + [IsOwnerOrSuperUser]
 
 
 # PetLocation related views
@@ -93,5 +93,5 @@ class CommentRetrieveUpdateDestroyAPIView(RetrieveUpdateDestroyAPIView):
     serializer_class = CommentSerializer
     permission_classes = [
         IsAuthenticatedOrReadOnly,
-        IsOwner,
+        IsOwnerOrSuperUser,
     ]
