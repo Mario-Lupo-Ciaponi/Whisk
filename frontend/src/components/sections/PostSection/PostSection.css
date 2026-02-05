@@ -8,5 +8,5 @@
 }
 
 .post-section > * {
-  flex: 1 1 30%;
+  flex-basis: 30%;
 }
