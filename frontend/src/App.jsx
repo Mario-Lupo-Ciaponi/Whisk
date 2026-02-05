@@ -1,14 +1,14 @@
 import { useEffect, useState } from "react";
 import { Routes, Route, useNavigate } from "react-router";
 import PrivateRoutes from "./utils/PrivateRoutes.jsx";
-import Navbar from "./components/Navbar.jsx";
-import Footer from "./components/Footer.jsx";
-import HomePage from "./pages/HomePage.jsx";
-import CreatePostPage from "./pages/CreatePostPage.jsx";
-import GroupsPage from "./pages/GroupsPage.jsx";
-import CreateGroupPage from "./pages/CreateGroupPage.jsx";
-import AuthPage from "./pages/AuthPage.jsx";
-import NotFound from "./components/NotFound.jsx";
+import Navbar from "./components/Navbar/Navbar.jsx";
+import Footer from "./components/Footer/Footer.jsx";
+import HomePage from "./pages/HomePage/HomePage.jsx";
+import CreatePostPage from "./pages/CreatePostPage/CreatePostPage.jsx";
+import GroupsPage from "./pages/GroupsPage/GroupsPage.jsx";
+import CreateGroupPage from "./pages/CreateGroupPage/CreateGroupPage.jsx";
+import AuthPage from "./pages/AuthPage/AuthPage.jsx";
+import NotFound from "./components/NotFound/NotFound.jsx";
 import api from "./api/api.js";
 import "./App.css";
 

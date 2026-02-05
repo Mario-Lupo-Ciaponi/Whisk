@@ -1,0 +1,89 @@
+import { useEffect, useState } from "react";
+import RegisterForm from "../../components/forms/AuthForm/RegisterForm.jsx";
+import LoginForm from "../../components/forms/AuthForm/LoginForm.jsx";
+import NotificationMessage from "../../components/NotificationMessage/NotificationMessage.jsx";
+import "./AuthPage.css";
+
+const AuthPage = ({ setAuthTokens, navigate, errors, setErrors }) => {
+  const [showLogin, setShowLogin] = useState(true);
+  // Lifting the state up to prevent redundancy
+  const [showPassword, setShowPassword] = useState(false);
+  const [message, setMessage] = useState("");
+
+  const toggleShowLogin = (event) =>
+    setShowLogin("login" === event.target.value);
+
+  useEffect(() => {
+    setMessage("Hi hello");
+  }, []);
+
+  return (
+    <div className="auth-wrapper">
+      <title>Enter in your account</title>
+
+      <article className="auth-card">
+        <div className="segmented-control">
+          <div className={`toggle-option ${showLogin ? "active" : ""}`}>
+            <label htmlFor="login" className="control-label">
+              Login
+            </label>
+            <input
+              type="radio"
+              id="login"
+              onChange={toggleShowLogin}
+              value="login"
+              name="login"
+              className="control-input"
+              checked={showLogin === true}
+            />
+          </div>
+          <div className={`toggle-option ${showLogin ? "" : "active"}`}>
+            <label htmlFor="register" className="control-label">
+              Register
+            </label>
+            <input
+              type="radio"
+              id="register"
+              onChange={toggleShowLogin}
+              value="register"
+              name="register"
+              className="control-input"
+              checked={showLogin === false}
+            />
+          </div>
+        </div>
+
+        {message && (
+          <NotificationMessage messageType="success" text={message} />
+        )}
+
+        <header className="auth-header">
+          <h2 className="auth-title">{showLogin ? "Login" : "Register"}</h2>
+        </header>
+
+        {showLogin ? (
+          <LoginForm
+            setAuthTokens={setAuthTokens}
+            navigate={navigate}
+            errors={errors}
+            setErrors={setErrors}
+            showPassword={showPassword}
+            setShowPassword={setShowPassword}
+          />
+        ) : (
+          <RegisterForm
+            navigate={navigate}
+            errors={errors}
+            setErrors={setErrors}
+            setShowLogin={setShowLogin}
+            showPassword={showPassword}
+            setShowPassword={setShowPassword}
+            setMessage={setMessage}
+          />
+        )}
+      </article>
+    </div>
+  );
+};
+
+export default AuthPage;
