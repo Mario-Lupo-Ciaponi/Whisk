@@ -7,7 +7,7 @@ from rest_framework.serializers import ValidationError
 from rest_framework.test import APITestCase
 from rest_framework import status
 
-from .models import Post
+from .models import Post, PetLocation
 from cities_light.models import Country, City
 
 User = get_user_model()
@@ -57,12 +57,15 @@ class TestPostListCreateAPIView(APITestCase):
         self.client.force_authenticate(self.user)
 
         response = self.client.post(self.url, data, format="multipart")
+        data = response.data
+
+        post_pk = int(data["id"])
 
         self.assertEqual(response.status_code, status.HTTP_201_CREATED)
 
-        self.assertTrue(Post.objects.filter(pk=1).exists())
+        self.assertTrue(Post.objects.filter(pk=post_pk).exists())
 
-        post = Post.objects.get(pk=1)
+        post = Post.objects.get(pk=post_pk)
 
         self.assertEqual(post.title, data["title"])
         self.assertEqual(post.description, data["description"])
@@ -364,3 +367,39 @@ class TestPostRetrieveUpdateDestroyAPIView(APITestCase):
 
         self.assertEqual(response.status_code, status.HTTP_403_FORBIDDEN)
         self.assertTrue(Post.objects.filter(pk=self.post.pk).exists())
+
+
+class TestPetLocationRetrieveUpdateDestroyAPIView(APITestCase):
+    def setUp(self):
+        self.country = Country.objects.create(name="Bulgaria", code2="BG")
+        self.city = City.objects.create(name="Sofia", country=self.country)
+
+        self.user = User.objects.create_user(
+            username="Test", password="TestPass", country=self.country
+        )
+        self.post = Post.objects.create(
+            title="Lost Cat",
+            description="Lost it, please help me guys",
+            city=self.city,
+            author=self.user,
+            image="https://res.cloudinary.com/demo/image/upload/w_150,h_100,c_fill/sample.jpg",
+        )
+
+        self.location = PetLocation.objects.create(
+            latitude=42.697777,
+            longitude=23.321999,
+            author=self.user,
+            post=self.post,
+        )
+
+        self.url = reverse("location-details", kwargs={"pk": self.location.pk})
+
+    def test__get_locations__returns_200(self):
+        response = self.client.get(self.url)
+        data = response.data
+
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
+
+        self.assertEqual(float(data["latitude"]), self.location.latitude)
+        self.assertEqual(float(data["longitude"]), self.location.longitude)
+        self.assertEqual(data["author"]["id"], self.user.pk)
