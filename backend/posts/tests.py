@@ -457,6 +457,7 @@ class TestPetLocationListCreateAPIView(APITestCase):
 
     def test__create_location_with_invalid_post_id__returns_400(self):
         invalid_create_data = {
+            "id": 18,
             "latitude": 52.697777,
             "longitude": 33.321999,
             "post_id": 91283908123021,
@@ -467,7 +468,7 @@ class TestPetLocationListCreateAPIView(APITestCase):
 
         self.assertEqual(response.status_code, status.HTTP_400_BAD_REQUEST)
         self.assertFalse(
-            PetLocation.objects.filter(pk=invalid_create_data["post_id"]).exists()
+            PetLocation.objects.filter(pk=invalid_create_data["id"]).exists()
         )
 
     def test__create_location_with_invalid_lat_and_lang__returns_400(self):
@@ -608,6 +609,89 @@ class TestPetLocationRetrieveUpdateDestroyAPIView(APITestCase):
         self.assertEqual(response.status_code, status.HTTP_204_NO_CONTENT)
 
         self.assertFalse(PetLocation.objects.filter(pk=self.location.pk).exists())
+
+
+class TestCommentListCreateAPIView(APITestCase):
+    def setUp(self):
+        self.country = Country.objects.create(name="Bulgaria", code2="BG")
+        self.city = City.objects.create(name="Sofia", country=self.country)
+
+        self.user = User.objects.create_user(
+            username="Test", password="TestPass", country=self.country
+        )
+
+        self.post = Post.objects.create(
+            title="Lost Cat",
+            description="Lost it, please help me guys",
+            city=self.city,
+            author=self.user,
+            image="https://res.cloudinary.com/demo/image/upload/w_150,h_100,c_fill/sample.jpg",
+        )
+
+        self.comment = Comment.objects.create(
+            content="A test comment", author=self.user, post=self.post
+        )
+
+        self.create_data = {
+            "id": 100,
+            "content": "A test comment",
+            "post_input": self.post.pk,
+        }
+
+        self.url = reverse("comment-list")
+
+    def test__get_comment_with_one_comment__returns_200(self):
+        response = self.client.get(self.url)
+        data = response.data
+
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
+
+        self.assertEqual(len(data), Comment.objects.count())
+
+    def test__get_comment_with_multiple_comments__returns_200(self):
+        comments_data = [
+            Comment(content="A test2 comment", author=self.user, post=self.post),
+            Comment(content="A test3 comment", author=self.user, post=self.post),
+        ]
+
+        Comment.objects.bulk_create(comments_data)
+
+        response = self.client.get(self.url)
+        data = response.data
+
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
+
+        self.assertEqual(len(data), Comment.objects.count())
+
+    def test__get_comment_with_no_comments__returns_200(self):
+        Comment.objects.all().delete()
+
+        response = self.client.get(self.url)
+        data = response.data
+
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
+
+        self.assertEqual(len(data), Comment.objects.count())
+
+    def test__create_comment_with_unauthenticated_user__returns_401(self):
+        response = self.client.post(self.url, self.create_data)
+
+        self.assertEqual(response.status_code, status.HTTP_401_UNAUTHORIZED)
+        self.assertFalse(Comment.objects.filter(pk=self.create_data["id"]).exists())
+
+    def test__create_location_with_invalid_post_input__returns_400(self):
+        self.client.force_authenticate(self.user)
+
+        invalid_create_data = {
+            "id": 100,
+            "content": "A invalid comment",
+            "post_input": 12902843,
+        }
+
+        response = self.client.post(self.url, invalid_create_data)
+
+        self.assertEqual(response.status_code, status.HTTP_400_BAD_REQUEST)
+        self.assertFalse(Comment.objects.filter(pk=invalid_create_data["id"]).exists())
 
 
 class TestCommentRetrieveUpdateDestroyAPIView(APITestCase):
