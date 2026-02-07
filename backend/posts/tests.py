@@ -7,7 +7,7 @@ from rest_framework.serializers import ValidationError
 from rest_framework.test import APITestCase
 from rest_framework import status
 
-from .models import Post, PetLocation
+from .models import Post, PetLocation, Comment
 from cities_light.models import Country, City
 
 User = get_user_model()
@@ -608,3 +608,117 @@ class TestPetLocationRetrieveUpdateDestroyAPIView(APITestCase):
         self.assertEqual(response.status_code, status.HTTP_204_NO_CONTENT)
 
         self.assertFalse(PetLocation.objects.filter(pk=self.location.pk).exists())
+
+
+class TestCommentRetrieveUpdateDestroyAPIView(APITestCase):
+    def setUp(self):
+        self.country = Country.objects.create(name="Bulgaria", code2="BG")
+        self.city = City.objects.create(name="Sofia", country=self.country)
+
+        self.super_user = User.objects.create_superuser(
+            username="Super man", password="AdminPass", country=self.country
+        )
+        self.author = User.objects.create_user(
+            username="Test", password="TestPass", country=self.country
+        )
+        self.normal_user = User.objects.create_user(
+            username="Test2", password="TestPass2", country=self.country
+        )
+
+        self.post = Post.objects.create(
+            title="Lost Cat",
+            description="Lost it, please help me guys",
+            city=self.city,
+            author=self.author,
+            image="https://res.cloudinary.com/demo/image/upload/w_150,h_100,c_fill/sample.jpg",
+        )
+
+        self.comment = Comment.objects.create(
+            content="A test comment", author=self.author, post=self.post
+        )
+
+        self.update_data = {"content": "Edited test comment"}
+
+        self.url = reverse("comment-details", kwargs={"pk": self.comment.pk})
+
+    def test__get_comment__returns_200(self):
+        response = self.client.get(self.url)
+        data = response.data
+
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
+
+        self.assertEqual(data["content"], self.comment.content)
+        self.assertEqual(data["author"]["id"], self.comment.author.pk)
+        self.assertEqual(data["post"], self.comment.post.pk)
+
+    def test__update_comment_as_unauthenticated_user__returns_401(self):
+        response = self.client.patch(self.url, self.update_data)
+
+        self.assertEqual(response.status_code, status.HTTP_401_UNAUTHORIZED)
+
+        self.comment.refresh_from_db()
+        self.assertNotEqual(self.update_data["content"], self.comment.content)
+
+    def test__delete_comment_as_unauthenticated_user__returns_401(self):
+        response = self.client.delete(self.url)
+
+        self.assertEqual(response.status_code, status.HTTP_401_UNAUTHORIZED)
+
+        self.assertTrue(Comment.objects.filter(pk=self.comment.pk).exists())
+
+    def test__update_comment_as_normal_user__returns_403(self):
+        self.client.force_authenticate(self.normal_user)
+
+        response = self.client.patch(self.url, self.update_data)
+
+        self.assertEqual(response.status_code, status.HTTP_403_FORBIDDEN)
+
+        self.comment.refresh_from_db()
+        self.assertNotEqual(self.update_data["content"], self.comment.content)
+
+    def test__delete_comment_as_normal_user__returns_403(self):
+        self.client.force_authenticate(self.normal_user)
+
+        response = self.client.delete(self.url)
+
+        self.assertEqual(response.status_code, status.HTTP_403_FORBIDDEN)
+
+        self.assertTrue(Comment.objects.filter(pk=self.comment.pk).exists())
+
+    def test__update_comment_as_author__returns_200(self):
+        self.client.force_authenticate(self.author)
+
+        response = self.client.patch(self.url, self.update_data)
+
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
+
+        self.comment.refresh_from_db()
+        self.assertEqual(self.update_data["content"], self.comment.content)
+
+    def test__delete_comment_as_author__returns_204(self):
+        self.client.force_authenticate(self.author)
+
+        response = self.client.delete(self.url)
+
+        self.assertEqual(response.status_code, status.HTTP_204_NO_CONTENT)
+
+        self.assertFalse(Comment.objects.filter(pk=self.comment.pk).exists())
+
+    def test__update_comment_as_admin__returns_200(self):
+        self.client.force_authenticate(self.super_user)
+
+        response = self.client.patch(self.url, self.update_data)
+
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
+
+        self.comment.refresh_from_db()
+        self.assertEqual(self.update_data["content"], self.comment.content)
+
+    def test__delete_comment_as_admin__returns_204(self):
+        self.client.force_authenticate(self.super_user)
+
+        response = self.client.delete(self.url)
+
+        self.assertEqual(response.status_code, status.HTTP_204_NO_CONTENT)
+
+        self.assertFalse(Comment.objects.filter(pk=self.comment.pk).exists())
