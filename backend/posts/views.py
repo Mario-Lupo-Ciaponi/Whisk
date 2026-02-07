@@ -71,6 +71,7 @@ class PetLocationRetrieveUpdateDestroyAPIView(RetrieveUpdateDestroyAPIView):
     serializer_class = PetLocationModelSerializer
     permission_classes = [
         IsAuthenticatedOrReadOnly,
+        IsOwnerOrSuperUser,
     ]  # TODO: add permission that checks weather the user is the author of the post or location
 
 
