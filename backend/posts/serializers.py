@@ -14,21 +14,11 @@ class PetLocationModelSerializer(serializers.ModelSerializer):
         read_only=True,
     )
 
-    post_id = serializers.IntegerField()
-
-    def create(self, validated_data):
-        post_id = validated_data.pop("post_id")
-
-        try:
-            post = Post.objects.get(pk=post_id)
-        except Post.DoesNotExist:  # TODO: change the expected error
-            raise serializers.ValidationError(f"Post with id {post_id} does not exist.")
-
-        # If the M2M fails, it will roll back
-        with transaction.atomic():
-            pet_location = PetLocation.objects.create(**validated_data, post=post)
-
-        return pet_location
+    post_id = serializers.PrimaryKeyRelatedField(
+        source="post",
+        queryset=Post.objects.all(),
+        write_only=True,
+    )
 
     class Meta:
         model = PetLocation
