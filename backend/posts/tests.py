@@ -369,6 +369,93 @@ class TestPostRetrieveUpdateDestroyAPIView(APITestCase):
         self.assertTrue(Post.objects.filter(pk=self.post.pk).exists())
 
 
+class TestPetLocationListCreateAPIView(APITestCase):
+    def setUp(self):
+        self.country = Country.objects.create(name="Bulgaria", code2="BG")
+        self.city = City.objects.create(name="Sofia", country=self.country)
+
+        self.user = User.objects.create_user(
+            username="Test", password="TestPass", country=self.country
+        )
+
+        self.post = Post.objects.create(
+            title="Lost Cat",
+            description="Lost it, please help me guys",
+            city=self.city,
+            author=self.user,
+            image="https://res.cloudinary.com/demo/image/upload/w_150,h_100,c_fill/sample.jpg",
+        )
+
+        self.location = PetLocation.objects.create(
+            latitude=42.697777,
+            longitude=23.321999,
+            author=self.user,
+            post=self.post,
+        )
+
+        self.create_data = {
+            "latitude": 52.697777,
+            "longitude": 33.321999,
+            "post_id": self.post.pk,
+        }
+
+        self.url = reverse("location-list")
+
+    def test__get_location_with_one_location__returns_200(self):
+        response = self.client.get(self.url)
+        data = response.data
+
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
+
+        self.assertEqual(len(data), PetLocation.objects.count())
+
+    def test__get_location_with_multiple_locations__returns_200(self):
+        location_data = [
+            PetLocation(
+                latitude=52.697777,
+                longitude=33.321999,
+                author=self.user,
+                post=self.post,
+            ),
+            PetLocation(
+                latitude=62.697777,
+                longitude=43.321999,
+                author=self.user,
+                post=self.post,
+            ),
+        ]
+
+        PetLocation.objects.bulk_create(location_data)
+
+        response = self.client.get(self.url)
+        data = response.data
+
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
+
+        self.assertEqual(len(data), PetLocation.objects.count())
+
+    def test__get_location_with_no_locations__returns_200(self):
+        PetLocation.objects.all().delete()
+
+        response = self.client.get(self.url)
+        data = response.data
+
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
+
+        self.assertEqual(len(data), PetLocation.objects.count())
+
+    def test__create_location_as_unauthenticated_user__returns_201(self):
+        response = self.client.post(self.url, self.create_data)
+        data = response.data
+
+        self.assertEqual(response.status_code, status.HTTP_201_CREATED)
+        self.assertTrue(PetLocation.objects.filter(pk=data["id"]).exists())
+
+        location = PetLocation.objects.get(pk=data["id"])
+
+        self.assertIsNone(location.author)
+
+
 class TestPetLocationRetrieveUpdateDestroyAPIView(APITestCase):
     def setUp(self):
         self.country = Country.objects.create(name="Bulgaria", code2="BG")
