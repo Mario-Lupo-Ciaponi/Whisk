@@ -374,23 +374,34 @@ class TestPetLocationRetrieveUpdateDestroyAPIView(APITestCase):
         self.country = Country.objects.create(name="Bulgaria", code2="BG")
         self.city = City.objects.create(name="Sofia", country=self.country)
 
-        self.user = User.objects.create_user(
+        self.super_user = User.objects.create_superuser(
+            username="Super man", password="AdminPass", country=self.country
+        )
+        self.author = User.objects.create_user(
             username="Test", password="TestPass", country=self.country
         )
+        self.normal_user = User.objects.create_user(
+            username="Test2", password="TestPass2", country=self.country
+        )
+
         self.post = Post.objects.create(
             title="Lost Cat",
             description="Lost it, please help me guys",
             city=self.city,
-            author=self.user,
+            author=self.author,
             image="https://res.cloudinary.com/demo/image/upload/w_150,h_100,c_fill/sample.jpg",
         )
 
         self.location = PetLocation.objects.create(
             latitude=42.697777,
             longitude=23.321999,
-            author=self.user,
+            author=self.author,
             post=self.post,
         )
+
+        self.update_data = {
+            "latitude": 52.697777,
+        }
 
         self.url = reverse("location-details", kwargs={"pk": self.location.pk})
 
@@ -402,4 +413,80 @@ class TestPetLocationRetrieveUpdateDestroyAPIView(APITestCase):
 
         self.assertEqual(float(data["latitude"]), self.location.latitude)
         self.assertEqual(float(data["longitude"]), self.location.longitude)
-        self.assertEqual(data["author"]["id"], self.user.pk)
+        self.assertEqual(data["author"]["id"], self.author.pk)
+
+    def test__update_location_as_unauthenticated_user__returns_401(self):
+        response = self.client.patch(self.url, self.update_data)
+
+        self.assertEqual(response.status_code, status.HTTP_401_UNAUTHORIZED)
+
+        self.location.refresh_from_db()
+        self.assertNotEqual(self.update_data["latitude"], self.location.latitude)
+
+    def test__delete_location_as_unauthenticated_user__returns_401(self):
+        response = self.client.delete(self.url)
+
+        self.assertEqual(response.status_code, status.HTTP_401_UNAUTHORIZED)
+
+        self.assertTrue(PetLocation.objects.filter(pk=self.location.pk).exists())
+
+    def test__update_location_as_normal_user__returns_403(self):
+        self.client.force_authenticate(self.normal_user)
+
+        response = self.client.patch(self.url, self.update_data)
+
+        self.assertEqual(response.status_code, status.HTTP_403_FORBIDDEN)
+
+        self.location.refresh_from_db()
+        self.assertNotEqual(self.update_data["latitude"], self.location.latitude)
+
+    def test__delete_location_as_normal_user__returns_403(self):
+        self.client.force_authenticate(self.normal_user)
+
+        response = self.client.delete(self.url)
+
+        self.assertEqual(response.status_code, status.HTTP_403_FORBIDDEN)
+
+        self.assertTrue(PetLocation.objects.filter(pk=self.location.pk).exists())
+
+    def test__update_location_as_author__returns_200(self):
+        self.client.force_authenticate(self.author)
+
+        response = self.client.patch(self.url, self.update_data)
+
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
+
+        self.location.refresh_from_db()
+        self.assertEqual(
+            float(self.update_data["latitude"]), float(self.location.latitude)
+        )
+
+    def test__delete_location_as_author__returns_204(self):
+        self.client.force_authenticate(self.author)
+
+        response = self.client.delete(self.url)
+
+        self.assertEqual(response.status_code, status.HTTP_204_NO_CONTENT)
+
+        self.assertFalse(PetLocation.objects.filter(pk=self.location.pk).exists())
+
+    def test__update_location_as_admin__returns_200(self):
+        self.client.force_authenticate(self.super_user)
+
+        response = self.client.patch(self.url, self.update_data)
+
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
+
+        self.location.refresh_from_db()
+        self.assertEqual(
+            float(self.update_data["latitude"]), float(self.location.latitude)
+        )
+
+    def test__delete_location_as_admin__returns_204(self):
+        self.client.force_authenticate(self.super_user)
+
+        response = self.client.delete(self.url)
+
+        self.assertEqual(response.status_code, status.HTTP_204_NO_CONTENT)
+
+        self.assertFalse(PetLocation.objects.filter(pk=self.location.pk).exists())
