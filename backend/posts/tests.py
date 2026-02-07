@@ -444,7 +444,7 @@ class TestPetLocationListCreateAPIView(APITestCase):
 
         self.assertEqual(len(data), PetLocation.objects.count())
 
-    def test__create_location_as_unauthenticated_user__returns_201(self):
+    def test__create_location_with_valid_input__returns_201(self):
         response = self.client.post(self.url, self.create_data)
         data = response.data
 
@@ -454,6 +454,37 @@ class TestPetLocationListCreateAPIView(APITestCase):
         location = PetLocation.objects.get(pk=data["id"])
 
         self.assertIsNone(location.author)
+
+    def test__create_location_with_invalid_post_id__returns_400(self):
+        invalid_create_data = {
+            "latitude": 52.697777,
+            "longitude": 33.321999,
+            "post_id": 91283908123021,
+        }
+
+        response = self.client.post(self.url, invalid_create_data)
+        data = response.data
+
+        self.assertEqual(response.status_code, status.HTTP_400_BAD_REQUEST)
+        self.assertFalse(
+            PetLocation.objects.filter(pk=invalid_create_data["post_id"]).exists()
+        )
+
+    def test__create_location_with_invalid_lat_and_lang__returns_400(self):
+        invalid_create_data = {
+            "id": 10,
+            "latitude": 999.697777,
+            "longitude": 999.321999,
+            "post_id": self.post.pk,
+        }
+
+        response = self.client.post(self.url, invalid_create_data)
+        data = response.data
+
+        self.assertEqual(response.status_code, status.HTTP_400_BAD_REQUEST)
+        self.assertFalse(
+            PetLocation.objects.filter(pk=invalid_create_data["id"]).exists()
+        )
 
 
 class TestPetLocationRetrieveUpdateDestroyAPIView(APITestCase):

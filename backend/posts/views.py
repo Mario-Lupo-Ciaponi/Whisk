@@ -47,12 +47,6 @@ class PetLocationListCreateAPIView(ListCreateAPIView):
     permission_classes = [
         AllowAny,
     ]  # TODO: add proper permission classes!
-    filter_backends = [
-        filter.DjangoFilterBackend,
-    ]
-    filterset_fields = [
-        "post",
-    ]
 
     def perform_create(self, serializer):
         """
