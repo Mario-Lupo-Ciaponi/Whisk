@@ -4,8 +4,10 @@ cd backend
 python manage.py test
 black .
 
-cd ../
+cd ../frontend/
 
-prettier --write frontend
+npm run test
+
+prettier --write .
 
 git add -A

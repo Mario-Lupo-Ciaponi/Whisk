@@ -1,5 +1,6 @@
 import { useState } from "react";
 import api from "../../../api/api.js";
+import formatCoordinates from "../../../utils/formatCoordinates.js";
 import "./LocationCard.css";
 
 const LocationCard = ({ post, location, currentUser, setFound }) => {
@@ -12,8 +13,6 @@ const LocationCard = ({ post, location, currentUser, setFound }) => {
   const locationUrl = `https://www.google.com/maps?q=${latitude},${longitude}`;
 
   // This returns more human-readable coordinates
-  const formatCoordinates = (c) => Number(c).toFixed(3);
-
   const markLocationAsValid = async () => {
     try {
       await api.patch(`posts/${post.id}/`, { found: true });
