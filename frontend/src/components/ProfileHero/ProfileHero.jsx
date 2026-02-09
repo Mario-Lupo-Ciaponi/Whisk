@@ -1,7 +1,8 @@
 import "./ProfileHero.css";
 
-const ProfileHero = ({ currentUser }) => {
-  console.log(currentUser.profile.profile_image);
+const ProfileHero = ({ currentUser, shouldNotEdit, setShouldNotEdit }) => {
+  const toggleShouldNotEdit = () => setShouldNotEdit(!shouldNotEdit);
+
   return (
     <section className="hero-section">
       <article className="profile-summary">
@@ -23,7 +24,9 @@ const ProfileHero = ({ currentUser }) => {
         </div>
       </article>
 
-      <button className="edit-btn">Edit</button>
+      <button onClick={toggleShouldNotEdit} className="edit-btn">
+        {shouldNotEdit ? "Edit" : "Stop Edit"}
+      </button>
     </section>
   );
 };

@@ -63,7 +63,11 @@ const Navbar = ({ navigate, currentUser }) => {
             <button className="user-toggle">
               <img
                 className="profile-image"
-                src="images/default-profile-img.jpeg"
+                src={
+                  currentUser?.profile.profile_image
+                    ? currentUser.profile.profile_image
+                    : "images/default-profile-img.jpeg"
+                }
                 alt="profile-image"
               />
               <span className="username">{currentUser?.username}</span>

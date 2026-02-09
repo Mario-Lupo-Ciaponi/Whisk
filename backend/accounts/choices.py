@@ -2,6 +2,6 @@ from django.db import models
 
 
 class AccountTypeChoices(models.TextChoices):
-    PET_OWNER = "Pet owner", "Pet owner"
-    VOLUNTEER = "Volunteer", "Volunteer"
-    RESCUE = "Shelter", "Shelter"
+    PET_OWNER = "pet owner", "Pet owner"
+    VOLUNTEER = "volunteer", "Volunteer"
+    SHELTER = "shelter", "Shelter"

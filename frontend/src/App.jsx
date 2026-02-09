@@ -10,6 +10,7 @@ import CreateGroupPage from "./pages/CreateGroupPage/CreateGroupPage.jsx";
 import AuthPage from "./pages/AuthPage/AuthPage.jsx";
 import ProfilePage from "./pages/ProfilePage/ProfilePage.jsx";
 import NotFound from "./components/NotFound/NotFound.jsx";
+import Loader from "./components/Loader.jsx";
 import api from "./api/api.js";
 import "./App.css";
 
@@ -18,17 +19,28 @@ const App = () => {
   const navigate = useNavigate();
   const [errors, setErrors] = useState({});
   const [currentUser, setCurrentUser] = useState(null);
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
     const getCurrentUser = async () => {
-      const response = await api.get("accounts/me");
-      setCurrentUser(response.data);
+      setIsLoading(true);
+
+      try {
+        const response = await api.get("accounts/me");
+        setCurrentUser(response.data);
+      } catch (e) {
+        console.error(e);
+      } finally {
+        setIsLoading(false);
+      }
     };
 
     if (localStorage.getItem("access")) getCurrentUser();
   }, []);
 
-  return (
+  return isLoading ? (
+    <Loader width={300} height={300} />
+  ) : (
     <>
       <Navbar navigate={navigate} currentUser={currentUser} />
       <main>
