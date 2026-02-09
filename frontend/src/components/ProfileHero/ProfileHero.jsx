@@ -1,15 +1,15 @@
 import "./ProfileHero.css";
 
 const ProfileHero = ({ currentUser }) => {
-  console.log(currentUser);
+  console.log(currentUser.profile.profile_image);
   return (
     <section className="hero-section">
       <article className="profile-summary">
         <div className="profile-image-container">
           <img
             src={
-              currentUser?.image
-                ? currentUser.image
+              currentUser.profile.profile_image
+                ? currentUser.profile.profile_image
                 : "images/default-profile-img.jpeg"
             }
             alt="profile image"

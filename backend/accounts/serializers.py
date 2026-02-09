@@ -40,6 +40,11 @@ class RegisterSerializer(serializers.ModelSerializer):
 
 
 class ProfileSerializer(serializers.ModelSerializer):
+    profile_image = serializers.ImageField(
+        read_only=True,
+        use_url=True,
+    )
+
     class Meta:
         model = Profile
         fields = ["user", "profile_image", "bio", "account_type", "city"]
