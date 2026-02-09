@@ -1,4 +1,4 @@
-import { it, expect } from "vitest";
+import { expect, it, test } from "@jest/globals";
 import formatCoordinates from "./formatCoordinates.js";
 
 it("formats 12.34567 to '12.346'", () => {
