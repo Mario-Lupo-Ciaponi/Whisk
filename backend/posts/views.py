@@ -9,7 +9,7 @@ from .serializers import (
     PetLocationModelSerializer,
     CommentSerializer,
 )
-from .permissions import IsOwnerOrSuperUser
+from common.permissions import IsOwnerOrSuperUser
 from .filters import PostFilter
 from .mixins import PostAPIViewMixin
 from .pagination import PostResultsSetPagination

@@ -79,3 +79,56 @@ class TestRegisterApiView(APITestCase):
         response = self.client.post(self.url, user_data)
 
         self.assertEqual(response.status_code, status.HTTP_400_BAD_REQUEST)
+
+
+class TestProfileUpdate(APITestCase):
+    def setUp(self):
+        self.country = Country.objects.create(name="Bulgaria", code2="BG")
+
+        self.user = User.objects.create_user(
+            username="Test", password="testpass", country=self.country
+        )
+        self.second_user = User.objects.create_user(
+            username="Test2", password="testpass2", country=self.country
+        )
+        self.super_user = User.objects.create_superuser(
+            username="Admin", password="admin", country=self.country
+        )
+
+        self.profile = Profile.objects.get(user=self.user.pk)
+
+        self.update_data = {
+            "bio": "a new bio",
+        }
+
+        self.url = reverse("profile", kwargs={"pk": self.user.pk})
+
+    def test__update_profile_as_another_profile__returns_403(self):
+        self.client.force_authenticate(self.second_user)
+
+        response = self.client.patch(self.url, self.update_data)
+
+        self.assertEqual(response.status_code, status.HTTP_403_FORBIDDEN)
+
+        self.profile.refresh_from_db()
+        self.assertNotEqual(self.update_data["bio"], self.profile.bio)
+
+    def test__update_profile_as_profiles_user__returns_200(self):
+        self.client.force_authenticate(self.user)
+
+        response = self.client.patch(self.url, self.update_data)
+
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
+
+        self.profile.refresh_from_db()
+        self.assertEqual(self.update_data["bio"], self.profile.bio)
+
+    def test__update_profile_as_admin__returns_200(self):
+        self.client.force_authenticate(self.super_user)
+
+        response = self.client.patch(self.url, self.update_data)
+
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
+
+        self.profile.refresh_from_db()
+        self.assertEqual(self.update_data["bio"], self.profile.bio)

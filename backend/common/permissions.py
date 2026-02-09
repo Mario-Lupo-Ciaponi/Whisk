@@ -12,4 +12,9 @@ class IsOwnerOrSuperUser(permissions.BasePermission):
         if request.method in permissions.SAFE_METHODS or request.user.is_staff:
             return True
 
-        return obj.author == request.user
+        owner = getattr(obj, "author", None) or getattr(obj, "user", None)
+
+        if owner is None:
+            return False
+
+        return owner == request.user
