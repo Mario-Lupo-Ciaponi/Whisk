@@ -8,6 +8,7 @@ import CreatePostPage from "./pages/CreatePostPage/CreatePostPage.jsx";
 import GroupsPage from "./pages/GroupsPage/GroupsPage.jsx";
 import CreateGroupPage from "./pages/CreateGroupPage/CreateGroupPage.jsx";
 import AuthPage from "./pages/AuthPage/AuthPage.jsx";
+import ProfilePage from "./pages/ProfilePage/ProfilePage.jsx";
 import NotFound from "./components/NotFound/NotFound.jsx";
 import api from "./api/api.js";
 import "./App.css";
@@ -72,6 +73,10 @@ const App = () => {
                 setErrors={setErrors}
               />
             }
+          />
+          <Route
+            path="profile/"
+            element={<ProfilePage currentUser={currentUser} />}
           />
         </Routes>
       </main>

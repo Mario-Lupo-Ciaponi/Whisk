@@ -1,0 +1,39 @@
+.hero-section {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.hero-section .profile-summary {
+  display: flex;
+  align-items: center;
+  gap: 1.2rem;
+}
+
+.hero-section .profile-summary .profile-image-container {
+  width: 6rem;
+  height: 6rem;
+  border-radius: 12rem;
+  overflow: hidden;
+}
+
+.hero-section .profile-summary .name-wrapper {
+  color: var(--coffee-pot-color);
+}
+
+.hero-section .profile-summary .name-wrapper .email {
+  font-style: italic;
+}
+
+.hero-section .edit-btn {
+  border-radius: 0.5rem;
+  border: none;
+  padding: 0.4rem 1.4rem;
+  background-color: var(--tan-color);
+  color: white;
+  transition: background-color 500ms ease-in-out;
+}
+
+.hero-section .edit-btn:hover {
+  background-color: var(--coffee-pot-color);
+}
