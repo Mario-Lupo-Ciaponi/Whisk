@@ -1,6 +1,7 @@
 import "./ProfileHero.css";
 
 const ProfileHero = ({ currentUser }) => {
+  console.log(currentUser);
   return (
     <section className="hero-section">
       <article className="profile-summary">

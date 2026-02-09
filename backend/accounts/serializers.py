@@ -6,12 +6,6 @@ from .models import Profile
 User = get_user_model()
 
 
-class UserSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = User
-        fields = ["id", "username", "email", "country"]
-
-
 class RegisterSerializer(serializers.ModelSerializer):
     password1 = serializers.CharField(
         write_only=True,
@@ -49,3 +43,13 @@ class ProfileSerializer(serializers.ModelSerializer):
     class Meta:
         model = Profile
         fields = ["user", "profile_image", "bio", "account_type", "city"]
+
+
+class UserSerializer(serializers.ModelSerializer):
+    profile = ProfileSerializer(
+        read_only=True,
+    )
+
+    class Meta:
+        model = User
+        fields = ["id", "username", "email", "profile", "country"]
