@@ -1,3 +1,5 @@
+import ProfileImageFileUpload from "../ProfileImageFileUpload/ProfileImageFileUpload.jsx";
+import api from "../../api/api.js";
 import "./ProfileHero.css";
 
 const ProfileHero = ({
@@ -21,6 +23,10 @@ const ProfileHero = ({
             alt="profile image"
             className="profile-image"
           />
+
+          {currentUser.id === user.id &&
+            <ProfileImageFileUpload user={user} />
+          }
         </div>
 
         <div className="name-wrapper">

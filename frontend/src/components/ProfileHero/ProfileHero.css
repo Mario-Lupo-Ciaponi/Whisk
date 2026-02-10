@@ -16,6 +16,7 @@
   height: 6rem;
   border-radius: 12rem;
   overflow: hidden;
+  position: relative;
 }
 
 .hero-section .profile-summary .name-wrapper {

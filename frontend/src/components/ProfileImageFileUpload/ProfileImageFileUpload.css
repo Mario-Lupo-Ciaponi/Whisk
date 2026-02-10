@@ -1,0 +1,11 @@
+.edit-profile-image-btn {
+  position: absolute;
+  right: 4%;
+  bottom: 2%;
+  border: none;
+  border-top-left-radius: 1rem;
+}
+
+.edit-profile-image-btn .profile-image-edit-input {
+  display: none;
+}

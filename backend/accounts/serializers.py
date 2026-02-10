@@ -41,7 +41,8 @@ class RegisterSerializer(serializers.ModelSerializer):
 
 class ProfileSerializer(serializers.ModelSerializer):
     profile_image = serializers.ImageField(
-        read_only=True,
+        required=False,
+        allow_null=True,
         use_url=True,
     )
 
