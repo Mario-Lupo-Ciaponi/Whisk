@@ -87,7 +87,7 @@ const App = () => {
             }
           />
           <Route
-            path="profile/"
+            path="profile/:id"
             element={<ProfilePage currentUser={currentUser} />}
           />
         </Routes>

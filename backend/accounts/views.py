@@ -31,6 +31,12 @@ class RegisterApiView(CreateAPIView):
     permission_classes = [AllowAny]
 
 
+class UserRetrieveAPIView(RetrieveAPIView):
+    queryset = User.objects.all()
+    serializer_class = UserSerializer
+    permission_classes = [AllowAny]
+
+
 class ProfileUpdateAPIView(UpdateAPIView):
     queryset = Profile.objects.all()
     serializer_class = ProfileSerializer

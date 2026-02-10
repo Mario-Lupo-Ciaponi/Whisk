@@ -1,11 +1,18 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { useParams } from "react-router";
 import ProfileHero from "../../components/ProfileHero/ProfileHero.jsx";
 import ProfileForm from "../../components/forms/ProfileForm/ProfileForm.jsx";
 import Loader from "../../components/Loader.jsx";
 import "./ProfilePage.css";
 
 const ProfilePage = ({ currentUser }) => {
+  const id = useParams();
+  const user = useState({});
   const [shouldNotEdit, setShouldNotEdit] = useState(true);
+
+  useEffect(() => {
+    const fetchUser = async () => {};
+  }, []);
 
   return currentUser ? (
     <div className="profile">
