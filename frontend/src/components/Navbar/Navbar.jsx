@@ -51,6 +51,11 @@ const Navbar = ({ navigate, currentUser }) => {
             Help
           </NavLink>
         </li>
+        <li className="item">
+          <NavLink to="/contact" className="link">
+            Contact
+          </NavLink>
+        </li>
       </ul>
 
       {isLoggedIn ? (

@@ -38,7 +38,7 @@ const Footer = () => {
       </div>
 
       <p className="rights-reserved">
-        &copy; 2025 Mario Lupo Fausto Ciaponi. All rights reserved{" "}
+        &copy; 2025-2026 Mario Lupo Fausto Ciaponi. All rights reserved{" "}
       </p>
     </footer>
   );
