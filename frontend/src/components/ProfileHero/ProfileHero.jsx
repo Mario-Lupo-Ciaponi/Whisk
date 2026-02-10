@@ -14,8 +14,8 @@ const ProfileHero = ({
         <div className="profile-image-container">
           <img
             src={
-              currentUser.profile.profile_image
-                ? currentUser.profile.profile_image
+              user.profile.profile_image
+                ? user.profile.profile_image
                 : "images/default-profile-img.jpeg"
             }
             alt="profile image"
@@ -24,8 +24,8 @@ const ProfileHero = ({
         </div>
 
         <div className="name-wrapper">
-          <h2 className="username">{currentUser.username}</h2>
-          <p className="email">{currentUser.email}</p>
+          <h2 className="username">{user.username}</h2>
+          <p className="email">{user.email}</p>
         </div>
       </article>
 

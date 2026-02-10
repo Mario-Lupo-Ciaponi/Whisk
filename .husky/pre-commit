@@ -9,5 +9,3 @@ cd ../frontend/
 npm run test
 
 prettier --write .
-
-git add -A
