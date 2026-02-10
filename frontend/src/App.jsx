@@ -22,6 +22,14 @@ const App = () => {
   const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
+    const token = localStorage.getItem("access");
+
+    if (!token) {
+      setCurrentUser(null);
+      setIsLoading(false);
+      return;
+    }
+
     const getCurrentUser = async () => {
       setIsLoading(true);
 
@@ -30,13 +38,14 @@ const App = () => {
         setCurrentUser(response.data);
       } catch (e) {
         console.error(e);
+        setCurrentUser(null);
       } finally {
         setIsLoading(false);
       }
     };
 
-    if (localStorage.getItem("access")) getCurrentUser();
-  }, []);
+    getCurrentUser();
+  }, [authTokens]);
 
   return isLoading ? (
     <Loader width={300} height={300} />

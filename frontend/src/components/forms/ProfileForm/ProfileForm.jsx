@@ -2,18 +2,14 @@ import { useEffect, useState } from "react";
 import api from "../../../api/api.js";
 import "./ProfileForm.css";
 
-const ProfileForm = ({ currentUser, shouldNotEdit }) => {
-  const [bio, setBio] = useState(currentUser.profile.bio);
-  const [accountType, setAccountType] = useState(
-    currentUser.profile.account_type,
-  );
-  const [selectedCity, setSelectedCity] = useState(currentUser.profile.city);
+const ProfileForm = ({ user, shouldNotEdit }) => {
+  const [bio, setBio] = useState(user.profile.bio);
+  const [accountType, setAccountType] = useState(user.profile?.account_type);
+  const [selectedCity, setSelectedCity] = useState(user.profile?.city);
   const [cities, setCities] = useState([]);
 
-  console.log(currentUser.profile.city);
-
   const addCities = async () => {
-    const countryId = currentUser.country;
+    const countryId = user.country;
 
     const response = await api.get("cities/", {
       params: {
@@ -35,7 +31,7 @@ const ProfileForm = ({ currentUser, shouldNotEdit }) => {
       formData.append("account_type", accountType);
       formData.append("city", selectedCity);
 
-      await api.patch(`accounts/profile/${currentUser.id}/`, formData, {
+      await api.patch(`accounts/profile/${user.id}/`, formData, {
         headers: {
           "Content-Type": "multipart/form-data",
         },
@@ -49,8 +45,8 @@ const ProfileForm = ({ currentUser, shouldNotEdit }) => {
   };
 
   useEffect(() => {
-    if (currentUser?.country) addCities();
-  }, [currentUser]);
+    if (user?.country) addCities();
+  }, [user]);
 
   return (
     <form className="profile-form">

@@ -80,7 +80,10 @@ const Navbar = ({ navigate, currentUser }) => {
 
             <ul className="menu-list">
               <li className="dropdown-item">
-                <Link to="profile/" className="dropdown-link">
+                <Link
+                  to={`profile/${currentUser?.id}`}
+                  className="dropdown-link"
+                >
                   Profile
                 </Link>
               </li>

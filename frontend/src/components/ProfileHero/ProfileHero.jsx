@@ -1,6 +1,11 @@
 import "./ProfileHero.css";
 
-const ProfileHero = ({ currentUser, shouldNotEdit, setShouldNotEdit }) => {
+const ProfileHero = ({
+  currentUser,
+  user,
+  shouldNotEdit,
+  setShouldNotEdit,
+}) => {
   const toggleShouldNotEdit = () => setShouldNotEdit(!shouldNotEdit);
 
   return (
@@ -24,9 +29,11 @@ const ProfileHero = ({ currentUser, shouldNotEdit, setShouldNotEdit }) => {
         </div>
       </article>
 
-      <button onClick={toggleShouldNotEdit} className="edit-btn">
-        {shouldNotEdit ? "Edit" : "Stop Edit"}
-      </button>
+      {currentUser.id === user.id && (
+        <button onClick={toggleShouldNotEdit} className="edit-btn">
+          {shouldNotEdit ? "Edit" : "Stop Edit"}
+        </button>
+      )}
     </section>
   );
 };
