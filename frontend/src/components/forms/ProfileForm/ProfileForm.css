@@ -1,0 +1,42 @@
+.profile-form {
+  width: 100%;
+}
+
+.profile-form .profile-fields {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 2rem;
+  margin-bottom: 2rem;
+}
+
+.profile-form .profile-fields > * {
+  flex-basis: 48%;
+}
+
+.profile-form .profile-fields .profile-field .profile-label {
+  display: block;
+  margin-bottom: 0.5rem;
+}
+
+.profile-form .profile-fields .profile-field .profile-input,
+.profile-form .profile-fields .profile-field .profile-select {
+  width: 100%;
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  border: none;
+  background-color: var(--light-gray-color);
+}
+
+.profile-form .submit-btn {
+  padding: 0.25rem 2rem;
+  border: none;
+  border-radius: 0.5rem;
+  background-color: var(--coffee-pot-color);
+  color: white;
+  transition: background-color 500ms ease-in-out;
+}
+
+.profile-form .submit-btn:hover {
+  background-color: var(--tan-color);
+}
