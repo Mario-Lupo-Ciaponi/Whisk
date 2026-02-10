@@ -1,46 +1,10 @@
 import { useState } from "react";
+import isFileImage from "../../utils/isFileImage.js";
+import areImageDimensionsProportional from "../../utils/areImageDimensionsProportional.js";
 import "./UploadBox.css";
 
 const UploadBox = ({ image, setImage }) => {
   const [errors, setErrors] = useState([]);
-
-  const getImageDimensions = (file) => {
-    return new Promise((resolve) => {
-      const img = new Image();
-
-      const objectUrl = URL.createObjectURL(file);
-
-      img.onload = () => {
-        const dimensions = {
-          width: img.width,
-          height: img.height,
-          ratio: img.height / img.width,
-        };
-
-        URL.revokeObjectURL(objectUrl);
-        resolve(dimensions);
-      };
-
-      img.src = objectUrl;
-    });
-  };
-
-  const isFileImage = (file) => {
-    return file.type.includes("image");
-  };
-
-  const areImageDimensionsProportional = async (image) => {
-    const { width, height, ratio } = await getImageDimensions(image);
-
-    return (
-      412 <= width &&
-      width <= 2560 &&
-      200 <= height &&
-      height <= 3000 &&
-      0.5 <= ratio &&
-      ratio <= 1.6
-    );
-  };
 
   const isImageSizeNormal = (image) => {
     const imageSizeLimitInMg = 5;

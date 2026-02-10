@@ -24,9 +24,7 @@ const ProfileHero = ({
             className="profile-image"
           />
 
-          {currentUser.id === user.id &&
-            <ProfileImageFileUpload user={user} />
-          }
+          {currentUser.id === user.id && <ProfileImageFileUpload user={user} />}
         </div>
 
         <div className="name-wrapper">

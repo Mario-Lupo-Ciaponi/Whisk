@@ -15,23 +15,27 @@ const ProfileImageFileUpload = ({ user }) => {
     try {
       const formData = new FormData();
 
-      formData.append("profile_image", file)
+      formData.append("profile_image", file);
 
-      const response = await api.patch(`accounts/profile/${user.id}/`, formData, {
-        headers: {
-          "Content-Type": "multipart/form-data",
+      const response = await api.patch(
+        `accounts/profile/${user.id}/`,
+        formData,
+        {
+          headers: {
+            "Content-Type": "multipart/form-data",
+          },
         },
-      });
+      );
 
-      console.log(response.status)
+      console.log(response.status);
     } catch (e) {
       console.error(e);
     }
-  }
+  };
 
   const onButtonClick = () => {
     inputFile.current.click();
-  }
+  };
 
   return (
     <button onClick={onButtonClick} className="edit-profile-image-btn">
@@ -46,7 +50,7 @@ const ProfileImageFileUpload = ({ user }) => {
         <FontAwesomeIcon icon={faPencil} />
       </span>
     </button>
-  )
-}
+  );
+};
 
 export default ProfileImageFileUpload;
