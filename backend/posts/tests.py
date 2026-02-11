@@ -7,7 +7,7 @@ from rest_framework.serializers import ValidationError
 from rest_framework.test import APITestCase
 from rest_framework import status
 
-from .models import Post, PetLocation, Comment
+from .models import Post, SavedPost, PetLocation, Comment
 from cities_light.models import Country, City
 
 User = get_user_model()
@@ -258,7 +258,9 @@ class TestPostListCreateAPIView(APITestCase):
 
         self.assertEqual(len(data["results"]), 3)
 
-    def test__get_posts_with_country_filter__returns_only_posts_from_users_country(self):
+    def test__get_posts_with_country_filter__returns_only_posts_from_users_country(
+        self,
+    ):
         country_2 = Country.objects.create(name="Italy", code2="IT")
         city_2 = City.objects.create(name="Rome", country=country_2)
 
@@ -301,7 +303,9 @@ class TestPostListCreateAPIView(APITestCase):
 
         self.assertEqual(len(data["results"]), 1)
 
-    def test__get_posts_with_country_filter_as_unauthenticated_user__returns_posts_across_the_world(self):
+    def test__get_posts_with_country_filter_as_unauthenticated_user__returns_posts_across_the_world(
+        self,
+    ):
         country_2 = Country.objects.create(name="Italy", code2="IT")
         city_2 = City.objects.create(name="Rome", country=country_2)
 
@@ -450,6 +454,47 @@ class TestPostRetrieveUpdateDestroyAPIView(APITestCase):
         self.assertEqual(response.status_code, status.HTTP_403_FORBIDDEN)
         self.assertTrue(Post.objects.filter(pk=self.post.pk).exists())
 
+
+class TestSavePosts(APITestCase):
+    def setUp(self):
+        self.country = Country.objects.create(name="Bulgaria", code2="BG")
+        self.city = City.objects.create(name="Sofia", country=self.country)
+
+        self.user = User.objects.create_user(
+            username="Test", password="TestPass", country=self.country
+        )
+
+        self.post = Post.objects.create(
+            title="Lost Cat",
+            description="Lost it, please help me guys",
+            city=self.city,
+            author=self.user,
+            image="https://res.cloudinary.com/demo/image/upload/w_150,h_100,c_fill/sample.jpg",
+        )
+
+        self.url = reverse("save-post", kwargs={"pk": self.post.pk})
+
+    def test__save_post_as_unauthenticated_user__returns_401(self):
+        response = self.client.post(self.url)
+
+        self.assertEqual(response.status_code, status.HTTP_401_UNAUTHORIZED)
+        self.assertFalse(SavedPost.objects.filter(post__pk=self.post.pk, user__pk=self.user.pk).exists())
+
+    def test__save_post_as_authenticated_user__returns_200(self):
+        self.client.force_authenticate(self.user)
+
+        response = self.client.post(self.url)
+
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
+        self.assertTrue(SavedPost.objects.filter(post__pk=self.post.pk, user__pk=self.user.pk).exists())
+
+    def test__save_post_with_wrong_method__returns_405(self):
+        self.client.force_authenticate(self.user)
+
+        response = self.client.get(self.url)
+
+        self.assertEqual(response.status_code, status.HTTP_405_METHOD_NOT_ALLOWED)
+        self.assertFalse(SavedPost.objects.filter(post__pk=self.post.pk, user__pk=self.user.pk).exists())
 
 class TestPetLocationListCreateAPIView(APITestCase):
     def setUp(self):

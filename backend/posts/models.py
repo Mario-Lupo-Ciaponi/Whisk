@@ -28,6 +28,11 @@ class Post(models.Model):
         related_name="posts",
         on_delete=models.CASCADE,
     )
+    saved_by = models.ManyToManyField(
+        User,
+        related_name="saved_posts",
+        through="SavedPost",
+    )
     image = CloudinaryField(
         "image",
     )
@@ -40,6 +45,19 @@ class Post(models.Model):
     def __str__(self):
         return f"{self.title} - {self.author.username}"
 
+
+class SavedPost(models.Model):
+    user = models.ForeignKey(
+        User,
+        on_delete=models.CASCADE,
+    )
+    post = models.ForeignKey(
+        Post,
+        on_delete=models.CASCADE,
+    )
+
+    def __str__(self):
+        return f"{self.post.title} saved by {self.user.username}"
 
 class PetLocation(models.Model):
     latitude = CoordinatesField(

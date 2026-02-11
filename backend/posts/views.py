@@ -1,4 +1,8 @@
+from django.http import HttpRequest
+from rest_framework import status
 from rest_framework.generics import ListCreateAPIView, RetrieveUpdateDestroyAPIView
+from rest_framework.response import Response
+from rest_framework.views import APIView
 from rest_framework.permissions import IsAuthenticatedOrReadOnly, AllowAny, IsAdminUser
 from django_filters import rest_framework as filter
 from rest_framework.parsers import MultiPartParser, FormParser
@@ -44,6 +48,29 @@ class PostRetrieveUpdateDestroyAPIView(PostAPIViewMixin, RetrieveUpdateDestroyAP
     # Inherits IsAuthenticatedOrReadOnly permission then adds a custom one
     permission_classes = PostAPIViewMixin.permission_classes + [IsOwnerOrSuperUser]
 
+
+class SavePostAPIView(APIView):
+    def get_object(self, pk: int):
+        try:
+            return Post.objects.get(pk=pk)
+        except Post.DoesNotExist:
+            raise status.HTTP_404_NOT_FOUND
+
+    def post(self, request: HttpRequest, pk: int, format=None):
+        user = request.user
+
+        if user.is_authenticated:
+            post = self.get_object(pk)
+
+            if post.saved_by.filter(pk=user.pk).exists():
+                post.saved_by.remove(user)
+
+            else:
+                post.saved_by.add(user)
+
+            return Response(status=status.HTTP_200_OK)
+
+        return Response(status=status.HTTP_401_UNAUTHORIZED)
 
 # PetLocation related views
 

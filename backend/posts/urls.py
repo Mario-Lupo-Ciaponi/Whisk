@@ -3,11 +3,10 @@ from . import views
 
 urlpatterns = [
     path("", views.PostListCreateAPIView.as_view(), name="post-list"),
-    path(
-        "<int:pk>/",
-        views.PostRetrieveUpdateDestroyAPIView.as_view(),
-        name="post-details",
-    ),
+    path("<int:pk>/", include([
+        path("", views.PostRetrieveUpdateDestroyAPIView.as_view(), name="post-details"),
+        path("save/", views.SavePostAPIView.as_view(), name="save-post"),
+    ])),
     path(
         "location/",
         include(
