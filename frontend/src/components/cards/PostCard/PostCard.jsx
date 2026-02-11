@@ -62,8 +62,7 @@ const PostCard = ({ post, currentUser, navigate }) => {
       if (save) {
         setSaveCount((prev) => prev + 1);
         alert("Post saved successfully!");
-      }
-      else {
+      } else {
         setSaveCount((prev) => prev - 1);
         alert("Post unsaved successfully!");
       }
@@ -98,7 +97,9 @@ const PostCard = ({ post, currentUser, navigate }) => {
           </button>
           <ul ref={moreOptionsRef} className="more-options-menu">
             <li className="option-item">
-              <button onClick={savePost} className="option">Save</button>
+              <button onClick={savePost} className="option">
+                Save
+              </button>
             </li>
             <li className="option-item">
               <button className="option">Share</button>

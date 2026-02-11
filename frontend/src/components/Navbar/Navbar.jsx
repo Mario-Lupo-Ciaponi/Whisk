@@ -88,8 +88,8 @@ const Navbar = ({ navigate, currentUser }) => {
                 </Link>
               </li>
               <li className="dropdown-item">
-                <Link to="#" className="dropdown-link">
-                  Test
+                <Link to="/saved-posts" className="dropdown-link">
+                  Saved Posts
                 </Link>
               </li>
               <li className="dropdown-item">

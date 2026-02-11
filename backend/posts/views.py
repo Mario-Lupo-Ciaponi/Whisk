@@ -1,9 +1,18 @@
 from django.http import HttpRequest
 from rest_framework import status
-from rest_framework.generics import ListCreateAPIView, RetrieveUpdateDestroyAPIView, ListAPIView
+from rest_framework.generics import (
+    ListCreateAPIView,
+    RetrieveUpdateDestroyAPIView,
+    ListAPIView,
+)
 from rest_framework.response import Response
 from rest_framework.views import APIView
-from rest_framework.permissions import IsAuthenticatedOrReadOnly, AllowAny, IsAdminUser, IsAuthenticated
+from rest_framework.permissions import (
+    IsAuthenticatedOrReadOnly,
+    AllowAny,
+    IsAdminUser,
+    IsAuthenticated,
+)
 from django_filters import rest_framework as filter
 from rest_framework.parsers import MultiPartParser, FormParser
 
@@ -82,6 +91,7 @@ class SavePostListAPIView(ListAPIView):
         user = self.request.user
 
         return Post.objects.filter(saved_by=user)
+
 
 # PetLocation related views
 

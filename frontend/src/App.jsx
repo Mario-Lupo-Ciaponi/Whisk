@@ -9,6 +9,7 @@ import GroupsPage from "./pages/GroupsPage/GroupsPage.jsx";
 import CreateGroupPage from "./pages/CreateGroupPage/CreateGroupPage.jsx";
 import AuthPage from "./pages/AuthPage/AuthPage.jsx";
 import ProfilePage from "./pages/ProfilePage/ProfilePage.jsx";
+import SavedPostsPage from "./pages/SavedPostsPage/SavedPostsPage.jsx";
 import NotFound from "./components/NotFound/NotFound.jsx";
 import Loader from "./components/Loader.jsx";
 import api from "./api/api.js";
@@ -79,6 +80,12 @@ const App = () => {
                   errors={errors}
                   setErrors={setErrors}
                 />
+              }
+            />
+            <Route
+              path="saved-posts/"
+              element={
+                <SavedPostsPage currentUser={currentUser} />
               }
             />
           </Route>

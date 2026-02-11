@@ -566,26 +566,11 @@ class TestSavePostListAPIView(APITestCase):
         )
 
         saved_post_data = [
-            SavedPost(
-                user=self.user_1,
-                post=self.post_3
-            ),
-            SavedPost(
-                user=self.user_2,
-                post=self.post_3
-            ),
-            SavedPost(
-                user=self.user_2,
-                post=self.post_2
-            ),
-            SavedPost(
-                user=self.user_2,
-                post=self.post_1
-            ),
-            SavedPost(
-                user=self.user_1,
-                post=self.post_1
-            ),
+            SavedPost(user=self.user_1, post=self.post_3),
+            SavedPost(user=self.user_2, post=self.post_3),
+            SavedPost(user=self.user_2, post=self.post_2),
+            SavedPost(user=self.user_2, post=self.post_1),
+            SavedPost(user=self.user_1, post=self.post_1),
         ]
 
         SavedPost.objects.bulk_create(saved_post_data)
@@ -598,7 +583,11 @@ class TestSavePostListAPIView(APITestCase):
         response = self.client.get(self.url)
 
         self.assertEqual(response.status_code, status.HTTP_200_OK)
-        self.assertEqual(len(response.data["results"]), SavedPost.objects.filter(user=self.user_2).count())
+        self.assertEqual(
+            len(response.data["results"]),
+            SavedPost.objects.filter(user=self.user_2).count(),
+        )
+
 
 class TestPetLocationListCreateAPIView(APITestCase):
     def setUp(self):
