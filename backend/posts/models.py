@@ -59,6 +59,7 @@ class SavedPost(models.Model):
     def __str__(self):
         return f"{self.post.title} saved by {self.user.username}"
 
+
 class PetLocation(models.Model):
     latitude = CoordinatesField(
         validators=[

@@ -16,6 +16,7 @@ const PostCard = ({ post, currentUser, navigate }) => {
   const [comments, setComments] = useState([]);
   const [found, setFound] = useState(post.found);
   const [activeSection, setActiveSection] = useState("none");
+  const [saveCount, setSaveCount] = useState(post.save_count);
 
   const moreOptionsRef = useRef(null);
 
@@ -49,6 +50,18 @@ const PostCard = ({ post, currentUser, navigate }) => {
       console.log(e);
     }
   };
+
+  const savePost = async () => {
+    try {
+      await api.post(`posts/${post.id}/save/`);
+    } catch (e) {
+      if (e.status === 401) {
+        navigate("login/");
+      }
+
+      console.error(e);
+    }
+  }
 
   return (
     <article className="post-card" key={post.id}>
@@ -120,9 +133,9 @@ const PostCard = ({ post, currentUser, navigate }) => {
           <FontAwesomeIcon icon={faComment} />
           <span className="count">{post.comments_count}</span>
         </button>
-        <button className="action mark-position">
+        <button onClick={savePost} className="action mark-position">
           <FontAwesomeIcon icon={faBookmark} />
-          <span className="count">0</span>
+          <span className="count">{saveCount}</span>
         </button>
       </div>
 

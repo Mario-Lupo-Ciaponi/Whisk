@@ -478,7 +478,11 @@ class TestSavePosts(APITestCase):
         response = self.client.post(self.url)
 
         self.assertEqual(response.status_code, status.HTTP_401_UNAUTHORIZED)
-        self.assertFalse(SavedPost.objects.filter(post__pk=self.post.pk, user__pk=self.user.pk).exists())
+        self.assertFalse(
+            SavedPost.objects.filter(
+                post__pk=self.post.pk, user__pk=self.user.pk
+            ).exists()
+        )
 
     def test__save_post_as_authenticated_user__returns_200(self):
         self.client.force_authenticate(self.user)
@@ -486,7 +490,11 @@ class TestSavePosts(APITestCase):
         response = self.client.post(self.url)
 
         self.assertEqual(response.status_code, status.HTTP_200_OK)
-        self.assertTrue(SavedPost.objects.filter(post__pk=self.post.pk, user__pk=self.user.pk).exists())
+        self.assertTrue(
+            SavedPost.objects.filter(
+                post__pk=self.post.pk, user__pk=self.user.pk
+            ).exists()
+        )
 
     def test__save_post_with_wrong_method__returns_405(self):
         self.client.force_authenticate(self.user)
@@ -494,7 +502,12 @@ class TestSavePosts(APITestCase):
         response = self.client.get(self.url)
 
         self.assertEqual(response.status_code, status.HTTP_405_METHOD_NOT_ALLOWED)
-        self.assertFalse(SavedPost.objects.filter(post__pk=self.post.pk, user__pk=self.user.pk).exists())
+        self.assertFalse(
+            SavedPost.objects.filter(
+                post__pk=self.post.pk, user__pk=self.user.pk
+            ).exists()
+        )
+
 
 class TestPetLocationListCreateAPIView(APITestCase):
     def setUp(self):

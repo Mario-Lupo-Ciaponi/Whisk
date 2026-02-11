@@ -72,6 +72,7 @@ class SavePostAPIView(APIView):
 
         return Response(status=status.HTTP_401_UNAUTHORIZED)
 
+
 # PetLocation related views
 
 
