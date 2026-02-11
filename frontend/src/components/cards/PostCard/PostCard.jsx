@@ -16,6 +16,9 @@ const PostCard = ({ post, currentUser, navigate }) => {
   const [comments, setComments] = useState([]);
   const [found, setFound] = useState(post.found);
   const [activeSection, setActiveSection] = useState("none");
+  // Count states:
+  const [locationsCount, setLocationsCount] = useState(post.locations_count);
+  const [commentsCount, setCommentsCount] = useState(post.comments_count);
   const [saveCount, setSaveCount] = useState(post.save_count);
 
   const moreOptionsRef = useRef(null);
@@ -53,7 +56,11 @@ const PostCard = ({ post, currentUser, navigate }) => {
 
   const savePost = async () => {
     try {
-      await api.post(`posts/${post.id}/save/`);
+      const response = await api.post(`posts/${post.id}/save/`);
+      const { save } = response.data;
+
+      if (save) setSaveCount(prev => prev + 1);
+      else setSaveCount(prev => prev - 1);
     } catch (e) {
       if (e.status === 401) {
         navigate("login/");
@@ -124,14 +131,14 @@ const PostCard = ({ post, currentUser, navigate }) => {
           className="action mark-position"
         >
           <FontAwesomeIcon icon={faMapLocationDot} />
-          <span className="count">{post.locations_count}</span>
+          <span className="count">{locationsCount}</span>
         </button>
         <button
           onClick={() => toggleSection("comment")}
           className="action comment-post"
         >
           <FontAwesomeIcon icon={faComment} />
-          <span className="count">{post.comments_count}</span>
+          <span className="count">{commentsCount}</span>
         </button>
         <button onClick={savePost} className="action mark-position">
           <FontAwesomeIcon icon={faBookmark} />
@@ -144,6 +151,7 @@ const PostCard = ({ post, currentUser, navigate }) => {
         post={post}
         locations={locations}
         setLocations={setLocations}
+        setLocationsCount={setLocationsCount}
         currentUser={currentUser}
         setFound={setFound}
       />
@@ -153,6 +161,7 @@ const PostCard = ({ post, currentUser, navigate }) => {
         post={post}
         comments={comments}
         setComments={setComments}
+        setCommentsCount={setCommentsCount}
         currentUser={currentUser}
         navigate={navigate}
       />

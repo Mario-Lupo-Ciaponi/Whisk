@@ -12,6 +12,7 @@ const MapSection = ({
   post,
   locations,
   setLocations,
+  setLocationsCount,
   currentUser,
   setFound,
 }) => {
@@ -33,7 +34,7 @@ const MapSection = ({
             </p>
           </header>
 
-          <LocationPicker post={post} setLocations={setLocations} />
+          <LocationPicker post={post} setLocations={setLocations} setLocationsCount={setLocationsCount} />
         </>
       )}
 

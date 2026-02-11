@@ -2,12 +2,13 @@ import { useState } from "react";
 import api from "../../../api/api.js";
 import "./CommentCreateForm.css";
 
-const CommentCreateForm = ({ post, setComments, currentUser, navigate }) => {
+const CommentCreateForm = ({ post, setComments, setCommentsCount, currentUser, navigate }) => {
   const [content, setContent] = useState("");
 
   const createComment = async (event) => {
     event.preventDefault();
 
+    // TODO: unauthenticated users be handled in the catch!!!
     if (!currentUser) navigate("/login");
 
     if (!content) return;
@@ -18,6 +19,7 @@ const CommentCreateForm = ({ post, setComments, currentUser, navigate }) => {
         post_input: post.id,
       });
       setComments((prev) => [...prev, response.data]);
+      setCommentsCount(prev => prev + 1);
     } catch (e) {
       console.log(e);
     }

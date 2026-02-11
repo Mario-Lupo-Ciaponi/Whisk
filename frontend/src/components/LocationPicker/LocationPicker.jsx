@@ -35,7 +35,7 @@ const RecalculateView = () => {
   return null;
 };
 
-const LocationPicker = ({ post, setLocations }) => {
+const LocationPicker = ({ post, setLocations, setLocationsCount }) => {
   const [selectedPosition, setSelectedPosition] = useState(null);
 
   const latitude = Number(post.city.latitude);
@@ -63,6 +63,7 @@ const LocationPicker = ({ post, setLocations }) => {
       });
 
       setLocations((prev) => [...prev, response.data]);
+      setLocationsCount(prev => prev + 1);
       alert("Location added successfully!");
       setSelectedPosition(null);
     } catch (e) {

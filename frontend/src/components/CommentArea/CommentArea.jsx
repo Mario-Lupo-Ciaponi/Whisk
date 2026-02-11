@@ -7,6 +7,7 @@ const CommentArea = ({
   post,
   comments,
   setComments,
+  setCommentsCount,
   currentUser,
   navigate,
 }) => {
@@ -17,6 +18,7 @@ const CommentArea = ({
       <CommentCreateForm
         post={post}
         setComments={setComments}
+        setCommentsCount={setCommentsCount}
         currentUser={currentUser}
         navigate={navigate}
       />
