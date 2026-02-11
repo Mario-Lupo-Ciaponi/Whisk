@@ -20,7 +20,6 @@ from .pagination import PostResultsSetPagination
 
 
 class PostListCreateAPIView(PostAPIViewMixin, ListCreateAPIView):
-    queryset = Post.objects.order_by("-posted_on")
     filter_backends = [filter.DjangoFilterBackend]
     filterset_class = PostFilter
     pagination_class = PostResultsSetPagination
@@ -28,6 +27,14 @@ class PostListCreateAPIView(PostAPIViewMixin, ListCreateAPIView):
         MultiPartParser,
         FormParser,
     ]
+
+    def get_queryset(self):
+        post = Post.objects.all()
+
+        if self.request.user.is_authenticated:
+            post = post.filter(city__country=self.request.user.country)
+
+        return post
 
     def perform_create(self, serializer):
         serializer.save(author=self.request.user)

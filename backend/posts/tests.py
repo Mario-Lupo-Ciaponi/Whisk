@@ -254,6 +254,88 @@ class TestPostListCreateAPIView(APITestCase):
         response = self.client.get(f"{self.url}?description=dwad")
         data = response.data
 
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
+
+        self.assertEqual(len(data["results"]), 3)
+
+    def test__get_posts_with_country_filter__returns_only_posts_from_users_country(self):
+        country_2 = Country.objects.create(name="Italy", code2="IT")
+        city_2 = City.objects.create(name="Rome", country=country_2)
+
+        user_3 = User.objects.create_user(
+            username="TestUse3r", password="testpass2", country=country_2
+        )
+
+        posts_data = [
+            Post(
+                title=f"A test post 1",
+                description=f"This is just a test post that has no real value outside this TestCase class",
+                city=city_2,
+                author=self.user,
+                image="https://res.cloudinary.com/demo/image/upload/w_150,h_100,c_fill/sample.jpg",
+            ),
+            Post(
+                title=f"A test post 2",
+                description=f"This is just a test post that has no real value outside this TestCase class",
+                city=self.city,
+                author=self.user,
+                image="https://res.cloudinary.com/demo/image/upload/w_150,h_100,c_fill/sample.jpg",
+            ),
+            Post(
+                title=f"A test post 3",
+                description=f"This is just a test post that has no real value outside this TestCase class",
+                city=self.city,
+                author=self.user,
+                image="https://res.cloudinary.com/demo/image/upload/w_150,h_100,c_fill/sample.jpg",
+            ),
+        ]
+
+        Post.objects.bulk_create(posts_data)
+
+        self.client.force_authenticate(user_3)
+
+        response = self.client.get(self.url)
+        data = response.data
+
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
+
+        self.assertEqual(len(data["results"]), 1)
+
+    def test__get_posts_with_country_filter_as_unauthenticated_user__returns_posts_across_the_world(self):
+        country_2 = Country.objects.create(name="Italy", code2="IT")
+        city_2 = City.objects.create(name="Rome", country=country_2)
+
+        posts_data = [
+            Post(
+                title=f"A test post 1",
+                description=f"This is just a test post that has no real value outside this TestCase class",
+                city=city_2,
+                author=self.user,
+                image="https://res.cloudinary.com/demo/image/upload/w_150,h_100,c_fill/sample.jpg",
+            ),
+            Post(
+                title=f"A test post 2",
+                description=f"This is just a test post that has no real value outside this TestCase class",
+                city=self.city,
+                author=self.user,
+                image="https://res.cloudinary.com/demo/image/upload/w_150,h_100,c_fill/sample.jpg",
+            ),
+            Post(
+                title=f"A test post 3",
+                description=f"This is just a test post that has no real value outside this TestCase class",
+                city=self.city,
+                author=self.user,
+                image="https://res.cloudinary.com/demo/image/upload/w_150,h_100,c_fill/sample.jpg",
+            ),
+        ]
+
+        Post.objects.bulk_create(posts_data)
+
+        response = self.client.get(self.url)
+        data = response.data
+
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
+
         self.assertEqual(len(data["results"]), 3)
 
 
