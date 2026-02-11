@@ -63,7 +63,7 @@ const LocationPicker = ({ post, setLocations, setLocationsCount }) => {
       });
 
       setLocations((prev) => [...prev, response.data]);
-      setLocationsCount(prev => prev + 1);
+      setLocationsCount((prev) => prev + 1);
       alert("Location added successfully!");
       setSelectedPosition(null);
     } catch (e) {

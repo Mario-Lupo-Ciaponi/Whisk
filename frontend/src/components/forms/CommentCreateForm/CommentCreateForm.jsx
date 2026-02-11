@@ -2,7 +2,13 @@ import { useState } from "react";
 import api from "../../../api/api.js";
 import "./CommentCreateForm.css";
 
-const CommentCreateForm = ({ post, setComments, setCommentsCount, currentUser, navigate }) => {
+const CommentCreateForm = ({
+  post,
+  setComments,
+  setCommentsCount,
+  currentUser,
+  navigate,
+}) => {
   const [content, setContent] = useState("");
 
   const createComment = async (event) => {
@@ -19,7 +25,7 @@ const CommentCreateForm = ({ post, setComments, setCommentsCount, currentUser, n
         post_input: post.id,
       });
       setComments((prev) => [...prev, response.data]);
-      setCommentsCount(prev => prev + 1);
+      setCommentsCount((prev) => prev + 1);
     } catch (e) {
       console.log(e);
     }

@@ -59,8 +59,14 @@ const PostCard = ({ post, currentUser, navigate }) => {
       const response = await api.post(`posts/${post.id}/save/`);
       const { save } = response.data;
 
-      if (save) setSaveCount(prev => prev + 1);
-      else setSaveCount(prev => prev - 1);
+      if (save) {
+        setSaveCount((prev) => prev + 1);
+        alert("Post saved successfully!");
+      }
+      else {
+        setSaveCount((prev) => prev - 1);
+        alert("Post unsaved successfully!");
+      }
     } catch (e) {
       if (e.status === 401) {
         navigate("login/");
@@ -92,7 +98,7 @@ const PostCard = ({ post, currentUser, navigate }) => {
           </button>
           <ul ref={moreOptionsRef} className="more-options-menu">
             <li className="option-item">
-              <button className="option">Save</button>
+              <button onClick={savePost} className="option">Save</button>
             </li>
             <li className="option-item">
               <button className="option">Share</button>

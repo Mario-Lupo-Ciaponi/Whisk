@@ -528,6 +528,78 @@ class TestSavePosts(APITestCase):
         )
 
 
+class TestSavePostListAPIView(APITestCase):
+    def setUp(self):
+        self.country = Country.objects.create(name="Bulgaria", code2="BG")
+        self.city = City.objects.create(name="Sofia", country=self.country)
+
+        self.user_1 = User.objects.create_user(
+            username="Test1", password="TestPass", country=self.country
+        )
+
+        self.user_2 = User.objects.create_user(
+            username="Test2", password="TestPass", country=self.country
+        )
+
+        self.post_1 = Post.objects.create(
+            title="Lost Cat",
+            description="Lost it, please help me guys",
+            city=self.city,
+            author=self.user_1,
+            image="https://res.cloudinary.com/demo/image/upload/w_150,h_100,c_fill/sample.jpg",
+        )
+
+        self.post_2 = Post.objects.create(
+            title="Lost Cat 2",
+            description="Lost it, please help me guys",
+            city=self.city,
+            author=self.user_2,
+            image="https://res.cloudinary.com/demo/image/upload/w_150,h_100,c_fill/sample.jpg",
+        )
+
+        self.post_3 = Post.objects.create(
+            title="Lost Cat 3",
+            description="Lost it, please help me guys",
+            city=self.city,
+            author=self.user_2,
+            image="https://res.cloudinary.com/demo/image/upload/w_150,h_100,c_fill/sample.jpg",
+        )
+
+        saved_post_data = [
+            SavedPost(
+                user=self.user_1,
+                post=self.post_3
+            ),
+            SavedPost(
+                user=self.user_2,
+                post=self.post_3
+            ),
+            SavedPost(
+                user=self.user_2,
+                post=self.post_2
+            ),
+            SavedPost(
+                user=self.user_2,
+                post=self.post_1
+            ),
+            SavedPost(
+                user=self.user_1,
+                post=self.post_1
+            ),
+        ]
+
+        SavedPost.objects.bulk_create(saved_post_data)
+
+        self.url = reverse("saved-posts-list")
+
+    def test__get_saved_posts__returns_user_saved_posts(self):
+        self.client.force_authenticate(self.user_2)
+
+        response = self.client.get(self.url)
+
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
+        self.assertEqual(len(response.data["results"]), SavedPost.objects.filter(user=self.user_2).count())
+
 class TestPetLocationListCreateAPIView(APITestCase):
     def setUp(self):
         self.country = Country.objects.create(name="Bulgaria", code2="BG")

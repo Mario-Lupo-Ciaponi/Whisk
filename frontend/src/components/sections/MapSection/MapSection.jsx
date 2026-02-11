@@ -34,7 +34,11 @@ const MapSection = ({
             </p>
           </header>
 
-          <LocationPicker post={post} setLocations={setLocations} setLocationsCount={setLocationsCount} />
+          <LocationPicker
+            post={post}
+            setLocations={setLocations}
+            setLocationsCount={setLocationsCount}
+          />
         </>
       )}
 

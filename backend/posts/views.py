@@ -1,9 +1,9 @@
 from django.http import HttpRequest
 from rest_framework import status
-from rest_framework.generics import ListCreateAPIView, RetrieveUpdateDestroyAPIView
+from rest_framework.generics import ListCreateAPIView, RetrieveUpdateDestroyAPIView, ListAPIView
 from rest_framework.response import Response
 from rest_framework.views import APIView
-from rest_framework.permissions import IsAuthenticatedOrReadOnly, AllowAny, IsAdminUser
+from rest_framework.permissions import IsAuthenticatedOrReadOnly, AllowAny, IsAdminUser, IsAuthenticated
 from django_filters import rest_framework as filter
 from rest_framework.parsers import MultiPartParser, FormParser
 
@@ -72,6 +72,16 @@ class SavePostAPIView(APIView):
 
         return Response(status=status.HTTP_401_UNAUTHORIZED)
 
+
+class SavePostListAPIView(ListAPIView):
+    serializer_class = PostModelSerializer
+    permission_classes = [IsAuthenticated]
+    pagination_class = PostResultsSetPagination
+
+    def get_queryset(self):
+        user = self.request.user
+
+        return Post.objects.filter(saved_by=user)
 
 # PetLocation related views
 

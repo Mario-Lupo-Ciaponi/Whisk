@@ -16,6 +16,7 @@ urlpatterns = [
             ]
         ),
     ),
+    path("saved/", views.SavePostListAPIView.as_view(), name="saved-posts-list"),
     path(
         "location/",
         include(
