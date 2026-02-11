@@ -490,7 +490,26 @@ class TestSavePosts(APITestCase):
         response = self.client.post(self.url)
 
         self.assertEqual(response.status_code, status.HTTP_200_OK)
+        self.assertEqual(response.data["save"], True)
         self.assertTrue(
+            SavedPost.objects.filter(
+                post__pk=self.post.pk, user__pk=self.user.pk
+            ).exists()
+        )
+
+    def test__unsave_post__returns_200(self):
+        SavedPost.objects.create(
+            post=self.post,
+            user=self.user,
+        )
+
+        self.client.force_authenticate(self.user)
+
+        response = self.client.post(self.url)
+
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
+        self.assertEqual(response.data["save"], False)
+        self.assertFalse(
             SavedPost.objects.filter(
                 post__pk=self.post.pk, user__pk=self.user.pk
             ).exists()

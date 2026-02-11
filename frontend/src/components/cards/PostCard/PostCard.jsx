@@ -61,7 +61,7 @@ const PostCard = ({ post, currentUser, navigate }) => {
 
       console.error(e);
     }
-  }
+  };
 
   return (
     <article className="post-card" key={post.id}>

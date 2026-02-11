@@ -61,14 +61,14 @@ class SavePostAPIView(APIView):
 
         if user.is_authenticated:
             post = self.get_object(pk)
+            is_saved = post.saved_by.filter(pk=user.pk).exists()
 
-            if post.saved_by.filter(pk=user.pk).exists():
+            if is_saved:
                 post.saved_by.remove(user)
-
             else:
                 post.saved_by.add(user)
 
-            return Response(status=status.HTTP_200_OK)
+            return Response({"save": not is_saved}, status=status.HTTP_200_OK)
 
         return Response(status=status.HTTP_401_UNAUTHORIZED)
 
