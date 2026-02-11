@@ -27,7 +27,7 @@ const ProfileImageFileUpload = ({ user }) => {
         },
       );
 
-      console.log(response.status);
+      location.reload();
     } catch (e) {
       console.error(e);
     }

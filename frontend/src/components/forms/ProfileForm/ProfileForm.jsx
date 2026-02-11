@@ -37,7 +37,6 @@ const ProfileForm = ({ user, shouldNotEdit }) => {
         },
       });
 
-      alert("success");
       location.reload();
     } catch (e) {
       console.log(e);
@@ -81,7 +80,7 @@ const ProfileForm = ({ user, shouldNotEdit }) => {
               setAccountType(event.target.value);
             }}
           >
-            <option value={null}>Do not specify</option>
+            <option value="no type">Do not specify</option>
             <option value="pet owner">Pet owner</option>
             <option value="volunteer">Volunteer</option>
             <option value="shelter">Shelter</option>
@@ -102,7 +101,7 @@ const ProfileForm = ({ user, shouldNotEdit }) => {
               setSelectedCity(event.target.value);
             }}
           >
-            <option className="select-option" value={null}>
+            <option className="select-option" value="">
               No city
             </option>
             {cities.map((city) => {

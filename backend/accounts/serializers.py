@@ -2,6 +2,7 @@ from django.contrib.auth import get_user_model
 from rest_framework import serializers
 
 from .models import Profile
+from cities_light.models import City
 
 User = get_user_model()
 
@@ -44,6 +45,12 @@ class ProfileSerializer(serializers.ModelSerializer):
         required=False,
         allow_null=True,
         use_url=True,
+    )
+
+    city = serializers.PrimaryKeyRelatedField(
+        queryset=City.objects.all(),
+        required = False,
+        allow_null = True,
     )
 
     class Meta:

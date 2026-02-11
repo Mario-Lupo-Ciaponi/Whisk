@@ -3,7 +3,7 @@ import Loader from "../../components/Loader.jsx";
 import api from "../../api/api.js";
 import "./SavedPostsPage.css";
 import Navbar from "../../components/Navbar/Navbar.jsx";
-import {Route, Routes} from "react-router";
+import { Route, Routes } from "react-router";
 import NotFound from "../../components/NotFound/NotFound.jsx";
 import HomePage from "../HomePage/HomePage.jsx";
 import PrivateRoutes from "../../utils/PrivateRoutes.jsx";
@@ -29,10 +29,10 @@ const SavedPostsPage = ({ currentUser, navigate }) => {
       } finally {
         setIsLoading(false);
       }
-    }
+    };
 
     setIsLoading(true);
-    fetchSavedPosts()
+    fetchSavedPosts();
   }, []);
 
   return isLoading ? (
@@ -50,6 +50,6 @@ const SavedPostsPage = ({ currentUser, navigate }) => {
       />
     </>
   );
-}
+};
 
 export default SavedPostsPage;

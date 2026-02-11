@@ -84,9 +84,7 @@ const App = () => {
             />
             <Route
               path="saved-posts/"
-              element={
-                <SavedPostsPage currentUser={currentUser} />
-              }
+              element={<SavedPostsPage currentUser={currentUser} />}
             />
           </Route>
 
