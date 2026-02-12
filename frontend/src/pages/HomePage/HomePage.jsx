@@ -6,7 +6,7 @@ import "./HomePage.css";
 import PaginationList from "../../components/PaginationList/PaginationList.jsx";
 import Loader from "../../components/Loader.jsx";
 
-const HomePage = ({ currentUser, navigate, setIsFilterVisible  }) => {
+const HomePage = ({ currentUser, navigate, setIsFilterVisible }) => {
   const [posts, setPosts] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [totalPages, setTotalPages] = useState(0);

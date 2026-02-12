@@ -3,8 +3,15 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faX } from "@fortawesome/free-solid-svg-icons";
 import api from "../../../api/api.js";
 import "./PostEditForm.css";
+import Loader from "../../Loader.jsx";
 
-const PostEditForm = ({ post, currentUser, isEditFormVisible, setIsEditFormVisible, setIsFilterVisible }) => {
+const PostEditForm = ({
+  post,
+  currentUser,
+  isEditFormVisible,
+  setIsEditFormVisible,
+  setIsFilterVisible,
+}) => {
   const [title, setTitle] = useState(post.title);
   const [description, setDescription] = useState(post.description);
   const [cities, setCities] = useState([]);
@@ -32,7 +39,7 @@ const PostEditForm = ({ post, currentUser, isEditFormVisible, setIsEditFormVisib
     try {
       const formData = new FormData();
 
-      console.log(selectedCity)
+      console.log(selectedCity);
 
       formData.append("title", title.trim());
       formData.append("description", description.trim());
@@ -40,7 +47,7 @@ const PostEditForm = ({ post, currentUser, isEditFormVisible, setIsEditFormVisib
 
       await api.patch(`posts/${post.id}/`, formData, {
         headers: {
-          "Content-Type": "multipart/form-data"
+          "Content-Type": "multipart/form-data",
         },
       });
 
@@ -51,12 +58,12 @@ const PostEditForm = ({ post, currentUser, isEditFormVisible, setIsEditFormVisib
     } finally {
       setIsLoading(false);
     }
-  }
+  };
 
   const closeTab = () => {
     setIsEditFormVisible(false);
     setIsFilterVisible(false);
-  }
+  };
 
   useEffect(() => {
     if (currentUser?.country) addCities();
@@ -74,20 +81,20 @@ const PostEditForm = ({ post, currentUser, isEditFormVisible, setIsEditFormVisib
 
       <form className="edit-post-form" onSubmit={editPost}>
         <div className="post-field">
-        <label className="post-label" htmlFor="title">
-          Title:
-        </label>
-        <input
-          id="title"
-          className="post-input"
-          name="title"
-          type="text"
-          value={title}
-          onChange={(event) => {
-            setTitle(event.target.value);
-          }}
-        />
-      </div>
+          <label className="post-label" htmlFor="title">
+            Title:
+          </label>
+          <input
+            id="title"
+            className="post-input"
+            name="title"
+            type="text"
+            value={title}
+            onChange={(event) => {
+              setTitle(event.target.value);
+            }}
+          />
+        </div>
         <div className="post-field">
           <label className="post-label" htmlFor="description">
             Description:
@@ -132,11 +139,11 @@ const PostEditForm = ({ post, currentUser, isEditFormVisible, setIsEditFormVisib
         </div>
 
         <button className="edit-btn" type="submit">
-          Edit
+          {isLoading ? <Loader width={25} height={25} /> : "Edit" }
         </button>
       </form>
     </div>
   );
-}
+};
 
 export default PostEditForm;

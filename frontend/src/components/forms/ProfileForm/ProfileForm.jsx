@@ -115,11 +115,7 @@ const ProfileForm = ({ user, shouldNotEdit }) => {
         </div>
       </div>
       {!shouldNotEdit && (
-        <button
-          type="submit"
-          disabled={shouldNotEdit}
-          className="submit-btn"
-        >
+        <button type="submit" disabled={shouldNotEdit} className="submit-btn">
           Edit
         </button>
       )}

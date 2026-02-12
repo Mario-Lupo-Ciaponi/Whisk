@@ -18,7 +18,7 @@ const PostCard = ({ post, currentUser, navigate, setIsFilterVisible }) => {
   const [comments, setComments] = useState([]);
   const [found, setFound] = useState(post.found);
   const [activeSection, setActiveSection] = useState("none");
-  const [isEditFormVisible, setIsEditFormVisible] = useState(false)
+  const [isEditFormVisible, setIsEditFormVisible] = useState(false);
   // Count states:
   const [locationsCount, setLocationsCount] = useState(post.locations_count);
   const [commentsCount, setCommentsCount] = useState(post.comments_count);
@@ -45,7 +45,7 @@ const PostCard = ({ post, currentUser, navigate, setIsFilterVisible }) => {
   const makeEditFormVisible = () => {
     setIsEditFormVisible(true);
     setIsFilterVisible(true);
-  }
+  };
 
   const deletePost = async () => {
     await api.delete(`posts/${post.id}/`);

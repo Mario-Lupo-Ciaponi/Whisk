@@ -15,7 +15,6 @@
   padding: 1rem;
 }
 
-
 .form-container .close-tab-btn {
   position: absolute;
   top: 3%;
@@ -24,7 +23,7 @@
   border: none;
 }
 
-.form-container .edit-post-form  {
+.form-container .edit-post-form {
   padding: 1rem 2rem;
   display: flex;
   flex-direction: column;
@@ -43,7 +42,7 @@
   outline: none;
 }
 
-.form-container .edit-post-form  .post-field .post-input.textarea {
+.form-container .edit-post-form .post-field .post-input.textarea {
   resize: none;
   display: block;
 }
@@ -59,4 +58,6 @@
   background-color: var(--coffee-pot-color);
   color: white;
   transition: background-color 500ms ease-in-out;
+  display: flex;
+  justify-content: center;
 }

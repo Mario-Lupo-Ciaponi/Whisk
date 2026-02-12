@@ -60,7 +60,13 @@ const App = () => {
           <Route path="*" element={<NotFound />} />
           <Route
             index
-            element={<HomePage currentUser={currentUser} navigate={navigate} setIsFilterVisible={setIsFilterVisible} />}
+            element={
+              <HomePage
+                currentUser={currentUser}
+                navigate={navigate}
+                setIsFilterVisible={setIsFilterVisible}
+              />
+            }
           />
           <Route element={<PrivateRoutes />}>
             <Route
