@@ -28,7 +28,7 @@ const LocationCard = ({ post, location, currentUser, setFound }) => {
     <article className={`location-card ${isValid && "valid"}`}>
       <img
         className="profile-image"
-        src="images/default-profile-img.jpeg"
+        src={post.author.profile.profile_image ? post.author.profile.profile_image : "/images/default-profile-img.jpeg"}
         alt="profile image"
       />{" "}
       {/*TODO: check whether the user has a profile image*/}

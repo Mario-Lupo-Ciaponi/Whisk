@@ -75,13 +75,14 @@ const PostCard = ({ post, currentUser, navigate }) => {
     }
   };
 
+
   return (
     <article className="post-card" key={post.id}>
       <div className="top">
         <div className="user-container">
           <img
             className="profile-image"
-            src="/images/default-profile-img.jpeg"
+            src={post.author.profile.profile_image ? post.author.profile.profile_image : "/images/default-profile-img.jpeg"}
             alt="profile image"
           />
           <p className="username">{post.author.username}</p>
