@@ -6,7 +6,11 @@ const CommentCard = ({ comment }) => {
   return (
     <article className="comment-card">
       <img
-        src={comment.author.profile.profile_image ? comment.author.profile.profile_image : "/images/default-profile-img.jpeg"}
+        src={
+          comment.author.profile.profile_image
+            ? comment.author.profile.profile_image
+            : "/images/default-profile-img.jpeg"
+        }
         alt="profile-image"
         className="profile-image"
       />

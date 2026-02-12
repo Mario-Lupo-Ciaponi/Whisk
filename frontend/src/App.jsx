@@ -12,6 +12,7 @@ import ProfilePage from "./pages/ProfilePage/ProfilePage.jsx";
 import SavedPostsPage from "./pages/SavedPostsPage/SavedPostsPage.jsx";
 import NotFound from "./components/NotFound/NotFound.jsx";
 import Loader from "./components/Loader.jsx";
+import DarkOpacityFilter from "./components/DarkOpacityFilter/DarkOpacityFilter.jsx";
 import api from "./api/api.js";
 import "./App.css";
 
@@ -21,6 +22,7 @@ const App = () => {
   const [errors, setErrors] = useState({});
   const [currentUser, setCurrentUser] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
+  const [isFilterVisible, setIsFilterVisible] = useState(false);
 
   useEffect(() => {
     const token = localStorage.getItem("access");
@@ -58,7 +60,7 @@ const App = () => {
           <Route path="*" element={<NotFound />} />
           <Route
             index
-            element={<HomePage currentUser={currentUser} navigate={navigate} />}
+            element={<HomePage currentUser={currentUser} navigate={navigate} setIsFilterVisible={setIsFilterVisible} />}
           />
           <Route element={<PrivateRoutes />}>
             <Route
@@ -107,6 +109,7 @@ const App = () => {
         </Routes>
       </main>
       <Footer />
+      {isFilterVisible && <DarkOpacityFilter />}
     </>
   );
 };

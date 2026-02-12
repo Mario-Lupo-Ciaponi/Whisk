@@ -1,0 +1,62 @@
+.form-container {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: var(--pewter-color);
+  z-index: 200;
+  display: none;
+}
+
+.form-container.active {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1rem;
+}
+
+
+.form-container .close-tab-btn {
+  position: absolute;
+  top: 3%;
+  right: 3%;
+  background: none;
+  border: none;
+}
+
+.form-container .edit-post-form  {
+  padding: 1rem 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.form-container .edit-post-form .post-field .post-input {
+  background: none;
+  border-radius: 0.31rem;
+  border: var(--border-default-values) var(--tan-color);
+  width: 100%;
+  padding: 0.65rem 1rem;
+}
+
+.form-container .edit-post-form .post-field .post-input:focus {
+  outline: none;
+}
+
+.form-container .edit-post-form  .post-field .post-input.textarea {
+  resize: none;
+  display: block;
+}
+
+.form-container .edit-post-form .post-field .post-input.select .select-option {
+  color: var(--tan-color);
+}
+
+.form-container .edit-post-form .edit-btn {
+  padding: 0.25rem 2rem;
+  border: none;
+  border-radius: 0.5rem;
+  background-color: var(--coffee-pot-color);
+  color: white;
+  transition: background-color 500ms ease-in-out;
+}

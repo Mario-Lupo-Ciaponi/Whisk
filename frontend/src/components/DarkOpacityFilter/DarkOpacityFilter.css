@@ -1,0 +1,14 @@
+body:has(.filter) {
+  overflow: hidden;
+}
+
+.filter {
+  width: 100vw;
+  height: 100vh;
+  background-color: black;
+  opacity: 0.7;
+  z-index: 100;
+  position: fixed;
+  top: 0;
+  left: 0;
+}

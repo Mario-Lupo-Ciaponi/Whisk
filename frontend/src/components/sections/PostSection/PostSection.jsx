@@ -1,7 +1,7 @@
 import PostCard from "../../cards/PostCard/PostCard.jsx";
 import "./PostSection.css";
 
-const PostSection = ({ posts, currentUser, navigate }) => {
+const PostSection = ({ posts, currentUser, navigate, setIsFilterVisible }) => {
   console.log(posts);
   return (
     <section className="post-section">
@@ -12,6 +12,7 @@ const PostSection = ({ posts, currentUser, navigate }) => {
             post={post}
             currentUser={currentUser}
             navigate={navigate}
+            setIsFilterVisible={setIsFilterVisible}
           />
         );
       })}

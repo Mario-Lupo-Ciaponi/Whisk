@@ -48,7 +48,7 @@ const ProfileForm = ({ user, shouldNotEdit }) => {
   }, [user]);
 
   return (
-    <form className="profile-form">
+    <form onSubmit={editProfile} className="profile-form">
       <div className="profile-fields">
         <div className="profile-field">
           <label className="profile-label" htmlFor="">
@@ -116,7 +116,7 @@ const ProfileForm = ({ user, shouldNotEdit }) => {
       </div>
       {!shouldNotEdit && (
         <button
-          onClick={editProfile}
+          type="submit"
           disabled={shouldNotEdit}
           className="submit-btn"
         >

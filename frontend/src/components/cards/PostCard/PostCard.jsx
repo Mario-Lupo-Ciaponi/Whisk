@@ -8,14 +8,17 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import MapSection from "../../sections/MapSection/MapSection.jsx";
 import CommentArea from "../../CommentArea/CommentArea.jsx";
+import PostEditForm from "../../forms/PostEditForm/PostEditForm.jsx";
+import DarkOpacityFilter from "../../DarkOpacityFilter/DarkOpacityFilter.jsx";
 import api from "../../../api/api.js";
 import "./PostCard.css";
 
-const PostCard = ({ post, currentUser, navigate }) => {
+const PostCard = ({ post, currentUser, navigate, setIsFilterVisible }) => {
   const [locations, setLocations] = useState([]);
   const [comments, setComments] = useState([]);
   const [found, setFound] = useState(post.found);
   const [activeSection, setActiveSection] = useState("none");
+  const [isEditFormVisible, setIsEditFormVisible] = useState(false)
   // Count states:
   const [locationsCount, setLocationsCount] = useState(post.locations_count);
   const [commentsCount, setCommentsCount] = useState(post.comments_count);
@@ -38,6 +41,11 @@ const PostCard = ({ post, currentUser, navigate }) => {
 
   const toggleSection = (name) =>
     setActiveSection((prev) => (prev === name ? "none" : name));
+
+  const makeEditFormVisible = () => {
+    setIsEditFormVisible(true);
+    setIsFilterVisible(true);
+  }
 
   const deletePost = async () => {
     await api.delete(`posts/${post.id}/`);
@@ -75,14 +83,17 @@ const PostCard = ({ post, currentUser, navigate }) => {
     }
   };
 
-
   return (
     <article className="post-card" key={post.id}>
       <div className="top">
         <div className="user-container">
           <img
             className="profile-image"
-            src={post.author.profile.profile_image ? post.author.profile.profile_image : "/images/default-profile-img.jpeg"}
+            src={
+              post.author.profile.profile_image
+                ? post.author.profile.profile_image
+                : "/images/default-profile-img.jpeg"
+            }
             alt="profile image"
           />
           <p className="username">{post.author.username}</p>
@@ -112,7 +123,7 @@ const PostCard = ({ post, currentUser, navigate }) => {
                     Update status
                   </button>
                 </li>
-                <li className="option-item">
+                <li onClick={makeEditFormVisible} className="option-item">
                   <button className="option">Edit</button>
                 </li>
                 <li onClick={deletePost} className="option-item">
@@ -172,6 +183,14 @@ const PostCard = ({ post, currentUser, navigate }) => {
         setCommentsCount={setCommentsCount}
         currentUser={currentUser}
         navigate={navigate}
+      />
+
+      <PostEditForm
+        post={post}
+        currentUser={currentUser}
+        isEditFormVisible={isEditFormVisible}
+        setIsEditFormVisible={setIsEditFormVisible}
+        setIsFilterVisible={setIsFilterVisible}
       />
     </article>
   );
