@@ -44,6 +44,7 @@ PROJECT_APPS = [
     "accounts",
     "posts",
     "groups",
+    "common",
 ]
 
 INSTALLED_APPS = [
