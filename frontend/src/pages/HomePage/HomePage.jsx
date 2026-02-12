@@ -14,11 +14,6 @@ const HomePage = ({ currentUser, navigate }) => {
 
   const itemsPerPage = 6;
 
-  // NOTE: This is purely for test purposes, and it will change to check the real users city and groups!
-  const userInfo = {
-    city: "Vratsa",
-  };
-
   const getPosts = async () => {
     setIsLoading(true);
 
@@ -43,7 +38,7 @@ const HomePage = ({ currentUser, navigate }) => {
     try {
       const response = await api.get("posts/", {
         params: {
-          [query]: userInfo[query],
+          [query]: currentUser.profile[query],
         },
       });
 
@@ -79,7 +74,7 @@ const HomePage = ({ currentUser, navigate }) => {
           >
             <option value="all">All</option>
             <option value="groups">Groups</option>
-            <option value="city">City</option>
+            {currentUser?.profile.city && <option value="city">City</option>}
           </select>
         )}
       </div>

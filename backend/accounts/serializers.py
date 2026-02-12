@@ -49,8 +49,8 @@ class ProfileSerializer(serializers.ModelSerializer):
 
     city = serializers.PrimaryKeyRelatedField(
         queryset=City.objects.all(),
-        required = False,
-        allow_null = True,
+        required=False,
+        allow_null=True,
     )
 
     class Meta:
