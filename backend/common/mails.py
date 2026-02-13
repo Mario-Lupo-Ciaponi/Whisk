@@ -23,11 +23,8 @@ def send_welcoming_mail(user):
 
 def send_contact_email(subject, email, message):
     email_subject = f"Email from {email}"
-    email_message = f"You have got a message from {email}\nMessage:\n{subject}\n{message}"
-
-    send_mail(
-        subject,
-        message,
-        EMAIL_HOST_USER,
-        ["mario.lupo.ciaponi08@gmail.com"]
+    email_message = (
+        f"You have got a message from {email}\nMessage:\n{subject}\n{message}"
     )
+
+    send_mail(subject, message, EMAIL_HOST_USER, ["mario.lupo.ciaponi08@gmail.com"])

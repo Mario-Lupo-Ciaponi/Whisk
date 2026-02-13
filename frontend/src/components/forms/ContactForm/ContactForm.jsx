@@ -1,13 +1,36 @@
 import { useState } from "react";
+import Loader from "../../Loader.jsx";
+import api from "../../../api/api.js";
 import "./ContactForm.css";
 
 const ContactForm = ({ currentUser }) => {
   const [subject, setSubject] = useState("");
   const [email, setEmail] = useState(currentUser?.email);
   const [message, setMessage] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
+
+  const sendEmail = async (event) => {
+    event.preventDefault();
+    event.stopPropagation();
+
+    setIsLoading(true);
+    try {
+      const data = {
+        subject,
+        email,
+        message,
+      }
+
+      await api.post("contact/", data);
+    } catch (e) {
+      console.error(e);
+    } finally {
+      setIsLoading(false);
+    }
+  }
 
   return (
-    <form className="contact-form">
+    <form onSubmit={sendEmail} className="contact-form">
       <div className="two-field-container">
         <input
           value={subject}
@@ -38,7 +61,7 @@ const ContactForm = ({ currentUser }) => {
         }}
       ></textarea>
 
-      <button className="send-btn">Send</button>
+      <button className="send-btn">{isLoading ? <Loader width={20} height={20} /> : "Send"}</button>
     </form>
   );
 };

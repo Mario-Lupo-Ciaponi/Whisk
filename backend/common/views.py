@@ -35,11 +35,7 @@ class ContactAPIView(APIView):
             email = data.get("email")
             message = data.get("message")
 
-            send_contact_email(
-                subject=subject,
-                email=email,
-                message=message
-            )
+            send_contact_email(subject=subject, email=email, message=message)
 
             return Response({"status": "success"}, status.HTTP_200_OK)
 
