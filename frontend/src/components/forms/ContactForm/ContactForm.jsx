@@ -3,7 +3,7 @@ import "./ContactForm.css";
 
 const ContactForm = ({ currentUser }) => {
   const [subject, setSubject] = useState("");
-  const [email, setEmail] = useState(currentUser?.email)
+  const [email, setEmail] = useState(currentUser?.email);
   const [message, setMessage] = useState("");
 
   return (
@@ -36,12 +36,11 @@ const ContactForm = ({ currentUser }) => {
         onChange={(event) => {
           setMessage(event.target.value);
         }}
-      >
-      </textarea>
+      ></textarea>
 
       <button className="send-btn">Send</button>
     </form>
-  )
-}
+  );
+};
 
-export default ContactForm
+export default ContactForm;

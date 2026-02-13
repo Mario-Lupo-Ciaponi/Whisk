@@ -22,3 +22,10 @@ class CountrySerializer(serializers.ModelSerializer):
             "id",
             "name",
         ]
+
+class ContactSerializer(serializers.Serializer):
+    subject = serializers.CharField(
+        max_length=50,
+    )
+    email = serializers.EmailField()
+    message = serializers.CharField()

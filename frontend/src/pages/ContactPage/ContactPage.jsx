@@ -11,6 +11,6 @@ const ContactPage = ({ currentUser }) => {
       <ContactForm currentUser={currentUser} />
     </div>
   );
-}
+};
 
 export default ContactPage;
