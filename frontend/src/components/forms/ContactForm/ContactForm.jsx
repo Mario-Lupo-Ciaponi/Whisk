@@ -3,7 +3,7 @@ import Loader from "../../Loader.jsx";
 import api from "../../../api/api.js";
 import "./ContactForm.css";
 
-const ContactForm = ({ currentUser }) => {
+const ContactForm = ({ currentUser, setNotificationMessage }) => {
   const [subject, setSubject] = useState("");
   const [email, setEmail] = useState(currentUser?.email);
   const [message, setMessage] = useState("");
@@ -19,15 +19,20 @@ const ContactForm = ({ currentUser }) => {
         subject,
         email,
         message,
-      }
+      };
 
       await api.post("contact/", data);
+
+      setSubject("");
+      setEmail(currentUser?.email);
+      setMessage("");
+      setNotificationMessage("Email sent successfully")
     } catch (e) {
       console.error(e);
     } finally {
       setIsLoading(false);
     }
-  }
+  };
 
   return (
     <form onSubmit={sendEmail} className="contact-form">
@@ -54,6 +59,7 @@ const ContactForm = ({ currentUser }) => {
 
       <textarea
         value={message}
+        placeholder="Message"
         className="form-field message"
         rows="10"
         onChange={(event) => {
@@ -61,7 +67,9 @@ const ContactForm = ({ currentUser }) => {
         }}
       ></textarea>
 
-      <button className="send-btn">{isLoading ? <Loader width={20} height={20} /> : "Send"}</button>
+      <button className="send-btn">
+        {isLoading ? <Loader width={20} height={20} /> : "Send"}
+      </button>
     </form>
   );
 };

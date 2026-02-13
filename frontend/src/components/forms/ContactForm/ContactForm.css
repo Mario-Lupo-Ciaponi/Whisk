@@ -1,0 +1,42 @@
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.9rem;
+  width: 60%;
+}
+
+.contact-form .form-field {
+  padding: 0.7rem;
+  border-radius: 0.5rem;
+  border: var(--border-default-values) var(--tan-color);
+  color: var(--tan-color);
+}
+
+.contact-form .form-field::placeholder {
+  color: var(--tan-color);
+}
+
+.contact-form .form-field.message {
+  resize: none;
+}
+.contact-form .two-field-container {
+  display: flex;
+  gap: 1.9rem;
+}
+
+.contact-form .two-field-container .form-field {
+  flex: 1 1 48%;
+}
+.contact-form .send-btn {
+  align-self: flex-start;
+  padding: 0.5rem 2rem;
+  border-radius: 2rem;
+  border: none;
+  color: white;
+  background-color: var(--tan-color);
+  transition: background-color 500ms ease-in-out;
+}
+
+.contact-form .send-btn:hover {
+  background-color: var(--coffee-pot-color);
+}
