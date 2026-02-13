@@ -139,7 +139,7 @@ const PostEditForm = ({
         </div>
 
         <button className="edit-btn" type="submit">
-          {isLoading ? <Loader width={25} height={25} /> : "Edit" }
+          {isLoading ? <Loader width={25} height={25} /> : "Edit"}
         </button>
       </form>
     </div>
