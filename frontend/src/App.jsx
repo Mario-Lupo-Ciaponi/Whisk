@@ -9,6 +9,7 @@ import GroupsPage from "./pages/GroupsPage/GroupsPage.jsx";
 import CreateGroupPage from "./pages/CreateGroupPage/CreateGroupPage.jsx";
 import AuthPage from "./pages/AuthPage/AuthPage.jsx";
 import ProfilePage from "./pages/ProfilePage/ProfilePage.jsx";
+import ContactPage from "./pages/ContactPage/ContactPage.jsx";
 import SavedPostsPage from "./pages/SavedPostsPage/SavedPostsPage.jsx";
 import NotFound from "./components/NotFound/NotFound.jsx";
 import Loader from "./components/Loader.jsx";
@@ -111,6 +112,10 @@ const App = () => {
           <Route
             path="profile/:id"
             element={<ProfilePage currentUser={currentUser} />}
+          />
+          <Route
+            path="contact/"
+            element={<ContactPage currentUser={currentUser} />}
           />
         </Routes>
       </main>
