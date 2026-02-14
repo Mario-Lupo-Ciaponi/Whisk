@@ -7,6 +7,7 @@ const ProfileCard = ({ user }) => {
     <article className="profile-card">
       <div className="image-container">
         <img
+          className="profile-image"
           src={
             userProfile.profile_image
               ? userProfile.profile_image
@@ -18,11 +19,13 @@ const ProfileCard = ({ user }) => {
       <div className="info-wrapper">
         <h2 className="username">{user.username}</h2>
 
-        {userProfile.profile_type && (
-          <p className="profile-type">{userProfile.profile_type}</p>
-        )}
+        <div className="profile-meta">
+          {userProfile.account_type && (
+            <p className="profile-type">{userProfile.account_type}</p>
+          )}
 
-        <p className="country">{user.country.name}</p>
+          <p className="country">{user.country.name}</p>
+        </div>
 
         {userProfile.bio && <p className="profile-bio">{userProfile.bio}</p>}
       </div>

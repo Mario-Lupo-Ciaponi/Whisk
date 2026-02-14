@@ -62,7 +62,7 @@ class ProfileSerializer(serializers.ModelSerializer):
 
 
 class UserSerializer(serializers.ModelSerializer):
-    country =  CountrySerializer (
+    country = CountrySerializer(
         read_only=True,
     )
     profile = ProfileSerializer(

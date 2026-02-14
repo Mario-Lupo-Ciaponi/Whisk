@@ -38,7 +38,7 @@ class TestCurrentUserAPIView(APITestCase):
         self.assertEqual(data["id"], self.user.pk)
         self.assertEqual(data["username"], self.user.username)
         self.assertEqual(data["email"], self.user.email)
-        self.assertEqual(data["country"], self.user.country.id)
+        self.assertEqual(data["country"]["id"], self.user.country.id)
 
 
 class TestUserListAPIView(APITestCase):

@@ -1,0 +1,11 @@
+.profile-section {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  justify-content: center;
+  padding: 2rem 0;
+}
+
+.profile-section > * {
+  flex-basis: 320px;
+}
