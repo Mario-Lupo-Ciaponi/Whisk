@@ -100,7 +100,10 @@ const PostCard = ({ post, currentUser, navigate, setIsFilterVisible }) => {
             />
           </Link>
           <p className="username">
-            <Link className="profile-link username" to={`profile/${post.author.id}`}>
+            <Link
+              className="profile-link username"
+              to={`profile/${post.author.id}`}
+            >
               {post.author.username}
             </Link>
           </p>

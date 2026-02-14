@@ -1,6 +1,6 @@
 import dayjs from "dayjs";
 import "./CommentCard.css";
-import {Link} from "react-router";
+import { Link } from "react-router";
 
 const CommentCard = ({ comment }) => {
   const formatedDate = dayjs(comment.created_at).format("HH:mm DD.MM.YYYY");
@@ -21,7 +21,10 @@ const CommentCard = ({ comment }) => {
       <div className="comment-wrapper">
         <header className="comment-header">
           <h3 className="username">
-            <Link className="profile-link username" to={`profile/${comment.author.id}`}>
+            <Link
+              className="profile-link username"
+              to={`profile/${comment.author.id}`}
+            >
               {comment.author.username}
             </Link>
           </h3>

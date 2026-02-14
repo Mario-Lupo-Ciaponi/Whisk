@@ -27,12 +27,20 @@
   font-size: 1.1rem;
 }
 
-.comment-card .comment-wrapper .comment-header .username .profile-link.username {
+.comment-card
+  .comment-wrapper
+  .comment-header
+  .username
+  .profile-link.username {
   color: var(--coffee-pot-color);
   transition: color 500ms ease-in-out;
 }
 
-.comment-card .comment-wrapper .comment-header .username .profile-link.username:hover {
+.comment-card
+  .comment-wrapper
+  .comment-header
+  .username
+  .profile-link.username:hover {
   color: var(--tan-color);
 }
 

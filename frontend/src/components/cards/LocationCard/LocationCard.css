@@ -28,12 +28,20 @@
   font-weight: bolder;
 }
 
-.location-card .location-info-wrapper .pointed-by-text .username .profile-link.username {
+.location-card
+  .location-info-wrapper
+  .pointed-by-text
+  .username
+  .profile-link.username {
   color: var(--coffee-pot-color);
   transition: color 500ms ease-in-out;
 }
 
-.location-card .location-info-wrapper .pointed-by-text .username .profile-link.username:hover {
+.location-card
+  .location-info-wrapper
+  .pointed-by-text
+  .username
+  .profile-link.username:hover {
   color: var(--tan-color);
 }
 

@@ -24,7 +24,7 @@ const ProfileHero = ({
             className="profile-image"
           />
 
-          {currentUser.id === user.id && <ProfileImageFileUpload user={user} />}
+          {currentUser?.id === user.id && <ProfileImageFileUpload user={user} />}
         </div>
 
         <div className="name-wrapper">
@@ -33,7 +33,7 @@ const ProfileHero = ({
         </div>
       </article>
 
-      {currentUser.id === user.id && (
+      {currentUser?.id === user.id && (
         <button onClick={toggleShouldNotEdit} className="edit-btn">
           {shouldNotEdit ? "Edit" : "Stop Edit"}
         </button>
