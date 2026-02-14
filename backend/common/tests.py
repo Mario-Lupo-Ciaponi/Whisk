@@ -1,5 +1,5 @@
 from rest_framework.test import APITestCase
-from rest_framework import  status
+from rest_framework import status
 from django.core import mail
 from django.urls import reverse
 
@@ -9,13 +9,13 @@ class TestContactAPIView(APITestCase):
         self.data = {
             "subject": "Test subject",
             "email": "test.mail@testmails.com",
-            "message": "This is just a Test mail so it has no real purposes other than testing."
+            "message": "This is just a Test mail so it has no real purposes other than testing.",
         }
 
         self.invalid_data = {
             "subject": "Test subject",
             "email": "test.mail",
-            "message": "This is just a Test mail so it has no real purposes other than testing."
+            "message": "This is just a Test mail so it has no real purposes other than testing.",
         }
 
         self.url = reverse("contact")
@@ -27,7 +27,6 @@ class TestContactAPIView(APITestCase):
 
         self.assertEqual(len(mail.outbox), 1)
         self.assertEqual(mail.outbox[0].subject, self.data["subject"])
-
 
     def test__send_contact_email_with_invalid_email__returns_400(self):
         response = self.client.post(self.url, self.invalid_data)

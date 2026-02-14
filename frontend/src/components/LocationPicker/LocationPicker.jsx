@@ -21,21 +21,21 @@ const MapEvents = ({ onClick }) => {
   return null;
 };
 
-const RecalculateView = () => {
+const RecalculateView = ({ trigger }) => {
   const map = useMap();
 
   useLayoutEffect(() => {
     const timer = setTimeout(() => {
       map.invalidateSize();
-    }, 200);
+    }, 300);
 
     return () => clearTimeout(timer);
-  }, [map]);
+  }, [map, trigger]);
 
   return null;
 };
 
-const LocationPicker = ({ post, setLocations, setLocationsCount }) => {
+const LocationPicker = ({ post, setLocations, setLocationsCount, activeSection }) => {
   const [selectedPosition, setSelectedPosition] = useState(null);
 
   const latitude = Number(post.city.latitude);
@@ -85,7 +85,7 @@ const LocationPicker = ({ post, setLocations, setLocationsCount }) => {
         />
 
         <MapEvents onClick={setSelectedPosition} />
-        <RecalculateView />
+        <RecalculateView trigger={activeSection} />
 
         {selectedPosition && <Marker position={selectedPosition} />}
       </MapContainer>

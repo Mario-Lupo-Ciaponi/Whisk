@@ -38,6 +38,7 @@ const MapSection = ({
             post={post}
             setLocations={setLocations}
             setLocationsCount={setLocationsCount}
+            activeSection={activeSection}
           />
         </>
       )}
