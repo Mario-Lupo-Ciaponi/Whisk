@@ -14,7 +14,7 @@ const PostCreateForm = ({ currentUser, navigate, errors, setErrors }) => {
   const [isLoading, setIsLoading] = useState(false);
 
   const addCities = async () => {
-    const countryId = currentUser.country;
+    const countryId = currentUser.country.id;
 
     const response = await api.get("cities/", {
       params: {

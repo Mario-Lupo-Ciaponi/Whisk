@@ -2,6 +2,9 @@ from django.contrib.auth import get_user_model
 from rest_framework import serializers
 
 from .models import Profile
+
+from common.serializers import CountrySerializer
+
 from cities_light.models import City
 
 User = get_user_model()
@@ -59,6 +62,9 @@ class ProfileSerializer(serializers.ModelSerializer):
 
 
 class UserSerializer(serializers.ModelSerializer):
+    country =  CountrySerializer (
+        read_only=True,
+    )
     profile = ProfileSerializer(
         read_only=True,
     )

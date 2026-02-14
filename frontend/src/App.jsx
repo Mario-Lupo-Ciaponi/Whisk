@@ -118,7 +118,10 @@ const App = () => {
             path="contact/"
             element={<ContactPage currentUser={currentUser} />}
           />
-          <Route path="search-profiles" element={<SearchProfilePage currentUser={currentUser} /> } />
+          <Route
+            path="search-profile"
+            element={<SearchProfilePage currentUser={currentUser} />}
+          />
         </Routes>
       </main>
       <Footer />

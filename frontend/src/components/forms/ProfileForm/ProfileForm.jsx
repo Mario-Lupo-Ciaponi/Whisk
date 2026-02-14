@@ -9,7 +9,7 @@ const ProfileForm = ({ user, shouldNotEdit }) => {
   const [cities, setCities] = useState([]);
 
   const addCities = async () => {
-    const countryId = user.country;
+    const countryId = user.country.id;
 
     const response = await api.get("cities/", {
       params: {

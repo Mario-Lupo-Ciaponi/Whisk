@@ -37,8 +37,8 @@ const Navbar = ({ navigate, currentUser }) => {
           </NavLink>
         </li>
         <li className="item">
-          <NavLink to="/search" className="link">
-            Search
+          <NavLink to="/search-profile" className="link">
+            Search Profile
           </NavLink>
         </li>
         <li className="item">
@@ -90,11 +90,6 @@ const Navbar = ({ navigate, currentUser }) => {
               <li className="dropdown-item">
                 <Link to="/saved-posts" className="dropdown-link">
                   Saved Posts
-                </Link>
-              </li>
-              <li className="dropdown-item">
-                <Link to="/search-profiles" className="dropdown-link">
-                  Search Profiles
                 </Link>
               </li>
               <li className="dropdown-item">
