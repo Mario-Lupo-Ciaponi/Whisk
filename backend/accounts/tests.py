@@ -41,6 +41,43 @@ class TestCurrentUserAPIView(APITestCase):
         self.assertEqual(data["country"], self.user.country.id)
 
 
+class TestUserListAPIView(APITestCase):
+    def setUp(self):
+        self.country = Country.objects.create(name="Bulgaria", code2="BG")
+
+        self.user_1 = User.objects.create_user(
+            username="Mark", password="testpass", country=self.country
+        )
+        self.user_2 = User.objects.create_user(
+            username="Mario", password="testpass", country=self.country
+        )
+        self.user_3 = User.objects.create_user(
+            username="Iskra", password="testpass", country=self.country
+        )
+
+        self.url = reverse("user-list")
+
+    def test__filter_users_with_valid_params_lower_case__returns_filtered_users(self):
+        response = self.client.get(f"{self.url}?search=ma")
+
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
+
+        self.assertEqual(len(response.data), 2)
+
+    def test__filter_users_with_valid_params_upper_case__returns_filtered_users(self):
+        response = self.client.get(f"{self.url}?search=MA")
+
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
+
+        self.assertEqual(len(response.data), 2)
+
+    def test__filter_users_with_invalid_params__returns_no_users(self):
+        response = self.client.get(f"{self.url}?search=to")
+
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
+
+        self.assertEqual(len(response.data), 0)
+
 class TestRegisterApiView(APITestCase):
     def setUp(self):
         self.country = Country.objects.create(name="Bulgaria", code2="BG")

@@ -48,6 +48,7 @@ class UserListAPIView(ListAPIView):
     filter_backends = [filters.SearchFilter]
     search_fields = ["username"]
 
+
 class ProfileUpdateAPIView(UpdateAPIView):
     queryset = Profile.objects.all()
     serializer_class = ProfileSerializer
