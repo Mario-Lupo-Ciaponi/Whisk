@@ -37,6 +37,6 @@ class ContactAPIView(APIView):
 
             send_contact_email(subject=subject, email=email, message=message)
 
-            return Response({"status": "success"}, status.HTTP_200_OK)
+            return Response({"details": "Success"}, status.HTTP_200_OK)
 
         return Response(serializer.errors, status.HTTP_400_BAD_REQUEST)

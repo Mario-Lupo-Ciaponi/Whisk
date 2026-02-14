@@ -26,7 +26,7 @@ const ContactForm = ({ currentUser, setNotificationMessage }) => {
       setSubject("");
       setEmail(currentUser?.email);
       setMessage("");
-      setNotificationMessage("Email sent successfully")
+      setNotificationMessage("Email sent successfully");
     } catch (e) {
       console.error(e);
     } finally {
