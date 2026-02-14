@@ -38,6 +38,15 @@
   font-weight: bold;
 }
 
+.post-card .top .user-container .username .profile-link.username {
+  color: var(--coffee-pot-color);
+  transition: color 500ms ease-in-out;
+}
+
+.post-card .top .user-container .username .profile-link.username:hover {
+  color: var(--tan-color);
+}
+
 .post-card .top .user-container .city {
   font-style: italic;
   font-weight: lighter;

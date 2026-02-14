@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Link } from "react-router";
 import api from "../../../api/api.js";
 import formatCoordinates from "../../../utils/formatCoordinates.js";
 import "./LocationCard.css";
@@ -26,20 +27,44 @@ const LocationCard = ({ post, location, currentUser, setFound }) => {
 
   return (
     <article className={`location-card ${isValid && "valid"}`}>
-      <img
-        className="profile-image"
-        src={
-          post.author.profile.profile_image
-            ? post.author.profile.profile_image
-            : "/images/default-profile-img.jpeg"
+      <div className="profile-image-container">
+        {location.author ?
+          (
+            <Link className="profile-link image" to={`profile/${location.author?.id}`}>
+              <img
+                className="profile-image"
+                src={
+                  location.author?.profile.profile_image
+                    ? location.author?.profile.profile_image
+                    : "/images/default-profile-img.jpeg"
+                }
+                alt="profile image"
+              />
+            </Link>
+          ) :
+          (
+            <img
+              className="profile-image"
+              src="/images/default-profile-img.jpeg"
+              alt="profile image"
+            />
+          )
         }
-        alt="profile image"
-      />{" "}
+      </div>
+      {" "}
       {/*TODO: check whether the user has a profile image*/}
       <div className="location-info-wrapper">
         <p className="pointed-by-text">
           <span className="username">
-            {location.author ? location.author.username : "Anonymous user"}
+            {location.author ?
+              (
+                <Link className="profile-link username" to={`profile/${location.author.id}`}>
+                  {location.author.username}
+                </Link>
+              ) : (
+                "Anonymous user"
+              )
+            }
           </span>{" "}
           has pointed out the following position:
           <a className="location-url" target="_blank" href={locationUrl}>

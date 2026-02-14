@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { Link } from "react-router";
 import {
   faEllipsisVertical,
   faMapLocationDot,
@@ -87,16 +88,22 @@ const PostCard = ({ post, currentUser, navigate, setIsFilterVisible }) => {
     <article className="post-card" key={post.id}>
       <div className="top">
         <div className="user-container">
-          <img
-            className="profile-image"
-            src={
-              post.author.profile.profile_image
-                ? post.author.profile.profile_image
-                : "/images/default-profile-img.jpeg"
-            }
-            alt="profile image"
-          />
-          <p className="username">{post.author.username}</p>
+          <Link className="profile-link image" to={`profile/${post.author.id}`}>
+            <img
+              className="profile-image"
+              src={
+                post.author.profile.profile_image
+                  ? post.author.profile.profile_image
+                  : "/images/default-profile-img.jpeg"
+              }
+              alt="profile image"
+            />
+          </Link>
+          <p className="username">
+            <Link className="profile-link username" to={`profile/${post.author.id}`}>
+              {post.author.username}
+            </Link>
+          </p>
           <span className="city">({post.city.name})</span>
           <span className={`status ${found ? "found" : "not-found"}`}>
             {statusText}

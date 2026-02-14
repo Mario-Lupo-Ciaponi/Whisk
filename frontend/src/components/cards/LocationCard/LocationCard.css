@@ -8,14 +8,33 @@
   background: #1a01cc; /* TODO: change to a better UI */
 }
 
-.location-card .profile-image {
+.location-card .profile-image-container {
   width: var(--profile-image-width-and-height);
   height: var(--profile-image-width-and-height);
-  border-radius: 1.5rem;
+  border-radius: 2rem;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.location-card .profile-image-container .profile-image {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  border-radius: 2rem;
 }
 
 .location-card .location-info-wrapper .pointed-by-text .username {
   font-weight: bolder;
+}
+
+.location-card .location-info-wrapper .pointed-by-text .username .profile-link.username {
+  color: var(--coffee-pot-color);
+  transition: color 500ms ease-in-out;
+}
+
+.location-card .location-info-wrapper .pointed-by-text .username .profile-link.username:hover {
+  color: var(--tan-color);
 }
 
 .location-card .location-info-wrapper .pointed-by-text .location-url {

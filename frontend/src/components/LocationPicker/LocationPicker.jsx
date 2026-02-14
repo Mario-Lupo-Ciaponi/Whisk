@@ -35,7 +35,12 @@ const RecalculateView = ({ trigger }) => {
   return null;
 };
 
-const LocationPicker = ({ post, setLocations, setLocationsCount, activeSection }) => {
+const LocationPicker = ({
+  post,
+  setLocations,
+  setLocationsCount,
+  activeSection,
+}) => {
   const [selectedPosition, setSelectedPosition] = useState(null);
 
   const latitude = Number(post.city.latitude);
@@ -76,7 +81,7 @@ const LocationPicker = ({ post, setLocations, setLocationsCount, activeSection }
     <>
       <MapContainer
         center={[latitude, longitude]}
-        zoom={15}
+        zoom={20}
         scrollWheelZoom={false}
       >
         <TileLayer
