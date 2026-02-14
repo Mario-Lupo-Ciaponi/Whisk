@@ -78,6 +78,7 @@ class TestUserListAPIView(APITestCase):
 
         self.assertEqual(len(response.data), 0)
 
+
 class TestRegisterApiView(APITestCase):
     def setUp(self):
         self.country = Country.objects.create(name="Bulgaria", code2="BG")

@@ -93,6 +93,11 @@ const Navbar = ({ navigate, currentUser }) => {
                 </Link>
               </li>
               <li className="dropdown-item">
+                <Link to="/search-profiles" className="dropdown-link">
+                  Search Profiles
+                </Link>
+              </li>
+              <li className="dropdown-item">
                 <button onClick={logout} className="logout-btn">
                   Logout
                 </button>

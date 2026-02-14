@@ -11,6 +11,7 @@ import AuthPage from "./pages/AuthPage/AuthPage.jsx";
 import ProfilePage from "./pages/ProfilePage/ProfilePage.jsx";
 import ContactPage from "./pages/ContactPage/ContactPage.jsx";
 import SavedPostsPage from "./pages/SavedPostsPage/SavedPostsPage.jsx";
+import SearchProfilePage from "./pages/SearchUserPage/SearchProfilePage.jsx";
 import NotFound from "./components/NotFound/NotFound.jsx";
 import Loader from "./components/Loader.jsx";
 import DarkOpacityFilter from "./components/DarkOpacityFilter/DarkOpacityFilter.jsx";
@@ -117,6 +118,7 @@ const App = () => {
             path="contact/"
             element={<ContactPage currentUser={currentUser} />}
           />
+          <Route path="search-profiles" element={<SearchProfilePage currentUser={currentUser} /> } />
         </Routes>
       </main>
       <Footer />
