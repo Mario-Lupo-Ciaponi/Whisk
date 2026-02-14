@@ -4,9 +4,12 @@ from rest_framework.generics import (
     CreateAPIView,
     RetrieveAPIView,
     UpdateAPIView,
+    ListAPIView,
 )
 from rest_framework.parsers import MultiPartParser, FormParser
 from rest_framework.permissions import AllowAny, IsAuthenticated
+from django_filters import rest_framework as filter
+from rest_framework import filters
 
 from .models import Profile
 from .serializers import UserSerializer, RegisterSerializer, ProfileSerializer
@@ -36,6 +39,14 @@ class UserRetrieveAPIView(RetrieveAPIView):
     serializer_class = UserSerializer
     permission_classes = [AllowAny]
 
+
+class UserListAPIView(ListAPIView):
+    queryset = User.objects.all()
+    serializer_class = UserSerializer
+    permission_classes = [AllowAny]
+
+    filter_backends = [filters.SearchFilter]
+    search_fields = ["username"]
 
 class ProfileUpdateAPIView(UpdateAPIView):
     queryset = Profile.objects.all()
