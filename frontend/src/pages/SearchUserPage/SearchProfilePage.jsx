@@ -34,7 +34,9 @@ const SearchProfilePage = ({ currentUser, navigate }) => {
         <h1 className="search-profile-title">Search Profiles</h1>
       </header>
 
-      <SearchBar url={url} setResult={setUsers} />
+      <div className="search-bar-container">
+        <SearchBar url={url} setResult={setUsers} />
+      </div>
 
       {isLoading ? (
         <Loader width={200} height={200} />

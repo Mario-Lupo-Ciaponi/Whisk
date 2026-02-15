@@ -3,3 +3,9 @@
   margin: 1rem 0 2rem 0;
   color: var(--tan-color);
 }
+
+.search-profile-container .search-bar-container {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 1rem;
+}

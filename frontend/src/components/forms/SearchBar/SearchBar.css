@@ -1,0 +1,26 @@
+.search-bar {
+  padding: 0.5rem;
+  background-color: var(--charcoal-color);
+  display: flex;
+  justify-content: space-between;
+}
+
+.search-bar .input-query {
+  flex-grow: 1;
+  padding: 0.2rem 1rem;
+  border: var(--border-default-values) var(--gray-color);
+}
+
+.search-bar .input-query:focus {
+  outline: none;
+}
+
+.search-bar .search-btn {
+  color: white;
+  background-color: var(--charcoal-color);
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 0.3rem 0 0.8rem;
+}

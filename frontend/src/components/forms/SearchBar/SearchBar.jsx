@@ -15,7 +15,7 @@ const SearchBar = ({ url, setResult }) => {
       const response = await api.get(url, {
         params: {
           search: query,
-        }
+        },
       });
 
       setResult(response.data);
@@ -23,7 +23,7 @@ const SearchBar = ({ url, setResult }) => {
     } catch (e) {
       console.error(e);
     }
-  }
+  };
 
   return (
     <form onSubmit={searchResults} className="search-bar">
@@ -37,11 +37,11 @@ const SearchBar = ({ url, setResult }) => {
         type="text"
       />
 
-      <button>
+      <button className="search-btn">
         <FontAwesomeIcon icon={faMagnifyingGlass} />
       </button>
     </form>
   );
-}
+};
 
-export default SearchBar
+export default SearchBar;
