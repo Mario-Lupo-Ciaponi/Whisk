@@ -120,7 +120,12 @@ const App = () => {
           />
           <Route
             path="search-profile"
-            element={<SearchProfilePage currentUser={currentUser} navigate={navigate} />}
+            element={
+              <SearchProfilePage
+                currentUser={currentUser}
+                navigate={navigate}
+              />
+            }
           />
         </Routes>
       </main>

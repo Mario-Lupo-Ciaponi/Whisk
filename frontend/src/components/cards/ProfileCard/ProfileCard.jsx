@@ -8,11 +8,11 @@ const ProfileCard = ({ user, navigate }) => {
 
   const accountTypeIcons = {
     "pet owner": <FontAwesomeIcon icon={faPaw} />,
-    "volunteer": <FontAwesomeIcon icon={faHandshake} />,
-    "shelter": <FontAwesomeIcon icon={faHouse} />
-  }
+    volunteer: <FontAwesomeIcon icon={faHandshake} />,
+    shelter: <FontAwesomeIcon icon={faHouse} />,
+  };
 
-  const redirectToProfile = () => navigate(`profile/${user.id}`)
+  const redirectToProfile = () => navigate(`profile/${user.id}`);
 
   return (
     <article onClick={redirectToProfile} className="profile-card">
@@ -32,7 +32,10 @@ const ProfileCard = ({ user, navigate }) => {
 
         <div className="profile-meta">
           {userProfile.account_type && (
-            <p className="profile-type">{accountTypeIcons[userProfile.account_type]} {userProfile.account_type}</p>
+            <p className="profile-type">
+              {accountTypeIcons[userProfile.account_type]}{" "}
+              {userProfile.account_type}
+            </p>
           )}
 
           <div className="country-div">
