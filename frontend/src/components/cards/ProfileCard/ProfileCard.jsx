@@ -1,10 +1,21 @@
+import ReactCountryFlag from "react-country-flag";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faPaw, faHandshake, faHouse } from "@fortawesome/free-solid-svg-icons";
 import "./ProfileCard.css";
 
-const ProfileCard = ({ user }) => {
+const ProfileCard = ({ user, navigate }) => {
   const userProfile = user.profile;
 
+  const accountTypeIcons = {
+    "pet owner": <FontAwesomeIcon icon={faPaw} />,
+    "volunteer": <FontAwesomeIcon icon={faHandshake} />,
+    "shelter": <FontAwesomeIcon icon={faHouse} />
+  }
+
+  const redirectToProfile = () => navigate(`profile/${user.id}`)
+
   return (
-    <article className="profile-card">
+    <article onClick={redirectToProfile} className="profile-card">
       <div className="image-container">
         <img
           className="profile-image"
@@ -21,10 +32,13 @@ const ProfileCard = ({ user }) => {
 
         <div className="profile-meta">
           {userProfile.account_type && (
-            <p className="profile-type">{userProfile.account_type}</p>
+            <p className="profile-type">{accountTypeIcons[userProfile.account_type]} {userProfile.account_type}</p>
           )}
 
-          <p className="country">{user.country.name}</p>
+          <div className="country-div">
+            <ReactCountryFlag countryCode={user.country.code2} />
+            <p className="country">{user.country.name}</p>
+          </div>
         </div>
 
         {userProfile.bio && <p className="profile-bio">{userProfile.bio}</p>}

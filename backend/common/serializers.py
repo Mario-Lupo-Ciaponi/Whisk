@@ -21,6 +21,7 @@ class CountrySerializer(serializers.ModelSerializer):
         fields = [
             "id",
             "name",
+            "code2",
         ]
 
 

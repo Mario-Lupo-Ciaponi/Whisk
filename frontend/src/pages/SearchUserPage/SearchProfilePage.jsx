@@ -4,7 +4,7 @@ import Loader from "../../components/Loader.jsx";
 import api from "../../api/api.js";
 import "./SearchProfilePage.css";
 
-const SearchProfilePage = ({ currentUser }) => {
+const SearchProfilePage = ({ currentUser, navigate }) => {
   const [users, setUsers] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
 
@@ -34,7 +34,7 @@ const SearchProfilePage = ({ currentUser }) => {
       {isLoading ? (
         <Loader width={200} height={200} />
       ) : (
-        <ProfileSection users={users} />
+        <ProfileSection users={users} navigate={navigate} />
       )}
     </div>
   );
