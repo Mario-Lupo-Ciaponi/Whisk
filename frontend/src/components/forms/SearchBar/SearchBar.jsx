@@ -4,7 +4,7 @@ import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
 import api from "../../../api/api.js";
 import "./SearchBar.css";
 
-const SearchBar = ({ url, setResult }) => {
+const SearchBar = ({ url, setResult, currentPage }) => {
   const [query, setQuery] = useState("");
 
   const searchResults = async (event) => {
@@ -12,13 +12,17 @@ const SearchBar = ({ url, setResult }) => {
     event.stopPropagation();
 
     try {
+      const params = {
+        search: query,
+      }
+
+      if (currentPage) params["page"] = currentPage
+
       const response = await api.get(url, {
-        params: {
-          search: query,
-        },
+        params
       });
 
-      setResult(response.data);
+      setResult(response.data.results);
       setQuery("");
     } catch (e) {
       console.error(e);

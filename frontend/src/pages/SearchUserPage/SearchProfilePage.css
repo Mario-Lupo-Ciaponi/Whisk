@@ -4,8 +4,13 @@
   color: var(--tan-color);
 }
 
-.search-profile-container .search-bar-container {
+.search-profile-container .search-bar-container,
+.search-profile-container .paginator-list-container{
   display: flex;
   justify-content: center;
   margin-bottom: 1rem;
+}
+
+.search-profile-container .paginator-list-container {
+  margin-top: 2rem;
 }

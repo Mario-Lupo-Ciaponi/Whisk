@@ -13,6 +13,7 @@ from rest_framework import filters
 
 from .models import Profile
 from .serializers import UserSerializer, RegisterSerializer, ProfileSerializer
+from .pagination import UserResultsSetPagination
 from common.permissions import IsOwnerOrSuperUser
 
 User = get_user_model()
@@ -44,6 +45,8 @@ class UserListAPIView(ListAPIView):
     queryset = User.objects.all()
     serializer_class = UserSerializer
     permission_classes = [AllowAny]
+
+    pagination_class = UserResultsSetPagination
 
     filter_backends = [filters.SearchFilter]
     search_fields = ["username"]

@@ -5,6 +5,7 @@ import ProfileForm from "../../components/forms/ProfileForm/ProfileForm.jsx";
 import Loader from "../../components/Loader.jsx";
 import api from "../../api/api.js";
 import "./ProfilePage.css";
+import PaginationList from "../../components/PaginationList/PaginationList.jsx";
 
 const ProfilePage = ({ currentUser }) => {
   const params = useParams();
@@ -43,6 +44,12 @@ const ProfilePage = ({ currentUser }) => {
         setShouldNotEdit={setShouldNotEdit}
       />
       <ProfileForm user={user} shouldNotEdit={shouldNotEdit} />
+
+      <PaginationList
+        currentPage={currentPage}
+        setCurrentPage={setCurrentPage}
+        totalPages={totalPages}
+      />
     </div>
   );
 };
