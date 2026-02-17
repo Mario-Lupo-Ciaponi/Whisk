@@ -3,7 +3,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPaw, faHandshake, faHouse } from "@fortawesome/free-solid-svg-icons";
 import "./ProfileCard.css";
 
-const ProfileCard = ({ user }) => {
+const ProfileCard = ({ user, navigate }) => {
   const userProfile = user.profile;
 
   const accountTypeIcons = {
@@ -12,8 +12,10 @@ const ProfileCard = ({ user }) => {
     shelter: <FontAwesomeIcon icon={faHouse} />,
   };
 
+  const redirectToProfile = () => navigate(`profile/${user.id}`);
+
   return (
-    <article className="profile-card">
+    <article onClick={redirectToProfile} className="profile-card">
       <div className="image-container">
         <img
           className="profile-image"

@@ -54,9 +54,9 @@ const PostCreateForm = ({ currentUser, navigate, errors, setErrors }) => {
 
   useEffect(() => {
     const addCities = async () => {
-    const countryId = currentUser.country.id;
+      const countryId = currentUser.country.id;
 
-    const response = await api.get("cities/", {
+      const response = await api.get("cities/", {
         params: {
           country: countryId,
         },

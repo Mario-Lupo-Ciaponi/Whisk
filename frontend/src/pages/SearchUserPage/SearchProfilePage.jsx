@@ -6,7 +6,7 @@ import api from "../../api/api.js";
 import "./SearchProfilePage.css";
 import PaginationList from "../../components/PaginationList/PaginationList.jsx";
 
-const SearchProfilePage = ({ currentUser }) => {
+const SearchProfilePage = ({ currentUser, navigate }) => {
   const [users, setUsers] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [totalPages, setTotalPages] = useState(0);
@@ -59,7 +59,7 @@ const SearchProfilePage = ({ currentUser }) => {
         <Loader width={200} height={200} />
       ) : (
         <>
-          <ProfileSection users={users} />
+          <ProfileSection users={users} navigate={navigate} />
 
           <div className="paginator-list-container">
             <PaginationList
