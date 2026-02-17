@@ -115,12 +115,15 @@ const App = () => {
             path="profile/:id"
             element={<ProfilePage currentUser={currentUser} />}
           />
-          <Route path="post/:id" element={
-            <PostPage
-              currentUser={currentUser}
-              navigate={navigate}
-              setIsFilterVisible={setIsFilterVisible}
-            />}
+          <Route
+            path="post/:id"
+            element={
+              <PostPage
+                currentUser={currentUser}
+                navigate={navigate}
+                setIsFilterVisible={setIsFilterVisible}
+              />
+            }
           />
           <Route
             path="contact/"

@@ -8,7 +8,7 @@ import "./ProfilePage.css";
 import PaginationList from "../../components/PaginationList/PaginationList.jsx";
 
 const ProfilePage = ({ currentUser }) => {
-  const { id} = useParams();
+  const { id } = useParams();
   const [user, setUser] = useState(null);
   const [shouldNotEdit, setShouldNotEdit] = useState(true);
   const [isLoading, setIsLoading] = useState(false);

@@ -48,3 +48,12 @@
   background-color: var(--light-success-color);
   color: var(--success-color);
 }
+
+.notification-message.info {
+  border: var(--border-default-values) var(--info-color);
+}
+
+.notification-message.info .icon-container {
+  background-color: var(--light-info-color);
+  color: var(--info-color);
+}

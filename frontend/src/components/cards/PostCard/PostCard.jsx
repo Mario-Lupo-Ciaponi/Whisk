@@ -10,6 +10,7 @@ import {
 import MapSection from "../../sections/MapSection/MapSection.jsx";
 import CommentArea from "../../CommentArea/CommentArea.jsx";
 import PostEditForm from "../../forms/PostEditForm/PostEditForm.jsx";
+import NotificationMessage from "../../NotificationMessage/NotificationMessage.jsx";
 import DarkOpacityFilter from "../../DarkOpacityFilter/DarkOpacityFilter.jsx";
 import api from "../../../api/api.js";
 import "./PostCard.css";
@@ -20,6 +21,7 @@ const PostCard = ({ post, currentUser, navigate, setIsFilterVisible }) => {
   const [found, setFound] = useState(post.found);
   const [activeSection, setActiveSection] = useState("none");
   const [isEditFormVisible, setIsEditFormVisible] = useState(false);
+  const [notificationText, setNotificationText] = useState("");
   // Count states:
   const [locationsCount, setLocationsCount] = useState(post.locations_count);
   const [commentsCount, setCommentsCount] = useState(post.comments_count);
@@ -63,6 +65,15 @@ const PostCard = ({ post, currentUser, navigate, setIsFilterVisible }) => {
     }
   };
 
+  const copyPostUrl = async () => {
+    try {
+      await navigator.clipboard.writeText(`${window.location.origin}/post/${post.id}`);
+      setNotificationText("Post copied to clipboard!")
+    } catch (e) {
+      console.error(e)
+    }
+  }
+
   const savePost = async () => {
     try {
       const response = await api.post(`posts/${post.id}/save/`);
@@ -86,6 +97,13 @@ const PostCard = ({ post, currentUser, navigate, setIsFilterVisible }) => {
 
   return (
     <article className="post-card" key={post.id}>
+
+      {notificationText &&
+        <div className="notification-div">
+          <NotificationMessage text={notificationText} messageType="info" />
+        </div>
+      }
+
       <div className="top">
         <div className="user-container">
           <Link className="profile-link image" to={`profile/${post.author.id}`}>
@@ -124,7 +142,7 @@ const PostCard = ({ post, currentUser, navigate, setIsFilterVisible }) => {
               </button>
             </li>
             <li className="option-item">
-              <button className="option">Share</button>
+              <button onClick={copyPostUrl} className="option">Share</button>
             </li>
             {post.author.id === currentUser?.id && (
               <>

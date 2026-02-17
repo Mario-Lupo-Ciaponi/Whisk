@@ -1,6 +1,6 @@
 .post-card {
   border-radius: 1rem;
-
+  position: relative;
   background-color: var(--charcoal-color);
   color: var(--coffee-pot-color);
 }
@@ -170,4 +170,12 @@
 
 .post-card .divider {
   border: var(--border-default-values) var(--coffee-pot-color);
+}
+
+.post-card .notification-div {
+  position: absolute;
+  top: -10%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 70%;
 }

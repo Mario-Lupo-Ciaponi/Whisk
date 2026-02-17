@@ -16,6 +16,7 @@ const PostPage = ({ navigate, currentUser, setIsFilterVisible }) => {
         const response = await api.get(`posts/${id}`);
 
         setPost(response.data);
+
       } catch (e) {
         console.error(e);
       } finally {
@@ -26,13 +27,20 @@ const PostPage = ({ navigate, currentUser, setIsFilterVisible }) => {
     fetchPost();
   }, [id]);
 
-  return(
+  return (
     <div className="post-container">
-      {isLoading ?
-        <Loader width={300} height={300} /> :
-        <PostCard post={post} currentUser={currentUser} setIsFilterVisible={setIsFilterVisible} navigate={navigate} />}
+      {isLoading ? (
+        <Loader width={300} height={300} />
+      ) : (
+        <PostCard
+          post={post}
+          currentUser={currentUser}
+          setIsFilterVisible={setIsFilterVisible}
+          navigate={navigate}
+        />
+      )}
     </div>
-  )
-}
+  );
+};
 
 export default PostPage;

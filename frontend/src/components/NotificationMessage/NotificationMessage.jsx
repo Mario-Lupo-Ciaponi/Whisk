@@ -6,7 +6,9 @@ import "./NotificationMessage.css";
 const NotificationMessage = ({ messageType, text }) => {
   const [isVisible, setIsVisible] = useState(true);
 
-  const toggleVisibility = () => setIsVisible(false);
+  const toggleVisibility = () => {
+    setIsVisible(false);
+  };
 
   return (
     <div

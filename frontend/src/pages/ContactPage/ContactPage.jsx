@@ -12,7 +12,11 @@ const ContactPage = ({ currentUser }) => {
       </header>
 
       {notificationMessage && (
-        <NotificationMessage messageType="success" text={notificationMessage} />
+        <NotificationMessage
+          messageType="success"
+          text={notificationMessage}
+          setText={setNotificationMessage}
+        />
       )}
 
       <ContactForm
