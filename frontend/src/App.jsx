@@ -9,6 +9,7 @@ import GroupsPage from "./pages/GroupsPage/GroupsPage.jsx";
 import CreateGroupPage from "./pages/CreateGroupPage/CreateGroupPage.jsx";
 import AuthPage from "./pages/AuthPage/AuthPage.jsx";
 import ProfilePage from "./pages/ProfilePage/ProfilePage.jsx";
+import PostPage from "./pages/PostPage/PostPage.jsx";
 import ContactPage from "./pages/ContactPage/ContactPage.jsx";
 import SavedPostsPage from "./pages/SavedPostsPage/SavedPostsPage.jsx";
 import SearchProfilePage from "./pages/SearchUserPage/SearchProfilePage.jsx";
@@ -113,6 +114,13 @@ const App = () => {
           <Route
             path="profile/:id"
             element={<ProfilePage currentUser={currentUser} />}
+          />
+          <Route path="post/:id" element={
+            <PostPage
+              currentUser={currentUser}
+              navigate={navigate}
+              setIsFilterVisible={setIsFilterVisible}
+            />}
           />
           <Route
             path="contact/"
