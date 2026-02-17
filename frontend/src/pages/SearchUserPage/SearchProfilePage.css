@@ -5,7 +5,7 @@
 }
 
 .search-profile-container .search-bar-container,
-.search-profile-container .paginator-list-container{
+.search-profile-container .paginator-list-container {
   display: flex;
   justify-content: center;
   margin-bottom: 1rem;

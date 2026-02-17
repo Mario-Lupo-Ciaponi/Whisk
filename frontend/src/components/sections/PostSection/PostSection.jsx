@@ -2,7 +2,6 @@ import PostCard from "../../cards/PostCard/PostCard.jsx";
 import "./PostSection.css";
 
 const PostSection = ({ posts, currentUser, navigate, setIsFilterVisible }) => {
-  console.log(posts);
   return (
     <section className="post-section">
       {posts.map((post) => {

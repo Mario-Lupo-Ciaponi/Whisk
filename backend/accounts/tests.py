@@ -62,21 +62,21 @@ class TestUserListAPIView(APITestCase):
 
         self.assertEqual(response.status_code, status.HTTP_200_OK)
 
-        self.assertEqual(len(response.data), 2)
+        self.assertEqual(len(response.data["results"]), 2)
 
     def test__filter_users_with_valid_params_upper_case__returns_filtered_users(self):
         response = self.client.get(f"{self.url}?search=MA")
 
         self.assertEqual(response.status_code, status.HTTP_200_OK)
 
-        self.assertEqual(len(response.data), 2)
+        self.assertEqual(len(response.data["results"]), 2)
 
     def test__filter_users_with_invalid_params__returns_no_users(self):
         response = self.client.get(f"{self.url}?search=to")
 
         self.assertEqual(response.status_code, status.HTTP_200_OK)
 
-        self.assertEqual(len(response.data), 0)
+        self.assertEqual(len(response.data["results"]), 0)
 
 
 class TestRegisterApiView(APITestCase):

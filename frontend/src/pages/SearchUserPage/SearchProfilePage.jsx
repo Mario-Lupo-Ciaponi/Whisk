@@ -6,11 +6,12 @@ import api from "../../api/api.js";
 import "./SearchProfilePage.css";
 import PaginationList from "../../components/PaginationList/PaginationList.jsx";
 
-const SearchProfilePage = ({ currentUser, navigate }) => {
+const SearchProfilePage = ({ currentUser }) => {
   const [users, setUsers] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [totalPages, setTotalPages] = useState(0);
   const [isLoading, setIsLoading] = useState(false);
+  const [searchQuery, setSearchQuery] = useState("");
 
   const itemsPerPage = 9;
 
@@ -22,6 +23,7 @@ const SearchProfilePage = ({ currentUser, navigate }) => {
         const response = await api.get(url, {
           params: {
             page: currentPage,
+            search: searchQuery,
           },
         });
 
@@ -36,7 +38,12 @@ const SearchProfilePage = ({ currentUser, navigate }) => {
 
     setIsLoading(true);
     fetchUsers();
-  }, []);
+  }, [currentPage, searchQuery]);
+
+  const handleSearch = (query) => {
+    setSearchQuery(query);
+    setCurrentPage(1);
+  }
 
   return (
     <div className="search-profile-container">
@@ -45,14 +52,14 @@ const SearchProfilePage = ({ currentUser, navigate }) => {
       </header>
 
       <div className="search-bar-container">
-        <SearchBar url={url} setResult={setUsers} currentPage={currentPage} />
+        <SearchBar onSearch={handleSearch} />
       </div>
 
       {isLoading ? (
         <Loader width={200} height={200} />
       ) : (
         <>
-          <ProfileSection users={users} navigate={navigate} />
+          <ProfileSection users={users} />
 
           <div className="paginator-list-container">
             <PaginationList

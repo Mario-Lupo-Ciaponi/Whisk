@@ -14,24 +14,6 @@ const HomePage = ({ currentUser, navigate, setIsFilterVisible }) => {
 
   const itemsPerPage = 6;
 
-  const getPosts = async () => {
-    setIsLoading(true);
-
-    try {
-      const response = await api.get("posts/", {
-        params: {
-          page: currentPage,
-        },
-      });
-
-      setPosts(response.data.results);
-      setTotalPages(Math.ceil(response.data.count / itemsPerPage));
-    } catch (error) {
-      console.log(error);
-    }
-    setIsLoading(false);
-  };
-
   const filterPosts = async (query) => {
     setIsLoading(true);
 
@@ -51,6 +33,24 @@ const HomePage = ({ currentUser, navigate, setIsFilterVisible }) => {
   };
 
   useEffect(() => {
+    const getPosts = async () => {
+    setIsLoading(true);
+
+    try {
+      const response = await api.get("posts/", {
+        params: {
+          page: currentPage,
+        },
+      });
+
+      setPosts(response.data.results);
+      setTotalPages(Math.ceil(response.data.count / itemsPerPage));
+    } catch (error) {
+      console.log(error);
+    }
+      setIsLoading(false);
+    };
+
     getPosts();
   }, [currentPage]);
 

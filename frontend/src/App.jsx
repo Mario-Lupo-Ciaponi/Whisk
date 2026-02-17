@@ -50,7 +50,7 @@ const App = () => {
     };
 
     getCurrentUser();
-  }, [authTokens]);
+  }, []);
 
   return isLoading ? (
     <Loader width={300} height={300} />

@@ -195,13 +195,14 @@ const PostCard = ({ post, currentUser, navigate, setIsFilterVisible }) => {
         navigate={navigate}
       />
 
-      <PostEditForm
-        post={post}
-        currentUser={currentUser}
-        isEditFormVisible={isEditFormVisible}
-        setIsEditFormVisible={setIsEditFormVisible}
-        setIsFilterVisible={setIsFilterVisible}
-      />
+      {isEditFormVisible &&
+        <PostEditForm
+          post={post}
+          currentUser={currentUser}
+          isEditFormVisible={isEditFormVisible}
+          setIsEditFormVisible={setIsEditFormVisible}
+          setIsFilterVisible={setIsFilterVisible}
+        />}
     </article>
   );
 };

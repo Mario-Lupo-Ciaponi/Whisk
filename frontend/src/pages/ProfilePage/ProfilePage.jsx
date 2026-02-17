@@ -29,7 +29,7 @@ const ProfilePage = ({ currentUser }) => {
     };
 
     fetchUser();
-  }, []);
+  }, [id]);
 
   if (isLoading || !user) {
     return <Loader height={200} width={200} />;
@@ -44,12 +44,6 @@ const ProfilePage = ({ currentUser }) => {
         setShouldNotEdit={setShouldNotEdit}
       />
       <ProfileForm user={user} shouldNotEdit={shouldNotEdit} />
-
-      <PaginationList
-        currentPage={currentPage}
-        setCurrentPage={setCurrentPage}
-        totalPages={totalPages}
-      />
     </div>
   );
 };

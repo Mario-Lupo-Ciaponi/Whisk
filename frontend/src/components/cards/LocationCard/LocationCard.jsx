@@ -7,7 +7,6 @@ import "./LocationCard.css";
 const LocationCard = ({ post, location, currentUser, setFound }) => {
   const [isValid, setIsValid] = useState(location.is_valid); // This is if the pet was found in this location
 
-  console.log("Location: " + location);
   const latitude = location.latitude;
   const longitude = location.longitude;
 
