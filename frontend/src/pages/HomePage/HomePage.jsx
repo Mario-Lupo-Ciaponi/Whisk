@@ -34,20 +34,20 @@ const HomePage = ({ currentUser, navigate, setIsFilterVisible }) => {
 
   useEffect(() => {
     const getPosts = async () => {
-    setIsLoading(true);
+      setIsLoading(true);
 
-    try {
-      const response = await api.get("posts/", {
-        params: {
-          page: currentPage,
-        },
-      });
+      try {
+        const response = await api.get("posts/", {
+          params: {
+            page: currentPage,
+          },
+        });
 
-      setPosts(response.data.results);
-      setTotalPages(Math.ceil(response.data.count / itemsPerPage));
-    } catch (error) {
-      console.log(error);
-    }
+        setPosts(response.data.results);
+        setTotalPages(Math.ceil(response.data.count / itemsPerPage));
+      } catch (error) {
+        console.log(error);
+      }
       setIsLoading(false);
     };
 

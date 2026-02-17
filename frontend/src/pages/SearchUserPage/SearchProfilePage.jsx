@@ -43,7 +43,7 @@ const SearchProfilePage = ({ currentUser }) => {
   const handleSearch = (query) => {
     setSearchQuery(query);
     setCurrentPage(1);
-  }
+  };
 
   return (
     <div className="search-profile-container">

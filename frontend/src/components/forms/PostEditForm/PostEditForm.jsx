@@ -18,18 +18,6 @@ const PostEditForm = ({
   const [selectedCity, setSelectedCity] = useState(post.city.id);
   const [isLoading, setIsLoading] = useState(false);
 
-  const addCities = async () => {
-    const countryId = currentUser.country;
-
-    const response = await api.get("cities/", {
-      params: {
-        country: countryId,
-      },
-    });
-
-    setCities(response.data);
-  };
-
   const editPost = async (event) => {
     event.preventDefault();
     event.stopPropagation();
@@ -66,6 +54,17 @@ const PostEditForm = ({
   };
 
   useEffect(() => {
+    const addCities = async () => {
+      const countryId = currentUser.country.id;
+
+      const response = await api.get("cities/", {
+        params: {
+          country: countryId,
+        },
+      });
+
+      setCities(response.data);
+    };
     if (currentUser?.country) addCities();
   }, [currentUser]);
 

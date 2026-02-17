@@ -13,18 +13,6 @@ const PostCreateForm = ({ currentUser, navigate, errors, setErrors }) => {
   const [image, setImage] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
 
-  const addCities = async () => {
-    const countryId = currentUser.country.id;
-
-    const response = await api.get("cities/", {
-      params: {
-        country: countryId,
-      },
-    });
-
-    setCities(response.data);
-  };
-
   const createPost = async (event) => {
     event.preventDefault();
 
@@ -65,6 +53,18 @@ const PostCreateForm = ({ currentUser, navigate, errors, setErrors }) => {
   };
 
   useEffect(() => {
+    const addCities = async () => {
+    const countryId = currentUser.country.id;
+
+    const response = await api.get("cities/", {
+        params: {
+          country: countryId,
+        },
+      });
+
+      setCities(response.data);
+    };
+
     if (currentUser?.country) addCities();
   }, [currentUser]);
 

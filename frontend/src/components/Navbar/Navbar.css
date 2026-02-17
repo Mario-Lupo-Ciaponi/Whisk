@@ -35,6 +35,7 @@
 .navbar .links .item .link {
   text-decoration: none;
   color: var(--tan-color);
+  cursor: pointer;
 }
 
 .navbar .links .item .link.active {

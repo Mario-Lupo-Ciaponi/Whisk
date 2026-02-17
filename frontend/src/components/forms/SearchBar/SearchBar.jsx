@@ -11,7 +11,7 @@ const SearchBar = ({ onSearch }) => {
     event.preventDefault();
 
     onSearch(tempQuery);
-  }
+  };
   return (
     <form onSubmit={handleSubmit} className="search-bar">
       <input
