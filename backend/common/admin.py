@@ -3,6 +3,4 @@ from .models import Notification
 
 
 @admin.register(Notification)
-class NotificationAdmin(admin.ModelAdmin):
-    ...
-
+class NotificationAdmin(admin.ModelAdmin): ...

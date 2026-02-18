@@ -13,6 +13,7 @@ import PostPage from "./pages/PostPage/PostPage.jsx";
 import ContactPage from "./pages/ContactPage/ContactPage.jsx";
 import SavedPostsPage from "./pages/SavedPostsPage/SavedPostsPage.jsx";
 import SearchProfilePage from "./pages/SearchUserPage/SearchProfilePage.jsx";
+import NotificationPage from "./pages/NotificationPage/NotificationPage.jsx";
 import NotFound from "./components/NotFound/NotFound.jsx";
 import Loader from "./components/Loader.jsx";
 import DarkOpacityFilter from "./components/DarkOpacityFilter/DarkOpacityFilter.jsx";
@@ -130,12 +131,18 @@ const App = () => {
             element={<ContactPage currentUser={currentUser} />}
           />
           <Route
-            path="search-profile"
+            path="search-profile/"
             element={
               <SearchProfilePage
                 currentUser={currentUser}
                 navigate={navigate}
               />
+            }
+          />
+          <Route
+            path="notifications/"
+            element={
+              <NotificationPage />
             }
           />
         </Routes>

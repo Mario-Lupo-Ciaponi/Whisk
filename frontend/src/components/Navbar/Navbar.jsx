@@ -63,10 +63,12 @@ const Navbar = ({ navigate, currentUser }) => {
 
       {isLoggedIn ? (
         <div className="user-menu">
-          <button className="notifications">
+          <Link to="/notifications" className="notifications">
             <FontAwesomeIcon icon={faBell} />
-            {notificationCount && <span className="notification-count">{notificationCount}</span>}
-          </button>
+            {notificationCount && (
+              <span className="notification-count">{notificationCount}</span>
+            )}
+          </Link>
 
           <div className="dropdown user-options">
             <button className="user-toggle">

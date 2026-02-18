@@ -61,7 +61,7 @@
   top: -0.3rem;
   right: -0.3rem;
   color: white;
-  background-color: #D22B2B;
+  background-color: #d22b2b;
   border-radius: 2rem;
   font-size: 0.7rem;
   width: 0.9rem;
@@ -100,7 +100,6 @@
   border-radius: 50%;
   object-fit: cover;
 }
-
 
 .navbar .user-menu .dropdown .user-toggle .username {
   font-size: 0.9rem;
