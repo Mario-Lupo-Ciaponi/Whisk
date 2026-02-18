@@ -139,12 +139,7 @@ const App = () => {
               />
             }
           />
-          <Route
-            path="notifications/"
-            element={
-              <NotificationPage />
-            }
-          />
+          <Route path="notifications/" element={<NotificationPage />} />
         </Routes>
       </main>
       <Footer />

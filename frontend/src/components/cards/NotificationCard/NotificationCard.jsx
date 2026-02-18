@@ -5,7 +5,7 @@ const NotificationCard = ({ notification }) => {
     <article className="notification-card">
       <p>{notification.text}</p>
     </article>
-  )
-}
+  );
+};
 
 export default NotificationCard;

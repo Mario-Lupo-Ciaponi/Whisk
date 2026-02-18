@@ -8,14 +8,12 @@ const NotificationPage = () => {
   return (
     <div className="notification-page">
       <header className="notification-header">
-        <h1 className="notification-title">
-          Your notifications
-        </h1>
+        <h1 className="notification-title">Your notifications</h1>
       </header>
 
       <NotificationSection notifications={notifications} />
     </div>
-  )
-}
+  );
+};
 
 export default NotificationPage;

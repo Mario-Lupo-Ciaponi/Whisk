@@ -36,9 +36,12 @@ class ContactSerializer(serializers.Serializer):
 
 
 class NotificationSerializer(serializers.ModelSerializer):
+    sender = serializers.SerializerMethodField()
+
     class Meta:
         model = Notification
         fields = [
+            "id",
             "recipient",
             "sender",
             "notification_type",
@@ -47,3 +50,11 @@ class NotificationSerializer(serializers.ModelSerializer):
             "is_read",
             "created_at",
         ]
+
+    def get_sender(self, obj):
+        from accounts.serializers import UserSerializer
+
+        if obj.sender:
+            return UserSerializer(obj.sender).data
+
+        return None

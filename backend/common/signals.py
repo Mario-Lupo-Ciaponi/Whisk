@@ -17,5 +17,5 @@ def send_location_notification_to_user(sender, instance, created, **kwargs):
                 sender=instance.author,
                 notification_type=NotificationChoices.LOCATION,
                 post_id=instance.post.pk,
-                text=f"{instance.author.username if instance.author else "Anonymous user"} added a new location!",
+                text="added a new location to your",
             )
