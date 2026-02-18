@@ -6,7 +6,8 @@ from cities_light.models import City, Country
 from rest_framework.response import Response
 from rest_framework.views import APIView
 
-from .serializers import CitySerializer, CountrySerializer, ContactSerializer
+from .models import Notification
+from .serializers import CitySerializer, CountrySerializer, ContactSerializer, NotificationSerializer
 from .mails import send_contact_email
 
 
@@ -40,3 +41,15 @@ class ContactAPIView(APIView):
             return Response({"details": "Success"}, status.HTTP_200_OK)
 
         return Response(serializer.errors, status.HTTP_400_BAD_REQUEST)
+
+
+class GetUnreadNotificationsAPIView(APIView):
+    def get(self):
+        notifications =  Notification.objects.filter(
+            recepient=self.request.user,
+            is_ready=False,
+        )
+
+        serializer = NotificationSerializer(notifications, many=True)
+
+        return Response(serializer.data)

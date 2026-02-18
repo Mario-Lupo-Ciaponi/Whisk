@@ -2,6 +2,8 @@ from rest_framework import serializers
 
 from cities_light.models import City, Country
 
+from .models import Notification
+
 
 class CitySerializer(serializers.ModelSerializer):
     class Meta:
@@ -31,3 +33,17 @@ class ContactSerializer(serializers.Serializer):
     )
     email = serializers.EmailField()
     message = serializers.CharField()
+
+
+class NotificationSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Notification
+        fields = [
+            "recipient",
+            "sender",
+            "notification_type",
+            "post_id",
+            "text",
+            "is_read",
+            "created_at",
+        ]

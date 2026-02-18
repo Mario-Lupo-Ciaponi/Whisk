@@ -2,8 +2,8 @@ from django.contrib.auth import get_user_model
 from django.db import models
 from .choices import NotificationChoices
 
-
 User = get_user_model()
+
 
 class Notification(models.Model):
     recipient = models.ForeignKey(
@@ -29,4 +29,6 @@ class Notification(models.Model):
     )
 
     class Meta:
-        ordering = ["-created_at",]
+        ordering = [
+            "-created_at",
+        ]
