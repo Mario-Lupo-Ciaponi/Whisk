@@ -7,7 +7,12 @@ from rest_framework.response import Response
 from rest_framework.views import APIView
 
 from .models import Notification
-from .serializers import CitySerializer, CountrySerializer, ContactSerializer, NotificationSerializer
+from .serializers import (
+    CitySerializer,
+    CountrySerializer,
+    ContactSerializer,
+    NotificationSerializer,
+)
 from .mails import send_contact_email
 
 
@@ -45,7 +50,7 @@ class ContactAPIView(APIView):
 
 class GetUnreadNotificationsAPIView(APIView):
     def get(self):
-        notifications =  Notification.objects.filter(
+        notifications = Notification.objects.filter(
             recepient=self.request.user,
             is_ready=False,
         )

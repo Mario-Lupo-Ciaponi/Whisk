@@ -11,11 +11,11 @@ from .choices import NotificationChoices
 @receiver(post_save, sender=PetLocation)
 def send_location_notification_to_user(sender, instance, created, **kwargs):
     if created:
-        if instance.post.author != instance.user:
+        if instance.post.author != instance.author:
             Notification.objects.create(
                 recipient=instance.post.author,
-                sender=instance.user,
+                sender=instance.author,
                 notification_type=NotificationChoices.LOCATION,
                 post_id=instance.post.pk,
-                text=f"{instance.author} added a new location!",
+                text=f"{instance.author.username if instance.author else "Anonymous user"} added a new location!",
             )

@@ -14,12 +14,17 @@ class Notification(models.Model):
     sender = models.ForeignKey(
         User,
         on_delete=models.CASCADE,
+        null=True,
+        blank=True,
     )
     notification_type = models.CharField(
         max_length=20,
         choices=NotificationChoices.choices,
     )
-    post_id = models.IntegerField()
+    post_id = models.IntegerField(
+        null=True,
+        blank=True,
+    )
     text = models.TextField()
     is_read = models.BooleanField(
         default=False,
