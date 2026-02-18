@@ -16,7 +16,6 @@ const PostPage = ({ navigate, currentUser, setIsFilterVisible }) => {
         const response = await api.get(`posts/${id}`);
 
         setPost(response.data);
-
       } catch (e) {
         console.error(e);
       } finally {

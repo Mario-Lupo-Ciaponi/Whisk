@@ -67,12 +67,14 @@ const PostCard = ({ post, currentUser, navigate, setIsFilterVisible }) => {
 
   const copyPostUrl = async () => {
     try {
-      await navigator.clipboard.writeText(`${window.location.origin}/post/${post.id}`);
-      setNotificationText("Post copied to clipboard!")
+      await navigator.clipboard.writeText(
+        `${window.location.origin}/post/${post.id}`,
+      );
+      setNotificationText("Post copied to clipboard!");
     } catch (e) {
-      console.error(e)
+      console.error(e);
     }
-  }
+  };
 
   const savePost = async () => {
     try {
@@ -97,12 +99,11 @@ const PostCard = ({ post, currentUser, navigate, setIsFilterVisible }) => {
 
   return (
     <article className="post-card" key={post.id}>
-
-      {notificationText &&
+      {notificationText && (
         <div className="notification-div">
           <NotificationMessage text={notificationText} messageType="info" />
         </div>
-      }
+      )}
 
       <div className="top">
         <div className="user-container">
@@ -142,7 +143,9 @@ const PostCard = ({ post, currentUser, navigate, setIsFilterVisible }) => {
               </button>
             </li>
             <li className="option-item">
-              <button onClick={copyPostUrl} className="option">Share</button>
+              <button onClick={copyPostUrl} className="option">
+                Share
+              </button>
             </li>
             {post.author.id === currentUser?.id && (
               <>
