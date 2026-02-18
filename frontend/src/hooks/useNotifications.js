@@ -11,7 +11,7 @@ const useNotifications = () => {
       }
 
       try {
-        const response = await api.get("notifications/unread");
+        const response = await api.get("notifications/unread/");
         setNotifications(response.data);
       } catch (e) {
         console.error(e);

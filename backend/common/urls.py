@@ -10,7 +10,7 @@ urlpatterns = [
         include(
             [
                 path(
-                    "",
+                    "unread/",
                     views.GetUnreadNotificationsAPIView.as_view(),
                     name="unread-notifications",
                 ),

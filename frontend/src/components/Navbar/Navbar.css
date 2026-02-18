@@ -53,6 +53,23 @@
   background: none;
   border: none;
   color: inherit;
+  position: relative;
+}
+
+.navbar .user-menu .notifications .notification-count {
+  position: absolute;
+  top: -0.3rem;
+  right: -0.3rem;
+  color: white;
+  background-color: #D22B2B;
+  border-radius: 2rem;
+  font-size: 0.7rem;
+  width: 0.9rem;
+  height: 0.9rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.5rem;
 }
 
 .navbar .user-menu .dropdown {
@@ -70,12 +87,20 @@
   gap: 0.5rem;
 }
 
-.navbar .user-menu .dropdown .user-toggle .profile-image {
+.navbar .user-menu .dropdown .user-toggle .image-container {
   width: 1.5rem;
   height: 1.5rem;
   border-radius: 2rem;
   border: var(--border-default-values) var(--tan-color);
 }
+
+.navbar .user-menu .dropdown .user-toggle .image-container .profile-image {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
 
 .navbar .user-menu .dropdown .user-toggle .username {
   font-size: 0.9rem;

@@ -1,3 +1,4 @@
+import useNotifications from "../../hooks/useNotifications.js";
 import { NavLink, Link } from "react-router";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import api from "../../api/api.js";
@@ -6,6 +7,8 @@ import LogoImage from "../../assets/logo.png";
 import "./Navbar.css";
 
 const Navbar = ({ navigate, currentUser }) => {
+  const { notifications, notificationCount } = useNotifications();
+
   const logout = async () => {
     try {
       await api.post("token/blacklist/", {
@@ -62,19 +65,22 @@ const Navbar = ({ navigate, currentUser }) => {
         <div className="user-menu">
           <button className="notifications">
             <FontAwesomeIcon icon={faBell} />
+            {notificationCount && <span className="notification-count">{notificationCount}</span>}
           </button>
 
           <div className="dropdown user-options">
             <button className="user-toggle">
-              <img
-                className="profile-image"
-                src={
-                  currentUser?.profile.profile_image
-                    ? currentUser.profile.profile_image
-                    : "images/default-profile-img.jpeg"
-                }
-                alt="profile-image"
-              />
+              <div className="image-container">
+                <img
+                  className="profile-image"
+                  src={
+                    currentUser?.profile.profile_image
+                      ? currentUser.profile.profile_image
+                      : "images/default-profile-img.jpeg"
+                  }
+                  alt="profile-image"
+                />
+              </div>
               <span className="username">{currentUser?.username}</span>
             </button>
 

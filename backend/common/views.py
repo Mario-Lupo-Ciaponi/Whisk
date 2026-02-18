@@ -49,10 +49,10 @@ class ContactAPIView(APIView):
 
 
 class GetUnreadNotificationsAPIView(APIView):
-    def get(self):
+    def get(self, request):
         notifications = Notification.objects.filter(
-            recepient=self.request.user,
-            is_ready=False,
+            recipient=self.request.user,
+            is_read=False,
         )
 
         serializer = NotificationSerializer(notifications, many=True)
