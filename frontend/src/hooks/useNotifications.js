@@ -16,7 +16,7 @@ const useNotifications = () => {
       } catch (e) {
         console.error(e);
       }
-    }
+    };
 
     fetchUnreadNotifications();
 
@@ -27,8 +27,8 @@ const useNotifications = () => {
 
   return {
     notifications,
-    notificationCount: notifications.length
+    notificationCount: notifications.length,
   };
-}
+};
 
 export default useNotifications;
