@@ -20,6 +20,15 @@ def send_welcoming_mail(user):
         [user.email],
     )
 
+def send_location_added_mail(sender, recipient, post):
+    send_mail(
+        f"{sender.username} added a new location to your Post!",
+        f"{sender.username} added a new location to your Post - {post.title}.\n"
+        f"Make sure to check it and see if that's the one you will find your pet!",
+        EMAIL_HOST_USER,
+        recipient_list=[recipient.email]
+    )
+
 
 def send_contact_email(subject, email, message):
     email_subject = f"Email from {email}"

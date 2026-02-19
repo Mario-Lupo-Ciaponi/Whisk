@@ -7,15 +7,27 @@ from posts.models import PetLocation
 
 from .choices import NotificationChoices
 
+from .mails import send_location_added_mail
+
 
 @receiver(post_save, sender=PetLocation)
 def send_location_notification_to_user(sender, instance, created, **kwargs):
     if created:
-        if instance.post.author != instance.author:
+        post = instance.post
+        post_author = instance.post.author
+        location_author = instance.author
+
+        if post_author != location_author:
             Notification.objects.create(
-                recipient=instance.post.author,
-                sender=instance.author,
+                recipient=post_author,
+                sender=location_author,
                 notification_type=NotificationChoices.LOCATION,
-                post_id=instance.post.pk,
+                post_id=post.pk,
                 text="added a new location to your",
+            )
+
+            send_location_added_mail(
+                sender=location_author,
+                recipient=post_author,
+                post=post,
             )
