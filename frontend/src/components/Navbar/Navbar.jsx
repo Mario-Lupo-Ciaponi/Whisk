@@ -45,11 +45,6 @@ const Navbar = ({ navigate, currentUser }) => {
           </NavLink>
         </li>
         <li className="item">
-          <NavLink to="/groups" className="link">
-            Groups
-          </NavLink>
-        </li>
-        <li className="item">
           <NavLink to="/help" className="link">
             Help
           </NavLink>

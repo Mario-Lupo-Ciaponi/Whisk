@@ -5,7 +5,6 @@ import Navbar from "./components/Navbar/Navbar.jsx";
 import Footer from "./components/Footer/Footer.jsx";
 import HomePage from "./pages/HomePage/HomePage.jsx";
 import CreatePostPage from "./pages/CreatePostPage/CreatePostPage.jsx";
-import GroupsPage from "./pages/GroupsPage/GroupsPage.jsx";
 import CreateGroupPage from "./pages/CreateGroupPage/CreateGroupPage.jsx";
 import AuthPage from "./pages/AuthPage/AuthPage.jsx";
 import ProfilePage from "./pages/ProfilePage/ProfilePage.jsx";
@@ -99,8 +98,6 @@ const App = () => {
               element={<SavedPostsPage currentUser={currentUser} />}
             />
           </Route>
-
-          <Route path="groups/" element={<GroupsPage />} />
           <Route
             path="login/"
             element={

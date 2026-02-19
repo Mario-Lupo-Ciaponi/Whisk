@@ -28,7 +28,7 @@ def send_location_added_mail(sender, recipient, post):
 
     message = (
         f"Hi {recipient.username},\n\n"
-        f"{sender_username} has added a new location to your post titled \"{post.title}\".\n\n"
+        f'{sender_username} has added a new location to your post titled "{post.title}".\n\n'
         f"Take a moment to review the updated location details — this could help you track down your pet.\n\n"
         f"Wishing you the best,\n"
         f"The Team"
@@ -49,7 +49,7 @@ def send_comment_added_mail(sender, recipient, post):
 
     message = (
         f"Hi {recipient.username},\n\n"
-        f"{sender_username} has just left a comment on your post titled \"{post.title}\".\n\n"
+        f'{sender_username} has just left a comment on your post titled "{post.title}".\n\n'
         f"Sign in to your account to read the comment and join the conversation.\n\n"
         f"Best regards,\n"
         f"The Team"
