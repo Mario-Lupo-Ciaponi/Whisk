@@ -8,7 +8,7 @@ from posts.models import PetLocation, Comment
 
 from .choices import NotificationChoices
 
-from .mails import send_location_added_mail
+from .mails import send_location_added_mail, send_comment_added_mail
 
 
 @receiver(post_save, sender=PetLocation)
@@ -46,3 +46,6 @@ def send_comment_notification_to_user(sender, instance, created, **kwargs):
                 post_id=post.pk,
                 text="commented on your",
             )
+
+            email_args = (comment_author, post_author, post)
+            threading.Thread(target=send_comment_added_mail, args=email_args).start()

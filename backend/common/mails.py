@@ -24,10 +24,40 @@ def send_welcoming_mail(user):
 def send_location_added_mail(sender, recipient, post):
     sender_username = sender.username if sender else "Anonymous user"
 
+    subject = f"{sender_username} added a new location to your post: {post.title}"
+
+    message = (
+        f"Hi {recipient.username},\n\n"
+        f"{sender_username} has added a new location to your post titled \"{post.title}\".\n\n"
+        f"Take a moment to review the updated location details — this could help you track down your pet.\n\n"
+        f"Wishing you the best,\n"
+        f"The Team"
+    )
+
     send_mail(
-        f"{sender_username} added a new location to your Post!",
-        f"{sender_username} added a new location to your Post - {post.title}.\n"
-        f"Make sure to check it and see if that's the one you will find your pet!",
+        subject,
+        message,
+        EMAIL_HOST_USER,
+        recipient_list=[recipient.email],
+    )
+
+
+def send_comment_added_mail(sender, recipient, post):
+    sender_username = sender.username if sender else "Anonymous user"
+
+    subject = f"{sender_username} commented on your post: {post.title}"
+
+    message = (
+        f"Hi {recipient.username},\n\n"
+        f"{sender_username} has just left a comment on your post titled \"{post.title}\".\n\n"
+        f"Sign in to your account to read the comment and join the conversation.\n\n"
+        f"Best regards,\n"
+        f"The Team"
+    )
+
+    send_mail(
+        subject,
+        message,
         EMAIL_HOST_USER,
         recipient_list=[recipient.email],
     )
