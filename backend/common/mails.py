@@ -20,13 +20,16 @@ def send_welcoming_mail(user):
         [user.email],
     )
 
+
 def send_location_added_mail(sender, recipient, post):
+    sender_username = sender.username if sender else "Anonymous user"
+
     send_mail(
-        f"{sender.username} added a new location to your Post!",
-        f"{sender.username} added a new location to your Post - {post.title}.\n"
+        f"{sender_username} added a new location to your Post!",
+        f"{sender_username} added a new location to your Post - {post.title}.\n"
         f"Make sure to check it and see if that's the one you will find your pet!",
         EMAIL_HOST_USER,
-        recipient_list=[recipient.email]
+        recipient_list=[recipient.email],
     )
 
 
