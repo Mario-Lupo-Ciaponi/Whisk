@@ -1,3 +1,4 @@
+import threading
 from django.contrib.auth import get_user_model
 from django.db.models.signals import post_save
 from django.dispatch import receiver
@@ -26,11 +27,8 @@ def send_location_notification_to_user(sender, instance, created, **kwargs):
                 text="added a new location to your",
             )
 
-            send_location_added_mail(
-                sender=location_author,
-                recipient=post_author,
-                post=post,
-            )
+            email_args = (location_author, post_author, post)
+            threading.Thread(target=send_location_added_mail, args=email_args).start()
 
 
 @receiver(post_save, sender=Comment)
