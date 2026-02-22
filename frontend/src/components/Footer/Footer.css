@@ -41,9 +41,34 @@
 
 .footer .rights-reserved {
   margin: 0 auto;
-  padding-top: 3rem;
+  padding-top: 2.75rem;
   border-top: var(--border-default-values) black;
   width: 90%;
   text-align: center;
   font-size: 0.75rem;
 }
+
+
+@media screen and (max-width: 850px) {
+  .footer {
+    gap: 1.25rem;
+  }
+
+  .footer .rights-reserved {
+    padding-top: 1.75rem;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .footer .wrapper .logo {
+    width: 3.75rem;
+    height: 3.75rem;
+  }
+
+  .footer .wrapper .links {
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+  }
+}
+
