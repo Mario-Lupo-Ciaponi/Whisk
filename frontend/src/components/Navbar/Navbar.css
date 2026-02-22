@@ -1,10 +1,18 @@
 .navbar {
   width: 100%;
-  padding: 1.25rem 4rem;
+  padding: 1.25rem 5%;
   display: flex;
   justify-content: space-between;
   align-items: center;
   background-color: var(--pewter-color);
+}
+
+.navbar .menu-btn {
+  display: none;
+  background: none;
+  border: none;
+  font-size: 1.25rem;
+  color: var(--tan-color);
 }
 
 .navbar > * {
@@ -172,4 +180,42 @@
 
 .navbar .auth-link:hover {
   background-color: #8c6741;
+}
+
+/* Media queries */
+
+@media screen and (max-width: 1123px) {
+  .navbar {
+    padding: 1rem 3%;
+  }
+
+  .navbar > * {
+    flex: 0 1 auto;
+  }
+
+  .navbar .menu-btn {
+    display: block;
+  }
+
+  .navbar .links,
+  .navbar .user-menu {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .navbar .logo {
+    width: 3rem;
+  }
+
+  .navbar .menu-btn {
+    font-size: 1.5rem;
+    padding: 0.5rem;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .navbar {
+    padding: 0.75rem;
+  }
 }

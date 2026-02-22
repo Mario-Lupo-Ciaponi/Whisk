@@ -26,3 +26,7 @@
 
   --profile-image-width-and-height: 2.5rem;
 }
+
+body {
+  width: 100vw;
+}

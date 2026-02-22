@@ -2,7 +2,7 @@ import useNotifications from "../../hooks/useNotifications.js";
 import { NavLink, Link } from "react-router";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import api from "../../api/api.js";
-import { faUser, faBell } from "@fortawesome/free-solid-svg-icons";
+import {faUser, faBell, faBars} from "@fortawesome/free-solid-svg-icons";
 import LogoImage from "../../assets/logo.png";
 import "./Navbar.css";
 
@@ -114,6 +114,10 @@ const Navbar = ({ navigate, currentUser }) => {
           </Link>
         </div>
       )}
+
+      <button className="menu-btn">
+        <FontAwesomeIcon icon={faBars} />
+      </button>
     </nav>
   );
 };
