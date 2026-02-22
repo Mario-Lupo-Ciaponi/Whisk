@@ -179,3 +179,41 @@
   transform: translate(-50%, -50%);
   width: 70%;
 }
+
+@media screen and (max-width: 768px){
+  .post-card .image-container {
+    height: auto;
+  }
+}
+
+@media screen and (max-width: 480px){
+  .post-card .top .user-container {
+    gap: 0.3rem;
+    flex-wrap: wrap;
+  }
+  .post-card .top .user-container .city {
+    display: block;
+  }
+
+  .post-card .top .user-container .status {
+    padding: 0.2rem;
+    border: 1px solid;
+    font-size: 0.75rem;
+  }
+
+  .post-card .top .more-options-container .more-options-menu {
+    left: auto;
+    right: 0;
+    transform: none;
+    width: 8rem;
+  }
+
+  .post-card .caption .title {
+    font-size: 1rem;
+  }
+
+  .post-card .notification-div {
+    width: 90%;
+    top: 0;
+  }
+}
