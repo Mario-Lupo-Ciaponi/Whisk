@@ -3,7 +3,7 @@
   flex-direction: column;
   align-items: center;
   gap: 1rem;
-  margin-bottom: 2rem;
+  margin: 0 auto 2rem auto;
 }
 
 .feed-container {
@@ -20,4 +20,26 @@
   -moz-appearance: none;
   appearance: none;
   text-align: center;
+}
+
+@media screen and (max-width: 1024px){
+  .feed {
+    width: 90%;
+    max-width: 1200px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .feed-select {
+    font-size: 1.5rem;
+    border-bottom-width: 2px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .feed-select {
+    width: 100%;
+    font-size: 1.2rem;
+    padding: 0.25rem 0;
+  }
 }

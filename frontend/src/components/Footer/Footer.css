@@ -48,7 +48,6 @@
   font-size: 0.75rem;
 }
 
-
 @media screen and (max-width: 850px) {
   .footer {
     gap: 1.25rem;
@@ -71,4 +70,3 @@
     gap: 1rem;
   }
 }
-
