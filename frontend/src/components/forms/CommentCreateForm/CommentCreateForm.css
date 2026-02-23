@@ -36,3 +36,25 @@
 .comment-create-form .submit-btn:hover {
   background-color: var(--tan-color);
 }
+
+@media screen and (max-width: 768px) {
+  .comment-create-form .comment-content-input {
+    padding-bottom: 0.5rem;
+  }
+
+  .comment-create-form .submit-btn {
+    padding: 0.8rem;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .comment-create-form {
+    font-size: 1rem;
+    gap: 0.75rem;
+  }
+
+  .comment-create-form .submit-btn {
+    width: 100%;
+    align-self: normal;
+  }
+}

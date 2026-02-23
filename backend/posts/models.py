@@ -92,7 +92,9 @@ class PetLocation(models.Model):
     )
 
     class Meta:
-        ordering = ["-is_valid",]
+        ordering = [
+            "-is_valid",
+        ]
 
     def __str__(self):
         return f"{self.longitude}, {self.latitude} seen on {self.created_at}"

@@ -5,5 +5,13 @@
 }
 
 .comment-area.active {
-  display: block;
+  display: flex;
+  gap: 1.5rem;
+  flex-direction: column;
+}
+
+@media screen and (max-width: 480px) {
+  .comment-area {
+    border-top-width: 1px;
+  }
 }
