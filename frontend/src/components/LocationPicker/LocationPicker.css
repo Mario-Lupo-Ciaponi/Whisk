@@ -4,6 +4,7 @@
   width: 100% !important;
   border-radius: 2rem;
   display: block;
+  z-index: 1;
 }
 
 .add-location-btn {
@@ -23,4 +24,26 @@
 
 .add-location-btn:active {
   background-color: var(--light-brown-color);
+}
+
+@media screen and (max-width: 768px) {
+  .leaflet-container {
+    border-radius: 1.5rem;
+  }
+
+  .add-location-btn {
+    padding: 0.5rem 1.5rem;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .leaflet-container {
+    height: 250px;
+    border-radius: 1rem;
+  }
+
+  .add-location-btn {
+    width: 80%;
+    padding: 0.75rem;
+  }
 }

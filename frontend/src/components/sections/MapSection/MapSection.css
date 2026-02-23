@@ -33,7 +33,7 @@
 
 @media screen and (max-width: 480px) {
   .map-section .section-header .section-title,
-  .map-section .section-header .section-description{
+  .map-section .section-header .section-description {
     font-size: 0.85rem;
   }
 
