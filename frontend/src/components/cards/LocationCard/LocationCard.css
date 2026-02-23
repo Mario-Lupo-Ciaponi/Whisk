@@ -66,3 +66,44 @@
 .location-card .found-btn:hover {
   background-color: var(--darker-brown-color);
 }
+
+@media screen and (max-width: 768px) {
+  .location-card {
+    gap: 0.75rem;
+  }
+
+  .location-card .location-info-wrapper {
+    font-size: 0.95rem;
+  }
+
+  .location-card .found-btn {
+    padding: 0.4rem 0.8rem;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .location-card {
+    flex-wrap: wrap;
+    align-items: flex-start;
+  }
+
+  .location-card .profile-image-container {
+    width: 2rem;
+    height: 2rem;
+  }
+
+  .location-card .location-info-wrapper .pointed-by-text {
+    line-height: 1.5;
+  }
+
+  .location-card .found-btn {
+    margin-top: 0.5rem;
+  }
+}
+
+@media screen and (max-width: 360px) {
+  .location-card .location-info-wrapper .pointed-by-text .location-url {
+    font-size: 0.8rem;
+    padding-bottom: 0.75rem;
+  }
+}
