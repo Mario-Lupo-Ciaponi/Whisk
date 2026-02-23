@@ -2,10 +2,12 @@
   display: flex;
   align-items: center;
   gap: 0.5rem;
+  border-radius: 0.4rem;
+  padding: 0.2rem;
 }
 
 .location-card.valid {
-  background: #1a01cc; /* TODO: change to a better UI */
+  background: rgba(255, 191, 0, .35);
 }
 
 .location-card .profile-image-container {
