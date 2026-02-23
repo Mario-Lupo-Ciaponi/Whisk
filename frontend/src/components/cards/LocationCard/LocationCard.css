@@ -53,3 +53,16 @@
 .location-card .location-info-wrapper .pointed-by-text .location-url:hover {
   color: var(--lighter-brown-color);
 }
+
+.location-card .found-btn {
+  border: none;
+  border-radius: 5rem;
+  background: var(--coffee-pot-color);
+  color: white;
+  padding: 0.25rem 0.5rem;
+  transition: background-color 500ms ease-in-out;
+}
+
+.location-card .found-btn:hover {
+  background-color: var(--darker-brown-color);
+}
