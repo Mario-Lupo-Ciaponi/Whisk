@@ -20,3 +20,31 @@
   color: inherit;
   border-bottom: var(--border-default-values) var(--tan-color);
 }
+
+@media screen and (max-width: 768px){
+  .not-found .title {
+    font-size: 3rem;
+  }
+
+  .not-found .not-found-image {
+    width: 70%;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .not-found {
+    gap: 1.5rem;
+  }
+
+  .not-found .title {
+    font-size: 2.5rem;
+  }
+
+  .not-found .not-found-image {
+    width: 85%;
+  }
+
+  .not-found .go-back-to-home {
+    font-size: 1.25rem;
+  }
+}
