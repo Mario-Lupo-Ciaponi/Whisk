@@ -91,6 +91,9 @@ class PetLocation(models.Model):
         default=False,
     )
 
+    class Meta:
+        ordering = ["-is_valid",]
+
     def __str__(self):
         return f"{self.longitude}, {self.latitude} seen on {self.created_at}"
 
