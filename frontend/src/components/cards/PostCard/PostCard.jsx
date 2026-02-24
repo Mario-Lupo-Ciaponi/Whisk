@@ -229,6 +229,7 @@ const PostCard = ({ post, currentUser, navigate, setIsFilterVisible }) => {
           isEditFormVisible={isEditFormVisible}
           setIsEditFormVisible={setIsEditFormVisible}
           setIsFilterVisible={setIsFilterVisible}
+          navigate={navigate}
         />
       )}
     </article>

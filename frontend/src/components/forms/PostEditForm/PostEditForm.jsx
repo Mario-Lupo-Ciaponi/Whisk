@@ -1,9 +1,10 @@
 import { useState, useEffect } from "react";
+import toast from "react-hot-toast";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import Loader from "../../Loader.jsx";
 import { faX } from "@fortawesome/free-solid-svg-icons";
 import api from "../../../api/api.js";
 import "./PostEditForm.css";
-import Loader from "../../Loader.jsx";
 
 const PostEditForm = ({
   post,
@@ -11,6 +12,7 @@ const PostEditForm = ({
   isEditFormVisible,
   setIsEditFormVisible,
   setIsFilterVisible,
+  navigate
 }) => {
   const [title, setTitle] = useState(post.title);
   const [description, setDescription] = useState(post.description);
@@ -27,7 +29,10 @@ const PostEditForm = ({
     try {
       const formData = new FormData();
 
-      console.log(selectedCity);
+      if (!title || !description || !setDescription) {
+        toast.error("All fields are required!")
+        return;
+      }
 
       formData.append("title", title.trim());
       formData.append("description", description.trim());
@@ -41,8 +46,19 @@ const PostEditForm = ({
 
       setIsFilterVisible(false);
       setIsEditFormVisible(false);
+
+      toast.success("Post edited successfully!")
     } catch (e) {
-      console.error(e);
+      const errorData = e.response?.data;
+
+      if (e.response?.status === 400) {
+        const firstError = Object.values(errorData)[0][0];
+        toast.error(firstError);
+      } else if (e.response?.status === 401) {
+        navigate("/login");
+      } else {
+        toast.error("Something went wrong. Please try again later!");
+      }
     } finally {
       setIsLoading(false);
     }

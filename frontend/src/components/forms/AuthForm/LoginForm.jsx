@@ -50,7 +50,7 @@ const LoginForm = ({
         const firstError = Object.values(errorData.description)[0];
         toast.error(firstError);
       } else {
-        toast.error("Something went wrong. Please try again later!")
+        toast.error("Something went wrong. Please try again later!");
       }
     }
 

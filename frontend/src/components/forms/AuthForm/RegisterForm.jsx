@@ -5,11 +5,7 @@ import Loader from "../../Loader.jsx";
 import api from "../../../api/api.js";
 import "./AuthForm.css";
 
-const RegisterForm = ({
-  setShowLogin,
-  showPassword,
-  setShowPassword,
-}) => {
+const RegisterForm = ({ setShowLogin, showPassword, setShowPassword }) => {
   // Declaration of states:
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
@@ -38,7 +34,7 @@ const RegisterForm = ({
       !firstPassword ||
       !secondPassword
     ) {
-      toast.error("All fields are required!")
+      toast.error("All fields are required!");
       return;
     }
 
@@ -68,7 +64,7 @@ const RegisterForm = ({
         const firstError = Object.values(errorData)[0][0];
         toast.error(firstError);
       } else {
-        toast.error("Something went wrong. Please try again later!")
+        toast.error("Something went wrong. Please try again later!");
       }
     }
 
