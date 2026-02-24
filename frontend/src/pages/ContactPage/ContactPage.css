@@ -11,3 +11,24 @@
 .contact-container .contact-header {
   color: var(--tan-color);
 }
+
+@media screen and (max-width: 768px) {
+  .contact-container {
+    margin: 2rem 0;
+  }
+
+  .contact-container .contact-header {
+    font-size: 2rem;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .contact-header {
+    padding: 0 1rem;
+    font-size: 1.75rem;
+  }
+
+  .contact-container {
+    margin: 1rem 0;
+  }
+}

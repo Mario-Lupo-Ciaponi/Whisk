@@ -10,9 +10,7 @@ const ContactPage = ({ currentUser }) => {
         <h1 className="contact-title">Contact us</h1>
       </header>
 
-      <ContactForm
-        currentUser={currentUser}
-      />
+      <ContactForm currentUser={currentUser} />
     </div>
   );
 };
