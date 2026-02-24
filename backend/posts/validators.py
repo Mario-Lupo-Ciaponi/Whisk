@@ -14,4 +14,4 @@ class ProfanityCheckValidator:
 
     def __call__(self, value: str):
         if predict([value]):
-            raise serializers.ValidationError({"profanity_error": self.message})
+            raise serializers.ValidationError(self.message)

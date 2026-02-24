@@ -8,6 +8,11 @@ from .choices import AccountTypeChoices
 
 # NOTE: After creation a signal triggers that create a profile
 class WhiskUser(AbstractUser):
+    email = models.EmailField(
+        unique=True,
+        blank=False,
+    )
+
     country = models.ForeignKey(
         "cities_light.Country",
         on_delete=models.CASCADE,

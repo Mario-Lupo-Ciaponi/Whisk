@@ -50,7 +50,7 @@
 
 @media screen and (max-width: 480px) {
   .contact-form,
-  .contact-form .send-btn{
+  .contact-form .send-btn {
     width: 100%;
   }
 

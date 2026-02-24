@@ -61,8 +61,11 @@ const RegisterForm = ({ setShowLogin, showPassword, setShowPassword }) => {
       const errorData = e.response?.data;
 
       if (e.response?.status === 400) {
-        const firstError = Object.values(errorData)[0][0];
-        toast.error(firstError);
+        const errorValue = Object.values(errorData)[0];
+
+        const message = Array.isArray(errorValue) ? errorValue[0] : errorValue;
+
+        toast.error(message || "Invalid data submitted.");
       } else {
         toast.error("Something went wrong. Please try again later!");
       }
