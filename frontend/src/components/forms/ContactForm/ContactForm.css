@@ -40,3 +40,36 @@
 .contact-form .send-btn:hover {
   background-color: var(--coffee-pot-color);
 }
+
+@media screen and (max-width: 768px) {
+  .contact-form {
+    width: 85%;
+    gap: 1.5rem;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .contact-form,
+  .contact-form .send-btn{
+    width: 100%;
+  }
+
+  .contact-form {
+    gap: 1.2rem;
+  }
+
+  .contact-form .two-field-container {
+    flex-direction: column;
+  }
+
+  .contact-form .form-field {
+    font-size: 1rem;
+    padding: 0.8rem;
+  }
+
+  .contact-form .send-btn {
+    align-self: stretch;
+    padding: 0.8rem;
+    font-size: 1rem;
+  }
+}
