@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { Toaster } from "react-hot-toast";
 import PostSection from "../../components/sections/PostSection/PostSection.jsx";
 import NoResult from "../../components/NoResult/NoResult.jsx";
 import api from "../../api/api.js";
@@ -63,6 +64,7 @@ const HomePage = ({ currentUser, navigate, setIsFilterVisible }) => {
 
   return (
     <div className="feed">
+      <Toaster position="bottom-center" />
       <title>Whisk</title>
 
       <div className="feed-container">

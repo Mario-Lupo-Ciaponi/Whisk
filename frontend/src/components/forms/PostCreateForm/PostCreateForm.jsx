@@ -1,11 +1,12 @@
 import { useEffect, useState } from "react";
+import toast, { Toaster } from 'react-hot-toast';
 import ErrorList from "../../ErrorList/ErrorList.jsx";
 import UploadBox from "../../UploadBox/UploadBox.jsx";
 import Loader from "../../Loader.jsx";
 import api from "../../../api/api.js";
 import "./PostCreateForm.css";
 
-const PostCreateForm = ({ currentUser, navigate, errors, setErrors }) => {
+const PostCreateForm = ({ currentUser, navigate }) => {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [cities, setCities] = useState([]);
@@ -17,7 +18,7 @@ const PostCreateForm = ({ currentUser, navigate, errors, setErrors }) => {
     event.preventDefault();
 
     if (!title || !description || !selectedCity || !image) {
-      setErrors({ detail: "All fields are required." });
+      toast.error("All fields are required");
       return;
     }
 
@@ -38,15 +39,20 @@ const PostCreateForm = ({ currentUser, navigate, errors, setErrors }) => {
         },
       });
 
+      toast.success("Post created successfully!")
       navigate("/");
     } catch (e) {
-      if (e.response?.status === 400) {
-        setErrors(e.response.data);
-      } else if (e.response?.status === 401) {
-        navigate("login/");
-      }
+      const errorData = e.response?.data;
 
-      console.log(e);
+      if (e.response?.status === 400) {
+        const firstError = Object.values(errorData?.description)[0];
+        toast.error(firstError);
+      } else if (e.response?.status === 401) {
+        toast.error("You are not authenticated. Please Login!");
+        navigate("login/");
+      } else {
+        toast.error("Something went wrong on our end. Please try again later!")
+      }
     }
 
     setIsLoading(false);
@@ -70,7 +76,7 @@ const PostCreateForm = ({ currentUser, navigate, errors, setErrors }) => {
 
   return (
     <form className="create-post-form" onSubmit={createPost}>
-      {errors && <ErrorList errors={errors} />}
+      <Toaster position="bottom-center" />
 
       <div className="post-field">
         <label className="post-label" htmlFor="title">

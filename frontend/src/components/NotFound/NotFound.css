@@ -21,7 +21,7 @@
   border-bottom: var(--border-default-values) var(--tan-color);
 }
 
-@media screen and (max-width: 768px){
+@media screen and (max-width: 768px) {
   .not-found .title {
     font-size: 3rem;
   }
