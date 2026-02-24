@@ -2,14 +2,12 @@ import { useState } from "react";
 import { Toaster } from "react-hot-toast";
 import RegisterForm from "../../components/forms/AuthForm/RegisterForm.jsx";
 import LoginForm from "../../components/forms/AuthForm/LoginForm.jsx";
-import NotificationMessage from "../../components/NotificationMessage/NotificationMessage.jsx";
 import "./AuthPage.css";
 
-const AuthPage = ({ setAuthTokens, navigate}) => {
+const AuthPage = ({ setAuthTokens, navigate }) => {
   const [showLogin, setShowLogin] = useState(true);
   // Lifting the state up to prevent redundancy
   const [showPassword, setShowPassword] = useState(false);
-  const [message, setMessage] = useState("");
 
   const toggleShowLogin = (event) =>
     setShowLogin("login" === event.target.value);
@@ -51,10 +49,6 @@ const AuthPage = ({ setAuthTokens, navigate}) => {
           </div>
         </div>
 
-        {message && (
-          <NotificationMessage messageType="success" text={message} />
-        )}
-
         <header className="auth-header">
           <h2 className="auth-title">{showLogin ? "Login" : "Register"}</h2>
         </header>
@@ -72,7 +66,6 @@ const AuthPage = ({ setAuthTokens, navigate}) => {
             setShowLogin={setShowLogin}
             showPassword={showPassword}
             setShowPassword={setShowPassword}
-            setMessage={setMessage}
           />
         )}
       </article>

@@ -14,7 +14,7 @@ const CommentCreateForm = ({
   const createComment = async (event) => {
     event.preventDefault();
 
-    if (!content) toast.error("The text of the comment should not be empty!")
+    if (!content) toast.error("The text of the comment should not be empty!");
 
     try {
       const response = await api.post("posts/comments/", {
@@ -24,13 +24,15 @@ const CommentCreateForm = ({
       setComments((prev) => [...prev, response.data]);
       setCommentsCount((prev) => prev + 1);
 
-      toast.success("Commented on post successfully!")
+      toast.success("Commented on post successfully!");
     } catch (e) {
       if (e.response?.status === 401) {
-        toast.error("You need to be authenticated to comment. Please login first!")
+        toast.error(
+          "You need to be authenticated to comment. Please login first!",
+        );
         navigate("/login");
       } else {
-        toast.error("Something went wrong. Please try again later!")
+        toast.error("Something went wrong. Please try again later!");
       }
     }
   };

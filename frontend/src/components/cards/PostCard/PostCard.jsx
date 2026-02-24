@@ -66,7 +66,7 @@ const PostCard = ({ post, currentUser, navigate, setIsFilterVisible }) => {
 
       toast.success(`Changed post status to ${statusText}`);
     } catch (e) {
-      toast.error("Something went wrong. Please try again later!")
+      toast.error("Something went wrong. Please try again later!");
     }
   };
 
@@ -76,9 +76,9 @@ const PostCard = ({ post, currentUser, navigate, setIsFilterVisible }) => {
         `${window.location.origin}/post/${post.id}`,
       );
 
-      toast.success("Post copied to clipboard!")
+      toast.success("Post copied to clipboard!");
     } catch (e) {
-      toast.error("Something went wrong. Please try again later!")
+      toast.error("Something went wrong. Please try again later!");
     }
   };
 
@@ -93,13 +93,13 @@ const PostCard = ({ post, currentUser, navigate, setIsFilterVisible }) => {
         setSaveCount((prev) => prev - 1);
       }
 
-      toast.success(`Post ${save ? "saved" : "unsaved"} successfully!`)
+      toast.success(`Post ${save ? "saved" : "unsaved"} successfully!`);
     } catch (e) {
       if (e.status === 401) {
-        toast.error("You are not authenticated. Please login!")
+        toast.error("You are not authenticated. Please login!");
         navigate("login/");
       } else {
-        toast.error("Somthing went wrong. Please try again later!")
+        toast.error("Somthing went wrong. Please try again later!");
       }
     }
   };

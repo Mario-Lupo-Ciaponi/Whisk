@@ -72,9 +72,9 @@ const LocationPicker = ({
       setLocationsCount((prev) => prev + 1);
 
       setSelectedPosition(null);
-      toast.success("Added position successfully!")
+      toast.success("Added position successfully!");
     } catch (e) {
-      toast.error("Something went wrong. Please try again later!")
+      toast.error("Something went wrong. Please try again later!");
     }
   };
 

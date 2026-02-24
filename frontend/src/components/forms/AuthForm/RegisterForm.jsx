@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import toast from "react-hot-toast";
 import PasswordToggle from "../../PasswordToggle/PasswordToggle.jsx";
 import Loader from "../../Loader.jsx";
 import api from "../../../api/api.js";
@@ -8,7 +9,6 @@ const RegisterForm = ({
   setShowLogin,
   showPassword,
   setShowPassword,
-  setMessage,
 }) => {
   // Declaration of states:
   const [username, setUsername] = useState("");
@@ -38,7 +38,7 @@ const RegisterForm = ({
       !firstPassword ||
       !secondPassword
     ) {
-      // TODO: error
+      toast.error("All fields are required!")
       return;
     }
 
@@ -60,13 +60,16 @@ const RegisterForm = ({
       });
 
       setShowLogin(true);
-      setMessage("Registration successful! Please login!");
+      toast.success("Registration successful! Please login!");
     } catch (e) {
-      if (e.response.status === 400) {
-        // TODO: error
-      }
+      const errorData = e.response?.data;
 
-      console.log(e);
+      if (e.response?.status === 400) {
+        const firstError = Object.values(errorData)[0][0];
+        toast.error(firstError);
+      } else {
+        toast.error("Something went wrong. Please try again later!")
+      }
     }
 
     setIsLoading(false);
@@ -87,7 +90,7 @@ const RegisterForm = ({
           name="username"
           type="text"
           value={username}
-          className={`auth-input ${errors.username ? "error-input" : ""}`}
+          className={"auth-input"}
           onChange={(event) => {
             setUsername(event.target.value);
           }}
@@ -104,7 +107,7 @@ const RegisterForm = ({
           name="email"
           type="email"
           value={email}
-          className={`auth-input ${errors.email ? "error-input" : ""}`}
+          className={"auth-input"}
           onChange={(event) => {
             setEmail(event.target.value);
           }}
@@ -119,7 +122,7 @@ const RegisterForm = ({
         <select
           id="country"
           name="country"
-          className={`auth-input ${errors.email ? "error-input" : ""}`}
+          className={"auth-input"}
           onChange={(event) => {
             setCountrySelected(event.target.value);
           }}
@@ -146,7 +149,7 @@ const RegisterForm = ({
             name="password1"
             type={showPassword ? "text" : "password"}
             value={firstPassword}
-            className={`auth-input ${errors.password1 ? "error-input" : ""}`}
+            className={"auth-input"}
             onChange={(event) => {
               setFirstPassword(event.target.value);
             }}
@@ -172,7 +175,7 @@ const RegisterForm = ({
             name="password2"
             type={showPassword ? "text" : "password"}
             value={secondPassword}
-            className={`auth-input ${errors.password2 ? "error-input" : ""}`}
+            className={"auth-input"}
             onChange={(event) => {
               setSecondPassword(event.target.value);
             }}

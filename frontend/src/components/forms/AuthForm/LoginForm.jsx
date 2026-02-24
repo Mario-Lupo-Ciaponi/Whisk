@@ -1,4 +1,5 @@
 import { useState } from "react";
+import toast from "react-hot-toast";
 import PasswordToggle from "../../PasswordToggle/PasswordToggle.jsx";
 import Loader from "../../Loader.jsx";
 import api from "../../../api/api.js";
@@ -20,7 +21,7 @@ const LoginForm = ({
     const formData = new FormData();
 
     if (!username || !password) {
-      // TODO: error
+      toast.error("All fields are required!");
       return;
     }
 
@@ -43,11 +44,14 @@ const LoginForm = ({
       navigate("/");
       location.reload();
     } catch (e) {
-      if (e.response.status === 400) {
-        // TODO: error
-      }
+      const errorData = e.response?.data;
 
-      console.log(e);
+      if (e.response?.status === 400) {
+        const firstError = Object.values(errorData.description)[0];
+        toast.error(firstError);
+      } else {
+        toast.error("Something went wrong. Please try again later!")
+      }
     }
 
     setIsLoading(false);
