@@ -64,8 +64,8 @@ const HomePage = ({ currentUser, navigate, setIsFilterVisible }) => {
 
   return (
     <div className="feed">
-      <Toaster position="bottom-center" />
       <title>Whisk</title>
+      <Toaster position="top-center" />
 
       <div className="feed-container">
         {currentUser && (

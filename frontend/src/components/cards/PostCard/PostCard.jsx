@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from "react";
+import toast from "react-hot-toast";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Link } from "react-router";
 import {
@@ -52,16 +53,20 @@ const PostCard = ({ post, currentUser, navigate, setIsFilterVisible }) => {
 
   const deletePost = async () => {
     await api.delete(`posts/${post.id}/`);
-    alert("Post deleted successfully!");
     window.location.reload();
+    toast.success("Post deleted successfully!");
+
+    // TODO: go to a different page for user confirmation!!!
   };
 
   const changePostStatus = async () => {
     try {
       await api.patch(`posts/${post.id}/`, { found: !found });
       setFound(!found);
+
+      toast.success(`Changed post status to ${statusText}`);
     } catch (e) {
-      console.log(e);
+      toast.error("Something went wrong. Please try again later!")
     }
   };
 
@@ -70,9 +75,10 @@ const PostCard = ({ post, currentUser, navigate, setIsFilterVisible }) => {
       await navigator.clipboard.writeText(
         `${window.location.origin}/post/${post.id}`,
       );
-      setNotificationText("Post copied to clipboard!");
+
+      toast.success("Post copied to clipboard!")
     } catch (e) {
-      console.error(e);
+      toast.error("Something went wrong. Please try again later!")
     }
   };
 
@@ -83,17 +89,18 @@ const PostCard = ({ post, currentUser, navigate, setIsFilterVisible }) => {
 
       if (save) {
         setSaveCount((prev) => prev + 1);
-        alert("Post saved successfully!");
       } else {
         setSaveCount((prev) => prev - 1);
-        alert("Post unsaved successfully!");
-      }
-    } catch (e) {
-      if (e.status === 401) {
-        navigate("login/");
       }
 
-      console.error(e);
+      toast.success(`Post ${save ? "saved" : "unsaved"} successfully!`)
+    } catch (e) {
+      if (e.status === 401) {
+        toast.error("You are not authenticated. Please login!")
+        navigate("login/");
+      } else {
+        toast.error("Somthing went wrong. Please try again later!")
+      }
     }
   };
 
@@ -212,7 +219,6 @@ const PostCard = ({ post, currentUser, navigate, setIsFilterVisible }) => {
         comments={comments}
         setComments={setComments}
         setCommentsCount={setCommentsCount}
-        currentUser={currentUser}
         navigate={navigate}
       />
 

@@ -7,8 +7,6 @@ import "./AuthForm.css";
 const LoginForm = ({
   setAuthTokens,
   navigate,
-  errors,
-  setErrors,
   showPassword,
   setShowPassword,
 }) => {
@@ -22,7 +20,7 @@ const LoginForm = ({
     const formData = new FormData();
 
     if (!username || !password) {
-      setErrors({ detail: "All fields are required." });
+      // TODO: error
       return;
     }
 
@@ -46,7 +44,7 @@ const LoginForm = ({
       location.reload();
     } catch (e) {
       if (e.response.status === 400) {
-        setErrors(e.response.data);
+        // TODO: error
       }
 
       console.log(e);
@@ -66,7 +64,7 @@ const LoginForm = ({
           name="username"
           type="text"
           value={username}
-          className={`auth-input ${errors.username ? "error-input" : ""}`}
+          className={"auth-input"}
           onChange={(event) => {
             setUsername(event.target.value);
           }}
@@ -85,7 +83,7 @@ const LoginForm = ({
             name="password"
             type={showPassword ? "text" : "password"}
             value={password}
-            className={`auth-input ${errors.password ? "error-input" : ""}`}
+            className={"auth-input"}
             onChange={(event) => {
               setPassword(event.target.value);
             }}

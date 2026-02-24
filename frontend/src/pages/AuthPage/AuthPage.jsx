@@ -1,10 +1,11 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
+import { Toaster } from "react-hot-toast";
 import RegisterForm from "../../components/forms/AuthForm/RegisterForm.jsx";
 import LoginForm from "../../components/forms/AuthForm/LoginForm.jsx";
 import NotificationMessage from "../../components/NotificationMessage/NotificationMessage.jsx";
 import "./AuthPage.css";
 
-const AuthPage = ({ setAuthTokens, navigate, errors, setErrors }) => {
+const AuthPage = ({ setAuthTokens, navigate}) => {
   const [showLogin, setShowLogin] = useState(true);
   // Lifting the state up to prevent redundancy
   const [showPassword, setShowPassword] = useState(false);
@@ -16,6 +17,7 @@ const AuthPage = ({ setAuthTokens, navigate, errors, setErrors }) => {
   return (
     <div className="auth-wrapper">
       <title>Enter in your account</title>
+      <Toaster position="bottom-center" />
 
       <article className="auth-card">
         <div className="segmented-control">
@@ -61,16 +63,12 @@ const AuthPage = ({ setAuthTokens, navigate, errors, setErrors }) => {
           <LoginForm
             setAuthTokens={setAuthTokens}
             navigate={navigate}
-            errors={errors}
-            setErrors={setErrors}
             showPassword={showPassword}
             setShowPassword={setShowPassword}
           />
         ) : (
           <RegisterForm
             navigate={navigate}
-            errors={errors}
-            setErrors={setErrors}
             setShowLogin={setShowLogin}
             showPassword={showPassword}
             setShowPassword={setShowPassword}

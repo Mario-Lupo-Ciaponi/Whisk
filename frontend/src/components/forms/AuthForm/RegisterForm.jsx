@@ -5,8 +5,6 @@ import api from "../../../api/api.js";
 import "./AuthForm.css";
 
 const RegisterForm = ({
-  errors,
-  setErrors,
   setShowLogin,
   showPassword,
   setShowPassword,
@@ -40,7 +38,7 @@ const RegisterForm = ({
       !firstPassword ||
       !secondPassword
     ) {
-      setErrors({ detail: "All fields are required." });
+      // TODO: error
       return;
     }
 
@@ -65,7 +63,7 @@ const RegisterForm = ({
       setMessage("Registration successful! Please login!");
     } catch (e) {
       if (e.response.status === 400) {
-        setErrors(e.response.data);
+        // TODO: error
       }
 
       console.log(e);

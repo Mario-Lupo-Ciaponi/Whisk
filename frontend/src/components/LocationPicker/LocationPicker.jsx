@@ -1,4 +1,5 @@
 import { useState, useLayoutEffect } from "react";
+import toast from "react-hot-toast";
 import {
   MapContainer,
   Marker,
@@ -69,11 +70,11 @@ const LocationPicker = ({
 
       setLocations((prev) => [...prev, response.data]);
       setLocationsCount((prev) => prev + 1);
-      alert("Location added successfully!");
+
       setSelectedPosition(null);
+      toast.success("Added position successfully!")
     } catch (e) {
-      console.log(e);
-      alert("An Error occurred!");
+      toast.error("Something went wrong. Please try again later!")
     }
   };
 

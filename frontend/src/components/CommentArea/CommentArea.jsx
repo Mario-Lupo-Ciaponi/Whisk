@@ -8,7 +8,6 @@ const CommentArea = ({
   comments,
   setComments,
   setCommentsCount,
-  currentUser,
   navigate,
 }) => {
   return (
@@ -19,7 +18,6 @@ const CommentArea = ({
         post={post}
         setComments={setComments}
         setCommentsCount={setCommentsCount}
-        currentUser={currentUser}
         navigate={navigate}
       />
 

@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import toast, { Toaster } from 'react-hot-toast';
+import toast, { Toaster } from "react-hot-toast";
 import ErrorList from "../../ErrorList/ErrorList.jsx";
 import UploadBox from "../../UploadBox/UploadBox.jsx";
 import Loader from "../../Loader.jsx";
@@ -39,7 +39,7 @@ const PostCreateForm = ({ currentUser, navigate }) => {
         },
       });
 
-      toast.success("Post created successfully!")
+      toast.success("Post created successfully!");
       navigate("/");
     } catch (e) {
       const errorData = e.response?.data;
@@ -51,7 +51,7 @@ const PostCreateForm = ({ currentUser, navigate }) => {
         toast.error("You are not authenticated. Please Login!");
         navigate("login/");
       } else {
-        toast.error("Something went wrong on our end. Please try again later!")
+        toast.error("Something went wrong on our end. Please try again later!");
       }
     }
 
