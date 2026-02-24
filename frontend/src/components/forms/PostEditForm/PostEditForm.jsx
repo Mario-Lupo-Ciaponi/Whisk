@@ -12,7 +12,7 @@ const PostEditForm = ({
   isEditFormVisible,
   setIsEditFormVisible,
   setIsFilterVisible,
-  navigate
+  navigate,
 }) => {
   const [title, setTitle] = useState(post.title);
   const [description, setDescription] = useState(post.description);
@@ -30,7 +30,7 @@ const PostEditForm = ({
       const formData = new FormData();
 
       if (!title || !description || !setDescription) {
-        toast.error("All fields are required!")
+        toast.error("All fields are required!");
         return;
       }
 
@@ -47,7 +47,7 @@ const PostEditForm = ({
       setIsFilterVisible(false);
       setIsEditFormVisible(false);
 
-      toast.success("Post edited successfully!")
+      toast.success("Post edited successfully!");
     } catch (e) {
       const errorData = e.response?.data;
 

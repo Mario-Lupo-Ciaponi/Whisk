@@ -1,9 +1,10 @@
 import { useState } from "react";
 import Loader from "../../Loader.jsx";
+import toast from "react-hot-toast";
 import api from "../../../api/api.js";
 import "./ContactForm.css";
 
-const ContactForm = ({ currentUser, setNotificationMessage }) => {
+const ContactForm = ({ currentUser }) => {
   const [subject, setSubject] = useState("");
   const [email, setEmail] = useState(currentUser?.email);
   const [message, setMessage] = useState("");
@@ -14,6 +15,7 @@ const ContactForm = ({ currentUser, setNotificationMessage }) => {
     event.stopPropagation();
 
     setIsLoading(true);
+
     try {
       const data = {
         subject,
@@ -26,9 +28,17 @@ const ContactForm = ({ currentUser, setNotificationMessage }) => {
       setSubject("");
       setEmail(currentUser?.email);
       setMessage("");
-      setNotificationMessage("Email sent successfully");
+
+      toast.success("Email sent successfully!");
     } catch (e) {
-      console.error(e);
+      const errorData = e.response?.data;
+
+      if (e.response?.status === 400) {
+        const firstError = Object.values(errorData)[0][0];
+        toast.error(firstError);
+      } else {
+        toast.error("Something went wrong. Please try again later!");
+      }
     } finally {
       setIsLoading(false);
     }
