@@ -14,3 +14,43 @@
 .search-profile-container .paginator-list-container {
   margin-top: 2rem;
 }
+
+@media screen and (max-width: 768px) {
+  .search-profile-container .search-profile-header {
+    margin: 1rem 0 1.5rem 0;
+  }
+
+  .search-profile-container .search-profile-title {
+    font-size: 1.8rem;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .search-profile-container {
+    padding: 0 1rem;
+  }
+
+  .search-profile-container .search-profile-header {
+    margin: 0.5rem 0 1rem 0;
+  }
+
+  .search-profile-container .search-profile-title {
+    font-size: 1.5rem;
+  }
+
+  .search-profile-container .search-bar-container {
+    width: 100%;
+    margin-bottom: 1.5rem;
+  }
+
+  .search-profile-container svg,
+  .search-profile-container .loader-wrapper {
+    width: 100px !important;
+    height: 100px !important;
+  }
+
+  .search-profile-container .paginator-list-container {
+    margin-top: 1.5rem;
+    padding-bottom: 2rem;
+  }
+}

@@ -65,7 +65,7 @@ const Navbar = ({ navigate, currentUser }) => {
         </li>
       </ul>
 
-      {isLoggedIn  ? (
+      {isLoggedIn ? (
         <div className="user-menu">
           <Link to="/notifications" className="notifications">
             <FontAwesomeIcon icon={faBell} />
@@ -117,18 +117,25 @@ const Navbar = ({ navigate, currentUser }) => {
           </Link>
         </div>
       ) : (
-        showHamburgerMenu || isLoggedIn && <div className="auth-link-container">
-          <Link to="/login" className="login-btn auth-link">
-            Login
-          </Link>
-        </div>
+        showHamburgerMenu ||
+        (isLoggedIn && (
+          <div className="auth-link-container">
+            <Link to="/login" className="login-btn auth-link">
+              Login
+            </Link>
+          </div>
+        ))
       )}
 
       <button onClick={toggleShowHamburgerMenu} className="menu-btn">
         <FontAwesomeIcon icon={showHamburgerMenu ? faX : faBars} />
       </button>
 
-      <HamburgerMenu isLoggedIn={isLoggedIn} showMenu={showHamburgerMenu} logout={logout} />
+      <HamburgerMenu
+        isLoggedIn={isLoggedIn}
+        showMenu={showHamburgerMenu}
+        logout={logout}
+      />
     </nav>
   );
 };

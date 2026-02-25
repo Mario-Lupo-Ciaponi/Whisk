@@ -1,10 +1,10 @@
 import { useState, useEffect } from "react";
 import SearchBar from "../../components/forms/SearchBar/SearchBar.jsx";
 import ProfileSection from "../../components/sections/ProfileSection/ProfileSection.jsx";
+import PaginationList from "../../components/PaginationList/PaginationList.jsx";
 import Loader from "../../components/Loader.jsx";
 import api from "../../api/api.js";
 import "./SearchProfilePage.css";
-import PaginationList from "../../components/PaginationList/PaginationList.jsx";
 
 const SearchProfilePage = ({ currentUser, navigate }) => {
   const [users, setUsers] = useState([]);
