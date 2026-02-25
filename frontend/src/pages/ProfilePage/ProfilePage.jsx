@@ -6,7 +6,6 @@ import Loader from "../../components/Loader.jsx";
 import api from "../../api/api.js";
 import "./ProfilePage.css";
 
-
 const ProfilePage = ({ currentUser }) => {
   const { id } = useParams();
   const [user, setUser] = useState(null);

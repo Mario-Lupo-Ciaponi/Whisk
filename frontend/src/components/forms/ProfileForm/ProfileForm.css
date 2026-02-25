@@ -40,3 +40,44 @@
 .profile-form .submit-btn:hover {
   background-color: var(--tan-color);
 }
+
+@media screen and (max-width: 768px) {
+  .profile-form .profile-fields {
+    gap: 1.5rem;
+  }
+
+  .profile-form .profile-fields > * {
+    flex-basis: 45%;
+    flex-grow: 1;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .profile-form .profile-fields {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 1.2rem;
+  }
+
+  .profile-form .profile-fields > * {
+    flex-basis: 100%;
+  }
+
+  .profile-form .profile-fields .profile-field .profile-input,
+  .profile-form .profile-fields .profile-field .profile-select {
+    font-size: 16px;
+    padding: 0.8rem;
+  }
+
+  .profile-form .profile-fields .profile-field .profile-label {
+    font-size: 0.9rem;
+    margin-bottom: 0.3rem;
+  }
+
+  .profile-form .submit-btn {
+    width: 100%;
+    padding: 0.8rem;
+    font-size: 1.1rem;
+    margin-top: 1rem;
+  }
+}
