@@ -50,3 +50,43 @@
 .auth-wrapper .auth-card .auth-header .auth-title {
   color: #74503c;
 }
+
+@media screen and (max-width: 768px) {
+  .auth-wrapper {
+    padding: 2rem 1rem;
+  }
+
+  .auth-wrapper .auth-card {
+    width: 75%;
+    padding: 1.5rem;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .auth-wrapper {
+    padding: 1rem 0.5rem;
+  }
+
+  .auth-wrapper .auth-card {
+    width: 95%;
+    padding: 1rem;
+    border-radius: 1rem;
+  }
+
+  .auth-wrapper .auth-card .segmented-control .toggle-option {
+    padding: 0.7rem;
+  }
+
+  .auth-wrapper .auth-card .segmented-control .toggle-option .control-label {
+    font-size: 1.1rem;
+    font-weight: 600;
+  }
+
+  .auth-wrapper .auth-card .auth-header {
+    margin: 1rem 0;
+  }
+
+  .auth-wrapper .auth-card .auth-header .auth-title {
+    font-size: 1.5rem;
+  }
+}

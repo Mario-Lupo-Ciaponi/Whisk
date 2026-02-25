@@ -2,7 +2,9 @@
   display: flex;
   flex-direction: column;
   gap: 0.7rem;
-  width: 70%;
+  width: 100%;
+  max-width: 400px;
+  margin: 0 auto;
 }
 
 .auth-form .auth-field .auth-label {
@@ -47,4 +49,42 @@
 
 .auth-form .submit-btn:hover {
   background-color: var(--dark-brown-color);
+}
+
+@media screen and (max-width: 768px) {
+  .auth-form {
+    width: 90%;
+    gap: 0.9rem;
+  }
+
+  .auth-form .submit-btn {
+    padding: 0.7rem;
+    font-size: 1.1rem;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .auth-form {
+    width: 100%;
+    gap: 1.1rem;
+  }
+
+  .auth-form .auth-field .auth-label {
+    font-size: 0.95rem;
+    margin-bottom: 0.3rem;
+  }
+
+  .auth-form .auth-field .auth-input {
+    font-size: 16px;
+    padding: 0.6rem;
+    border-radius: 0.4rem;
+  }
+
+  .auth-form .submit-btn {
+    width: 100%;
+    margin-top: 1.5rem;
+    padding: 0.8rem;
+    font-size: 1.2rem;
+    border-radius: 0.8rem;
+  }
 }
