@@ -31,6 +31,8 @@ const Navbar = ({ navigate, currentUser }) => {
 
   const isLoggedIn = localStorage.getItem("access") !== null;
 
+  console.log(isLoggedIn);
+
   const toggleShowHamburgerMenu = () =>
     setShowHamburgerMenu(!showHamburgerMenu);
 
@@ -63,7 +65,7 @@ const Navbar = ({ navigate, currentUser }) => {
         </li>
       </ul>
 
-      {isLoggedIn ? (
+      {isLoggedIn  ? (
         <div className="user-menu">
           <Link to="/notifications" className="notifications">
             <FontAwesomeIcon icon={faBell} />
@@ -115,7 +117,7 @@ const Navbar = ({ navigate, currentUser }) => {
           </Link>
         </div>
       ) : (
-        <div className="auth-link-container">
+        showHamburgerMenu || isLoggedIn && <div className="auth-link-container">
           <Link to="/login" className="login-btn auth-link">
             Login
           </Link>
@@ -126,7 +128,7 @@ const Navbar = ({ navigate, currentUser }) => {
         <FontAwesomeIcon icon={showHamburgerMenu ? faX : faBars} />
       </button>
 
-      <HamburgerMenu isLoggedIn={isLoggedIn} showMenu={showHamburgerMenu} />
+      <HamburgerMenu isLoggedIn={isLoggedIn} showMenu={showHamburgerMenu} logout={logout} />
     </nav>
   );
 };

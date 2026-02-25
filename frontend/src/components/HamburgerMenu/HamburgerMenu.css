@@ -23,3 +23,9 @@
 .hamburger-menu .item .link {
   color: var(--tan-color);
 }
+
+.hamburger-menu .item .logout {
+  background: none;
+  border: none;
+  color: var(--tan-color);
+}
