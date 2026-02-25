@@ -5,7 +5,7 @@ import ProfileForm from "../../components/forms/ProfileForm/ProfileForm.jsx";
 import Loader from "../../components/Loader.jsx";
 import api from "../../api/api.js";
 import "./ProfilePage.css";
-import PaginationList from "../../components/PaginationList/PaginationList.jsx";
+
 
 const ProfilePage = ({ currentUser }) => {
   const { id } = useParams();
