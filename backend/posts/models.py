@@ -39,7 +39,7 @@ class Post(models.Model):
 
     class Meta:
         ordering = [
-            "posted_on",
+            "-posted_on",
         ]
 
     def __str__(self):

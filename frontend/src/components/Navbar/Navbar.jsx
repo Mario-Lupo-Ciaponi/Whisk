@@ -19,7 +19,7 @@ const Navbar = ({ navigate, currentUser }) => {
         refresh: localStorage.getItem("refresh"),
       });
     } catch (e) {
-      toast.error("Something went wrong!")
+      toast.error("Something went wrong!");
     }
 
     localStorage.removeItem("access");
@@ -31,7 +31,8 @@ const Navbar = ({ navigate, currentUser }) => {
 
   const isLoggedIn = localStorage.getItem("access") !== null;
 
-  const toggleShowHamburgerMenu = () => setShowHamburgerMenu(!showHamburgerMenu);
+  const toggleShowHamburgerMenu = () =>
+    setShowHamburgerMenu(!showHamburgerMenu);
 
   return (
     <nav className="navbar">
