@@ -1,0 +1,25 @@
+.hamburger-menu {
+  background-color: var(--darker-pewter-color);
+  height: 100vh;
+  width: 70%;
+  max-width: 450px;
+  position: fixed;
+  top: 0;
+  right: -100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  font-size: 2rem;
+  transition: all 300ms ease-in-out;
+  z-index: 900;
+}
+
+.hamburger-menu.active {
+  right: 0;
+}
+
+.hamburger-menu .item .link {
+  color: var(--tan-color);
+}

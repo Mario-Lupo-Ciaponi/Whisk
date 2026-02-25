@@ -59,7 +59,7 @@
   }
 
   .about-project .about-card {
-    flex-direction: column; /* Stack image and text */
+    flex-direction: column;
     text-align: center;
     gap: 1.5rem;
   }
@@ -70,7 +70,7 @@
 
   .about-project .about-card .image-container {
     flex-basis: 100%;
-    order: -1; /* Always put image on top of text for mobile/tablet */
+    order: -1;
   }
 
   .about-project .about-card .image-container .card-image {
@@ -86,7 +86,7 @@
   }
 
   .about-project .about-card .text-wrapper .description .about-list {
-    text-align: left; /* Keep list bullets readable */
+    text-align: left;
     display: inline-block;
   }
 }
@@ -97,10 +97,10 @@
   }
 
   .about-project .about-card .image-container .card-image {
-    max-height: 200px; /* Keep it compact */
+    max-height: 200px;
   }
 
   .about-project {
-    gap: 3rem; /* Add space between the vertical cards */
+    gap: 3rem;
   }
 }

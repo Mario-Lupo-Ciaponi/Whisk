@@ -1,12 +1,16 @@
+import { useState } from "react";
 import useNotifications from "../../hooks/useNotifications.js";
 import { NavLink, Link } from "react-router";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import toast from "react-hot-toast";
+import HamburgerMenu from "../HamburgerMenu/HamburgerMenu.jsx";
 import api from "../../api/api.js";
-import { faUser, faBell, faBars } from "@fortawesome/free-solid-svg-icons";
+import { faUser, faBell, faBars, faX } from "@fortawesome/free-solid-svg-icons";
 import LogoImage from "../../assets/logo.png";
 import "./Navbar.css";
 
 const Navbar = ({ navigate, currentUser }) => {
+  const [showHamburgerMenu, setShowHamburgerMenu] = useState(false);
   const { notifications, notificationCount } = useNotifications();
 
   const logout = async () => {
@@ -15,7 +19,7 @@ const Navbar = ({ navigate, currentUser }) => {
         refresh: localStorage.getItem("refresh"),
       });
     } catch (e) {
-      console.log(e);
+      toast.error("Something went wrong!")
     }
 
     localStorage.removeItem("access");
@@ -26,6 +30,8 @@ const Navbar = ({ navigate, currentUser }) => {
   };
 
   const isLoggedIn = localStorage.getItem("access") !== null;
+
+  const toggleShowHamburgerMenu = () => setShowHamburgerMenu(!showHamburgerMenu);
 
   return (
     <nav className="navbar">
@@ -115,9 +121,11 @@ const Navbar = ({ navigate, currentUser }) => {
         </div>
       )}
 
-      <button className="menu-btn">
-        <FontAwesomeIcon icon={faBars} />
+      <button onClick={toggleShowHamburgerMenu} className="menu-btn">
+        <FontAwesomeIcon icon={showHamburgerMenu ? faX : faBars} />
       </button>
+
+      <HamburgerMenu isLoggedIn={isLoggedIn} showMenu={showHamburgerMenu} />
     </nav>
   );
 };
