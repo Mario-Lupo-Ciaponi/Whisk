@@ -46,13 +46,22 @@ class TestUserListAPIView(APITestCase):
         self.country = Country.objects.create(name="Bulgaria", code2="BG")
 
         self.user_1 = User.objects.create_user(
-            username="Mark", password="testpass", country=self.country
+            username="Mark",
+            email="test1@gmail.com",
+            password="testpass",
+            country=self.country,
         )
         self.user_2 = User.objects.create_user(
-            username="Mario", password="testpass", country=self.country
+            username="Mario",
+            email="test2@gmail.com",
+            password="testpass",
+            country=self.country,
         )
         self.user_3 = User.objects.create_user(
-            username="Iskra", password="testpass", country=self.country
+            username="Iskra",
+            email="test3@gmail.com",
+            password="testpass",
+            country=self.country,
         )
 
         self.url = reverse("user-list")
@@ -124,13 +133,22 @@ class TestProfileUpdate(APITestCase):
         self.country = Country.objects.create(name="Bulgaria", code2="BG")
 
         self.user = User.objects.create_user(
-            username="Test", password="testpass", country=self.country
+            username="Test",
+            email="test1@gmail.com",
+            password="testpass",
+            country=self.country,
         )
         self.second_user = User.objects.create_user(
-            username="Test2", password="testpass2", country=self.country
+            username="Test2",
+            email="test2@gmail.com",
+            password="testpass2",
+            country=self.country,
         )
         self.super_user = User.objects.create_superuser(
-            username="Admin", password="admin", country=self.country
+            username="Admin",
+            email="admin@gmail.com",
+            password="admin",
+            country=self.country,
         )
 
         self.profile = Profile.objects.get(user=self.user.pk)

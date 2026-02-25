@@ -19,7 +19,10 @@ class TestPostListCreateAPIView(APITestCase):
         self.city = City.objects.create(name="Sofia", country=self.country)
 
         self.user = User.objects.create_user(
-            username="TestUser", password="Test", country=self.country
+            username="TestUser",
+            email="test1@gmail.com",
+            password="Test",
+            country=self.country,
         )
 
         image_io = BytesIO()
@@ -91,7 +94,7 @@ class TestPostListCreateAPIView(APITestCase):
 
         self.assertEqual(response.status_code, status.HTTP_400_BAD_REQUEST)
         self.assertIn("title", data)
-        self.assertIn("profanity_error", data["title"])
+        self.assertIn("Profanity is not allowed!", data["title"])
 
         self.assertFalse(Post.objects.filter(pk=1).exists())
 
@@ -349,13 +352,22 @@ class TestPostRetrieveUpdateDestroyAPIView(APITestCase):
         self.city = City.objects.create(name="Sofia", country=self.country)
 
         self.super_user = User.objects.create_superuser(
-            username="superuser", password="admin", country=self.country
+            username="superuser",
+            email="super@gmail.com",
+            password="admin",
+            country=self.country,
         )
         self.author_user = User.objects.create_user(
-            username="testuser", password="test", country=self.country
+            username="testuser",
+            email="test1@gmail.com",
+            password="test",
+            country=self.country,
         )
         self.normal_user = User.objects.create_user(
-            username="testuser2", password="test2", country=self.country
+            username="testuser2",
+            email="test2@gmail.com",
+            password="test2",
+            country=self.country,
         )
 
         self.post = Post.objects.create(
@@ -461,7 +473,10 @@ class TestSavePosts(APITestCase):
         self.city = City.objects.create(name="Sofia", country=self.country)
 
         self.user = User.objects.create_user(
-            username="Test", password="TestPass", country=self.country
+            username="Test",
+            email="test1@gmail.com",
+            password="TestPass",
+            country=self.country,
         )
 
         self.post = Post.objects.create(
@@ -534,11 +549,17 @@ class TestSavePostListAPIView(APITestCase):
         self.city = City.objects.create(name="Sofia", country=self.country)
 
         self.user_1 = User.objects.create_user(
-            username="Test1", password="TestPass", country=self.country
+            username="Test1",
+            email="test1@gmail.com",
+            password="TestPass",
+            country=self.country,
         )
 
         self.user_2 = User.objects.create_user(
-            username="Test2", password="TestPass", country=self.country
+            username="Test2",
+            email="test2@gmail.com",
+            password="TestPass",
+            country=self.country,
         )
 
         self.post_1 = Post.objects.create(
@@ -595,7 +616,10 @@ class TestPetLocationListCreateAPIView(APITestCase):
         self.city = City.objects.create(name="Sofia", country=self.country)
 
         self.user = User.objects.create_user(
-            username="Test", password="TestPass", country=self.country
+            username="Test",
+            email="test1@gmail.com",
+            password="TestPass",
+            country=self.country,
         )
 
         self.post = Post.objects.create(
@@ -714,13 +738,22 @@ class TestPetLocationRetrieveUpdateDestroyAPIView(APITestCase):
         self.city = City.objects.create(name="Sofia", country=self.country)
 
         self.super_user = User.objects.create_superuser(
-            username="Super man", password="AdminPass", country=self.country
+            username="Super man",
+            email="super@gmail.com",
+            password="AdminPass",
+            country=self.country,
         )
         self.author = User.objects.create_user(
-            username="Test", password="TestPass", country=self.country
+            username="Test",
+            email="test1@gmail.com",
+            password="TestPass",
+            country=self.country,
         )
         self.normal_user = User.objects.create_user(
-            username="Test2", password="TestPass2", country=self.country
+            username="Test2",
+            email="test2@gmail.com",
+            password="TestPass2",
+            country=self.country,
         )
 
         self.post = Post.objects.create(
@@ -837,7 +870,10 @@ class TestCommentListCreateAPIView(APITestCase):
         self.city = City.objects.create(name="Sofia", country=self.country)
 
         self.user = User.objects.create_user(
-            username="Test", password="TestPass", country=self.country
+            username="Test",
+            email="test1@gmail.com",
+            password="TestPass",
+            country=self.country,
         )
 
         self.post = Post.objects.create(
@@ -920,13 +956,22 @@ class TestCommentRetrieveUpdateDestroyAPIView(APITestCase):
         self.city = City.objects.create(name="Sofia", country=self.country)
 
         self.super_user = User.objects.create_superuser(
-            username="Super man", password="AdminPass", country=self.country
+            username="Super man",
+            email="super@gmail.com",
+            password="AdminPass",
+            country=self.country,
         )
         self.author = User.objects.create_user(
-            username="Test", password="TestPass", country=self.country
+            username="Test",
+            email="test1@gmail.com",
+            password="TestPass",
+            country=self.country,
         )
         self.normal_user = User.objects.create_user(
-            username="Test2", password="TestPass2", country=self.country
+            username="Test2",
+            email="test2@gmail.com",
+            password="TestPass2",
+            country=self.country,
         )
 
         self.post = Post.objects.create(

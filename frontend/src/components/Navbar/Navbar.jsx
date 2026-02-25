@@ -45,8 +45,8 @@ const Navbar = ({ navigate, currentUser }) => {
           </NavLink>
         </li>
         <li className="item">
-          <NavLink to="/help" className="link">
-            Help
+          <NavLink to="/about" className="link">
+            About
           </NavLink>
         </li>
         <li className="item">

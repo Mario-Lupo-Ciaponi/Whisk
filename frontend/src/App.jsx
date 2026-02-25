@@ -13,6 +13,7 @@ import ContactPage from "./pages/ContactPage/ContactPage.jsx";
 import SavedPostsPage from "./pages/SavedPostsPage/SavedPostsPage.jsx";
 import SearchProfilePage from "./pages/SearchUserPage/SearchProfilePage.jsx";
 import NotificationPage from "./pages/NotificationPage/NotificationPage.jsx";
+import AboutPage from "./pages/AboutPage/AboutPage.jsx";
 import NotFound from "./components/NotFound/NotFound.jsx";
 import Loader from "./components/Loader.jsx";
 import DarkOpacityFilter from "./components/DarkOpacityFilter/DarkOpacityFilter.jsx";
@@ -71,22 +72,13 @@ const App = () => {
               />
             }
           />
+          <Route path="about/" element={<AboutPage />} />
           <Route element={<PrivateRoutes />}>
             <Route
               path="create-post/"
               element={
                 <CreatePostPage
                   currentUser={currentUser}
-                  navigate={navigate}
-                  errors={errors}
-                  setErrors={setErrors}
-                />
-              }
-            />
-            <Route
-              path="create-group/"
-              element={
-                <CreateGroupPage
                   navigate={navigate}
                   errors={errors}
                   setErrors={setErrors}
