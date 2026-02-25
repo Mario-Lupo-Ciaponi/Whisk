@@ -6,7 +6,7 @@ import Loader from "../../components/Loader.jsx";
 import api from "../../api/api.js";
 import "./SearchProfilePage.css";
 
-const SearchProfilePage = ({ currentUser, navigate }) => {
+const SearchProfilePage = ({ navigate }) => {
   const [users, setUsers] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [totalPages, setTotalPages] = useState(0);
