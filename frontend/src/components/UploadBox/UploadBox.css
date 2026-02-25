@@ -48,3 +48,46 @@
   list-style-type: disc;
   color: var(--red-color);
 }
+
+@media screen and (max-width: 768px) {
+  .drop-zone {
+    height: 12rem;
+    padding: 1rem;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .drop-zone {
+    height: 10rem;
+    gap: 0.8rem;
+    border-style: dashed;
+    text-align: center;
+    padding: 1.5rem 1rem;
+  }
+
+  .drop-text {
+    font-size: 1.1rem;
+  }
+
+  .file-name {
+    font-size: 1rem;
+    word-break: break-all;
+    max-width: 90%;
+  }
+
+  .browse-btn,
+  .remove-btn {
+    width: 80%;
+    padding: 0.75rem 1rem;
+    font-size: 1rem;
+    font-style: normal;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .upload-container .errors {
+    padding-left: 1.2rem;
+    font-size: 0.85rem;
+  }
+}
