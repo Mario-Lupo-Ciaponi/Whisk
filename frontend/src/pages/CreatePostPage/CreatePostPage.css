@@ -11,12 +11,45 @@
 .create-post-header {
   color: var(--tan-color);
   width: 50%;
-  text-align: center;
 }
 
 .create-post-header .create-post-title {
   margin-bottom: 0.5rem;
 }
 
+.create-post-header .create-post-title,
 .create-post-header .create-post-description {
+  text-align: center;
+}
+
+@media screen and (max-width: 768px) {
+  .form-wrapper {
+    padding: 2rem;
+  }
+
+  .create-post-header {
+    width: 80%;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .form-wrapper {
+    padding: 1.5rem 1rem;
+    gap: 1.5rem;
+  }
+
+  .create-post-header {
+    width: 100%;
+    text-align: left;
+  }
+
+  .create-post-header .create-post-title {
+    font-size: 1.8rem;
+  }
+
+  .create-post-header .create-post-description {
+    font-size: 0.95rem;
+    line-height: 1.4;
+    color: var(--coffee-pot-color);
+  }
 }
