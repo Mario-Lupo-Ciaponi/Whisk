@@ -1,7 +1,7 @@
 import { Link } from "react-router";
 import "./HamburgerMenu.css";
 
-const HamburgerMenu = ({ isLoggedIn, showMenu, logout }) => {
+const HamburgerMenu = ({ isLoggedIn, showMenu, logout, currentUser }) => {
   return (
     <ul className={`hamburger-menu ${showMenu ? "active" : ""}`}>
       <li className="item">
@@ -38,7 +38,7 @@ const HamburgerMenu = ({ isLoggedIn, showMenu, logout }) => {
             </Link>
           </li>
           <li className="item">
-            <Link className="link" to="/profile">
+            <Link className="link" to={`/profile/${currentUser?.id}`}>
               Profile
             </Link>
           </li>

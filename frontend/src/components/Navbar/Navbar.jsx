@@ -135,6 +135,7 @@ const Navbar = ({ navigate, currentUser }) => {
         isLoggedIn={isLoggedIn}
         showMenu={showHamburgerMenu}
         logout={logout}
+        currentUser={currentUser}
       />
     </nav>
   );
