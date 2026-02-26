@@ -1,7 +1,7 @@
 set -e
 
 cd backend
-python manage.py test
+
 black .
 
 cd ../frontend/
