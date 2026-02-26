@@ -52,6 +52,8 @@ const LoginForm = ({
         const message = Array.isArray(errorValue) ? errorValue[0] : errorValue;
 
         toast.error(message || "Invalid data submitted.");
+      } else if (e.response?.status === 401) {
+        toast.error("Incorrect username or password!")
       } else {
         toast.error("Something went wrong. Please try again later!");
       }

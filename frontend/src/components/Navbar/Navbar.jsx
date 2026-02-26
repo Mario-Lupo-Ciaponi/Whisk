@@ -117,14 +117,11 @@ const Navbar = ({ navigate, currentUser }) => {
           </Link>
         </div>
       ) : (
-        showHamburgerMenu ||
-        (isLoggedIn && (
-          <div className="auth-link-container">
-            <Link to="/login" className="login-btn auth-link">
-              Login
-            </Link>
-          </div>
-        ))
+        <div className="auth-link-container">
+          <Link to="/login" className="login-btn auth-link">
+            Login
+          </Link>
+        </div>
       )}
 
       <button onClick={toggleShowHamburgerMenu} className="menu-btn">
