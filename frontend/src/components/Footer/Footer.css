@@ -5,6 +5,8 @@
   gap: 2.5rem;
   background-color: var(--pewter-color);
   padding: 2rem;
+  width: 100%;
+  margin-top: auto;
 }
 
 .footer .wrapper {
