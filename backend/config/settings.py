@@ -40,7 +40,7 @@ DEBUG = os.getenv("DEBUG") == "True"
 
 allowed_hosts = os.environ.get("ALLOWED_HOSTS")
 if allowed_hosts:
-    ALLOWED_HOSTS = allowed_hosts.split(' ')
+    ALLOWED_HOSTS = allowed_hosts.split(" ")
 else:
     ALLOWED_HOSTS = []
 
