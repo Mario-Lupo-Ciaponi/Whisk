@@ -1,7 +1,7 @@
 import axios from "axios";
 
 // Use the environment variable for API base URL
-const API_URL = process.env.REACT_APP_API_URL;
+const API_URL = import.meta.env.VITE_API_URL;
 
 // Create an Axios instance
 const api = axios.create({
@@ -17,7 +17,7 @@ api.interceptors.request.use(
     }
     return config;
   },
-  (error) => Promise.reject(error)
+  (error) => Promise.reject(error),
 );
 
 // Response interceptor: handle 401 (expired access token)
@@ -36,10 +36,9 @@ api.interceptors.response.use(
 
       try {
         // Use API_URL for production and localhost for development
-        const res = await axios.post(
-          `${API_URL}/token/refresh/`,
-          { refresh: localStorage.getItem("refresh") }
-        );
+        const res = await axios.post(`${API_URL}/token/refresh/`, {
+          refresh: localStorage.getItem("refresh"),
+        });
 
         // Save new tokens
         localStorage.setItem("access", res.data.access);
@@ -60,7 +59,7 @@ api.interceptors.response.use(
     }
 
     return Promise.reject(error);
-  }
+  },
 );
 
 export default api;
