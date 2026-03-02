@@ -1,79 +1,70 @@
-# Whisk
+# Whisk - Lost Pet Reunification Platform
 
-Welcome to **Whisk**, the ultimate social media platform for sharing your culinary adventures! 
-
-## Project Description
-Whisk is designed to connect cooking enthusiasts from around the globe. Users can share recipes, cooking tips, and meal experiences, creating a vibrant community where food lovers can inspire and motivate each other. Whether you're a novice home chef or a seasoned culinary expert, Whisk offers you a space to express your passion for food.
+Whisk is a social media platform dedicated to the reunification of lost pets with their owners. Much like popular social media applications, Whisk allows pet owners to post information about their lost pets, connect with others in their community, and increase the chances of finding their beloved companions.
 
 ## Features
-- **User Profiles**: Create a personalized profile showcasing your culinary skills and favorite dishes.
-- **Recipe Sharing**: Post your own recipes and explore those shared by others.
-- **Interactive Comments**: Engage with other users by commenting on their posts and sharing insights.
-- **Collections**: Save your favorite recipes into collections for easy access.
-- **Notifications**: Get notified about comments, likes, and new followers.
-- **Search Functionality**: Easily find recipes and users through our advanced search options.
+
+- **Lost Pet Postings**: Users can create and view postings for lost pets.
+- **Community Support**: Connect with local pet lovers to aid in the search for lost pets.
+- **Real-Time Notifications**: Get instant alerts when a new lost pet is reported in your area.
+- **User Profiles**: Create and customize profiles to manage your lost pet reports.
+- **Location Services**: Utilize location-based features to find pets nearby.
 
 ## Technology Stack
-- **Frontend**: React.js for a dynamic user interface.
-- **Backend**: Node.js with Express for server-side logic.
-- **Database**: MongoDB for flexible and scalable data storage.
-- **Authentication**: JWT (JSON Web Tokens) to secure user access.
-- **Hosting**: Deployed on Heroku for reliable and fast performance.
 
-## Getting Started
-To get started with Whisk, follow these simple steps:
+- **Frontend**: React, Redux
+- **Backend**: Node.js, Express
+- **Database**: MongoDB
+- **Hosting**: AWS, Heroku
+
+## Setup Instructions
 
 1. Clone the repository:
    ```bash
    git clone https://github.com/Mario-Lupo-Ciaponi/Whisk.git
-   ```
-2. Navigate into the project directory:
-   ```bash
    cd Whisk
    ```
-3. Install the dependencies:
+
+2. Install dependencies:
    ```bash
    npm install
    ```
-4. Start the development server:
+
+3. Set up the environment variables:
+   Create a `.env` file in the root directory and specify the required variables.
+
+4. Start the application:
    ```bash
-   npm run start
+   npm start
    ```
 
-## Installation
-For a live version of the site,
-1. Ensure you have Node.js and npm installed.
-2. Follow the steps in the "Getting Started" section to get both frontend and backend running on your local machine.
-3. Configure the environment variables as needed.
-
 ## API Documentation
-Our RESTful API allows seamless interaction with the database. Available endpoints include:
-- `GET /api/users`: Retrieve user information.
-- `POST /api/recipes`: Add a new recipe.
-- `GET /api/recipes/:id`: Get a specific recipe by ID.
-- `PUT /api/recipes/:id`: Update a recipe.
-- `DELETE /api/recipes/:id`: Delete a recipe.
 
-Refer to the [API documentation](https://github.com/Mario-Lupo-Ciaponi/Whisk/wiki/API-Documentation) for more details.
+- **GET /api/pets**: Retrieve a list of lost pets.
+- **POST /api/pets**: Create a new lost pet report.
+- **GET /api/pets/:id**: Get details of a specific lost pet report.
+- **PUT /api/pets/:id**: Update information of a lost pet report.
+- **DELETE /api/pets/:id**: Remove a lost pet report.
 
-## Contributing
-We welcome contributions! Here’s how you can help:
+## Contributing Guidelines
+
+We welcome contributions! Please follow these steps to contribute to Whisk:
+
 1. Fork the repository.
-2. Create a feature branch:
+2. Create your feature branch:
    ```bash
-   git checkout -b feature/AmazingFeature
+   git checkout -b feature/YourFeature
    ```
 3. Commit your changes:
    ```bash
-   git commit -m 'Add some AmazingFeature'
+   git commit -m 'Add some feature'
    ```
 4. Push to the branch:
    ```bash
-   git push origin feature/AmazingFeature
+   git push origin feature/YourFeature
    ```
-5. Open a Pull Request.
+5. Open a pull request.
 
-Thank you for helping make Whisk better!
+## Licensing Information
 
-## License
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
