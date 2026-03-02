@@ -17,10 +17,11 @@ Whisk is a social media platform dedicated to the reunification of lost pets wit
 - **Database**: Postgres
 
 ## API Documentation
+   - TODO
 
 ## Contributing Guidelines
 
-   Write me or use the contact functionallity in the app to let me know about future ideas or bug encountered.
+   Write me or use the contact functionality in the app to let me know about future ideas or bug encountered.
 
 ## Licensing Information
 
