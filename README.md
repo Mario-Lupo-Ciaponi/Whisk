@@ -12,59 +12,16 @@ Whisk is a social media platform dedicated to the reunification of lost pets wit
 
 ## Technology Stack
 
-- **Frontend**: React, Redux
-- **Backend**: Node.js, Express
-- **Database**: MongoDB
-- **Hosting**: AWS, Heroku
-
-## Setup Instructions
-
-1. Clone the repository:
-   ```bash
-   git clone https://github.com/Mario-Lupo-Ciaponi/Whisk.git
-   cd Whisk
-   ```
-
-2. Install dependencies:
-   ```bash
-   npm install
-   ```
-
-3. Set up the environment variables:
-   Create a `.env` file in the root directory and specify the required variables.
-
-4. Start the application:
-   ```bash
-   npm start
-   ```
+- **Frontend**: React
+- **Backend**: Django Rest Framework
+- **Database**: Postgres
 
 ## API Documentation
 
-- **GET /api/pets**: Retrieve a list of lost pets.
-- **POST /api/pets**: Create a new lost pet report.
-- **GET /api/pets/:id**: Get details of a specific lost pet report.
-- **PUT /api/pets/:id**: Update information of a lost pet report.
-- **DELETE /api/pets/:id**: Remove a lost pet report.
-
 ## Contributing Guidelines
 
-We welcome contributions! Please follow these steps to contribute to Whisk:
-
-1. Fork the repository.
-2. Create your feature branch:
-   ```bash
-   git checkout -b feature/YourFeature
-   ```
-3. Commit your changes:
-   ```bash
-   git commit -m 'Add some feature'
-   ```
-4. Push to the branch:
-   ```bash
-   git push origin feature/YourFeature
-   ```
-5. Open a pull request.
+   Write me or use the contact functionallity in the app to let me know about future ideas or bug encountered.
 
 ## Licensing Information
 
-This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
+This project is rights reserved project.
