@@ -204,6 +204,16 @@ EMAIL_USE_SSL = False
 
 CITIES_LIGHT_APP_DEFINED_MODELS = ["Country", "Region", "City"]
 CITIES_LIGHT_TRANSLATION_LANGUAGES = ["en", "en"]
+
+if not DEBUG:
+    CITIES_LIGHT_INCLUDE_COUNTRIES = [
+        "AL", "AD", "AT", "BY", "BE", "BA", "BG", "HR", "CY", "CZ",
+        "DK", "EE", "FI", "FR", "DE", "GR", "HU", "IS", "IE", "IT",
+        "XK", "LV", "LI", "LT", "LU", "MT", "MD", "MC", "ME", "NL",
+        "MK", "NO", "PL", "PT", "RO", "RU", "SM", "RS", "SK", "SI",
+        "ES", "SE", "CH", "UA", "GB", "VA"
+    ]
+
 CITIES_LIGHT_INCLUDE_CITY_TYPES = [
     "PPL",
     "PPLA",
