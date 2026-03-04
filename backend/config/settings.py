@@ -134,6 +134,9 @@ DATABASES = {
         "PASSWORD": os.getenv("DB_PASSWORD"),
         "HOST": os.getenv("DB_HOST"),
         "PORT": os.getenv("DB_PORT"),
+        "OPTIONS": {
+            "sslmode": "require",
+        },
     }
 }
 # Password validation
@@ -202,7 +205,7 @@ EMAIL_USE_SSL = False
 
 # City-light setting
 
-CITIES_LIGHT_APP_DEFINED_MODELS = ["Country", "Region", "City"]
+CITIES_LIGHT_APP_DEFINED_MODELS = ["Country", "City"]
 CITIES_LIGHT_TRANSLATION_LANGUAGES = ["en", "en"]
 
 if not DEBUG:
@@ -214,17 +217,23 @@ if not DEBUG:
         "ES", "SE", "CH", "UA", "GB", "VA"
     ]
 
-CITIES_LIGHT_INCLUDE_CITY_TYPES = [
-    "PPL",
-    "PPLA",
-    "PPLA2",
-    "PPLA3",
-    "PPLA4",
-    "PPLC",
-    "PPLF",
-    "PPLG",
-    "PPLL",
-    "PPLR",
-    "PPLS",
-    "STLMT",
-]
+    CITIES_LIGHT_INCLUDE_CITY_TYPES = [
+        "PPL",  # Populated place — general city/town/village
+        "PPLA",  # Seat of first-order admin division — region/state capital
+        "PPLC",  # Capital of a country
+    ]
+else:
+    CITIES_LIGHT_INCLUDE_CITY_TYPES = [
+        "PPL",
+        "PPLA",
+        "PPLA2",
+        "PPLA3",
+        "PPLA4",
+        "PPLC",
+        "PPLF",
+        "PPLG",
+        "PPLL",
+        "PPLR",
+        "PPLS",
+        "STLMT",
+    ]

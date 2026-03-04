@@ -38,27 +38,27 @@ const RegisterForm = ({ setShowLogin, showPassword, setShowPassword }) => {
       return;
     }
 
-    const formData = new FormData();
-
-    formData.append("username", username);
-    formData.append("email", email);
-    formData.append("country", countrySelected);
-    formData.append("password1", firstPassword);
-    formData.append("password2", secondPassword);
+    const payload = {
+      username,
+      email,
+      country: Number(countrySelected),
+      password1: firstPassword,
+      password2: secondPassword,
+    };
 
     setIsLoading(true);
 
     try {
-      await api.post("accounts/register/", formData, {
-        headers: {
-          "Content-Type": "application/json",
-        },
-      });
+      await api.post("accounts/register/", payload);
 
       setShowLogin(true);
       toast.success("Registration successful! Please login!");
     } catch (e) {
       const errorData = e.response?.data;
+
+      console.log("FULL ERROR:", e.response);
+      console.log("DATA:", e.response?.data);
+      console.log("STATUS:", e.response?.status);
 
       if (e.response?.status === 400) {
         const errorValue = Object.values(errorData)[0];
@@ -67,6 +67,7 @@ const RegisterForm = ({ setShowLogin, showPassword, setShowPassword }) => {
 
         toast.error(message || "Invalid data submitted.");
       } else {
+        console.log(e)
         toast.error("Something went wrong. Please try again later!");
       }
     }

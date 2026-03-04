@@ -18,6 +18,7 @@ def send_welcoming_mail(user):
         message,
         EMAIL_HOST_USER,
         [user.email],
+        fail_silently=True,
     )
 
 
@@ -39,6 +40,7 @@ def send_location_added_mail(sender, recipient, post):
         message,
         EMAIL_HOST_USER,
         recipient_list=[recipient.email],
+        fail_silently=True,
     )
 
 
@@ -60,6 +62,7 @@ def send_comment_added_mail(sender, recipient, post):
         message,
         EMAIL_HOST_USER,
         recipient_list=[recipient.email],
+        fail_silently=True,
     )
 
 
@@ -69,4 +72,4 @@ def send_contact_email(subject, email, message):
         f"You have got a message from {email}\nMessage:\n{subject}\n{message}"
     )
 
-    send_mail(subject, message, EMAIL_HOST_USER, ["mario.lupo.ciaponi08@gmail.com"])
+    send_mail(subject, message, EMAIL_HOST_USER, ["mario.lupo.ciaponi08@gmail.com"],fail_silently=True,)
