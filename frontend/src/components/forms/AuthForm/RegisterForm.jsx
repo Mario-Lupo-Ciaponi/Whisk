@@ -14,13 +14,18 @@ const RegisterForm = ({ setShowLogin, showPassword, setShowPassword }) => {
   const [secondPassword, setSecondPassword] = useState("");
   const [allCountries, setAllCountries] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
+  const [areCountriesLoading, setAreCountriesLoading] = useState(false);
 
   const fetchAllCountries = async () => {
+    setAreCountriesLoading(true);
+
     try {
       const response = await api.get("countries/");
       setAllCountries(response.data);
     } catch (e) {
-      console.log(e);
+      console.error(e);
+    } finally {
+      setAreCountriesLoading(false);
     }
   };
 
@@ -117,19 +122,27 @@ const RegisterForm = ({ setShowLogin, showPassword, setShowPassword }) => {
         <select
           id="country"
           name="country"
-          className={"auth-input"}
-          onChange={(event) => {
-            setCountrySelected(event.target.value);
-          }}
+          className="auth-input"
+          value={countrySelected}
+          onChange={(event) => setCountrySelected(event.target.value)}
           required
         >
-          <option disabled selected value>
-            {" "}
-            -- select a country --{" "}
-          </option>
-          {allCountries.map((country) => {
-            return <option value={country.id}>{country.name}</option>;
-          })}
+          {areCountriesLoading ? (
+            <option disabled value="">
+              Loading...
+            </option>
+          ) : (
+            <>
+              <option disabled selected value>
+                -- select a country --
+              </option>
+              {allCountries.map((country) => (
+                <option key={country.id} value={country.id}>
+                  {country.name}
+                </option>
+              ))}
+            </>
+          )}
         </select>
       </div>
 
