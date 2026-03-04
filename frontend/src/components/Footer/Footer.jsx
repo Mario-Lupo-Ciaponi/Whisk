@@ -15,13 +15,13 @@ const Footer = () => {
             </Link>
           </li>
           <li className="item">
-            <Link to="/search" className="link">
-              Search
+            <Link to="/search-profile" className="link">
+              Search Profile
             </Link>
           </li>
           <li className="item">
-            <Link to="/groups" className="link">
-              Groups
+            <Link to="/about" className="link">
+              About
             </Link>
           </li>
           <li className="item">
@@ -30,8 +30,8 @@ const Footer = () => {
             </Link>
           </li>
           <li className="item">
-            <Link to="/help" className="link">
-              Help
+            <Link to="/contact" className="link">
+              Contact
             </Link>
           </li>
         </ul>
