@@ -56,7 +56,9 @@ const SearchProfilePage = ({ navigate }) => {
       </div>
 
       {isLoading ? (
-        <Loader width={200} height={200} />
+        <div className="loader-container">
+          <Loader width={200} height={200} />
+        </div>
       ) : (
         <>
           <ProfileSection users={users} navigate={navigate} />

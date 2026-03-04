@@ -56,10 +56,6 @@ const RegisterForm = ({ setShowLogin, showPassword, setShowPassword }) => {
     } catch (e) {
       const errorData = e.response?.data;
 
-      console.log("FULL ERROR:", e.response);
-      console.log("DATA:", e.response?.data);
-      console.log("STATUS:", e.response?.status);
-
       if (e.response?.status === 400) {
         const errorValue = Object.values(errorData)[0];
 
@@ -67,7 +63,6 @@ const RegisterForm = ({ setShowLogin, showPassword, setShowPassword }) => {
 
         toast.error(message || "Invalid data submitted.");
       } else {
-        console.log(e)
         toast.error("Something went wrong. Please try again later!");
       }
     }

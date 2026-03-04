@@ -55,7 +55,10 @@ const App = () => {
   }, []);
 
   return isLoading ? (
-    <Loader width={300} height={300} />
+    <div className="loader-container app-loader">
+      <span className="loading-text">Page is loading... </span>
+      <Loader width={200} height={200} />
+    </div>
   ) : (
     <>
       <Navbar navigate={navigate} currentUser={currentUser} />

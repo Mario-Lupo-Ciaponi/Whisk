@@ -5,33 +5,39 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import toast from "react-hot-toast";
 import HamburgerMenu from "../HamburgerMenu/HamburgerMenu.jsx";
 import api from "../../api/api.js";
-import { faUser, faBell, faBars, faX } from "@fortawesome/free-solid-svg-icons";
+import { faBell, faBars, faX } from "@fortawesome/free-solid-svg-icons";
 import LogoImage from "../../assets/logo.png";
 import "./Navbar.css";
+import Loader from "../Loader.jsx";
 
 const Navbar = ({ navigate, currentUser }) => {
   const [showHamburgerMenu, setShowHamburgerMenu] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
   const { notifications, notificationCount } = useNotifications();
 
+
+  // TODO: re-check the function
   const logout = async () => {
+    setIsLoading(true);
+
     try {
       await api.post("token/blacklist/", {
         refresh: localStorage.getItem("refresh"),
       });
-    } catch (e) {
+
+      localStorage.removeItem("access");
+      localStorage.removeItem("refresh");
+
+      navigate("/");
+      location.reload();
+    } catch {
       toast.error("Something went wrong!");
+    } finally {
+      setIsLoading(false);
     }
-
-    localStorage.removeItem("access");
-    localStorage.removeItem("refresh");
-
-    navigate("/");
-    location.reload();
   };
 
   const isLoggedIn = localStorage.getItem("access") !== null;
-
-  console.log(isLoggedIn);
 
   const toggleShowHamburgerMenu = () =>
     setShowHamburgerMenu(!showHamburgerMenu);
@@ -119,7 +125,7 @@ const Navbar = ({ navigate, currentUser }) => {
       ) : (
         <div className="auth-link-container">
           <Link to="/login" className="login-btn auth-link">
-            Login
+            {isLoading ? <Loader height={30} width={30} /> : "Logout" }
           </Link>
         </div>
       )}

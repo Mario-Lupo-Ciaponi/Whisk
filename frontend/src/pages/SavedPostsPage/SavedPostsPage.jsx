@@ -1,19 +1,10 @@
 import { useState, useEffect } from "react";
+
+import PostSection from "../../components/sections/PostSection/PostSection.jsx";
+import NoResult from "../../components/NoResult/NoResult.jsx";
 import Loader from "../../components/Loader.jsx";
 import api from "../../api/api.js";
 import "./SavedPostsPage.css";
-import Navbar from "../../components/Navbar/Navbar.jsx";
-import { Route, Routes } from "react-router";
-import NotFound from "../../components/NotFound/NotFound.jsx";
-import HomePage from "../HomePage/HomePage.jsx";
-import PrivateRoutes from "../../utils/PrivateRoutes.jsx";
-import CreatePostPage from "../CreatePostPage/CreatePostPage.jsx";
-import CreateGroupPage from "../CreateGroupPage/CreateGroupPage.jsx";
-import GroupsPage from "../GroupsPage/GroupsPage.jsx";
-import AuthPage from "../AuthPage/AuthPage.jsx";
-import ProfilePage from "../ProfilePage/ProfilePage.jsx";
-import Footer from "../../components/Footer/Footer.jsx";
-import PostSection from "../../components/sections/PostSection/PostSection.jsx";
 
 const SavedPostsPage = ({ currentUser, navigate }) => {
   const [posts, setPosts] = useState([]);
@@ -36,11 +27,14 @@ const SavedPostsPage = ({ currentUser, navigate }) => {
   }, []);
 
   return isLoading ? (
-    <Loader width={300} height={300} />
+    <div className="loader-container">
+      <Loader width={200} height={200} />
+    </div>
   ) : (
+    posts.length > 0 ?
     <>
-      <header>
-        <h1>Saved posts</h1>
+      <header className="saved-posts-header">
+        <h1 className="saved-posts-title">Saved posts</h1>
       </header>
 
       <PostSection
@@ -49,6 +43,8 @@ const SavedPostsPage = ({ currentUser, navigate }) => {
         navigate={navigate}
       />
     </>
+      :
+      <NoResult />
   );
 };
 

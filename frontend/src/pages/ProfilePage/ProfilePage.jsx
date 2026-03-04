@@ -30,7 +30,11 @@ const ProfilePage = ({ currentUser }) => {
   }, [id]);
 
   if (isLoading || !user) {
-    return <Loader height={200} width={200} />;
+    return (
+      <div className="loader-container">
+        <Loader height={200} width={200} />
+      </div>
+    );
   }
 
   return (

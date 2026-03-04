@@ -5,3 +5,22 @@
   display: flex;
   flex-direction: column;
 }
+
+.loader-container {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 1.5rem;
+}
+
+#root .app-loader {
+  height: 100vh;
+  gap: 1rem;
+  flex-direction: column;
+}
+
+#root .app-loader .loading-text {
+  color: var(--tan-color);
+  font-size: 5rem;
+}
