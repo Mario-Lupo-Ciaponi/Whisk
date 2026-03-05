@@ -5,7 +5,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import toast from "react-hot-toast";
 import HamburgerMenu from "../HamburgerMenu/HamburgerMenu.jsx";
 import api from "../../api/api.js";
-import { faBell, faBars, faX } from "@fortawesome/free-solid-svg-icons";
+import { faBell, faBars } from "@fortawesome/free-solid-svg-icons";
 import LogoImage from "../../assets/logo.png";
 import "./Navbar.css";
 import Loader from "../Loader.jsx";
@@ -15,8 +15,6 @@ const Navbar = ({ navigate, currentUser }) => {
   const [isLoading, setIsLoading] = useState(false);
   const { notifications, notificationCount } = useNotifications();
 
-
-  // TODO: re-check the function
   const logout = async () => {
     setIsLoading(true);
 
@@ -40,7 +38,7 @@ const Navbar = ({ navigate, currentUser }) => {
   const isLoggedIn = localStorage.getItem("access") !== null;
 
   const toggleShowHamburgerMenu = () =>
-    setShowHamburgerMenu(!showHamburgerMenu);
+    setShowHamburgerMenu(true);
 
   return (
     <nav className="navbar">
@@ -112,7 +110,7 @@ const Navbar = ({ navigate, currentUser }) => {
               </li>
               <li className="dropdown-item">
                 <button onClick={logout} className="logout-btn">
-                  Logout
+                  {isLoading ? <Loader width={15} height={15} /> : "Logout" }
                 </button>
               </li>
             </ul>
@@ -125,18 +123,19 @@ const Navbar = ({ navigate, currentUser }) => {
       ) : (
         <div className="auth-link-container">
           <Link to="/login" className="login-btn auth-link">
-            {isLoading ? <Loader height={30} width={30} /> : "Logout" }
+            Login
           </Link>
         </div>
       )}
 
       <button onClick={toggleShowHamburgerMenu} className="menu-btn">
-        <FontAwesomeIcon icon={showHamburgerMenu ? faX : faBars} />
+        <FontAwesomeIcon icon={faBars} />
       </button>
 
       <HamburgerMenu
         isLoggedIn={isLoggedIn}
         showMenu={showHamburgerMenu}
+        setShowMenu={setShowHamburgerMenu}
         logout={logout}
         currentUser={currentUser}
       />
