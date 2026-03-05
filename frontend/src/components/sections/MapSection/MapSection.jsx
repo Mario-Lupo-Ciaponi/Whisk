@@ -27,19 +27,24 @@ const MapSection = ({
     >
       {!post.found && (
         <>
-          <header className="section-header">
-            <h3 className="section-title">Pet Location</h3>
-            <p className="section-description">
-              Select a location where you have seen the pet
-            </p>
-          </header>
+          {
+            !(currentUser.id === post.author.id) &&
+            <>
+              <header className="section-header">
+                <h3 className="section-title">Pet Location</h3>
+                <p className="section-description">
+                  Select a location where you have seen the pet
+                </p>
+              </header>
+              <LocationPicker
+                post={post}
+                setLocations={setLocations}
+                setLocationsCount={setLocationsCount}
+                activeSection={activeSection}
+              />
+            </>
 
-          <LocationPicker
-            post={post}
-            setLocations={setLocations}
-            setLocationsCount={setLocationsCount}
-            activeSection={activeSection}
-          />
+          }
         </>
       )}
 
