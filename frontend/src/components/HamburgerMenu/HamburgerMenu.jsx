@@ -1,13 +1,31 @@
+import { useEffect, useRef } from "react";
 import { Link } from "react-router";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {faX} from "@fortawesome/free-solid-svg-icons";
 import "./HamburgerMenu.css";
 
 const HamburgerMenu = ({ isLoggedIn, showMenu, setShowMenu, logout, currentUser }) => {
+  const menuRef = useRef(null);
+
   const closeMenu = () => setShowMenu(false);
 
+
+  useEffect(() => {
+    if (!showMenu) return;
+
+    const handleClickOutside = (event) => {
+      if (menuRef.current && !menuRef.current.contains(event.target)) setShowMenu(false);
+    }
+
+    document.addEventListener("mousedown", handleClickOutside);
+
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [showMenu, setShowMenu]);
+
   return (
-    <div className={`hamburger-menu ${showMenu ? "active" : ""}`}>
+    <div ref={menuRef} className={`hamburger-menu ${showMenu ? "active" : ""}`}>
       <button onClick={closeMenu} className="close-menu-btn">
         <FontAwesomeIcon icon={faX} />
       </button>
