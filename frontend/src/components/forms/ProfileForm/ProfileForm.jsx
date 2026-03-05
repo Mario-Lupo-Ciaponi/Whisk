@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { Toaster, toast } from "react-hot-toast";
 import api from "../../../api/api.js";
 import "./ProfileForm.css";
 
@@ -25,21 +26,18 @@ const ProfileForm = ({ user, shouldNotEdit }) => {
     event.stopPropagation();
 
     try {
-      const formData = new FormData();
 
-      formData.append("bio", bio.trim());
-      formData.append("account_type", accountType);
-      formData.append("city", selectedCity);
+      const payload = {
+        bio,
+        account_type: accountType,
+        city: selectedCity,
+      }
 
-      await api.patch(`accounts/profile/${user.id}/`, formData, {
-        headers: {
-          "Content-Type": "multipart/form-data",
-        },
-      });
+      await api.patch(`accounts/profile/${user.id}/`, payload);
 
       location.reload();
-    } catch (e) {
-      console.log(e);
+    } catch {
+      toast.error("Something went wrong!");
     }
   };
 
@@ -49,6 +47,8 @@ const ProfileForm = ({ user, shouldNotEdit }) => {
 
   return (
     <form onSubmit={editProfile} className="profile-form">
+      <Toaster />
+
       <div className="profile-fields">
         <div className="profile-field">
           <label className="profile-label" htmlFor="">

@@ -6,7 +6,7 @@ from rest_framework.generics import (
     UpdateAPIView,
     ListAPIView,
 )
-from rest_framework.parsers import MultiPartParser, FormParser
+from rest_framework.parsers import MultiPartParser, FormParser, JSONParser
 from rest_framework.permissions import AllowAny, IsAuthenticated
 from django_filters import rest_framework as filter
 from rest_framework import filters
@@ -62,4 +62,5 @@ class ProfileUpdateAPIView(UpdateAPIView):
     parser_classes = [
         MultiPartParser,
         FormParser,
+        JSONParser,
     ]
