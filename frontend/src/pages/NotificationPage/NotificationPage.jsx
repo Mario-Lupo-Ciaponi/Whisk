@@ -1,5 +1,6 @@
 import useNotifications from "../../hooks/useNotifications.js";
 import NotificationSection from "../../components/sections/NotificationSection/NotificationSection.jsx";
+import NoResult from "../../components/NoResult/NoResult.jsx";
 import "./NotificationPage.css";
 
 const NotificationPage = () => {
@@ -13,7 +14,12 @@ const NotificationPage = () => {
         <h1 className="notification-title">Your notifications</h1>
       </header>
 
-      <NotificationSection notifications={notifications} />
+      {notifications.length > 1 ?
+        <NotificationSection notifications={notifications} />
+        :
+        <NoResult type="notifications"/>
+      }
+
     </div>
   );
 };
