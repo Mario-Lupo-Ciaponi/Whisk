@@ -99,7 +99,7 @@ const HomePage = ({ currentUser, navigate, setIsFilterVisible }) => {
           />
         </>
       ) : (
-        <NoResult />
+        <NoResult type="post" />
       )}
     </div>
   );

@@ -30,8 +30,7 @@ const SavedPostsPage = ({ currentUser, navigate }) => {
     <div className="loader-container">
       <Loader width={200} height={200} />
     </div>
-  ) : (
-    posts.length > 0 ?
+  ) : posts.length > 0 ? (
     <>
       <header className="saved-posts-header">
         <h1 className="saved-posts-title">Saved posts</h1>
@@ -43,8 +42,8 @@ const SavedPostsPage = ({ currentUser, navigate }) => {
         navigate={navigate}
       />
     </>
-      :
-      <NoResult />
+  ) : (
+    <NoResult type="post" />
   );
 };
 

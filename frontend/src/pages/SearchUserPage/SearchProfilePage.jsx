@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import SearchBar from "../../components/forms/SearchBar/SearchBar.jsx";
 import ProfileSection from "../../components/sections/ProfileSection/ProfileSection.jsx";
 import PaginationList from "../../components/PaginationList/PaginationList.jsx";
+import NoResult from "../../components/NoResult/NoResult.jsx";
 import Loader from "../../components/Loader.jsx";
 import api from "../../api/api.js";
 import "./SearchProfilePage.css";
@@ -60,17 +61,20 @@ const SearchProfilePage = ({ navigate }) => {
           <Loader width={200} height={200} />
         </div>
       ) : (
-        <>
-          <ProfileSection users={users} navigate={navigate} />
+        users.length > 1 ?
+          <>
+            <ProfileSection users={users} navigate={navigate} />
 
-          <div className="paginator-list-container">
-            <PaginationList
-              currentPage={currentPage}
-              setCurrentPage={setCurrentPage}
-              totalPages={totalPages}
-            />
-          </div>
-        </>
+            <div className="paginator-list-container">
+              <PaginationList
+                currentPage={currentPage}
+                setCurrentPage={setCurrentPage}
+                totalPages={totalPages}
+              />
+            </div>
+          </>
+            :
+          <NoResult type="user" />
       )}
     </div>
   );
