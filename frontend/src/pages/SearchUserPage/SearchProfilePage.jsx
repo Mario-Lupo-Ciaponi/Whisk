@@ -48,6 +48,8 @@ const SearchProfilePage = ({ navigate }) => {
 
   return (
     <div className="search-profile-container">
+      <title>Search Profile</title>
+
       <header className="search-profile-header">
         <h1 className="search-profile-title">Search Profiles</h1>
       </header>

@@ -39,6 +39,8 @@ const ProfilePage = ({ currentUser }) => {
 
   return (
     <div className="profile">
+      <title>{user?.username}</title>
+
       <ProfileHero
         currentUser={currentUser}
         user={user}

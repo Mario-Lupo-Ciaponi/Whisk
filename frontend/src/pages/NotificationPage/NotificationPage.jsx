@@ -7,6 +7,8 @@ const NotificationPage = () => {
 
   return (
     <div className="notification-page">
+      <title>Notification</title>
+
       <header className="notification-header">
         <h1 className="notification-title">Your notifications</h1>
       </header>

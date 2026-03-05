@@ -1,11 +1,11 @@
-import { useState } from "react";
 import ContactForm from "../../components/forms/ContactForm/ContactForm.jsx";
-import NotificationMessage from "../../components/NotificationMessage/NotificationMessage.jsx";
 import "./ContactPage.css";
 
 const ContactPage = ({ currentUser }) => {
   return (
     <div className="contact-container">
+      <title>Contact Us</title>
+
       <header className="contact-header">
         <h1 className="contact-title">Contact us</h1>
       </header>

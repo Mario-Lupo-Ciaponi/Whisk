@@ -26,25 +26,31 @@ const SavedPostsPage = ({ currentUser, navigate }) => {
     fetchSavedPosts();
   }, []);
 
-  return isLoading ? (
-    <div className="loader-container">
-      <Loader width={200} height={200} />
-    </div>
-  ) : posts.length > 0 ? (
+  return (
     <>
-      <header className="saved-posts-header">
-        <h1 className="saved-posts-title">Saved posts</h1>
-      </header>
+      <title>Saved posts</title>
 
-      <PostSection
-        posts={posts}
-        currentUser={currentUser}
-        navigate={navigate}
-      />
+      {isLoading ? (
+        <div className="loader-container">
+          <Loader width={200} height={200} />
+        </div>
+      ) : posts.length > 0 ? (
+        <>
+          <header className="saved-posts-header">
+            <h1 className="saved-posts-title">Saved posts</h1>
+          </header>
+
+          <PostSection
+            posts={posts}
+            currentUser={currentUser}
+            navigate={navigate}
+          />
+        </>
+      ) : (
+        <NoResult type="post" />
+      )}
     </>
-  ) : (
-    <NoResult type="post" />
-  );
+  )
 };
 
 export default SavedPostsPage;

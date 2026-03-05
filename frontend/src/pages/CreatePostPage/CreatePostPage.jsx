@@ -4,6 +4,7 @@ import "./CreatePostPage.css";
 const CreatePostPage = ({ currentUser, navigate, errors, setErrors }) => {
   return (
     <div className="form-wrapper">
+      <title>Create Post</title>
       <header className="create-post-header">
         <h1 className="create-post-title">Create Post</h1>
         <p className="create-post-description">
