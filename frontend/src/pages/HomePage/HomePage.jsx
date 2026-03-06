@@ -67,24 +67,24 @@ const HomePage = ({ currentUser, navigate, setIsFilterVisible }) => {
       <title>Whisk</title>
       <Toaster position="top-center" />
 
-      <div className="feed-container">
-        {currentUser && (
-          <select
-            onChange={filterFeed}
-            name="feed-select"
-            className="feed-select"
-          >
-            <option value="all">All</option>
-            <option value="groups">Groups</option>
-            {currentUser?.profile.city && <option value="city">City</option>}
-          </select>
-        )}
-      </div>
-
       {isLoading ? (
         <Loader width={200} height={200} />
       ) : posts.length > 0 ? (
         <>
+          <div className="feed-container">
+            {currentUser && (
+              <select
+                onChange={filterFeed}
+                name="feed-select"
+                className="feed-select"
+              >
+                <option value="all">All</option>
+                <option value="groups">Groups</option>
+                {currentUser?.profile.city && <option value="city">City</option>}
+              </select>
+            )}
+          </div>
+
           <PostSection
             posts={posts}
             currentUser={currentUser}

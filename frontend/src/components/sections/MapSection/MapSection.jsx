@@ -28,7 +28,7 @@ const MapSection = ({
       {!post.found && (
         <>
           {
-            !(currentUser.id === post.author.id) &&
+            !(currentUser?.id === post.author.id) &&
             <>
               <header className="section-header">
                 <h3 className="section-title">Pet Location</h3>
