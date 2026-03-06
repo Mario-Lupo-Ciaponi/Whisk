@@ -62,21 +62,20 @@ const SearchProfilePage = ({ navigate }) => {
         <div className="loader-container">
           <Loader width={200} height={200} />
         </div>
-      ) : (
-        users.length > 1 ?
-          <>
-            <ProfileSection users={users} navigate={navigate} />
+      ) : users.length > 1 ? (
+        <>
+          <ProfileSection users={users} navigate={navigate} />
 
-            <div className="paginator-list-container">
-              <PaginationList
-                currentPage={currentPage}
-                setCurrentPage={setCurrentPage}
-                totalPages={totalPages}
-              />
-            </div>
-          </>
-            :
-          <NoResult type="user" />
+          <div className="paginator-list-container">
+            <PaginationList
+              currentPage={currentPage}
+              setCurrentPage={setCurrentPage}
+              totalPages={totalPages}
+            />
+          </div>
+        </>
+      ) : (
+        <NoResult type="user" />
       )}
     </div>
   );

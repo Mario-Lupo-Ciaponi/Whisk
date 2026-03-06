@@ -14,9 +14,9 @@ const NoResult = ({ type }) => {
     },
     notifications: {
       title: "No notifications",
-      description: "Currently there are no notifications. Try checking later."
-    }
-  }
+      description: "Currently there are no notifications. Try checking later.",
+    },
+  };
 
   return (
     <div className="empty-state">
@@ -24,9 +24,7 @@ const NoResult = ({ type }) => {
 
       <header className="text-wrapper">
         <h2 className="empty-title">{notFoundTypes[type].title}</h2>
-        <p className="empty-description">
-          {notFoundTypes[type].description}
-        </p>
+        <p className="empty-description">{notFoundTypes[type].description}</p>
       </header>
     </div>
   );

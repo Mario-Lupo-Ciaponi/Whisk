@@ -50,7 +50,7 @@ const SavedPostsPage = ({ currentUser, navigate }) => {
         <NoResult type="post" />
       )}
     </>
-  )
+  );
 };
 
 export default SavedPostsPage;

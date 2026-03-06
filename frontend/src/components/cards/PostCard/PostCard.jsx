@@ -23,6 +23,7 @@ const PostCard = ({ post, currentUser, navigate, setIsFilterVisible }) => {
   const [activeSection, setActiveSection] = useState("none");
   const [isEditFormVisible, setIsEditFormVisible] = useState(false);
   const [notificationText, setNotificationText] = useState("");
+  const [isSavingLoading, setIsSavingLoading] = useState(false);
   // Count states:
   const [locationsCount, setLocationsCount] = useState(post.locations_count);
   const [commentsCount, setCommentsCount] = useState(post.comments_count);
@@ -43,6 +44,7 @@ const PostCard = ({ post, currentUser, navigate, setIsFilterVisible }) => {
     setActiveSection((prev) => (prev === name ? "none" : name));
 
   const savePost = async () => {
+    setIsSavingLoading(true);
     try {
       const response = await api.post(`posts/${post.id}/save/`);
       const { save } = response.data;
@@ -61,6 +63,8 @@ const PostCard = ({ post, currentUser, navigate, setIsFilterVisible }) => {
       } else {
         toast.error("Somthing went wrong. Please try again later!");
       }
+    } finally {
+      setIsSavingLoading(false);
     }
   };
 
@@ -101,11 +105,13 @@ const PostCard = ({ post, currentUser, navigate, setIsFilterVisible }) => {
 
         <MoreOptions
           post={post}
+          currentUser={currentUser}
           setIsEditFormVisible={setIsEditFormVisible}
           setIsFilterVisible={setIsFilterVisible}
           found={found}
           setFound={setFound}
           statusText={statusText}
+          isSavingLoading={isSavingLoading}
           savePost={savePost}
         />
         {/*<div className="more-options-container">*/}

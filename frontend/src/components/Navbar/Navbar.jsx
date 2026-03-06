@@ -37,8 +37,7 @@ const Navbar = ({ navigate, currentUser }) => {
 
   const isLoggedIn = localStorage.getItem("access") !== null;
 
-  const toggleShowHamburgerMenu = () =>
-    setShowHamburgerMenu(true);
+  const toggleShowHamburgerMenu = () => setShowHamburgerMenu(true);
 
   return (
     <nav className="navbar">
@@ -110,7 +109,7 @@ const Navbar = ({ navigate, currentUser }) => {
               </li>
               <li className="dropdown-item">
                 <button onClick={logout} className="logout-btn">
-                  {isLoading ? <Loader width={15} height={15} /> : "Logout" }
+                  {isLoading ? <Loader width={15} height={15} /> : "Logout"}
                 </button>
               </li>
             </ul>

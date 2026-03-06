@@ -87,7 +87,7 @@ const PostEditForm = ({
     };
     if (currentUser?.country) {
       setIsLoading(true);
-      addCities()
+      addCities();
     }
   }, [currentUser]);
 
@@ -97,81 +97,81 @@ const PostEditForm = ({
         <FontAwesomeIcon icon={faX} />
       </button>
 
-      {isLoading ?
+      {isLoading ? (
         <div className="loader-container">
           <Loader width={120} height={120} />
         </div>
-        :
+      ) : (
         <>
           <header className="form-header">
-        <h3 className="form-title">Edit post</h3>
-      </header>
+            <h3 className="form-title">Edit post</h3>
+          </header>
 
           <form className="edit-post-form" onSubmit={editPost}>
-        <div className="post-field">
-          <label className="post-label" htmlFor="title">
-            Title:
-          </label>
-          <input
-            id="title"
-            className="post-input"
-            name="title"
-            type="text"
-            value={title}
-            onChange={(event) => {
-              setTitle(event.target.value);
-            }}
-          />
-        </div>
-        <div className="post-field">
-          <label className="post-label" htmlFor="description">
-            Description:
-          </label>
-          <textarea
-            id="description"
-            className="post-input textarea"
-            name="description"
-            cols="30"
-            rows="5"
-            value={description}
-            onChange={(event) => {
-              setDescription(event.target.value);
-            }}
-          ></textarea>
-        </div>
-        <div className="post-field">
-          <label className="post-label" htmlFor="city">
-            City:
-          </label>
+            <div className="post-field">
+              <label className="post-label" htmlFor="title">
+                Title:
+              </label>
+              <input
+                id="title"
+                className="post-input"
+                name="title"
+                type="text"
+                value={title}
+                onChange={(event) => {
+                  setTitle(event.target.value);
+                }}
+              />
+            </div>
+            <div className="post-field">
+              <label className="post-label" htmlFor="description">
+                Description:
+              </label>
+              <textarea
+                id="description"
+                className="post-input textarea"
+                name="description"
+                cols="30"
+                rows="5"
+                value={description}
+                onChange={(event) => {
+                  setDescription(event.target.value);
+                }}
+              ></textarea>
+            </div>
+            <div className="post-field">
+              <label className="post-label" htmlFor="city">
+                City:
+              </label>
 
-          <select
-            name="city"
-            id="city"
-            className="post-input select"
-            value={selectedCity}
-            onChange={(event) => {
-              setSelectedCity(event.target.value);
-            }}
-          >
-            <option className="select-option" disabled selected value>
-              Select
-            </option>
-            {cities.map((city) => {
-              return (
-                <option className="select-option" value={city.id}>
-                  {city.name}
+              <select
+                name="city"
+                id="city"
+                className="post-input select"
+                value={selectedCity}
+                onChange={(event) => {
+                  setSelectedCity(event.target.value);
+                }}
+              >
+                <option className="select-option" disabled selected value>
+                  Select
                 </option>
-              );
-            })}
-          </select>
-        </div>
+                {cities.map((city) => {
+                  return (
+                    <option className="select-option" value={city.id}>
+                      {city.name}
+                    </option>
+                  );
+                })}
+              </select>
+            </div>
 
-        <button className="edit-btn" type="submit">
-          {isLoading ? <Loader width={25} height={25} /> : "Edit"}
-        </button>
-      </form>
+            <button className="edit-btn" type="submit">
+              {isLoading ? <Loader width={25} height={25} /> : "Edit"}
+            </button>
+          </form>
         </>
-      }
+      )}
     </div>
   );
 };

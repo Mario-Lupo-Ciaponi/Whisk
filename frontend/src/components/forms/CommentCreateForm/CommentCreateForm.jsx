@@ -16,7 +16,8 @@ const CommentCreateForm = ({
   const createComment = async (event) => {
     event.preventDefault();
 
-    if (!content) toast.error("The content of the comment should not be empty!");
+    if (!content)
+      toast.error("The content of the comment should not be empty!");
 
     setIsLoading(true);
 
@@ -58,7 +59,7 @@ const CommentCreateForm = ({
       />
 
       <button className="submit-btn">
-        {isLoading ? <Loader width={20} height={20} /> : "Comment" }
+        {isLoading ? <Loader width={20} height={20} /> : "Comment"}
       </button>
     </form>
   );

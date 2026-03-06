@@ -14,12 +14,11 @@ const NotificationPage = () => {
         <h1 className="notification-title">Your notifications</h1>
       </header>
 
-      {notifications.length > 1 ?
+      {notifications.length > 1 ? (
         <NotificationSection notifications={notifications} />
-        :
-        <NoResult type="notifications"/>
-      }
-
+      ) : (
+        <NoResult type="notifications" />
+      )}
     </div>
   );
 };

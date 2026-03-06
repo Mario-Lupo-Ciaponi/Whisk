@@ -1,21 +1,27 @@
 import { useEffect, useRef } from "react";
 import { Link } from "react-router";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {faX} from "@fortawesome/free-solid-svg-icons";
+import { faX } from "@fortawesome/free-solid-svg-icons";
 import "./HamburgerMenu.css";
 
-const HamburgerMenu = ({ isLoggedIn, showMenu, setShowMenu, logout, currentUser }) => {
+const HamburgerMenu = ({
+  isLoggedIn,
+  showMenu,
+  setShowMenu,
+  logout,
+  currentUser,
+}) => {
   const menuRef = useRef(null);
 
   const closeMenu = () => setShowMenu(false);
-
 
   useEffect(() => {
     if (!showMenu) return;
 
     const handleClickOutside = (event) => {
-      if (menuRef.current && !menuRef.current.contains(event.target)) setShowMenu(false);
-    }
+      if (menuRef.current && !menuRef.current.contains(event.target))
+        setShowMenu(false);
+    };
 
     document.addEventListener("mousedown", handleClickOutside);
 
@@ -89,7 +95,6 @@ const HamburgerMenu = ({ isLoggedIn, showMenu, setShowMenu, logout, currentUser 
         )}
       </ul>
     </div>
-
   );
 };
 

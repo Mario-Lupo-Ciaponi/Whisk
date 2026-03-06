@@ -26,12 +26,11 @@ const ProfileForm = ({ user, shouldNotEdit }) => {
     event.stopPropagation();
 
     try {
-
       const payload = {
         bio,
         account_type: accountType,
         city: selectedCity,
-      }
+      };
 
       await api.patch(`accounts/profile/${user.id}/`, payload);
 

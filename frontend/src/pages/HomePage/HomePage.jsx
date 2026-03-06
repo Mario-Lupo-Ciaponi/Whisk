@@ -80,7 +80,9 @@ const HomePage = ({ currentUser, navigate, setIsFilterVisible }) => {
               >
                 <option value="all">All</option>
                 <option value="groups">Groups</option>
-                {currentUser?.profile.city && <option value="city">City</option>}
+                {currentUser?.profile.city && (
+                  <option value="city">City</option>
+                )}
               </select>
             )}
           </div>
