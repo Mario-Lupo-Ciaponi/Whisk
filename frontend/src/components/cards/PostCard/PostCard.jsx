@@ -3,11 +3,11 @@ import toast from "react-hot-toast";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Link } from "react-router";
 import {
-  faEllipsisVertical,
   faMapLocationDot,
   faComment,
   faBookmark,
 } from "@fortawesome/free-solid-svg-icons";
+import MoreOptions from "../../MoreOptions/MoreOptions.jsx";
 import MapSection from "../../sections/MapSection/MapSection.jsx";
 import CommentArea from "../../CommentArea/CommentArea.jsx";
 import PostEditForm from "../../forms/PostEditForm/PostEditForm.jsx";
@@ -28,8 +28,6 @@ const PostCard = ({ post, currentUser, navigate, setIsFilterVisible }) => {
   const [commentsCount, setCommentsCount] = useState(post.comments_count);
   const [saveCount, setSaveCount] = useState(post.save_count);
 
-  const moreOptionsRef = useRef(null);
-
   useEffect(() => {
     const getPostLocations = () => setLocations(post.locations);
 
@@ -41,46 +39,8 @@ const PostCard = ({ post, currentUser, navigate, setIsFilterVisible }) => {
 
   const statusText = found ? "Found" : "Not Found";
 
-  const showActions = () => moreOptionsRef.current.classList.toggle("active");
-
   const toggleSection = (name) =>
     setActiveSection((prev) => (prev === name ? "none" : name));
-
-  const makeEditFormVisible = () => {
-    setIsEditFormVisible(true);
-    setIsFilterVisible(true);
-  };
-
-  const deletePost = async () => {
-    await api.delete(`posts/${post.id}/`);
-    window.location.reload();
-    toast.success("Post deleted successfully!");
-
-    // TODO: go to a different page for user confirmation!!!
-  };
-
-  const changePostStatus = async () => {
-    try {
-      await api.patch(`posts/${post.id}/`, { found: !found });
-      setFound(!found);
-
-      toast.success(`Changed post status to ${statusText}`);
-    } catch (e) {
-      toast.error("Something went wrong. Please try again later!");
-    }
-  };
-
-  const copyPostUrl = async () => {
-    try {
-      await navigator.clipboard.writeText(
-        `${window.location.origin}/post/${post.id}`,
-      );
-
-      toast.success("Post copied to clipboard!");
-    } catch (e) {
-      toast.error("Something went wrong. Please try again later!");
-    }
-  };
 
   const savePost = async () => {
     try {
@@ -139,38 +99,47 @@ const PostCard = ({ post, currentUser, navigate, setIsFilterVisible }) => {
           </span>
         </div>
 
-        <div className="more-options-container">
-          <button onClick={showActions} className="show-more">
-            <FontAwesomeIcon icon={faEllipsisVertical} />
-          </button>
-          <ul ref={moreOptionsRef} className="more-options-menu">
-            <li className="option-item">
-              <button onClick={savePost} className="option">
-                Save
-              </button>
-            </li>
-            <li className="option-item">
-              <button onClick={copyPostUrl} className="option">
-                Share
-              </button>
-            </li>
-            {post.author.id === currentUser?.id && (
-              <>
-                <li className="option-item">
-                  <button onClick={changePostStatus} className="option">
-                    Update status
-                  </button>
-                </li>
-                <li onClick={makeEditFormVisible} className="option-item">
-                  <button className="option">Edit</button>
-                </li>
-                <li onClick={deletePost} className="option-item">
-                  <button className="option danger">Delete</button>
-                </li>
-              </>
-            )}
-          </ul>
-        </div>
+        <MoreOptions
+          post={post}
+          setIsEditFormVisible={setIsEditFormVisible}
+          setIsFilterVisible={setIsFilterVisible}
+          found={found}
+          setFound={setFound}
+          statusText={statusText}
+          savePost={savePost}
+        />
+        {/*<div className="more-options-container">*/}
+        {/*  <button onClick={showActions} className="show-more">*/}
+        {/*    <FontAwesomeIcon icon={faEllipsisVertical} />*/}
+        {/*  </button>*/}
+        {/*  <ul ref={moreOptionsRef} className="more-options-menu">*/}
+        {/*    <li className="option-item">*/}
+        {/*      <button onClick={savePost} className="option">*/}
+        {/*        Save*/}
+        {/*      </button>*/}
+        {/*    </li>*/}
+        {/*    <li className="option-item">*/}
+        {/*      <button onClick={copyPostUrl} className="option">*/}
+        {/*        Share*/}
+        {/*      </button>*/}
+        {/*    </li>*/}
+        {/*    {post.author.id === currentUser?.id && (*/}
+        {/*      <>*/}
+        {/*        <li className="option-item">*/}
+        {/*          <button onClick={changePostStatus} className="option">*/}
+        {/*            Update status*/}
+        {/*          </button>*/}
+        {/*        </li>*/}
+        {/*        <li onClick={makeEditFormVisible} className="option-item">*/}
+        {/*          <button className="option">Edit</button>*/}
+        {/*        </li>*/}
+        {/*        <li onClick={deletePost} className="option-item">*/}
+        {/*          <button className="option danger">Delete</button>*/}
+        {/*        </li>*/}
+        {/*      </>*/}
+        {/*    )}*/}
+        {/*  </ul>*/}
+        {/*</div>*/}
       </div>
 
       <div className="image-container">
