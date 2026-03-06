@@ -13,6 +13,12 @@
   flex-direction: column;
   align-items: center;
   padding: 1rem;
+  min-width: 400px;
+  min-height: 450px;
+}
+
+.form-container .loader-container {
+  flex: 1;
 }
 
 .form-container .close-tab-btn {
@@ -76,6 +82,8 @@
 @media screen and (max-width: 480px) {
   .form-container {
     width: 95%;
+    min-width: unset;
+    min-height: 400px;
   }
 
   .form-container .edit-post-form .post-field {

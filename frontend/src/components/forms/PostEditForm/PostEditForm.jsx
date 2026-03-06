@@ -83,8 +83,12 @@ const PostEditForm = ({
       });
 
       setCities(response.data);
+      setIsLoading(false);
     };
-    if (currentUser?.country) addCities();
+    if (currentUser?.country) {
+      setIsLoading(true);
+      addCities()
+    }
   }, [currentUser]);
 
   return (
@@ -93,11 +97,17 @@ const PostEditForm = ({
         <FontAwesomeIcon icon={faX} />
       </button>
 
-      <header className="form-header">
+      {isLoading ?
+        <div className="loader-container">
+          <Loader width={120} height={120} />
+        </div>
+        :
+        <>
+          <header className="form-header">
         <h3 className="form-title">Edit post</h3>
       </header>
 
-      <form className="edit-post-form" onSubmit={editPost}>
+          <form className="edit-post-form" onSubmit={editPost}>
         <div className="post-field">
           <label className="post-label" htmlFor="title">
             Title:
@@ -160,6 +170,8 @@ const PostEditForm = ({
           {isLoading ? <Loader width={25} height={25} /> : "Edit"}
         </button>
       </form>
+        </>
+      }
     </div>
   );
 };

@@ -148,6 +148,17 @@
   gap: 0.5rem;
 }
 
+.post-card .caption > * {
+  min-width: 0;
+}
+
+.post-card .caption .description {
+  width: 100%;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
 .post-card .actions {
   padding: 1rem;
   display: flex;
