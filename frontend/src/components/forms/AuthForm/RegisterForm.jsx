@@ -14,10 +14,9 @@ const RegisterForm = ({ setShowLogin, showPassword, setShowPassword }) => {
   const [secondPassword, setSecondPassword] = useState("");
   const [allCountries, setAllCountries] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
-  const [areCountriesLoading, setAreCountriesLoading] = useState(false);
 
   const fetchAllCountries = async () => {
-    setAreCountriesLoading(true);
+    setIsLoading(true);
 
     try {
       const response = await api.get("countries/");
@@ -25,7 +24,7 @@ const RegisterForm = ({ setShowLogin, showPassword, setShowPassword }) => {
     } catch (e) {
       console.error(e);
     } finally {
-      setAreCountriesLoading(false);
+      setIsLoading(false);
     }
   };
 
@@ -80,8 +79,14 @@ const RegisterForm = ({ setShowLogin, showPassword, setShowPassword }) => {
   }, []);
 
   return (
-    <form onSubmit={handleRegister} className="register-form auth-form">
-      <div className="auth-field">
+    <form onSubmit={handleRegister} className={`register-form auth-form ${isLoading ? "loading" : ""}`}>
+      {
+        isLoading ?
+          <div className="loader-container">
+            <Loader width={200} height={200} />
+          </div> :
+          <>
+            <div className="auth-field">
         <label htmlFor="username" className="auth-label">
           Username:
         </label>
@@ -98,109 +103,103 @@ const RegisterForm = ({ setShowLogin, showPassword, setShowPassword }) => {
         />
       </div>
 
-      <div className="auth-field">
-        <label htmlFor="email" className="auth-label">
-          Email:
-        </label>
-        <input
-          id="email"
-          name="email"
-          type="email"
-          value={email}
-          className={"auth-input"}
-          onChange={(event) => {
-            setEmail(event.target.value);
-          }}
-          required
-        />
-      </div>
+            <div className="auth-field">
+              <label htmlFor="email" className="auth-label">
+                Email:
+              </label>
+              <input
+                id="email"
+                name="email"
+                type="email"
+                value={email}
+                className={"auth-input"}
+                onChange={(event) => {
+                  setEmail(event.target.value);
+                }}
+                required
+              />
+            </div>
 
-      <div className="auth-field">
-        <label htmlFor="country" className="auth-label">
-          Country:
-        </label>
-        <select
-          id="country"
-          name="country"
-          className="auth-input"
-          value={countrySelected}
-          onChange={(event) => setCountrySelected(event.target.value)}
-          required
-        >
-          {areCountriesLoading ? (
-            <option disabled value="">
-              Loading...
-            </option>
-          ) : (
-            <>
-              <option disabled selected value>
-                -- select a country --
-              </option>
-              {allCountries.map((country) => (
-                <option key={country.id} value={country.id}>
-                  {country.name}
+            <div className="auth-field">
+              <label htmlFor="country" className="auth-label">
+                Country:
+              </label>
+              <select
+                id="country"
+                name="country"
+                className="auth-input"
+                value={countrySelected}
+                onChange={(event) => setCountrySelected(event.target.value)}
+                required
+              >
+                <option disabled value selected>
+                  -- select a country --
                 </option>
-              ))}
-            </>
-          )}
-        </select>
-      </div>
+                {allCountries.map((country) => (
+                  <option key={country.id} value={country.id}>
+                    {country.name}
+                  </option>
+                ))}
+              </select>
+            </div>
 
-      <div className="auth-field">
-        <label htmlFor="password1" className="auth-label">
-          Password
-        </label>
+            <div className="auth-field">
+              <label htmlFor="password1" className="auth-label">
+                Password
+              </label>
 
-        <div className="input-container">
-          <input
-            id="password1"
-            name="password1"
-            type={showPassword ? "text" : "password"}
-            value={firstPassword}
-            className={"auth-input"}
-            onChange={(event) => {
-              setFirstPassword(event.target.value);
-            }}
-            autoComplete="off"
-            required
-          />
+              <div className="input-container">
+                <input
+                  id="password1"
+                  name="password1"
+                  type={showPassword ? "text" : "password"}
+                  value={firstPassword}
+                  className={"auth-input"}
+                  onChange={(event) => {
+                    setFirstPassword(event.target.value);
+                  }}
+                  autoComplete="off"
+                  required
+                />
 
-          <PasswordToggle
-            showPassword={showPassword}
-            setShowPassword={setShowPassword}
-          />
-        </div>
-      </div>
+                <PasswordToggle
+                  showPassword={showPassword}
+                  setShowPassword={setShowPassword}
+                />
+              </div>
+            </div>
 
-      <div className="auth-field">
-        <label htmlFor="password2" className="auth-label">
-          Repeat Password:
-        </label>
+            <div className="auth-field">
+              <label htmlFor="password2" className="auth-label">
+                Repeat Password:
+              </label>
 
-        <div className="input-container">
-          <input
-            id="password2"
-            name="password2"
-            type={showPassword ? "text" : "password"}
-            value={secondPassword}
-            className={"auth-input"}
-            onChange={(event) => {
-              setSecondPassword(event.target.value);
-            }}
-            autoComplete="off"
-            required
-          />
+              <div className="input-container">
+                <input
+                  id="password2"
+                  name="password2"
+                  type={showPassword ? "text" : "password"}
+                  value={secondPassword}
+                  className={"auth-input"}
+                  onChange={(event) => {
+                    setSecondPassword(event.target.value);
+                  }}
+                  autoComplete="off"
+                  required
+                />
 
-          <PasswordToggle
-            showPassword={showPassword}
-            setShowPassword={setShowPassword}
-          />
-        </div>
-      </div>
+                <PasswordToggle
+                  showPassword={showPassword}
+                  setShowPassword={setShowPassword}
+                />
+              </div>
+            </div>
 
-      <button type="submit" className="submit-btn">
-        {isLoading ? <Loader height={30} width={30} /> : "Register"}
-      </button>
+            <button type="submit" className="submit-btn">
+              {isLoading ? <Loader height={30} width={30} /> : "Register"}
+            </button>
+          </>
+      }
     </form>
   );
 };
