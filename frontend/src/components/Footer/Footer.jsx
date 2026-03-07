@@ -1,8 +1,11 @@
 import { Link } from "react-router";
+import { useTranslation } from "react-i18next";
 import Logo from "../../assets/logo.png";
 import "./Footer.css";
 
 const Footer = () => {
+  const { t } = useTranslation();
+
   return (
     <footer className="footer">
       <div className="wrapper">
@@ -11,34 +14,34 @@ const Footer = () => {
         <ul className="links">
           <li className="item">
             <Link to="/" className="link">
-              Home
+              {t("footer.home")}
             </Link>
           </li>
           <li className="item">
             <Link to="/search-profile" className="link">
-              Search Profile
+              {t("footer.searchProfile")}
             </Link>
           </li>
           <li className="item">
             <Link to="/about" className="link">
-              About
+              {t("footer.about")}
             </Link>
           </li>
           <li className="item">
             <Link to="/create-post" className="link">
-              Create Post
+              {t("footer.createPost")}
             </Link>
           </li>
           <li className="item">
             <Link to="/contact" className="link">
-              Contact
+              {t("footer.contact")}
             </Link>
           </li>
         </ul>
       </div>
 
       <p className="rights-reserved">
-        &copy; 2025-2026 Mario Lupo Fausto Ciaponi. All rights reserved{" "}
+        {t("footer.rightsReserved")}
       </p>
     </footer>
   );
