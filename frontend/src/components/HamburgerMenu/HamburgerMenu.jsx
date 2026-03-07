@@ -3,6 +3,7 @@ import { Link } from "react-router";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faX } from "@fortawesome/free-solid-svg-icons";
 import "./HamburgerMenu.css";
+import {useTranslation} from "react-i18next";
 
 const HamburgerMenu = ({
   isLoggedIn,
@@ -12,6 +13,8 @@ const HamburgerMenu = ({
   currentUser,
 }) => {
   const menuRef = useRef(null);
+
+  const {t} = useTranslation();
 
   const closeMenu = () => setShowMenu(false);
 
@@ -39,22 +42,22 @@ const HamburgerMenu = ({
       <ul className="hamburger-links">
         <li className="item">
           <Link className="link" to="/">
-            Home
+            {t("navbar.home")}
           </Link>
         </li>
         <li className="item">
           <Link className="link" to="/search-profile">
-            Search Profile
+            {t("navbar.searchProfile")}
           </Link>
         </li>
         <li className="item">
           <Link className="link" to="/about">
-            About
+            {t("navbar.about")}
           </Link>
         </li>
         <li className="item">
           <Link className="link" to="/contact">
-            Contact
+            {t("navbar.contact")}
           </Link>
         </li>
 
@@ -62,34 +65,34 @@ const HamburgerMenu = ({
           <>
             <li className="item">
               <Link className="link" to="/create-post">
-                Create Post
+                {t("navbar.createPost")}
               </Link>
             </li>
             <li className="item">
               <Link className="link" to="/notifications">
-                Notifications
+                {t("navbar.notifications")}
               </Link>
             </li>
             <li className="item">
               <Link className="link" to={`/profile/${currentUser?.id}`}>
-                Profile
+                {t("navbar.profile")}
               </Link>
             </li>
             <li className="item">
               <Link className="link" to="/saved-posts">
-                Saved Posts
+                {t("navbar.savedPosts")}
               </Link>
             </li>
             <li className="item">
               <button onClick={logout} className="logout">
-                Logout
+                {t("navbar.logout")}
               </button>
             </li>
           </>
         ) : (
           <li className="item">
             <Link className="link" to="/login">
-              Login
+              {t("navbar.login")}
             </Link>
           </li>
         )}

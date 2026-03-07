@@ -111,7 +111,7 @@ const Navbar = ({ navigate, currentUser }) => {
               </li>
               <li className="dropdown-item">
                 <Link to="/saved-posts" className="dropdown-link">
-                  Saved Posts
+                  {t("navbar.savedPosts")}
                 </Link>
               </li>
               <li className="dropdown-item">
@@ -136,6 +136,10 @@ const Navbar = ({ navigate, currentUser }) => {
           <Link to="/login" className="login-btn auth-link">
             {t("navbar.login")}
           </Link>
+
+          <button onClick={changeLanguage} className="language-switch-btn">
+            {i18n.resolvedLanguage === "en" ? "English" : "Български"}
+          </button>
         </div>
       )}
 

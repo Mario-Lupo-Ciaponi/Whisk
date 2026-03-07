@@ -7,6 +7,13 @@
   background-color: var(--pewter-color);
 }
 
+.language-switch-btn {
+  background: none;
+  color: var(--tan-color);
+  padding: 0.25rem 0.75rem;
+  border: var(--border-default-values) var(--tan-color);
+}
+
 .navbar .menu-btn {
   display: none;
   background: none;
@@ -154,13 +161,6 @@
   color: var(--tan-color);
 }
 
-.navbar .user-menu .dropdown:hover .menu-list .dropdown-item .language-switch-btn {
-  background: none;
-  color: var(--tan-color);
-  padding: 0.25rem 0.75rem;
-  border: var(--border-default-values) var(--tan-color);
-}
-
 .navbar .user-menu .create-post-link {
   background-color: var(--tan-color);
   color: white;
@@ -175,6 +175,8 @@
 
 .navbar .auth-link-container {
   display: flex;
+  gap: 0.5rem;
+  align-items: center;
   justify-content: flex-end;
 }
 
