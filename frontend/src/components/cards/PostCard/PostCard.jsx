@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from "react";
+import { useTranslation } from "react-i18next";
 import toast from "react-hot-toast";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Link } from "react-router";
@@ -22,12 +23,13 @@ const PostCard = ({ post, currentUser, navigate, setIsFilterVisible }) => {
   const [found, setFound] = useState(post.found);
   const [activeSection, setActiveSection] = useState("none");
   const [isEditFormVisible, setIsEditFormVisible] = useState(false);
-  const [notificationText, setNotificationText] = useState("");
   const [isSavingLoading, setIsSavingLoading] = useState(false);
   // Count states:
   const [locationsCount, setLocationsCount] = useState(post.locations_count);
   const [commentsCount, setCommentsCount] = useState(post.comments_count);
   const [saveCount, setSaveCount] = useState(post.save_count);
+
+  const { t } = useTranslation();
 
   useEffect(() => {
     const getPostLocations = () => setLocations(post.locations);
@@ -38,7 +40,7 @@ const PostCard = ({ post, currentUser, navigate, setIsFilterVisible }) => {
     getComments();
   }, []);
 
-  const statusText = found ? "Found" : "Not Found";
+  const statusText = found ? t("postCard.found") : t("postCard.notFound");
 
   const toggleSection = (name) =>
     setActiveSection((prev) => (prev === name ? "none" : name));
@@ -55,13 +57,13 @@ const PostCard = ({ post, currentUser, navigate, setIsFilterVisible }) => {
         setSaveCount((prev) => prev - 1);
       }
 
-      toast.success(`Post ${save ? "saved" : "unsaved"} successfully!`);
+      toast.success(save ? t("postCard.postSaved") : t("postCard.postUnsaved"));
     } catch (e) {
       if (e.status === 401) {
-        toast.error("You are not authenticated. Please login!");
+        toast.error(t("postCard.notAuthenticated"));
         navigate("login/");
       } else {
-        toast.error("Somthing went wrong. Please try again later!");
+        toast.error(t("postCard.somethingWentWrong"));
       }
     } finally {
       setIsSavingLoading(false);
@@ -70,12 +72,6 @@ const PostCard = ({ post, currentUser, navigate, setIsFilterVisible }) => {
 
   return (
     <article className="post-card" key={post.id}>
-      {notificationText && (
-        <div className="notification-div">
-          <NotificationMessage text={notificationText} messageType="info" />
-        </div>
-      )}
-
       <div className="top">
         <div className="user-container">
           <Link className="profile-link image" to={`profile/${post.author.id}`}>
@@ -114,38 +110,6 @@ const PostCard = ({ post, currentUser, navigate, setIsFilterVisible }) => {
           isSavingLoading={isSavingLoading}
           savePost={savePost}
         />
-        {/*<div className="more-options-container">*/}
-        {/*  <button onClick={showActions} className="show-more">*/}
-        {/*    <FontAwesomeIcon icon={faEllipsisVertical} />*/}
-        {/*  </button>*/}
-        {/*  <ul ref={moreOptionsRef} className="more-options-menu">*/}
-        {/*    <li className="option-item">*/}
-        {/*      <button onClick={savePost} className="option">*/}
-        {/*        Save*/}
-        {/*      </button>*/}
-        {/*    </li>*/}
-        {/*    <li className="option-item">*/}
-        {/*      <button onClick={copyPostUrl} className="option">*/}
-        {/*        Share*/}
-        {/*      </button>*/}
-        {/*    </li>*/}
-        {/*    {post.author.id === currentUser?.id && (*/}
-        {/*      <>*/}
-        {/*        <li className="option-item">*/}
-        {/*          <button onClick={changePostStatus} className="option">*/}
-        {/*            Update status*/}
-        {/*          </button>*/}
-        {/*        </li>*/}
-        {/*        <li onClick={makeEditFormVisible} className="option-item">*/}
-        {/*          <button className="option">Edit</button>*/}
-        {/*        </li>*/}
-        {/*        <li onClick={deletePost} className="option-item">*/}
-        {/*          <button className="option danger">Delete</button>*/}
-        {/*        </li>*/}
-        {/*      </>*/}
-        {/*    )}*/}
-        {/*  </ul>*/}
-        {/*</div>*/}
       </div>
 
       <div className="image-container">

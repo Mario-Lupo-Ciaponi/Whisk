@@ -19,6 +19,21 @@
     "contact": "Contact",
     "rightsReserved": "© 2025-2026 Mario Lupo Fausto Ciaponi. All rights reserved"
   },
+  "homepage": {
+    "feedSelect": {
+      "all": "All",
+      "groups": "Groups",
+      "city": "City"
+    }
+  },
+  "postCard": {
+    "found": "Found",
+    "notFound": "Not Found",
+    "postSaved": "Post saved successfully!",
+    "postUnsaved": "Post unsaved successfully!",
+    "notAuthenticated": "You are not authenticated. Please login!",
+    "somethingWentWrong": "Something went wrong. Please try again later!"
+  },
   "errors": {
     "somethingWentWrong": "Something went wrong!"
   }

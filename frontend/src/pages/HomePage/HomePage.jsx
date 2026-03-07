@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { useTranslation } from "react-i18next";
 import { Toaster } from "react-hot-toast";
 import PostSection from "../../components/sections/PostSection/PostSection.jsx";
 import NoResult from "../../components/NoResult/NoResult.jsx";
@@ -12,6 +13,7 @@ const HomePage = ({ currentUser, navigate, setIsFilterVisible }) => {
   const [currentPage, setCurrentPage] = useState(1);
   const [totalPages, setTotalPages] = useState(0);
   const [isLoading, setIsLoading] = useState(false);
+  const { t } = useTranslation();
 
   const itemsPerPage = 6;
 
@@ -78,10 +80,9 @@ const HomePage = ({ currentUser, navigate, setIsFilterVisible }) => {
                 name="feed-select"
                 className="feed-select"
               >
-                <option value="all">All</option>
-                <option value="groups">Groups</option>
+                <option value="all">{t("feedSelect.all")}</option>
                 {currentUser?.profile.city && (
-                  <option value="city">City</option>
+                  <option value="city">{t("feedSelect.city")}</option>
                 )}
               </select>
             )}
