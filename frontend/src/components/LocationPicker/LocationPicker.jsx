@@ -1,4 +1,5 @@
 import { useState, useLayoutEffect } from "react";
+import { useTranslation } from "react-i18next";
 import toast from "react-hot-toast";
 import {
   MapContainer,
@@ -43,6 +44,7 @@ const LocationPicker = ({
   activeSection,
 }) => {
   const [selectedPosition, setSelectedPosition] = useState(null);
+  const { t } = useTranslation();
 
   const latitude = Number(post.city.latitude);
   const longitude = Number(post.city.longitude);
@@ -50,7 +52,7 @@ const LocationPicker = ({
   const addLocation = async () => {
     try {
       if (!selectedPosition) {
-        alert("Please select a location!");
+        toast.error(t("locationPicker.selectLocation"));
         return;
       }
       const latitude = selectedPosition.lat;
@@ -72,9 +74,9 @@ const LocationPicker = ({
       setLocationsCount((prev) => prev + 1);
 
       setSelectedPosition(null);
-      toast.success("Added position successfully!");
+      toast.success(t("locationPicker.locationAdded"));
     } catch (e) {
-      toast.error("Something went wrong. Please try again later!");
+      toast.error(t("error"));
     }
   };
 
@@ -97,7 +99,7 @@ const LocationPicker = ({
       </MapContainer>
 
       <button onClick={addLocation} className="add-location-btn">
-        Add Location
+        {t("locationPicker.addLocation")}
       </button>
     </>
   );

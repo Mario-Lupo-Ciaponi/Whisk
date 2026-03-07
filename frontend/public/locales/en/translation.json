@@ -32,7 +32,22 @@
     "postSaved": "Post saved successfully!",
     "postUnsaved": "Post unsaved successfully!",
     "notAuthenticated": "You are not authenticated. Please login!",
-    "somethingWentWrong": "Something went wrong. Please try again later!"
+  },
+  "mapSection": {
+    "title": "Pet Location",
+    "description": "Select a location where you have seen the pet",
+    "showLocations": "Show Locations Provided",
+    "hideLocations": "Hide Locations Provided"
+  },
+  "locationPicker": {
+    "selectLocation": "Please select a location!",
+    "addLocation": "Add Location",
+    "locationAdded": "Added position successfully!",
+  },
+  "locationCard": {
+    "anonymousUser": "Anonymous user",
+    "pointedLocation": "has pointed out the following position:",
+    "found": "Found"
   },
   "errors": {
     "somethingWentWrong": "Something went wrong!"

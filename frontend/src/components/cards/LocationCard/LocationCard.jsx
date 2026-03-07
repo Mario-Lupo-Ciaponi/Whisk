@@ -1,11 +1,14 @@
 import { useState } from "react";
+import { useTranslation } from "react-i18next";
 import { Link } from "react-router";
+import toast from "react-hot-toast";
 import api from "../../../api/api.js";
 import formatCoordinates from "../../../utils/formatCoordinates.js";
 import "./LocationCard.css";
 
 const LocationCard = ({ post, location, currentUser, setFound }) => {
   const [isValid, setIsValid] = useState(location.is_valid); // This is if the pet was found in this location
+  const { t } = useTranslation();
 
   const latitude = location.latitude;
   const longitude = location.longitude;
@@ -20,7 +23,7 @@ const LocationCard = ({ post, location, currentUser, setFound }) => {
       setFound(true);
       setIsValid(true);
     } catch (e) {
-      console.log(e);
+      toast.error(t("error"));
     }
   };
 
@@ -50,7 +53,6 @@ const LocationCard = ({ post, location, currentUser, setFound }) => {
           />
         )}
       </div>{" "}
-      {/*TODO: check whether the user has a profile image*/}
       <div className="location-info-wrapper">
         <p className="pointed-by-text">
           <span className="username">
@@ -62,10 +64,10 @@ const LocationCard = ({ post, location, currentUser, setFound }) => {
                 {location.author.username}
               </Link>
             ) : (
-              "Anonymous user"
+              t("locationCard.anonymousUser")
             )}
           </span>{" "}
-          has pointed out the following position:
+          {t("locationCard.pointedLocation")}
           <a className="location-url" target="_blank" href={locationUrl}>
             {formatCoordinates(latitude)} - {formatCoordinates(longitude)}
           </a>
@@ -73,7 +75,7 @@ const LocationCard = ({ post, location, currentUser, setFound }) => {
       </div>
       {currentUser?.id === post.author.id && (
         <button onClick={markLocationAsValid} className="found-btn">
-          Found
+          {t("locationCard.found")}
         </button>
       )}
     </article>

@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useTranslation } from "react-i18next";
 import { MapContainer, TileLayer, Marker, useMapEvents } from "react-leaflet";
 import LocationSection from "../LocationSection/LocationSection.jsx";
 import LocationPicker from "../../LocationPicker/LocationPicker.jsx";
@@ -17,6 +18,7 @@ const MapSection = ({
   setFound,
 }) => {
   const [showLocationSection, setShowLocationSection] = useState(false);
+  const { t } = useTranslation();
 
   const toggleLocationSection = () =>
     setShowLocationSection(!showLocationSection);
@@ -30,9 +32,11 @@ const MapSection = ({
           {!(currentUser?.id === post.author.id) && (
             <>
               <header className="section-header">
-                <h3 className="section-title">Pet Location</h3>
+                <h3 className="section-title">
+                   {t("mapSection.title")}
+                </h3>
                 <p className="section-description">
-                  Select a location where you have seen the pet
+                  {t("mapSection.description")}
                 </p>
               </header>
               <LocationPicker
@@ -48,7 +52,7 @@ const MapSection = ({
 
       <div className="locations-wrapper">
         <button className="show-locations-btn" onClick={toggleLocationSection}>
-          {showLocationSection ? "Hide" : "Show"} Locations Provided
+          {showLocationSection ? t("mapSection.hideLocations") : t("mapSection.showLocations")}
           <FontAwesomeIcon
             icon={showLocationSection ? faCaretUp : faCaretDown}
           />

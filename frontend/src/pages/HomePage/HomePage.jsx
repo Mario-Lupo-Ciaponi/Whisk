@@ -80,9 +80,9 @@ const HomePage = ({ currentUser, navigate, setIsFilterVisible }) => {
                 name="feed-select"
                 className="feed-select"
               >
-                <option value="all">{t("feedSelect.all")}</option>
+                <option value="all">{t("homepage.feedSelect.all")}</option>
                 {currentUser?.profile.city && (
-                  <option value="city">{t("feedSelect.city")}</option>
+                  <option value="city">{t("homepage.feedSelect.city")}</option>
                 )}
               </select>
             )}

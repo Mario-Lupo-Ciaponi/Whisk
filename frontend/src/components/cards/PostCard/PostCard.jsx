@@ -63,7 +63,7 @@ const PostCard = ({ post, currentUser, navigate, setIsFilterVisible }) => {
         toast.error(t("postCard.notAuthenticated"));
         navigate("login/");
       } else {
-        toast.error(t("postCard.somethingWentWrong"));
+        toast.error(t("error"));
       }
     } finally {
       setIsSavingLoading(false);
