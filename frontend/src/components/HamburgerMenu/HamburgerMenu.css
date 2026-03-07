@@ -26,6 +26,7 @@
 
 .hamburger-menu .hamburger-links .item .link {
   color: var(--tan-color);
+  text-align: center;
 }
 
 .hamburger-menu .item .logout {

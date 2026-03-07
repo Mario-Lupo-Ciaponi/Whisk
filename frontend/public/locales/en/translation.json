@@ -51,6 +51,13 @@
     "pointedLocation": "has pointed out the following position:",
     "found": "Found"
   },
+  "comments": {
+    "emptyContent": "The content of the comment should not be empty!",
+    "commentSuccess": "Commented on post successfully!",
+    "loginRequired": "You need to be authenticated to comment. Please login first!",
+    "placeholder": "Add a comment...",
+    "submit": "Comment"
+  },
   "errors": {
     "somethingWentWrong": "Something went wrong!"
   }

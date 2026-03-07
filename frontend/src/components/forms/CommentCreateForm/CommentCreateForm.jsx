@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useTranslation } from "react-i18next";
 import toast from "react-hot-toast";
 import Loader from "../../Loader.jsx";
 import api from "../../../api/api.js";
@@ -12,6 +13,7 @@ const CommentCreateForm = ({
 }) => {
   const [content, setContent] = useState("");
   const [isLoading, setIsLoading] = useState(false);
+  const { t } = useTranslation();
 
   const createComment = async (event) => {
     event.preventDefault();
@@ -31,15 +33,15 @@ const CommentCreateForm = ({
 
       setContent("");
 
-      toast.success("Commented on post successfully!");
+      toast.success(t("comments.commentSuccess"));
     } catch (e) {
       if (e.response?.status === 401) {
         toast.error(
-          "You need to be authenticated to comment. Please login first!",
+          t("comments.loginRequired")
         );
         navigate("/login");
       } else {
-        toast.error("Something went wrong. Please try again later!");
+        toast.error(t("errors.somethingWentWrong"));
       }
     } finally {
       setIsLoading(false);
@@ -50,7 +52,7 @@ const CommentCreateForm = ({
     <form onSubmit={createComment} className="comment-create-form">
       <input
         className="comment-content-input"
-        placeholder="Add a comment..."
+        placeholder={t("comments.placeholder")}
         onChange={(event) => {
           setContent(event.target.value);
         }}
@@ -59,7 +61,7 @@ const CommentCreateForm = ({
       />
 
       <button className="submit-btn">
-        {isLoading ? <Loader width={20} height={20} /> : "Comment"}
+        {isLoading ? <Loader width={20} height={20} /> : t("comments.submit")}
       </button>
     </form>
   );

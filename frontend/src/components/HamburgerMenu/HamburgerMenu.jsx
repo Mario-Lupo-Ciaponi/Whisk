@@ -11,10 +11,11 @@ const HamburgerMenu = ({
   setShowMenu,
   logout,
   currentUser,
+  changeLanguage,
 }) => {
   const menuRef = useRef(null);
 
-  const {t} = useTranslation();
+  const {t, i18n} = useTranslation();
 
   const closeMenu = () => setShowMenu(false);
 
@@ -59,6 +60,11 @@ const HamburgerMenu = ({
           <Link className="link" to="/contact">
             {t("navbar.contact")}
           </Link>
+        </li>
+        <li className="item">
+          <button onClick={changeLanguage} className="language-switch-btn">
+            {i18n.resolvedLanguage === "en" ? "English" : "Български"}
+          </button>
         </li>
 
         {isLoggedIn ? (

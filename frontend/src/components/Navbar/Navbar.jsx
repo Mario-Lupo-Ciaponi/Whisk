@@ -137,9 +137,12 @@ const Navbar = ({ navigate, currentUser }) => {
             {t("navbar.login")}
           </Link>
 
-          <button onClick={changeLanguage} className="language-switch-btn">
-            {i18n.resolvedLanguage === "en" ? "English" : "Български"}
-          </button>
+          {!showHamburgerMenu &&
+            <button onClick={changeLanguage} className="language-switch-btn">
+              {i18n.resolvedLanguage === "en" ? "English" : "Български"}
+            </button>
+          }
+
         </div>
       )}
 
@@ -153,6 +156,7 @@ const Navbar = ({ navigate, currentUser }) => {
         setShowMenu={setShowHamburgerMenu}
         logout={logout}
         currentUser={currentUser}
+        changeLanguage={changeLanguage}
       />
     </nav>
   );
