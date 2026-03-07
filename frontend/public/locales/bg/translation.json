@@ -1,0 +1,17 @@
+{
+  "navbar": {
+    "home": "Начало",
+    "searchProfile": "Търсене на профил",
+    "about": "За нас",
+    "contact": "Контакти",
+    "notifications": "Известия",
+    "profile": "Профил",
+    "savedPosts": "Запазени публикации",
+    "logout": "Изход",
+    "createPost": "Създай публикация",
+    "login": "Вход"
+  },
+  "errors": {
+    "somethingWentWrong": "Нещо се обърка!"
+  }
+}

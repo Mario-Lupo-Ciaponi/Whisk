@@ -72,4 +72,10 @@ def send_contact_email(subject, email, message):
         f"You have got a message from {email}\nMessage:\n{subject}\n{message}"
     )
 
-    send_mail(subject, message, EMAIL_HOST_USER, ["mario.lupo.ciaponi08@gmail.com"],fail_silently=True,)
+    send_mail(
+        email_subject,
+        email_message,
+        EMAIL_HOST_USER,
+        ["mario.lupo.ciaponi08@gmail.com"],
+        fail_silently=True
+    )

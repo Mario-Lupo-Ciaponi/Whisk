@@ -1,0 +1,17 @@
+{
+  "navbar": {
+    "home": "Home",
+    "searchProfile": "Search Profile",
+    "about": "About",
+    "contact": "Contact",
+    "notifications": "Notifications",
+    "profile": "Profile",
+    "savedPosts": "Saved Posts",
+    "logout": "Logout",
+    "createPost": "Create Post",
+    "login": "Login"
+  },
+  "errors": {
+    "somethingWentWrong": "Something went wrong!"
+  }
+}

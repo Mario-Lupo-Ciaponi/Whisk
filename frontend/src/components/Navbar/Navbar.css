@@ -28,7 +28,7 @@
 
 .navbar .links {
   display: flex;
-  gap: 2rem;
+  gap: 1.25rem;
   justify-content: center;
 }
 
@@ -44,6 +44,7 @@
   text-decoration: none;
   color: var(--tan-color);
   cursor: pointer;
+  white-space: nowrap;
 }
 
 .navbar .links .item .link.active {
@@ -151,6 +152,13 @@
 .navbar .user-menu .dropdown:hover .menu-list .dropdown-item .dropdown-link,
 .navbar .user-menu .dropdown:hover .menu-list .dropdown-item .logout-btn {
   color: var(--tan-color);
+}
+
+.navbar .user-menu .dropdown:hover .menu-list .dropdown-item .language-switch-btn {
+  background: none;
+  color: var(--tan-color);
+  padding: 0.25rem 0.75rem;
+  border: var(--border-default-values) var(--tan-color);
 }
 
 .navbar .user-menu .create-post-link {

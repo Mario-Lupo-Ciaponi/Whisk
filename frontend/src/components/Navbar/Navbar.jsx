@@ -1,18 +1,20 @@
-import { useState } from "react";
+import {useEffect, useState} from "react";
+import { useTranslation } from "react-i18next";
+import toast from "react-hot-toast";
 import useNotifications from "../../hooks/useNotifications.js";
 import { NavLink, Link } from "react-router";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import toast from "react-hot-toast";
 import HamburgerMenu from "../HamburgerMenu/HamburgerMenu.jsx";
+import Loader from "../Loader.jsx";
 import api from "../../api/api.js";
 import { faBell, faBars } from "@fortawesome/free-solid-svg-icons";
 import LogoImage from "../../assets/logo.png";
 import "./Navbar.css";
-import Loader from "../Loader.jsx";
 
 const Navbar = ({ navigate, currentUser }) => {
   const [showHamburgerMenu, setShowHamburgerMenu] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
+  const {t, i18n} = useTranslation();
   const { notifications, notificationCount } = useNotifications();
 
   const logout = async () => {
@@ -29,11 +31,16 @@ const Navbar = ({ navigate, currentUser }) => {
       navigate("/");
       location.reload();
     } catch {
-      toast.error("Something went wrong!");
+      toast.error(t("errors.somethingWentWrong"));
     } finally {
       setIsLoading(false);
     }
   };
+
+  const changeLanguage = () => {
+    if (i18n.language === "en") i18n.changeLanguage("bg");
+    else i18n.changeLanguage("en");
+  }
 
   const isLoggedIn = localStorage.getItem("access") !== null;
 
@@ -48,22 +55,22 @@ const Navbar = ({ navigate, currentUser }) => {
       <ul className="links">
         <li className="item">
           <NavLink to="/" end className="link">
-            Home
+            {t("navbar.home")}
           </NavLink>
         </li>
         <li className="item">
           <NavLink to="/search-profile" className="link">
-            Search Profile
+            {t("navbar.searchProfile")}
           </NavLink>
         </li>
         <li className="item">
           <NavLink to="/about" className="link">
-            About
+            {t("navbar.about")}
           </NavLink>
         </li>
         <li className="item">
           <NavLink to="/contact" className="link">
-            Contact
+            {t("navbar.contact")}
           </NavLink>
         </li>
       </ul>
@@ -99,7 +106,7 @@ const Navbar = ({ navigate, currentUser }) => {
                   to={`profile/${currentUser?.id}`}
                   className="dropdown-link"
                 >
-                  Profile
+                  {t("navbar.profile")}
                 </Link>
               </li>
               <li className="dropdown-item">
@@ -109,20 +116,25 @@ const Navbar = ({ navigate, currentUser }) => {
               </li>
               <li className="dropdown-item">
                 <button onClick={logout} className="logout-btn">
-                  {isLoading ? <Loader width={15} height={15} /> : "Logout"}
+                  {isLoading ? <Loader width={15} height={15} /> : t("navbar.logout")}
+                </button>
+              </li>
+              <li className="dropdown-item">
+                <button onClick={changeLanguage} className="language-switch-btn">
+                  {i18n.resolvedLanguage === "en" ? "English" : "Български"}
                 </button>
               </li>
             </ul>
           </div>
 
           <Link className="create-post-link" to="create-post/">
-            Create Post
+            {t("navbar.createPost")}
           </Link>
         </div>
       ) : (
         <div className="auth-link-container">
           <Link to="/login" className="login-btn auth-link">
-            Login
+            {t("navbar.login")}
           </Link>
         </div>
       )}
