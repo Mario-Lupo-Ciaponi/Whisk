@@ -32,6 +32,7 @@
     "postSaved": "Post saved successfully!",
     "postUnsaved": "Post unsaved successfully!",
     "notAuthenticated": "You are not authenticated. Please login!",
+    "somethingWentWrong": "Something went wrong. Please try again later!"
   },
   "mapSection": {
     "title": "Pet Location",
@@ -43,6 +44,7 @@
     "selectLocation": "Please select a location!",
     "addLocation": "Add Location",
     "locationAdded": "Added position successfully!",
+    "error": "Something went wrong. Please try again later!"
   },
   "locationCard": {
     "anonymousUser": "Anonymous user",
