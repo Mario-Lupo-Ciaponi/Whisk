@@ -58,6 +58,9 @@
     "placeholder": "Добавете коментар...",
     "submit": "Коментирай"
   },
+  "pagination": {
+    "pageOf": "Страница {{current}} от {{total}}"
+  },
   "errors": {
     "somethingWentWrong": "Нещо се обърка!"
   }

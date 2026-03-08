@@ -1,3 +1,4 @@
+import { useTranslation } from "react-i18next";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faAngleLeft, faAngleRight } from "@fortawesome/free-solid-svg-icons";
 import "./PaginationList.css";
@@ -5,6 +6,7 @@ import "./PaginationList.css";
 const PaginationList = ({ currentPage, setCurrentPage, totalPages }) => {
   const goToPreviousPage = () => setCurrentPage((prev) => prev - 1);
   const goToNextPage = () => setCurrentPage((prev) => prev + 1);
+  const { t } = useTranslation();
 
   return (
     <div className="pagination-list">
@@ -17,7 +19,7 @@ const PaginationList = ({ currentPage, setCurrentPage, totalPages }) => {
       </button>
 
       <span className="current-page">
-        Page {currentPage} of {totalPages}
+        {t("pagination.pageOf", {current: currentPage, total: totalPages})}
       </span>
 
       <button
