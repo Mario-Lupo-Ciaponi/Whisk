@@ -77,5 +77,5 @@ def send_contact_email(subject, email, message):
         email_message,
         EMAIL_HOST_USER,
         ["mario.lupo.ciaponi08@gmail.com"],
-        fail_silently=True
+        fail_silently=True,
     )
