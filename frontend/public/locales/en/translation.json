@@ -58,6 +58,16 @@
     "placeholder": "Add a comment...",
     "submit": "Comment"
   },
+  "moreOptions": {
+    "save": "Save",
+    "share": "Share",
+    "changeStatus": "Change Status",
+    "edit": "Edit",
+    "delete": "Delete",
+    "copied": "Post copied to clipboard!",
+    "statusChanged": "Changed post status to {{status}}",
+    "deleted": "Post deleted successfully!"
+  },
   "pagination": {
     "pageOf": "Page {{current}} of {{total}}"
   },

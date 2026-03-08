@@ -1,4 +1,5 @@
 import { useState, useRef } from "react";
+import { useTranslation } from "react-i18next";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEllipsisVertical } from "@fortawesome/free-solid-svg-icons";
 import toast from "react-hot-toast";
@@ -20,6 +21,7 @@ const MoreOptions = ({
   const [isCopyingLoading, setIsCopyingLoading] = useState(false);
   const [isChangingPostStatus, setIsChangingPostStatus] = useState(false);
   const [isPostDeleting, setIsPostDeleting] = useState(false);
+  const { t } = useTranslation();
 
   const moreOptionsRef = useRef(null);
 
@@ -33,9 +35,9 @@ const MoreOptions = ({
         `${window.location.origin}/post/${post.id}`,
       );
 
-      toast.success("Post copied to clipboard!");
+      toast.success(t("moreOptions.copied"));
     } catch {
-      toast.error("Something went wrong. Please try again later!");
+      toast.error(t("errors.somethingWentWrong"));
     } finally {
       setIsCopyingLoading(false);
     }
@@ -48,9 +50,9 @@ const MoreOptions = ({
       await api.patch(`posts/${post.id}/`, { found: !found });
       setFound(!found);
 
-      toast.success(`Changed post status to ${statusText}`);
+      toast.success(t("moreOptions.statusChanged", {status: statusText}));
     } catch {
-      toast.error("Something went wrong. Please try again later!");
+      toast.error(t("errors.somethingWentWrong"));
     } finally {
       setIsChangingPostStatus(false);
     }
@@ -61,10 +63,10 @@ const MoreOptions = ({
 
     try {
       await api.delete(`posts/${post.id}/`);
-      toast.success("Post deleted successfully!");
+      toast.success(t("moreOptions.deleted"));
       window.location.reload();
     } catch {
-      toast.error("Something went wrong! Please try again later!")
+      toast.error(t("errors.somethingWentWrong"));
     } finally {
       setIsPostDeleting(false);
     }
@@ -85,27 +87,27 @@ const MoreOptions = ({
       <ul ref={moreOptionsRef} className="more-options-menu">
         <li className="option-item">
           <button onClick={savePost} className="option">
-            {isSavingLoading ? <Loader height={20} width={20} /> : "Save"}
+            {isSavingLoading ? <Loader height={20} width={20} /> : t("moreOptions.save")}
           </button>
         </li>
         <li className="option-item">
           <button onClick={copyPostUrl} className="option">
-            {isCopyingLoading ? <Loader height={20} width={20} /> : "Share"}
+            {isCopyingLoading ? <Loader height={20} width={20} /> : t("moreOptions.share")}
           </button>
         </li>
         {post.author.id === currentUser?.id && (
           <>
             <li className="option-item">
               <button onClick={changePostStatus} className="option">
-                {isChangingPostStatus ? <Loader height={20} width={20} /> : "Change Status"}
+                {isChangingPostStatus ? <Loader height={20} width={20} /> : t("moreOptions.changeStatus")}
               </button>
             </li>
             <li onClick={makeEditFormVisible} className="option-item">
-              <button className="option">Edit</button>
+              <button className="option">{t("moreOptions.edit")}</button>
             </li>
             <li onClick={deletePost} className="option-item">
               <button className="option danger">
-                {isPostDeleting ? <Loader height={20} width={20} /> : "Delete"}
+                {isPostDeleting ? <Loader height={20} width={20} /> : t("moreOptions.delete")}
               </button>
             </li>
           </>
