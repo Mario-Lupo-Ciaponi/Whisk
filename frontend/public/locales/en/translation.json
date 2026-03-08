@@ -109,6 +109,18 @@
     "whyTitle": "Why I Built It",
     "whyDescription": "I saw how scattered and inefficient lost pet searches can be across general social media platforms. Important location details often get buried, and coordination becomes difficult. I wanted to create a dedicated space where every post is structured around action — especially location accuracy. This platform is focused, purpose-driven, and continuously improving with its users in mind. My goal is to grow a global network of people who are ready to help when a pet goes missing. By combining technology with community compassion, we can make lost pet searches faster, clearer, and more effective. Every reunion matters."
   },
+  "contact": {
+    "title": "Contact Us",
+    "contactForm" : {
+      "subject": "Subject",
+      "email": "Email address",
+      "message": "Message",
+      "send": "Send",
+      "emailSent": "Email sent successfully!",
+      "invalidData": "Invalid data submitted.",
+      "allFieldsRequired": "All fields are required!"
+    }
+  },
   "errors": {
     "somethingWentWrong": "Something went wrong!"
   }

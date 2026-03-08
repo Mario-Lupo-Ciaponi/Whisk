@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useTranslation } from "react-i18next";
 import Loader from "../../Loader.jsx";
 import toast from "react-hot-toast";
 import api from "../../../api/api.js";
@@ -9,12 +10,18 @@ const ContactForm = ({ currentUser }) => {
   const [email, setEmail] = useState(currentUser?.email);
   const [message, setMessage] = useState("");
   const [isLoading, setIsLoading] = useState(false);
+  const { t } = useTranslation();
 
   const sendEmail = async (event) => {
     event.preventDefault();
     event.stopPropagation();
 
     setIsLoading(true);
+
+    if (!subject || !email || !message) {
+      toast.error(message || t("contact.contactForm.allFieldsRequired"));
+      return;
+    }
 
     try {
       const data = {
@@ -29,7 +36,7 @@ const ContactForm = ({ currentUser }) => {
       setEmail(currentUser?.email);
       setMessage("");
 
-      toast.success("Email sent successfully!");
+      toast.success(t("contact.contactForm.emailSent"));
     } catch (e) {
       const errorData = e.response?.data;
 
@@ -38,9 +45,9 @@ const ContactForm = ({ currentUser }) => {
 
         const message = Array.isArray(errorValue) ? errorValue[0] : errorValue;
 
-        toast.error(message || "Invalid data submitted.");
+        toast.error(message || t("contact.contactForm.invalidData"));
       } else {
-        toast.error("Something went wrong. Please try again later!");
+        toast.error(t("errors.somethingWentWrong"));
       }
     } finally {
       setIsLoading(false);
@@ -52,7 +59,7 @@ const ContactForm = ({ currentUser }) => {
       <div className="two-field-container">
         <input
           value={subject}
-          placeholder="Subject"
+          placeholder={t("contact.contactForm.subject")}
           className="form-field subject"
           type="text"
           onChange={(event) => {
@@ -61,7 +68,7 @@ const ContactForm = ({ currentUser }) => {
         />
         <input
           value={email}
-          placeholder="Email adress"
+          placeholder={t("contact.contactForm.email")}
           className="form-field email"
           type="email"
           onChange={(event) => {
@@ -72,7 +79,7 @@ const ContactForm = ({ currentUser }) => {
 
       <textarea
         value={message}
-        placeholder="Message"
+        placeholder={t("contact.contactForm.message")}
         className="form-field message"
         rows="10"
         onChange={(event) => {
@@ -81,7 +88,7 @@ const ContactForm = ({ currentUser }) => {
       ></textarea>
 
       <button className="send-btn">
-        {isLoading ? <Loader width={20} height={20} /> : "Send"}
+        {isLoading ? <Loader width={20} height={20} /> : t("contact.contactForm.send")}
       </button>
     </form>
   );
