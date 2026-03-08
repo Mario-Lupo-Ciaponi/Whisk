@@ -3,9 +3,6 @@ import "./NotificationCard.css";
 import { useEffect } from "react";
 
 const NotificationCard = ({ notification }) => {
-  useEffect(() => {
-    console.log(notification);
-  }, []);
   return (
     <article className="notification-card">
       <p>
