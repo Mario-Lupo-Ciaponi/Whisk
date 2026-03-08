@@ -37,6 +37,9 @@
     "notAuthenticated": "You are not authenticated. Please login!",
     "somethingWentWrong": "Something went wrong. Please try again later!"
   },
+  "savedPosts": {
+    "title": "Saved posts"
+  },
   "mapSection": {
     "title": "Pet Location",
     "description": "Select a location where you have seen the pet",

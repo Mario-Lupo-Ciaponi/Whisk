@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
-
+import { useTranslation } from "react-i18next";
+import toast from "react-hot-toast";
 import PostSection from "../../components/sections/PostSection/PostSection.jsx";
 import NoResult from "../../components/NoResult/NoResult.jsx";
 import Loader from "../../components/Loader.jsx";
@@ -10,13 +11,16 @@ const SavedPostsPage = ({ currentUser, navigate }) => {
   const [posts, setPosts] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
 
+  const { t } = useTranslation();
+
   useEffect(() => {
     const fetchSavedPosts = async () => {
       try {
         const response = await api.get("posts/saved/");
         setPosts(response.data.results);
-      } catch (e) {
-        console.error(e);
+      } catch  {
+        toast.error(t("errors.somethingWentWrong"));
+        navigate("/");
       } finally {
         setIsLoading(false);
       }
@@ -28,7 +32,7 @@ const SavedPostsPage = ({ currentUser, navigate }) => {
 
   return (
     <>
-      <title>Saved posts</title>
+      <title>{t("savedPosts.title")}</title>
 
       {isLoading ? (
         <div className="loader-container">
@@ -37,7 +41,7 @@ const SavedPostsPage = ({ currentUser, navigate }) => {
       ) : posts.length > 0 ? (
         <>
           <header className="saved-posts-header">
-            <h1 className="saved-posts-title">Saved posts</h1>
+            <h1 className="saved-posts-title">{t("savedPosts.title")}</h1>
           </header>
 
           <PostSection
