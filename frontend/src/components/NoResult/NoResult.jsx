@@ -1,20 +1,22 @@
+import { useTranslation } from "react-i18next";
 import NoResultImage from "../../assets/no-result-image.svg";
-
 import "./NoResult.css";
 
 const NoResult = ({ type }) => {
+  const { t } = useTranslation();
+
   const notFoundTypes = {
     post: {
-      title: "No posts found",
-      description: "It seems we could not find the posts you were looking for!",
+      title: t("noResult.post.title"),
+      description: t("noResult.post.description"),
     },
     user: {
-      title: "No users found",
-      description: "It seems we could not find the users you were looking for!",
+      title: t("noResult.user.title"),
+      description: t("noResult.user.description"),
     },
     notifications: {
-      title: "No notifications",
-      description: "Currently there are no notifications. Try checking later.",
+      title: t("noResult.notifications.title"),
+      description: t("noResult.notifications.description"),
     },
   };
 

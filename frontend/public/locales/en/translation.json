@@ -180,6 +180,20 @@
       "allFieldsRequired": "All fields are required!"
     }
   },
+  "noResult": {
+    "post": {
+      "title": "No posts found",
+      "description": "It seems we could not find the posts you were looking for!"
+    },
+    "user": {
+      "title": "No users found",
+      "description": "It seems we could not find the users you were looking for!"
+    },
+    "notifications": {
+      "title": "No notifications",
+      "description": "Currently there are no notifications. Try checking later."
+    }
+  },
   "errors": {
     "somethingWentWrong": "Something went wrong!"
   }
