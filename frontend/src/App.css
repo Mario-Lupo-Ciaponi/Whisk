@@ -23,6 +23,7 @@
 #root .app-loader .loading-text {
   color: var(--tan-color);
   font-size: 5rem;
+  text-align: center;
 }
 
 #root main {
@@ -30,4 +31,11 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
+}
+
+@media screen and (max-width: 480px) {
+  #root .app-loader .loading-text {
+    color: var(--tan-color);
+    font-size: 2.5rem;
+  }
 }

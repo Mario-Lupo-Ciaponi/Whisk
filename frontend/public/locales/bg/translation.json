@@ -1,4 +1,7 @@
 {
+  "app": {
+    "pageLoading": "Страницата се зарежда"
+  },
   "navbar": {
     "home": "Начало",
     "searchProfile": "Търсене на профил",

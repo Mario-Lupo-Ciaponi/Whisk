@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { useTranslation } from "react-i18next";
 import { Routes, Route, useNavigate } from "react-router";
 import PrivateRoutes from "./utils/PrivateRoutes.jsx";
 import Navbar from "./components/Navbar/Navbar.jsx";
@@ -28,6 +29,8 @@ const App = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [isFilterVisible, setIsFilterVisible] = useState(false);
 
+  const { t } = useTranslation();
+
   useEffect(() => {
     const token = localStorage.getItem("access");
 
@@ -56,8 +59,8 @@ const App = () => {
 
   return isLoading ? (
     <div className="loader-container app-loader">
-      <span className="loading-text">Page is loading... </span>
-      <Loader width={200} height={200} />
+      <span className="loading-text">{t("app.pageLoading")}</span>
+      <Loader width={175} height={175} />
     </div>
   ) : (
     <>

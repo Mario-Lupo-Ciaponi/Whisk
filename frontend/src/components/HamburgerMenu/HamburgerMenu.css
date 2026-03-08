@@ -23,6 +23,9 @@
   align-items: center;
   gap: 1rem;
 }
+.hamburger-menu .hamburger-links .item {
+  text-align: center;
+}
 
 .hamburger-menu .hamburger-links .item .link {
   color: var(--tan-color);

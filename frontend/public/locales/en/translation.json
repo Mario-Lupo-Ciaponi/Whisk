@@ -1,4 +1,7 @@
 {
+  "app": {
+    "pageLoading": "Page is loading... "
+  },
   "navbar": {
     "home": "Home",
     "searchProfile": "Search Profile",
