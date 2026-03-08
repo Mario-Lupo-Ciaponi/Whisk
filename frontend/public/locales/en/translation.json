@@ -93,6 +93,17 @@
       "registrationSuccess": "Registration successful! Please login!"
     }
   },
+  "searchProfile": {
+    "title": "Search Profiles"
+  },
+  "searchBar": {
+    "placeholder": "Search..."
+  },
+  "profileCard": {
+    "petOwner": "Pet Owner",
+    "volunteer": "Volunteer",
+    "shelter": "Shelter"
+  },
   "about": {
     "pageTitle": "About this Project",
 

@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { useTranslation } from "react-i18next";
 import SearchBar from "../../components/forms/SearchBar/SearchBar.jsx";
 import ProfileSection from "../../components/sections/ProfileSection/ProfileSection.jsx";
 import PaginationList from "../../components/PaginationList/PaginationList.jsx";
@@ -13,6 +14,7 @@ const SearchProfilePage = ({ navigate }) => {
   const [totalPages, setTotalPages] = useState(0);
   const [isLoading, setIsLoading] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
+  const { t } = useTranslation();
 
   const itemsPerPage = 9;
 
@@ -48,10 +50,10 @@ const SearchProfilePage = ({ navigate }) => {
 
   return (
     <div className="search-profile-container">
-      <title>Search Profile</title>
+      <title>{t("searchProfile.title")}</title>
 
       <header className="search-profile-header">
-        <h1 className="search-profile-title">Search Profiles</h1>
+        <h1 className="search-profile-title">{t("searchProfile.title")}</h1>
       </header>
 
       <div className="search-bar-container">

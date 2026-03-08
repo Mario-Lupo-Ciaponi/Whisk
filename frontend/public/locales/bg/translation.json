@@ -92,6 +92,17 @@
       "registrationSuccess": "Регистрацията е успешна! Моля влезте в профила си!"
     }
   },
+  "searchProfile": {
+    "title": "Търсене на профили"
+  },
+  "searchBar": {
+    "placeholder": "Търсене..."
+  },
+  "profileCard": {
+    "petOwner": "Стопанин",
+    "volunteer": "Доброволец",
+    "shelter": "Приют"
+  },
   "about": {
     "pageTitle": "За този проект",
 

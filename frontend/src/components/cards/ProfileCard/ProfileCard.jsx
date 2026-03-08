@@ -1,15 +1,18 @@
+import { useTranslation } from "react-i18next";
 import ReactCountryFlag from "react-country-flag";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPaw, faHandshake, faHouse } from "@fortawesome/free-solid-svg-icons";
 import "./ProfileCard.css";
 
 const ProfileCard = ({ user, navigate }) => {
+  const { t } = useTranslation();
+
   const userProfile = user.profile;
 
   const accountTypeIcons = {
-    "pet owner": <FontAwesomeIcon icon={faPaw} />,
-    volunteer: <FontAwesomeIcon icon={faHandshake} />,
-    shelter: <FontAwesomeIcon icon={faHouse} />,
+    "pet owner": <><FontAwesomeIcon icon={faPaw} /> {t("profileCard.petOwner")}</> ,
+    volunteer: <><FontAwesomeIcon icon={faHandshake} /> {t("profileCard.volunteer")}</>,
+    shelter: <><FontAwesomeIcon icon={faHouse} /> {t("profileCard.shelter")}</>,
   };
 
   const redirectToProfile = () => navigate(`profile/${user.id}`);
@@ -33,8 +36,7 @@ const ProfileCard = ({ user, navigate }) => {
         <div className="profile-meta">
           {userProfile.account_type && (
             <p className="profile-type">
-              {accountTypeIcons[userProfile.account_type]}{" "}
-              {userProfile.account_type}
+              {accountTypeIcons[userProfile.account_type]}
             </p>
           )}
 
