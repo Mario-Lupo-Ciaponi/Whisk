@@ -3,9 +3,10 @@ import api from "../api/api.js";
 
 const useNotifications = () => {
   const [notifications, setNotifications] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    const fetchUnreadNotifications = async () => {
+    const fetchUnreadNotifications = async (isInitialLoad=false) => {
       if (!localStorage.getItem("access")) {
         return;
       }
@@ -15,12 +16,16 @@ const useNotifications = () => {
         setNotifications(response.data);
       } catch (e) {
         console.error(e);
+      } finally {
+        if (isInitialLoad) setIsLoading(false);
       }
     };
 
-    fetchUnreadNotifications();
+    fetchUnreadNotifications(true);
 
-    const intervalId = setInterval(fetchUnreadNotifications, 30000);
+    const intervalId = setInterval(() => {
+      fetchUnreadNotifications(false);
+    }, 30000);
 
     return () => clearInterval(intervalId);
   }, []);
@@ -28,6 +33,7 @@ const useNotifications = () => {
   return {
     notifications,
     notificationCount: notifications.length,
+    isLoading,
   };
 };
 

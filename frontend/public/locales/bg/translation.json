@@ -178,6 +178,10 @@
       "allFieldsRequired": "Всички полета са задължителни!"
     }
   },
+  "notificationPage": {
+    "title": "Известия",
+    "heading": "Вашите известия"
+  },
   "noResult": {
     "post": {
       "title": "Не са намерени публикации",

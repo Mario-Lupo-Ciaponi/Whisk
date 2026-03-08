@@ -1,3 +1,9 @@
+.notification-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 .notification-header {
   text-align: center;
   color: var(--tan-color);

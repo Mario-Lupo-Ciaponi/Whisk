@@ -18,3 +18,31 @@
 .empty-state .text-wrapper .empty-title {
   font-size: 2rem;
 }
+
+@media screen and (max-width: 850px) {
+  .empty-state {
+    margin: 3rem 2rem;
+    gap: 2rem;
+  }
+
+  .empty-state .illustration {
+    width: 12rem;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .empty-state {
+    /* Huge margins break mobile layouts; 1rem keeps it centered but breathable */
+    margin: 2rem 1rem;
+    gap: 1.5rem;
+  }
+
+  .empty-state .illustration {
+    width: 10rem;
+  }
+
+  .empty-state .text-wrapper .empty-title {
+    /* Scale down for long Bulgarian titles to prevent 4-line wrapping */
+    font-size: 1.5rem;
+  }
+}

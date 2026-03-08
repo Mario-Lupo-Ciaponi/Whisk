@@ -180,6 +180,10 @@
       "allFieldsRequired": "All fields are required!"
     }
   },
+  "notificationPage": {
+    "title": "Notification",
+    "heading": "Your notifications"
+  },
   "noResult": {
     "post": {
       "title": "No posts found",
