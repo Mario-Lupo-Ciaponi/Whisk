@@ -71,6 +71,32 @@
   "pagination": {
     "pageOf": "Page {{current}} of {{total}}"
   },
+  "createPostPage": {
+    "title": "Create Post",
+    "description": "Share as much detail as possible to help neighbors identify your pet. Mention unique markings, the color of their collar, their temperament (are they shy or friendly?), and exactly where they were last seen. Every detail helps bring them home!",
+    "postForm": {
+      "title": "Title:",
+      "description": "Description:",
+      "city": "City:",
+      "selectCity": "Select",
+      "submit": "Submit",
+      "allFieldsRequired": "All fields are required",
+      "success": "Post created successfully!",
+      "authError": "You are not authenticated. Please Login!",
+      "serverError": "Something went wrong on our end. Please try again later!",
+      "invalidData": "Invalid data submitted."
+    }
+  },
+  "uploadBox": {
+    "dropText": "Drop an image here or click to upload",
+    "browse": "Browse",
+    "remove": "Remove image",
+    "errors": {
+      "fileType": "File must be of type Image.",
+      "aspectRatio": "Image is too long or too wide. Please use a more standard aspect ratio.",
+      "sizeLimit": "Image's size must not exceed 5 MB."
+    }
+  },
   "auth": {
     "pageTitle": "Enter your account",
     "login": "Login",

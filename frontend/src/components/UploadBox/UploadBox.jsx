@@ -1,10 +1,12 @@
 import { useState } from "react";
+import { useTranslation } from "react-i18next";
 import isFileImage from "../../utils/isFileImage.js";
 import areImageDimensionsProportional from "../../utils/areImageDimensionsProportional.js";
 import "./UploadBox.css";
 
 const UploadBox = ({ image, setImage }) => {
   const [errors, setErrors] = useState([]);
+  const { t } = useTranslation();
 
   const isImageSizeNormal = (image) => {
     const imageSizeLimitInMg = 5;
@@ -25,13 +27,13 @@ const UploadBox = ({ image, setImage }) => {
         return true;
     }
 
-    if (!isFileImage(file)) currentErrors.push("File must be of type Image.");
+    if (!isFileImage(file)) currentErrors.push(t("uploadBox.errors.fileType"));
     if (!(await areImageDimensionsProportional(file)))
       currentErrors.push(
-        "Image is too long or too wide. Please use a more standard aspect ratio.",
+        t("uploadBox.errors.aspectRatio"),
       );
     if (!isImageSizeNormal(file))
-      currentErrors.push("Image's size must not exceed 5 MB.");
+      currentErrors.push(t("uploadBox.errors.sizeLimit"));
 
     setErrors(currentErrors);
 
@@ -77,14 +79,14 @@ const UploadBox = ({ image, setImage }) => {
           <>
             <span className="file-name">{image.name}</span>
             <button onClick={removeBtn} className="remove-btn">
-              Remove image
+              {t("uploadBox.remove")}
             </button>
           </>
         ) : (
           <>
-            <h3 className="drop-text">Drop an image here or click to upload</h3>
+            <h3 className="drop-text">{t("uploadBox.dropText")}</h3>
 
-            <div className="browse-btn">Browse</div>
+            <div className="browse-btn">{t("uploadBox.browse")}</div>
           </>
         )}
 

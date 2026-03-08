@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
+import { useTranslation } from "react-i18next";
 import toast, { Toaster } from "react-hot-toast";
-import ErrorList from "../../ErrorList/ErrorList.jsx";
 import UploadBox from "../../UploadBox/UploadBox.jsx";
 import Loader from "../../Loader.jsx";
 import api from "../../../api/api.js";
@@ -13,12 +13,13 @@ const PostCreateForm = ({ currentUser, navigate }) => {
   const [selectedCity, setSelectedCity] = useState("");
   const [image, setImage] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
+  const { t } = useTranslation();
 
   const createPost = async (event) => {
     event.preventDefault();
 
     if (!title || !description || !selectedCity || !image) {
-      toast.error("All fields are required");
+      toast.error(t("createPostPage.postForm.allFieldsRequired"));
       return;
     }
 
@@ -39,7 +40,7 @@ const PostCreateForm = ({ currentUser, navigate }) => {
         },
       });
 
-      toast.success("Post created successfully!");
+      toast.success(t("createPostPage.postForm.success"));
       navigate("/");
     } catch (e) {
       const errorData = e.response?.data;
@@ -49,12 +50,12 @@ const PostCreateForm = ({ currentUser, navigate }) => {
 
         const message = Array.isArray(errorValue) ? errorValue[0] : errorValue;
 
-        toast.error(message || "Invalid data submitted.");
+        toast.error(message || t("createPostPage.postForm.invalidData"));
       } else if (e.response?.status === 401) {
-        toast.error("You are not authenticated. Please Login!");
+        toast.error(t("createPostPage.postForm.authError"));
         navigate("login/");
       } else {
-        toast.error("Something went wrong on our end. Please try again later!");
+        toast.error(t("createPostPage.postForm.serverError"));
       }
     }
 
@@ -83,7 +84,7 @@ const PostCreateForm = ({ currentUser, navigate }) => {
 
       <div className="post-field">
         <label className="post-label" htmlFor="title">
-          Title:
+          {t("createPostPage.postForm.title")}
         </label>
         <input
           id="title"
@@ -97,7 +98,7 @@ const PostCreateForm = ({ currentUser, navigate }) => {
       </div>
       <div className="post-field">
         <label className="post-label" htmlFor="description">
-          Description:
+          {t("createPostPage.postForm.description")}
         </label>
         <textarea
           id="description"
@@ -112,7 +113,7 @@ const PostCreateForm = ({ currentUser, navigate }) => {
       </div>
       <div className="post-field">
         <label className="post-label" htmlFor="city">
-          City:
+          {t("createPostPage.postForm.city")}
         </label>
 
         <select
@@ -124,7 +125,7 @@ const PostCreateForm = ({ currentUser, navigate }) => {
           }}
         >
           <option className="select-option" disabled selected value>
-            Select
+            {t("createPostPage.postForm.selectCity")}
           </option>
           {cities.map((city) => {
             return (
@@ -139,7 +140,7 @@ const PostCreateForm = ({ currentUser, navigate }) => {
       <UploadBox image={image} setImage={setImage} />
 
       <button className="submit-btn">
-        {isLoading ? <Loader height={30} width={30} /> : "Submit"}
+        {isLoading ? <Loader height={30} width={30} /> : t("createPostPage.postForm.submit")}
       </button>
     </form>
   );

@@ -8,6 +8,7 @@
   justify-content: center;
   gap: 1rem;
   color: var(--tan-color);
+  overflow: hidden;
 }
 
 .file-name {
@@ -22,6 +23,10 @@
   cursor: pointer;
   border: none;
   border-radius: 0.31rem;
+}
+
+.drop-text {
+  text-align: center;
 }
 
 .browse-btn {
