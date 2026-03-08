@@ -130,6 +130,22 @@
     "volunteer": "Volunteer",
     "shelter": "Shelter"
   },
+  "profileHero": {
+    "edit": "Edit",
+    "stopEdit": "Stop Edit"
+  },
+  "profileForm": {
+    "bio": "Bio:",
+    "accountType": "Account type:",
+    "city": "City:",
+    "noType": "Do not specify",
+    "edit": "Edit",
+    "noCity": "No city",
+    "petOwner": "Pet owner",
+    "volunteer": "Volunteer",
+    "shelter": "Shelter",
+    "enterBio": "Enter short bio"
+  },
   "about": {
     "pageTitle": "About this Project",
 

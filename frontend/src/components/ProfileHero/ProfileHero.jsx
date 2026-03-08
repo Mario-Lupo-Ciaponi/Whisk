@@ -1,3 +1,4 @@
+import { useTranslation } from "react-i18next";
 import ProfileImageFileUpload from "../ProfileImageFileUpload/ProfileImageFileUpload.jsx";
 import api from "../../api/api.js";
 import "./ProfileHero.css";
@@ -8,6 +9,8 @@ const ProfileHero = ({
   shouldNotEdit,
   setShouldNotEdit,
 }) => {
+  const { t } = useTranslation();
+
   const toggleShouldNotEdit = () => setShouldNotEdit(!shouldNotEdit);
 
   return (
@@ -37,7 +40,7 @@ const ProfileHero = ({
 
       {currentUser?.id === user.id && (
         <button onClick={toggleShouldNotEdit} className="edit-btn">
-          {shouldNotEdit ? "Edit" : "Stop Edit"}
+          {shouldNotEdit ? t("profileHero.edit") : t("profileHero.stopEdit")}
         </button>
       )}
     </section>

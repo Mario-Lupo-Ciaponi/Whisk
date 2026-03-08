@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { useTranslation } from "react-i18next";
 import { Toaster, toast } from "react-hot-toast";
 import api from "../../../api/api.js";
 import "./ProfileForm.css";
@@ -8,6 +9,8 @@ const ProfileForm = ({ user, shouldNotEdit }) => {
   const [accountType, setAccountType] = useState(user.profile?.account_type);
   const [selectedCity, setSelectedCity] = useState(user.profile?.city);
   const [cities, setCities] = useState([]);
+
+  const { t } = useTranslation();
 
   const addCities = async () => {
     const countryId = user.country.id;
@@ -36,7 +39,7 @@ const ProfileForm = ({ user, shouldNotEdit }) => {
 
       location.reload();
     } catch {
-      toast.error("Something went wrong!");
+      toast.error(t("errors.somethingWentWrong"));
     }
   };
 
@@ -51,7 +54,7 @@ const ProfileForm = ({ user, shouldNotEdit }) => {
       <div className="profile-fields">
         <div className="profile-field">
           <label className="profile-label" htmlFor="">
-            Bio:
+            {t("profileForm.bio")}
           </label>
           <input
             name="bio"
@@ -68,7 +71,7 @@ const ProfileForm = ({ user, shouldNotEdit }) => {
 
         <div className="profile-field">
           <label className="profile-label" htmlFor="">
-            Account type:
+            {t("profileForm.accountType")}
           </label>
           <select
             name="account-type"
@@ -79,16 +82,16 @@ const ProfileForm = ({ user, shouldNotEdit }) => {
               setAccountType(event.target.value);
             }}
           >
-            <option value="no type">Do not specify</option>
-            <option value="pet owner">Pet owner</option>
-            <option value="volunteer">Volunteer</option>
-            <option value="shelter">Shelter</option>
+            <option value="no type">{t("profileForm.noType")}</option>
+            <option value="pet owner">{t("profileForm.petOwner")}</option>
+            <option value="volunteer">{t("profileForm.volunteer")}r</option>
+            <option value="shelter">{t("profileForm.shelter")}</option>
           </select>
         </div>
 
         <div className="profile-field">
           <label className="profile-label" htmlFor="">
-            City:
+            {t("profileForm.city")}
           </label>
           <select
             name="city"
@@ -101,7 +104,7 @@ const ProfileForm = ({ user, shouldNotEdit }) => {
             }}
           >
             <option className="select-option" value="">
-              No city
+              {t("profileForm.noCity")}
             </option>
             {cities.map((city) => {
               return (
@@ -115,7 +118,7 @@ const ProfileForm = ({ user, shouldNotEdit }) => {
       </div>
       {!shouldNotEdit && (
         <button type="submit" disabled={shouldNotEdit} className="submit-btn">
-          Edit
+          {t("profileForm.edit")}
         </button>
       )}
     </form>

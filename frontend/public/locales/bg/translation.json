@@ -129,6 +129,21 @@
     "volunteer": "Доброволец",
     "shelter": "Приют"
   },
+  "profileHero": {
+    "edit": "Редактиране",
+    "stopEdit": "Спри редакцията"
+  },
+  "profileForm": {
+    "bio": "Биография:",
+    "accountType": "Тип акаунт:",
+    "city": "Град:",
+    "noType": "Не посочвайте",
+    "edit": "Редактирай",
+    "noCity": "Без град",
+    "petOwner": "Собственик на домашен любимец",
+    "volunteer": "Доброволец",
+    "shelter": "Приют"
+  },
   "about": {
     "pageTitle": "За този проект",
 
