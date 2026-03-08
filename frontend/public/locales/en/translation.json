@@ -71,6 +71,28 @@
   "pagination": {
     "pageOf": "Page {{current}} of {{total}}"
   },
+  "auth": {
+    "pageTitle": "Enter your account",
+    "login": "Login",
+    "register": "Register",
+    "allFieldsRequired": "All fields are required!",
+    "invalidData": "Invalid data submitted.",
+    "loginForm": {
+      "username": "Username",
+      "password": "Password",
+      "login": "Login",
+      "incorrectCredentials": "Incorrect username or password!"
+    },
+    "registerForm": {
+      "username": "Username",
+      "email": "Email",
+      "country": "Country",
+      "selectCountry": "-- select a country --",
+      "password": "Password",
+      "repeatPassword": "Repeat Password",
+      "registrationSuccess": "Registration successful! Please login!"
+    }
+  },
   "errors": {
     "somethingWentWrong": "Something went wrong!"
   }

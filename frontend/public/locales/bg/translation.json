@@ -71,6 +71,27 @@
   "pagination": {
     "pageOf": "Страница {{current}} от {{total}}"
   },
+  "auth": {
+    "pageTitle": "Влезте във вашия акаунт",
+    "login": "Вход",
+    "register": "Регистрация",
+    "allFieldsRequired": "Всички полета са задължителни!",
+    "invalidData": "Невалидни подадени данни.",
+    "loginForm": {
+      "username": "Потребителско име",
+      "password": "Парола",
+      "incorrectCredentials": "Невалидно потребителско име или парола!"
+    },
+    "registerForm": {
+      "username": "Потребителско име",
+      "email": "Имейл",
+      "country": "Държава",
+      "selectCountry": "-- изберете държава --",
+      "password": "Парола",
+      "repeatPassword": "Повторете паролата",
+      "registrationSuccess": "Регистрацията е успешна! Моля влезте в профила си!"
+    }
+  },
   "errors": {
     "somethingWentWrong": "Нещо се обърка!"
   }

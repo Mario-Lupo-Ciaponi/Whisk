@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useTranslation } from "react-i18next";
 import { Toaster } from "react-hot-toast";
 import RegisterForm from "../../components/forms/AuthForm/RegisterForm.jsx";
 import LoginForm from "../../components/forms/AuthForm/LoginForm.jsx";
@@ -8,20 +9,21 @@ const AuthPage = ({ setAuthTokens, navigate }) => {
   const [showLogin, setShowLogin] = useState(true);
   // Lifting the state up to prevent redundancy
   const [showPassword, setShowPassword] = useState(false);
+  const { t } = useTranslation();
 
   const toggleShowLogin = (event) =>
     setShowLogin("login" === event.target.value);
 
   return (
     <div className="auth-wrapper">
-      <title>Enter in your account</title>
+      <title>{t("auth.pageTitle")}</title>
       <Toaster position="bottom-center" />
 
       <article className="auth-card">
         <div className="segmented-control">
           <div className={`toggle-option ${showLogin ? "active" : ""}`}>
             <label htmlFor="login" className="control-label">
-              Login
+              {t("auth.login")}
             </label>
             <input
               type="radio"
@@ -35,7 +37,7 @@ const AuthPage = ({ setAuthTokens, navigate }) => {
           </div>
           <div className={`toggle-option ${showLogin ? "" : "active"}`}>
             <label htmlFor="register" className="control-label">
-              Register
+              {t("auth.register")}
             </label>
             <input
               type="radio"
@@ -50,7 +52,7 @@ const AuthPage = ({ setAuthTokens, navigate }) => {
         </div>
 
         <header className="auth-header">
-          <h2 className="auth-title">{showLogin ? "Login" : "Register"}</h2>
+          <h2 className="auth-title">{showLogin ? t("auth.login") : t("auth.register")}</h2>
         </header>
 
         {showLogin ? (

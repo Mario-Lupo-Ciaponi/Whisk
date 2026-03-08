@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { useTranslation } from "react-i18next";
 import toast from "react-hot-toast";
 import PasswordToggle from "../../PasswordToggle/PasswordToggle.jsx";
 import Loader from "../../Loader.jsx";
@@ -14,6 +15,7 @@ const RegisterForm = ({ setShowLogin, showPassword, setShowPassword }) => {
   const [secondPassword, setSecondPassword] = useState("");
   const [allCountries, setAllCountries] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
+  const { t } = useTranslation();
 
   const fetchAllCountries = async () => {
     setIsLoading(true);
@@ -22,7 +24,8 @@ const RegisterForm = ({ setShowLogin, showPassword, setShowPassword }) => {
       const response = await api.get("countries/");
       setAllCountries(response.data);
     } catch (e) {
-      console.error(e);
+      setShowLogin(true);
+      toast.error(t("errors.somethingWentWrong"));
     } finally {
       setIsLoading(false);
     }
@@ -38,7 +41,7 @@ const RegisterForm = ({ setShowLogin, showPassword, setShowPassword }) => {
       !firstPassword ||
       !secondPassword
     ) {
-      toast.error("All fields are required!");
+      toast.error(t("auth.allFieldsRequired"));
       return;
     }
 
@@ -56,7 +59,7 @@ const RegisterForm = ({ setShowLogin, showPassword, setShowPassword }) => {
       await api.post("accounts/register/", payload);
 
       setShowLogin(true);
-      toast.success("Registration successful! Please login!");
+      toast.success(t("auth.registerForm.registrationSuccess"));
     } catch (e) {
       const errorData = e.response?.data;
 
@@ -65,9 +68,9 @@ const RegisterForm = ({ setShowLogin, showPassword, setShowPassword }) => {
 
         const message = Array.isArray(errorValue) ? errorValue[0] : errorValue;
 
-        toast.error(message || "Invalid data submitted.");
+        toast.error(message || t("auth.invalidData"));
       } else {
-        toast.error("Something went wrong. Please try again later!");
+        toast.error(t("errors.somethingWentWrong"));
       }
     }
 
@@ -91,7 +94,7 @@ const RegisterForm = ({ setShowLogin, showPassword, setShowPassword }) => {
         <>
           <div className="auth-field">
             <label htmlFor="username" className="auth-label">
-              Username:
+              {t("auth.registerForm.username")}
             </label>
             <input
               id="username"
@@ -108,7 +111,7 @@ const RegisterForm = ({ setShowLogin, showPassword, setShowPassword }) => {
 
           <div className="auth-field">
             <label htmlFor="email" className="auth-label">
-              Email:
+              {t("auth.registerForm.email")}
             </label>
             <input
               id="email"
@@ -125,7 +128,7 @@ const RegisterForm = ({ setShowLogin, showPassword, setShowPassword }) => {
 
           <div className="auth-field">
             <label htmlFor="country" className="auth-label">
-              Country:
+              {t("auth.registerForm.country")}
             </label>
             <select
               id="country"
@@ -136,7 +139,7 @@ const RegisterForm = ({ setShowLogin, showPassword, setShowPassword }) => {
               required
             >
               <option disabled value selected>
-                -- select a country --
+                {t("auth.registerForm.selectCountry")}
               </option>
               {allCountries.map((country) => (
                 <option key={country.id} value={country.id}>
@@ -148,7 +151,7 @@ const RegisterForm = ({ setShowLogin, showPassword, setShowPassword }) => {
 
           <div className="auth-field">
             <label htmlFor="password1" className="auth-label">
-              Password
+              {t("auth.registerForm.password")}
             </label>
 
             <div className="input-container">
@@ -174,7 +177,7 @@ const RegisterForm = ({ setShowLogin, showPassword, setShowPassword }) => {
 
           <div className="auth-field">
             <label htmlFor="password2" className="auth-label">
-              Repeat Password:
+              {t("auth.registerForm.repeatPassword")}
             </label>
 
             <div className="input-container">
@@ -199,7 +202,7 @@ const RegisterForm = ({ setShowLogin, showPassword, setShowPassword }) => {
           </div>
 
           <button type="submit" className="submit-btn">
-            {isLoading ? <Loader height={30} width={30} /> : "Register"}
+            {isLoading ? <Loader height={30} width={30} /> : t("auth.register")}
           </button>
         </>
       )}

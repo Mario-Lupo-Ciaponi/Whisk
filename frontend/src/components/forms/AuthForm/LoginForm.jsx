@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useTranslation } from "react-i18next";
 import toast from "react-hot-toast";
 import PasswordToggle from "../../PasswordToggle/PasswordToggle.jsx";
 import Loader from "../../Loader.jsx";
@@ -14,6 +15,7 @@ const LoginForm = ({
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [isLoading, setIsLoading] = useState(false);
+  const { t } = useTranslation();
 
   const handleLogin = async (event) => {
     event.preventDefault();
@@ -21,7 +23,7 @@ const LoginForm = ({
     const formData = new FormData();
 
     if (!username || !password) {
-      toast.error("All fields are required!");
+      toast.error(t("auth.allFieldsRequired"));
       return;
     }
 
@@ -51,11 +53,11 @@ const LoginForm = ({
 
         const message = Array.isArray(errorValue) ? errorValue[0] : errorValue;
 
-        toast.error(message || "Invalid data submitted.");
+        toast.error(message || t("auth.invalidData"));
       } else if (e.response?.status === 401) {
-        toast.error("Incorrect username or password!");
+        toast.error(t("auth.loginForm.incorrectCredentials"));
       } else {
-        toast.error("Something went wrong. Please try again later!");
+        toast.error(t("errors.somethingWentWrong"));
       }
     }
 
@@ -66,7 +68,7 @@ const LoginForm = ({
     <form onSubmit={handleLogin} className="login-form auth-form">
       <div className="auth-field">
         <label htmlFor="username" className="auth-label">
-          Username
+          {t("auth.loginForm.username")}
         </label>
         <input
           id="username"
@@ -83,7 +85,7 @@ const LoginForm = ({
 
       <div className="auth-field">
         <label htmlFor="password" className="auth-label">
-          Password
+          {t("auth.loginForm.password")}
         </label>
 
         <div className="input-container">
@@ -108,7 +110,7 @@ const LoginForm = ({
       </div>
 
       <button type="submit" className="submit-btn">
-        {isLoading ? <Loader height={30} width={30} /> : "Login"}
+        {isLoading ? <Loader height={30} width={30} /> : t("auth.login")}
       </button>
     </form>
   );
