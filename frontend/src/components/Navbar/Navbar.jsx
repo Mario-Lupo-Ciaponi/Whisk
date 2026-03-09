@@ -40,7 +40,6 @@ const Navbar = ({ navigate, currentUser }) => {
   const changeLanguage = () => {
     if (i18n.language === "en") i18n.changeLanguage("bg");
     else i18n.changeLanguage("en");
-    location.reload();
   };
 
   const isLoggedIn = localStorage.getItem("access") !== null;
