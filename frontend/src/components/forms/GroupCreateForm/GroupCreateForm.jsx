@@ -1,5 +1,4 @@
 import { useState } from "react";
-import ErrorList from "../../ErrorList/ErrorList.jsx";
 import api from "../../../api/api.js";
 import "./GroupCreateForm.css";
 

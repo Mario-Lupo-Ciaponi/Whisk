@@ -12,7 +12,6 @@ import MoreOptions from "../../MoreOptions/MoreOptions.jsx";
 import MapSection from "../../sections/MapSection/MapSection.jsx";
 import CommentArea from "../../CommentArea/CommentArea.jsx";
 import PostEditForm from "../../forms/PostEditForm/PostEditForm.jsx";
-import NotificationMessage from "../../NotificationMessage/NotificationMessage.jsx";
 import DarkOpacityFilter from "../../DarkOpacityFilter/DarkOpacityFilter.jsx";
 import api from "../../../api/api.js";
 import "./PostCard.css";
