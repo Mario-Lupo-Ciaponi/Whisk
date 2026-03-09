@@ -92,7 +92,7 @@ const PostCard = ({ post, currentUser, navigate, setIsFilterVisible }) => {
               {post.author.username}
             </Link>
           </p>
-          <span className="city">({post.translated_city})</span>
+          <span className="city">({post.city.name})</span>
           <span className={`status ${found ? "found" : "not-found"}`}>
             {statusText}
           </span>

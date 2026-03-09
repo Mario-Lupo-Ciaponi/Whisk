@@ -24,7 +24,6 @@ const HomePage = ({ currentUser, navigate, setIsFilterVisible }) => {
       const response = await api.get("posts/", {
         params: {
           [query]: currentUser.profile[query],
-          lang: i18n.language,
         },
       });
 
