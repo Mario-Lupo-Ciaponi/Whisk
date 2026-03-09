@@ -50,7 +50,7 @@ const MoreOptions = ({
       await api.patch(`posts/${post.id}/`, { found: !found });
       setFound(!found);
 
-      toast.success(t("moreOptions.statusChanged", {status: statusText}));
+      toast.success(t("moreOptions.statusChanged", { status: statusText }));
     } catch {
       toast.error(t("errors.somethingWentWrong"));
     } finally {
@@ -87,19 +87,31 @@ const MoreOptions = ({
       <ul ref={moreOptionsRef} className="more-options-menu">
         <li className="option-item">
           <button onClick={savePost} className="option">
-            {isSavingLoading ? <Loader height={20} width={20} /> : t("moreOptions.save")}
+            {isSavingLoading ? (
+              <Loader height={20} width={20} />
+            ) : (
+              t("moreOptions.save")
+            )}
           </button>
         </li>
         <li className="option-item">
           <button onClick={copyPostUrl} className="option">
-            {isCopyingLoading ? <Loader height={20} width={20} /> : t("moreOptions.share")}
+            {isCopyingLoading ? (
+              <Loader height={20} width={20} />
+            ) : (
+              t("moreOptions.share")
+            )}
           </button>
         </li>
         {post.author.id === currentUser?.id && (
           <>
             <li className="option-item">
               <button onClick={changePostStatus} className="option">
-                {isChangingPostStatus ? <Loader height={20} width={20} /> : t("moreOptions.changeStatus")}
+                {isChangingPostStatus ? (
+                  <Loader height={20} width={20} />
+                ) : (
+                  t("moreOptions.changeStatus")
+                )}
               </button>
             </li>
             <li onClick={makeEditFormVisible} className="option-item">
@@ -107,7 +119,11 @@ const MoreOptions = ({
             </li>
             <li onClick={deletePost} className="option-item">
               <button className="option danger">
-                {isPostDeleting ? <Loader height={20} width={20} /> : t("moreOptions.delete")}
+                {isPostDeleting ? (
+                  <Loader height={20} width={20} />
+                ) : (
+                  t("moreOptions.delete")
+                )}
               </button>
             </li>
           </>

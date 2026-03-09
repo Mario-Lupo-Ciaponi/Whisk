@@ -40,9 +40,7 @@ const Footer = () => {
         </ul>
       </div>
 
-      <p className="rights-reserved">
-        {t("footer.rightsReserved")}
-      </p>
+      <p className="rights-reserved">{t("footer.rightsReserved")}</p>
     </footer>
   );
 };

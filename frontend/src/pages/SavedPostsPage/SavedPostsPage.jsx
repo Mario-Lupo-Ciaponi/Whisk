@@ -18,7 +18,7 @@ const SavedPostsPage = ({ currentUser, navigate }) => {
       try {
         const response = await api.get("posts/saved/");
         setPosts(response.data.results);
-      } catch  {
+      } catch {
         toast.error(t("errors.somethingWentWrong"));
         navigate("/");
       } finally {

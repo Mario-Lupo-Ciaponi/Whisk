@@ -168,7 +168,7 @@
   },
   "contact": {
     "title": "Свържете се с нас",
-    "contactForm" : {
+    "contactForm": {
       "subject": "Тема",
       "email": "Имейл адрес",
       "message": "Съобщение",

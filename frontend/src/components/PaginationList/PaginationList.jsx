@@ -19,7 +19,7 @@ const PaginationList = ({ currentPage, setCurrentPage, totalPages }) => {
       </button>
 
       <span className="current-page">
-        {t("pagination.pageOf", {current: currentPage, total: totalPages})}
+        {t("pagination.pageOf", { current: currentPage, total: totalPages })}
       </span>
 
       <button

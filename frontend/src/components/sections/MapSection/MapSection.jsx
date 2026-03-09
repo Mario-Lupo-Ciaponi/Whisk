@@ -32,9 +32,7 @@ const MapSection = ({
           {!(currentUser?.id === post.author.id) && (
             <>
               <header className="section-header">
-                <h3 className="section-title">
-                   {t("mapSection.title")}
-                </h3>
+                <h3 className="section-title">{t("mapSection.title")}</h3>
                 <p className="section-description">
                   {t("mapSection.description")}
                 </p>
@@ -52,7 +50,9 @@ const MapSection = ({
 
       <div className="locations-wrapper">
         <button className="show-locations-btn" onClick={toggleLocationSection}>
-          {showLocationSection ? t("mapSection.hideLocations") : t("mapSection.showLocations")}
+          {showLocationSection
+            ? t("mapSection.hideLocations")
+            : t("mapSection.showLocations")}
           <FontAwesomeIcon
             icon={showLocationSection ? faCaretUp : faCaretDown}
           />

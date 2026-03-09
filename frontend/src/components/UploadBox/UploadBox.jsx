@@ -29,9 +29,7 @@ const UploadBox = ({ image, setImage }) => {
 
     if (!isFileImage(file)) currentErrors.push(t("uploadBox.errors.fileType"));
     if (!(await areImageDimensionsProportional(file)))
-      currentErrors.push(
-        t("uploadBox.errors.aspectRatio"),
-      );
+      currentErrors.push(t("uploadBox.errors.aspectRatio"));
     if (!isImageSizeNormal(file))
       currentErrors.push(t("uploadBox.errors.sizeLimit"));
 

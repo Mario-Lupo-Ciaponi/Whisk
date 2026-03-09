@@ -10,9 +10,21 @@ const ProfileCard = ({ user, navigate }) => {
   const userProfile = user.profile;
 
   const accountTypeIcons = {
-    "pet owner": <><FontAwesomeIcon icon={faPaw} /> {t("profileCard.petOwner")}</> ,
-    volunteer: <><FontAwesomeIcon icon={faHandshake} /> {t("profileCard.volunteer")}</>,
-    shelter: <><FontAwesomeIcon icon={faHouse} /> {t("profileCard.shelter")}</>,
+    "pet owner": (
+      <>
+        <FontAwesomeIcon icon={faPaw} /> {t("profileCard.petOwner")}
+      </>
+    ),
+    volunteer: (
+      <>
+        <FontAwesomeIcon icon={faHandshake} /> {t("profileCard.volunteer")}
+      </>
+    ),
+    shelter: (
+      <>
+        <FontAwesomeIcon icon={faHouse} /> {t("profileCard.shelter")}
+      </>
+    ),
   };
 
   const redirectToProfile = () => navigate(`profile/${user.id}`);

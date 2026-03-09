@@ -36,9 +36,7 @@ const CommentCreateForm = ({
       toast.success(t("comments.commentSuccess"));
     } catch (e) {
       if (e.response?.status === 401) {
-        toast.error(
-          t("comments.loginRequired")
-        );
+        toast.error(t("comments.loginRequired"));
         navigate("/login");
       } else {
         toast.error(t("errors.somethingWentWrong"));

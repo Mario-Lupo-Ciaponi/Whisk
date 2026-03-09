@@ -1,4 +1,4 @@
-import {useEffect, useState} from "react";
+import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import toast from "react-hot-toast";
 import useNotifications from "../../hooks/useNotifications.js";
@@ -14,7 +14,7 @@ import "./Navbar.css";
 const Navbar = ({ navigate, currentUser }) => {
   const [showHamburgerMenu, setShowHamburgerMenu] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
-  const {t, i18n} = useTranslation();
+  const { t, i18n } = useTranslation();
   const { notifications, notificationCount } = useNotifications();
 
   const logout = async () => {
@@ -40,7 +40,8 @@ const Navbar = ({ navigate, currentUser }) => {
   const changeLanguage = () => {
     if (i18n.language === "en") i18n.changeLanguage("bg");
     else i18n.changeLanguage("en");
-  }
+    location.reload();
+  };
 
   const isLoggedIn = localStorage.getItem("access") !== null;
 
@@ -116,11 +117,18 @@ const Navbar = ({ navigate, currentUser }) => {
               </li>
               <li className="dropdown-item">
                 <button onClick={logout} className="logout-btn">
-                  {isLoading ? <Loader width={15} height={15} /> : t("navbar.logout")}
+                  {isLoading ? (
+                    <Loader width={15} height={15} />
+                  ) : (
+                    t("navbar.logout")
+                  )}
                 </button>
               </li>
               <li className="dropdown-item">
-                <button onClick={changeLanguage} className="language-switch-btn">
+                <button
+                  onClick={changeLanguage}
+                  className="language-switch-btn"
+                >
                   {i18n.resolvedLanguage === "en" ? "English" : "Български"}
                 </button>
               </li>
@@ -137,12 +145,11 @@ const Navbar = ({ navigate, currentUser }) => {
             {t("navbar.login")}
           </Link>
 
-          {!showHamburgerMenu &&
+          {!showHamburgerMenu && (
             <button onClick={changeLanguage} className="language-switch-btn">
               {i18n.resolvedLanguage === "en" ? "English" : "Български"}
             </button>
-          }
-
+          )}
         </div>
       )}
 

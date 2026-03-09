@@ -1,5 +1,7 @@
 from rest_framework import serializers
 from django.db import transaction
+from translate import Translator
+
 from .models import Post, PetLocation, Comment
 from .validators import ProfanityCheckValidator
 
@@ -81,6 +83,7 @@ class PostModelSerializer(serializers.ModelSerializer):
         queryset=City.objects.all(),
         write_only=True,
     )
+    translated_city = serializers.SerializerMethodField()
     locations = PetLocationModelSerializer(
         read_only=True,
         many=True,
@@ -101,6 +104,7 @@ class PostModelSerializer(serializers.ModelSerializer):
             "description",
             "city",
             "city_id",
+            "translated_city",
             "found",
             "posted_on",
             "author",
@@ -111,6 +115,20 @@ class PostModelSerializer(serializers.ModelSerializer):
             "comments_count",
             "save_count",
         ]
+
+    def get_translated_city(self, obj):
+        request = self.context.get("request")
+
+        lang = request.query_params.get("lang", "en")
+
+        if lang != "en":
+            try:
+                translator = Translator(to_lang=lang)
+                return translator.translate(obj.city.name)
+            except (ValueError, KeyError, TypeError, AttributeError):
+                ...
+
+        return obj.city.name
 
     def get_locations_count(self, obj):
         return obj.locations.count()

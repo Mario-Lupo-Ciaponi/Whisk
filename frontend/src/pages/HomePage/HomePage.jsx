@@ -13,7 +13,7 @@ const HomePage = ({ currentUser, navigate, setIsFilterVisible }) => {
   const [currentPage, setCurrentPage] = useState(1);
   const [totalPages, setTotalPages] = useState(0);
   const [isLoading, setIsLoading] = useState(false);
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
 
   const itemsPerPage = 6;
 
@@ -24,6 +24,7 @@ const HomePage = ({ currentUser, navigate, setIsFilterVisible }) => {
       const response = await api.get("posts/", {
         params: {
           [query]: currentUser.profile[query],
+          lang: i18n.language,
         },
       });
 
@@ -43,6 +44,7 @@ const HomePage = ({ currentUser, navigate, setIsFilterVisible }) => {
         const response = await api.get("posts/", {
           params: {
             page: currentPage,
+            lang: i18n.language,
           },
         });
 

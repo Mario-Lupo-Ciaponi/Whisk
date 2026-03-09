@@ -16,9 +16,7 @@ const AboutPage = () => {
           <div className="text-wrapper">
             <h2 className="title">{t("about.platformTitle")}</h2>
 
-            <p className="description">
-              {t("about.platformDescription")}
-            </p>
+            <p className="description">{t("about.platformDescription")}</p>
           </div>
           <div className="image-container">
             <img className="card-image" src={MapImage} alt="map image" />
@@ -32,15 +30,9 @@ const AboutPage = () => {
             <p className="description">
               {t("about.whoIntro")}
               <ul className="about-list">
-                <li className="item">
-                  {t("about.who1")}
-                </li>
-                <li className="item">
-                  {t("about.who2")}
-                </li>
-                <li className="item">
-                  {t("about.who3")}
-                </li>
+                <li className="item">{t("about.who1")}</li>
+                <li className="item">{t("about.who2")}</li>
+                <li className="item">{t("about.who3")}</li>
               </ul>
               {t("about.whoEnding")}
             </p>
@@ -54,9 +46,7 @@ const AboutPage = () => {
           <div className="text-wrapper">
             <h2 className="title">{t("about.whyTitle")}</h2>
 
-            <p className="description">
-              {t("about.whyDescription")}
-            </p>
+            <p className="description">{t("about.whyDescription")}</p>
           </div>
           <div className="image-container">
             <img className="card-image" src={HuggingPet} alt="map image" />

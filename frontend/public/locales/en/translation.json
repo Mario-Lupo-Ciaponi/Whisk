@@ -170,7 +170,7 @@
   },
   "contact": {
     "title": "Contact Us",
-    "contactForm" : {
+    "contactForm": {
       "subject": "Subject",
       "email": "Email address",
       "message": "Message",

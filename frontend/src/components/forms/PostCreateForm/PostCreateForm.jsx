@@ -140,7 +140,11 @@ const PostCreateForm = ({ currentUser, navigate }) => {
       <UploadBox image={image} setImage={setImage} />
 
       <button className="submit-btn">
-        {isLoading ? <Loader height={30} width={30} /> : t("createPostPage.postForm.submit")}
+        {isLoading ? (
+          <Loader height={30} width={30} />
+        ) : (
+          t("createPostPage.postForm.submit")
+        )}
       </button>
     </form>
   );

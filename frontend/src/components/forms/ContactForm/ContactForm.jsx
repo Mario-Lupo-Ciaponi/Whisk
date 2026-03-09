@@ -88,7 +88,11 @@ const ContactForm = ({ currentUser }) => {
       ></textarea>
 
       <button className="send-btn">
-        {isLoading ? <Loader width={20} height={20} /> : t("contact.contactForm.send")}
+        {isLoading ? (
+          <Loader width={20} height={20} />
+        ) : (
+          t("contact.contactForm.send")
+        )}
       </button>
     </form>
   );

@@ -3,7 +3,7 @@ import { Link } from "react-router";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faX } from "@fortawesome/free-solid-svg-icons";
 import "./HamburgerMenu.css";
-import {useTranslation} from "react-i18next";
+import { useTranslation } from "react-i18next";
 
 const HamburgerMenu = ({
   isLoggedIn,
@@ -15,7 +15,7 @@ const HamburgerMenu = ({
 }) => {
   const menuRef = useRef(null);
 
-  const {t, i18n} = useTranslation();
+  const { t, i18n } = useTranslation();
 
   const closeMenu = () => setShowMenu(false);
 

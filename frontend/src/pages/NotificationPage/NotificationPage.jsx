@@ -7,7 +7,7 @@ import "./NotificationPage.css";
 
 const NotificationPage = () => {
   const { t } = useTranslation();
-  const { notifications , isLoading} = useNotifications();
+  const { notifications, isLoading } = useNotifications();
 
   return (
     <div className="notification-page">
@@ -16,19 +16,15 @@ const NotificationPage = () => {
       <header className="notification-header">
         <h1 className="notification-title">{t("notificationPage.heading")}</h1>
       </header>
-      {
-        isLoading ?
-          <div className="loader-container">
-            <Loader height={150} width={150} />
-          </div>
-           :
-          notifications.length > 0 ? (
-            <NotificationSection notifications={notifications} />
-          ) : (
-            <NoResult type="notifications" />
-          )
-      }
-
+      {isLoading ? (
+        <div className="loader-container">
+          <Loader height={150} width={150} />
+        </div>
+      ) : notifications.length > 0 ? (
+        <NotificationSection notifications={notifications} />
+      ) : (
+        <NoResult type="notifications" />
+      )}
     </div>
   );
 };

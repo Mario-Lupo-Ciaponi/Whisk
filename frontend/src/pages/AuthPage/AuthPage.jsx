@@ -52,7 +52,9 @@ const AuthPage = ({ setAuthTokens, navigate }) => {
         </div>
 
         <header className="auth-header">
-          <h2 className="auth-title">{showLogin ? t("auth.login") : t("auth.register")}</h2>
+          <h2 className="auth-title">
+            {showLogin ? t("auth.login") : t("auth.register")}
+          </h2>
         </header>
 
         {showLogin ? (

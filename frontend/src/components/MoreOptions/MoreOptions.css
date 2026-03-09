@@ -50,14 +50,12 @@
   justify-content: center;
 }
 
-
 @media screen and (max-width: 480px) {
   .more-options-container .more-options-menu {
     left: auto;
     right: 0;
     transform: none;
     width: 8rem;
-    align-self: unset ;
+    align-self: unset;
   }
 }
-

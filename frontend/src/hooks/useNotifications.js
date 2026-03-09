@@ -6,7 +6,7 @@ const useNotifications = () => {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    const fetchUnreadNotifications = async (isInitialLoad=false) => {
+    const fetchUnreadNotifications = async (isInitialLoad = false) => {
       if (!localStorage.getItem("access")) {
         return;
       }
