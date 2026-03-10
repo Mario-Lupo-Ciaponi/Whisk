@@ -101,7 +101,7 @@ const LocationPicker = ({
           setSelectedPosition={setSelectedPosition}
         />
 
-        <MapEvents onClick={setSelectedPosition}/>
+        <MapEvents onClick={setSelectedPosition} />
         <RecalculateView trigger={activeSection} />
 
         {selectedPosition && <Marker position={selectedPosition} />}
