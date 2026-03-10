@@ -50,6 +50,7 @@
     "selectLocation": "Please select a location!",
     "addLocation": "Add Location",
     "locationAdded": "Added position successfully!",
+    "tooManyRequests": "You are adding locations too quickly. Please wait before adding another one.",
     "error": "Something went wrong. Please try again later!"
   },
   "locationCard": {

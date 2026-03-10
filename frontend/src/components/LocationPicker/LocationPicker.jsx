@@ -80,7 +80,8 @@ const LocationPicker = ({
       setSelectedPosition(null);
       toast.success(t("locationPicker.locationAdded"));
     } catch (e) {
-      toast.error(t("error"));
+      if (e.response?.status === 429) toast.error(t("locationPicker.tooManyRequests"));
+      else toast.error(t("locationPicker.error"));
     }
   };
 
