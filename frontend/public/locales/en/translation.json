@@ -131,6 +131,9 @@
   "searchBar": {
     "placeholder": "Search..."
   },
+  "mapSearchField": {
+    "searchLabel": "Enter address"
+  },
   "profileCard": {
     "petOwner": "Pet Owner",
     "volunteer": "Volunteer",

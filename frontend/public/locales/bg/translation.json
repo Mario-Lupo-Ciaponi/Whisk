@@ -130,6 +130,9 @@
   "searchBar": {
     "placeholder": "Търсене..."
   },
+  "mapSearchField": {
+    "searchLabel": "Въведете адрес"
+  },
   "profileCard": {
     "petOwner": "Стопанин",
     "volunteer": "Доброволец",

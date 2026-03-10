@@ -8,6 +8,7 @@ import {
   useMapEvents,
   useMap,
 } from "react-leaflet";
+import MapSearchField from "../MapSearchField/MapSearchField.jsx";
 import api from "../../api/api.js";
 import "leaflet/dist/leaflet.css";
 import "./LocationPicker.css";
@@ -45,6 +46,9 @@ const LocationPicker = ({
 }) => {
   const [selectedPosition, setSelectedPosition] = useState(null);
   const { t } = useTranslation();
+
+  const openMapsApiKey = import.meta.env.VITE_MAPTILER_API_KEY;
+  const locationIQApiKey = import.meta.env.VITE_LOCATION_IQ_API_KEY;
 
   const latitude = Number(post.city.latitude);
   const longitude = Number(post.city.longitude);
@@ -89,10 +93,15 @@ const LocationPicker = ({
       >
         <TileLayer
           attribution='<a href="https://www.maptiler.com/copyright/" target="_blank">&copy; MapTiler</a> <a href="https://www.openstreetmap.org/copyright" target="_blank">&copy; OpenStreetMap contributors</a>'
-          url="https://api.maptiler.com/maps/base-v4/{z}/{x}/{y}.png?key=sEQcJLkXBPo4v8VsuE7h"
+          url={`https://api.maptiler.com/maps/base-v4/{z}/{x}/{y}.png?key=${openMapsApiKey}`}
         />
 
-        <MapEvents onClick={setSelectedPosition} />
+        <MapSearchField
+          apiKey={locationIQApiKey}
+          setSelectedPosition={setSelectedPosition}
+        />
+
+        <MapEvents onClick={setSelectedPosition}/>
         <RecalculateView trigger={activeSection} />
 
         {selectedPosition && <Marker position={selectedPosition} />}
