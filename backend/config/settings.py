@@ -112,6 +112,10 @@ REST_FRAMEWORK = {
     "DEFAULT_RENDERER_CLASSES": [
         "rest_framework.renderers.JSONRenderer",
     ],
+    "DEFAULT_THROTTLE_RATES": {
+        'location_create': '10/min',
+        'location_create_anon': '5/day'
+    }
 }
 
 # JWT settings

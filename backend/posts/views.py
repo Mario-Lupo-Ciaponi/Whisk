@@ -22,10 +22,11 @@ from .serializers import (
     PetLocationModelSerializer,
     CommentSerializer,
 )
-from common.permissions import IsOwnerOrSuperUser
 from .filters import PostFilter
 from .mixins import PostAPIViewMixin
 from .pagination import PostResultsSetPagination
+from .throttles import LocationCreateThrottle, LocationCreateAnonThrottle
+from common.permissions import IsOwnerOrSuperUser
 
 # TODO: add mixins for repeated code
 
@@ -102,6 +103,15 @@ class PetLocationListCreateAPIView(ListCreateAPIView):
     permission_classes = [
         AllowAny,
     ]  # TODO: add proper permission classes!
+
+    def get_throttles(self):
+        if self.request.method == "POST":
+            return [
+                LocationCreateThrottle(),
+                LocationCreateAnonThrottle(),
+            ]
+
+        return []
 
     def perform_create(self, serializer):
         """
