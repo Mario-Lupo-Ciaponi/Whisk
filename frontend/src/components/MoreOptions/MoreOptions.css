@@ -1,5 +1,6 @@
 .more-options-container {
   position: relative;
+  z-index: 100;
 }
 
 .more-options-container .show-more {

@@ -1,4 +1,4 @@
-import { useState, useRef } from "react";
+import {useState, useRef, useEffect} from "react";
 import { useTranslation } from "react-i18next";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEllipsisVertical } from "@fortawesome/free-solid-svg-icons";
@@ -58,6 +58,10 @@ const MoreOptions = ({
     }
   };
 
+  // useEffect(() => {
+  //   console.log(currentUser)
+  // }, []);
+
   const deletePost = async () => {
     setIsPostDeleting(true);
 
@@ -103,7 +107,7 @@ const MoreOptions = ({
             )}
           </button>
         </li>
-        {post.author.id === currentUser?.id && (
+        {post.author.id === currentUser?.id || currentUser?.is_staff ? (
           <>
             <li className="option-item">
               <button onClick={changePostStatus} className="option">
@@ -127,7 +131,7 @@ const MoreOptions = ({
               </button>
             </li>
           </>
-        )}
+        ) : <></>}
       </ul>
     </div>
   );
