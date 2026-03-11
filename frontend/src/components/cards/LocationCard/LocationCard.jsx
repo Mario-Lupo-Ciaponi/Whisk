@@ -14,6 +14,7 @@ const LocationCard = ({ post, location, currentUser, setFound }) => {
   const longitude = location.longitude;
 
   const locationUrl = `https://www.google.com/maps?q=${latitude},${longitude}`;
+  const coordinates = `${formatCoordinates(latitude)} - ${formatCoordinates(longitude)}`
 
   // This returns more human-readable coordinates
   const markLocationAsValid = async () => {
@@ -69,7 +70,7 @@ const LocationCard = ({ post, location, currentUser, setFound }) => {
           </span>{" "}
           {t("locationCard.pointedLocation")}
           <a className="location-url" target="_blank" href={locationUrl}>
-            {formatCoordinates(latitude)} - {formatCoordinates(longitude)}
+            {location.street_address ? location.street_address : coordinates}
           </a>
         </p>
       </div>

@@ -1,4 +1,4 @@
-import {useState, useRef, useEffect} from "react";
+import { useState, useRef, useEffect } from "react";
 import { useTranslation } from "react-i18next";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEllipsisVertical } from "@fortawesome/free-solid-svg-icons";
@@ -131,7 +131,9 @@ const MoreOptions = ({
               </button>
             </li>
           </>
-        ) : <></>}
+        ) : (
+          <></>
+        )}
       </ul>
     </div>
   );

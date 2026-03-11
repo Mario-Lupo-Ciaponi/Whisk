@@ -27,6 +27,7 @@ class PetLocationModelSerializer(serializers.ModelSerializer):
             "id",
             "latitude",
             "longitude",
+            "street_address",
             "post_id",
             "created_at",
             "is_valid",

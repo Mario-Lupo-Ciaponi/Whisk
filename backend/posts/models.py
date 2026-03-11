@@ -1,3 +1,6 @@
+import os
+import requests
+from dotenv import load_dotenv
 from django.contrib.auth import get_user_model
 from django.db import models
 from django.core.validators import MaxValueValidator, MinValueValidator
@@ -6,6 +9,10 @@ from cloudinary.models import CloudinaryField
 from .fields import CoordinatesField
 
 User = get_user_model()
+
+load_dotenv()
+
+LOCATION_IQ_URL = "https://us1.locationiq.com/v1/reverse"
 
 
 class Post(models.Model):
@@ -90,6 +97,36 @@ class PetLocation(models.Model):
     is_valid = models.BooleanField(
         default=False,
     )
+    street_address = models.CharField(
+        max_length=500,
+        null=True,
+        blank=True,
+    )
+
+    def save(
+        self, *args, **kwargs
+    ):
+        api_key = os.getenv("LOCATION_IQ_API_KEY")
+
+        if not self.street_address and self.latitude and self.longitude:
+            try:
+                response = requests.get(LOCATION_IQ_URL, params={
+                    "key": api_key,
+                    "lat": self.latitude,
+                    "lon": self.longitude,
+                    "format": "json",
+                },
+                    timeout=3,
+                )
+
+                if response.status_code == 200:
+                    data = response.json()
+
+                    self.street_address = data["display_name"]
+            except requests.RequestException:
+                ...
+
+        super().save(*args, **kwargs)
 
     class Meta:
         ordering = [
