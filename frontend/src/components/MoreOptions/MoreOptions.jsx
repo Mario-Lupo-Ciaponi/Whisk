@@ -90,15 +90,6 @@ const MoreOptions = ({
       </button>
       <ul ref={moreOptionsRef} className="more-options-menu">
         <li className="option-item">
-          <button onClick={savePost} className="option">
-            {isSavingLoading ? (
-              <Loader height={20} width={20} />
-            ) : (
-              t("moreOptions.save")
-            )}
-          </button>
-        </li>
-        <li className="option-item">
           <button onClick={copyPostUrl} className="option">
             {isCopyingLoading ? (
               <Loader height={20} width={20} />
@@ -109,6 +100,15 @@ const MoreOptions = ({
         </li>
         {post.author.id === currentUser?.id || currentUser?.is_staff ? (
           <>
+            <li className="option-item">
+              <button onClick={savePost} className="option">
+                {isSavingLoading ? (
+                  <Loader height={20} width={20} />
+                ) : (
+                  t("moreOptions.save")
+                )}
+              </button>
+            </li>
             <li className="option-item">
               <button onClick={changePostStatus} className="option">
                 {isChangingPostStatus ? (
