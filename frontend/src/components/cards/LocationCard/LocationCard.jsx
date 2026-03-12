@@ -14,7 +14,7 @@ const LocationCard = ({ post, location, currentUser, setFound }) => {
   const longitude = location.longitude;
 
   const locationUrl = `https://www.google.com/maps?q=${latitude},${longitude}`;
-  const coordinates = `${formatCoordinates(latitude)} - ${formatCoordinates(longitude)}`
+  const coordinates = `${formatCoordinates(latitude)} - ${formatCoordinates(longitude)}`;
 
   // This returns more human-readable coordinates
   const markLocationAsValid = async () => {

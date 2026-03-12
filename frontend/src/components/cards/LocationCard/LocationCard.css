@@ -13,6 +13,7 @@
 .location-card .profile-image-container {
   width: var(--profile-image-width-and-height);
   height: var(--profile-image-width-and-height);
+  min-width: 2rem;
   border-radius: 2rem;
   overflow: hidden;
   display: flex;
