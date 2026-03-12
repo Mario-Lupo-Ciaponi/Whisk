@@ -9,6 +9,7 @@ import {
   useMap,
 } from "react-leaflet";
 import MapSearchField from "../MapSearchField/MapSearchField.jsx";
+import Loader from "../Loader.jsx";
 import api from "../../api/api.js";
 import "leaflet/dist/leaflet.css";
 import "./LocationPicker.css";
@@ -45,6 +46,7 @@ const LocationPicker = ({
   activeSection,
 }) => {
   const [selectedPosition, setSelectedPosition] = useState(null);
+  const [isLoading, setIsLoading] = useState(false);
   const { t } = useTranslation();
 
   const openMapsApiKey = import.meta.env.VITE_MAPTILER_API_KEY;
@@ -54,6 +56,8 @@ const LocationPicker = ({
   const longitude = Number(post.city.longitude);
 
   const addLocation = async () => {
+    setIsLoading(true);
+
     try {
       if (!selectedPosition) {
         toast.error(t("locationPicker.selectLocation"));
@@ -83,6 +87,8 @@ const LocationPicker = ({
       if (e.response?.status === 429)
         toast.error(t("locationPicker.tooManyRequests"));
       else toast.error(t("locationPicker.error"));
+    } finally {
+      setIsLoading(false);
     }
   };
 
@@ -110,7 +116,7 @@ const LocationPicker = ({
       </MapContainer>
 
       <button onClick={addLocation} className="add-location-btn">
-        {t("locationPicker.addLocation")}
+        {isLoading ? <Loader height={25} width={25} /> : t("locationPicker.addLocation")}
       </button>
     </>
   );

@@ -9,7 +9,10 @@
 
 .add-location-btn {
   margin: 1.5rem auto;
-  display: block;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 95px;
   background-color: var(--brown-color);
   border: none;
   border-radius: 2rem;
