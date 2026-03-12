@@ -116,7 +116,11 @@ const LocationPicker = ({
       </MapContainer>
 
       <button onClick={addLocation} className="add-location-btn">
-        {isLoading ? <Loader height={25} width={25} /> : t("locationPicker.addLocation")}
+        {isLoading ? (
+          <Loader height={25} width={25} />
+        ) : (
+          t("locationPicker.addLocation")
+        )}
       </button>
     </>
   );

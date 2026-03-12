@@ -105,7 +105,7 @@ class PetLocationListCreateAPIView(ListCreateAPIView):
     ]  # TODO: add proper permission classes!
 
     def get_throttles(self):
-        if self.request.method == "POST":
+        if self.request.method == "POST" or not self.request.user.is_staff:
             return [
                 LocationCreateThrottle(),
                 LocationCreateAnonThrottle(),
