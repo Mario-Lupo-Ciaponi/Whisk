@@ -47,6 +47,8 @@ const HomePage = ({ currentUser, navigate, setIsFilterVisible }) => {
           },
         });
 
+        console.log(response.data)
+
         setPosts(response.data.results);
         setTotalPages(Math.ceil(response.data.count / itemsPerPage));
       } catch (error) {
