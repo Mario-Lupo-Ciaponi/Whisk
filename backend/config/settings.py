@@ -14,7 +14,6 @@ from datetime import timedelta
 from pathlib import Path
 
 import os
-import dj_database_url
 
 from django.conf.global_settings import EMAIL_BACKEND, EMAIL_PORT, EMAIL_HOST_PASSWORD
 from dotenv import load_dotenv
@@ -137,13 +136,15 @@ WSGI_APPLICATION = "config.wsgi.application"
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.postgresql",
-        "NAME": os.getenv("DB_NAME"),
-        "USER": os.getenv("DB_USER"),
-        "PASSWORD": os.getenv("DB_PASSWORD"),
-        "HOST": os.getenv("DB_HOST"),
-        "PORT": os.getenv("DB_PORT"),
+        "NAME": os.getenv("DB_NAME", "postgres"),
+        "USER": os.getenv("DB_USER", "postgres"),
+        "PASSWORD": os.getenv("DB_PASSWORD", ""),
+        "HOST": os.getenv("DB_HOST", "localhost"),
+        "PORT": os.getenv("DB_PORT", "5432"),
         "OPTIONS": {
             "sslmode": "require",
+            "gssencmode": "disable",
+            "connect_timeout": 5,
         },
     }
 }
