@@ -84,9 +84,21 @@ const LocationPicker = ({
       setSelectedPosition(null);
       toast.success(t("locationPicker.locationAdded"));
     } catch (e) {
-      if (e.response?.status === 429)
+      const errorData = e.response?.data;
+
+      if (e.response?.status === 400) {
+        const errorValue = Object.values(errorData)[0];
+
+        const message = Array.isArray(errorValue) ? errorValue[0] : errorValue;
+
+        console.log(errorData)
+
+        toast.error(message || t("createPostPage.postForm.invalidData"));
+      } else if (e.response?.status === 429) {
         toast.error(t("locationPicker.tooManyRequests"));
-      else toast.error(t("locationPicker.error"));
+      } else {
+        toast.error(t("locationPicker.error"));
+      }
     } finally {
       setIsLoading(false);
     }

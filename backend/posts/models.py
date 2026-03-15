@@ -1,18 +1,20 @@
 import os
 import requests
+from rest_framework.exceptions import ValidationError
 from dotenv import load_dotenv
 from django.contrib.auth import get_user_model
 from django.db import models
 from django.core.validators import MaxValueValidator, MinValueValidator
 from cloudinary.models import CloudinaryField
 
+from .utils import calculate_distance
 from .fields import CoordinatesField
 
 User = get_user_model()
 
 load_dotenv()
 
-LOCATION_IQ_URL = "https://us1.locationiq.com/v1/reverse"
+REVERSE_LOCATION_IQ_URL = "https://us1.locationiq.com/v1/reverse"
 
 
 class Post(models.Model):
@@ -110,7 +112,7 @@ class PetLocation(models.Model):
 
         if not self.street_address and self.latitude and self.longitude:
             try:
-                response = requests.get(LOCATION_IQ_URL, params={
+                response = requests.get(REVERSE_LOCATION_IQ_URL, params={
                     "key": api_key,
                     "lat": self.latitude,
                     "lon": self.longitude,
