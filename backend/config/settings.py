@@ -166,6 +166,7 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+X_FRAME_OPTIONS = "DENY"
 
 # Internationalization
 # https://docs.djangoproject.com/en/5.0/topics/i18n/
