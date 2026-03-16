@@ -97,9 +97,14 @@ const App = () => {
             />
             <Route
               path="saved-posts/"
-              element={<SavedPostsPage currentUser={currentUser} baseUrl={BASE_URL} />}
+              element={
+                <SavedPostsPage currentUser={currentUser} baseUrl={BASE_URL} />
+              }
             />
-            <Route path="notifications/" element={<NotificationPage baseUrl={BASE_URL} />} />
+            <Route
+              path="notifications/"
+              element={<NotificationPage baseUrl={BASE_URL} />}
+            />
           </Route>
           <Route
             path="login/"
@@ -115,7 +120,9 @@ const App = () => {
           />
           <Route
             path="profile/:id"
-            element={<ProfilePage currentUser={currentUser} baseUrl={BASE_URL} />}
+            element={
+              <ProfilePage currentUser={currentUser} baseUrl={BASE_URL} />
+            }
           />
           <Route
             path="post/:id"
@@ -130,7 +137,9 @@ const App = () => {
           />
           <Route
             path="contact/"
-            element={<ContactPage currentUser={currentUser} baseUrl={BASE_URL} />}
+            element={
+              <ContactPage currentUser={currentUser} baseUrl={BASE_URL} />
+            }
           />
           <Route
             path="search-profile/"

@@ -1,6 +1,6 @@
 import { useTranslation } from "react-i18next";
 import { useLocation } from "react-router";
-import {Helmet} from "react-helmet-async";
+import { Helmet } from "react-helmet-async";
 import MapImage from "../../assets/map-image.png";
 import PawPet from "../../assets/paw-pet.jpg";
 import HuggingPet from "../../assets/hugging-pet.jpg";
@@ -18,7 +18,7 @@ const AboutPage = ({ baseUrl }) => {
       <Helmet>
         <title>{pageTitle}</title>
         <meta property="og:title" content={pageTitle} />
-        <meta property="og:url" content={pageUrl}/>
+        <meta property="og:url" content={pageUrl} />
       </Helmet>
 
       <section className="about-section">

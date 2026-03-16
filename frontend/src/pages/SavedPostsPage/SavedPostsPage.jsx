@@ -42,7 +42,7 @@ const SavedPostsPage = ({ currentUser, navigate, baseUrl }) => {
       <Helmet>
         <title>{pageTitle}</title>
         <meta property="og:title" content={pageTitle} />
-        <meta property="og:url" content={pageUrl}/>
+        <meta property="og:url" content={pageUrl} />
       </Helmet>
 
       {isLoading ? (

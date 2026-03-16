@@ -4,7 +4,13 @@ import { Helmet } from "react-helmet-async";
 import PostCreateForm from "../../components/forms/PostCreateForm/PostCreateForm.jsx";
 import "./CreatePostPage.css";
 
-const CreatePostPage = ({ currentUser, navigate, errors, setErrors, baseUrl }) => {
+const CreatePostPage = ({
+  currentUser,
+  navigate,
+  errors,
+  setErrors,
+  baseUrl,
+}) => {
   const { t } = useTranslation();
   const location = useLocation();
 
@@ -16,7 +22,7 @@ const CreatePostPage = ({ currentUser, navigate, errors, setErrors, baseUrl }) =
       <Helmet>
         <title>{pageTitle}</title>
         <meta property="og:title" content={pageTitle} />
-        <meta property="og:url" content={pageUrl}/>
+        <meta property="og:url" content={pageUrl} />
       </Helmet>
       <div className="form-wrapper">
         <header className="create-post-header">

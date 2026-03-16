@@ -56,10 +56,9 @@ const SearchProfilePage = ({ navigate }) => {
       <Helmet>
         <title>{t("searchProfile.title")}</title>
         <meta property="og:title" content={t("searchProfile.title")} />
-        <meta property="og:url" content={location}/>
+        <meta property="og:url" content={location} />
       </Helmet>
       <div className="search-profile-container">
-
         <header className="search-profile-header">
           <h1 className="search-profile-title">{t("searchProfile.title")}</h1>
         </header>

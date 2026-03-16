@@ -40,22 +40,22 @@ const HomePage = ({ currentUser, navigate, setIsFilterVisible, baseUrl }) => {
   };
 
   const getPosts = async () => {
-      setIsLoading(true);
+    setIsLoading(true);
 
-      try {
-        const response = await api.get("posts/", {
-          params: {
-            page: currentPage,
-          },
-        });
+    try {
+      const response = await api.get("posts/", {
+        params: {
+          page: currentPage,
+        },
+      });
 
-        setPosts(response.data.results);
-        setTotalPages(Math.ceil(response.data.count / itemsPerPage));
-      } catch (error) {
-        console.log(error);
-      }
-      setIsLoading(false);
-    };
+      setPosts(response.data.results);
+      setTotalPages(Math.ceil(response.data.count / itemsPerPage));
+    } catch (error) {
+      console.log(error);
+    }
+    setIsLoading(false);
+  };
 
   const filterFeed = async (event) => {
     const selectValue = event.target.value;
@@ -73,47 +73,49 @@ const HomePage = ({ currentUser, navigate, setIsFilterVisible, baseUrl }) => {
       <Helmet>
         <title>{pageTitle}</title>
         <meta property="og:title" content={pageTitle} />
-        <meta property="og:url" content={baseUrl}/>
+        <meta property="og:url" content={baseUrl} />
       </Helmet>
       <div className="feed">
-      <Toaster position="top-center" />
+        <Toaster position="top-center" />
 
-      {isLoading ? (
-        <Loader width={200} height={200} />
-      ) : posts.length > 0 ? (
-        <>
-          <div className="feed-container">
-            {currentUser && (
-              <select
-                onChange={filterFeed}
-                name="feed-select"
-                className="feed-select"
-              >
-                <option value="all">{t("homepage.feedSelect.all")}</option>
-                {currentUser?.profile.city && (
-                  <option value="city">{t("homepage.feedSelect.city")}</option>
-                )}
-              </select>
-            )}
-          </div>
+        {isLoading ? (
+          <Loader width={200} height={200} />
+        ) : posts.length > 0 ? (
+          <>
+            <div className="feed-container">
+              {currentUser && (
+                <select
+                  onChange={filterFeed}
+                  name="feed-select"
+                  className="feed-select"
+                >
+                  <option value="all">{t("homepage.feedSelect.all")}</option>
+                  {currentUser?.profile.city && (
+                    <option value="city">
+                      {t("homepage.feedSelect.city")}
+                    </option>
+                  )}
+                </select>
+              )}
+            </div>
 
-          <PostSection
-            posts={posts}
-            currentUser={currentUser}
-            navigate={navigate}
-            setIsFilterVisible={setIsFilterVisible}
-          />
+            <PostSection
+              posts={posts}
+              currentUser={currentUser}
+              navigate={navigate}
+              setIsFilterVisible={setIsFilterVisible}
+            />
 
-          <PaginationList
-            currentPage={currentPage}
-            setCurrentPage={setCurrentPage}
-            totalPages={totalPages}
-          />
-        </>
-      ) : (
-        <NoResult type="post" />
-      )}
-    </div>
+            <PaginationList
+              currentPage={currentPage}
+              setCurrentPage={setCurrentPage}
+              totalPages={totalPages}
+            />
+          </>
+        ) : (
+          <NoResult type="post" />
+        )}
+      </div>
     </>
   );
 };
