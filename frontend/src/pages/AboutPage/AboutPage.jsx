@@ -11,7 +11,7 @@ const AboutPage = ({ baseUrl }) => {
   const location = useLocation();
 
   const pageTitle = t("about.pageTitle");
-  const pageUrl = `${baseUrl}${location}`;
+  const pageUrl = `${baseUrl}${location.pathname}`;
 
   return (
     <>
