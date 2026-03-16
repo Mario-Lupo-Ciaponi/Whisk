@@ -91,8 +91,6 @@ const LocationPicker = ({
 
         const message = Array.isArray(errorValue) ? errorValue[0] : errorValue;
 
-        console.log(errorData)
-
         toast.error(message || t("createPostPage.postForm.invalidData"));
       } else if (e.response?.status === 429) {
         toast.error(t("locationPicker.tooManyRequests"));
