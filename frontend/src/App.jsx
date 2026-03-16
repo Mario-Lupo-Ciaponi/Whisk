@@ -112,8 +112,6 @@ const App = () => {
               <AuthPage
                 navigate={navigate}
                 setAuthTokens={setAuthTokens}
-                errors={errors}
-                setErrors={setErrors}
                 baseUrl={BASE_URL}
               />
             }

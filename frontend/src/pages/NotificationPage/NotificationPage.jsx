@@ -25,7 +25,9 @@ const NotificationPage = ({ baseUrl }) => {
       </Helmet>
       <div className="notification-page">
         <header className="notification-header">
-          <h1 className="notification-title">{t("notificationPage.heading")}</h1>
+          <h1 className="notification-title">
+            {t("notificationPage.heading")}
+          </h1>
         </header>
         {isLoading ? (
           <div className="loader-container">
