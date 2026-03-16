@@ -31,6 +31,8 @@ const App = () => {
 
   const { t } = useTranslation();
 
+  const BASE_URL = import.meta.env.VITE_BASE_URL;
+
   useEffect(() => {
     const token = localStorage.getItem("access");
 
@@ -75,10 +77,11 @@ const App = () => {
                 currentUser={currentUser}
                 navigate={navigate}
                 setIsFilterVisible={setIsFilterVisible}
+                baseUrl={BASE_URL}
               />
             }
           />
-          <Route path="about/" element={<AboutPage />} />
+          <Route path="about/" element={<AboutPage baseUrl={BASE_URL} />} />
           <Route element={<PrivateRoutes />}>
             <Route
               path="create-post/"
@@ -88,13 +91,15 @@ const App = () => {
                   navigate={navigate}
                   errors={errors}
                   setErrors={setErrors}
+                  baseUrl={BASE_URL}
                 />
               }
             />
             <Route
               path="saved-posts/"
-              element={<SavedPostsPage currentUser={currentUser} />}
+              element={<SavedPostsPage currentUser={currentUser} baseUrl={BASE_URL} />}
             />
+            <Route path="notifications/" element={<NotificationPage baseUrl={BASE_URL} />} />
           </Route>
           <Route
             path="login/"
@@ -104,12 +109,13 @@ const App = () => {
                 setAuthTokens={setAuthTokens}
                 errors={errors}
                 setErrors={setErrors}
+                baseUrl={BASE_URL}
               />
             }
           />
           <Route
             path="profile/:id"
-            element={<ProfilePage currentUser={currentUser} />}
+            element={<ProfilePage currentUser={currentUser} baseUrl={BASE_URL} />}
           />
           <Route
             path="post/:id"
@@ -118,12 +124,13 @@ const App = () => {
                 currentUser={currentUser}
                 navigate={navigate}
                 setIsFilterVisible={setIsFilterVisible}
+                baseUrl={BASE_URL}
               />
             }
           />
           <Route
             path="contact/"
-            element={<ContactPage currentUser={currentUser} />}
+            element={<ContactPage currentUser={currentUser} baseUrl={BASE_URL} />}
           />
           <Route
             path="search-profile/"
@@ -131,10 +138,10 @@ const App = () => {
               <SearchProfilePage
                 currentUser={currentUser}
                 navigate={navigate}
+                baseUrl={BASE_URL}
               />
             }
           />
-          <Route path="notifications/" element={<NotificationPage />} />
         </Routes>
       </main>
       <Footer />

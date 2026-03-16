@@ -1,5 +1,7 @@
 import { useState, useEffect } from "react";
 import { useTranslation } from "react-i18next";
+import { useLocation } from "react-router";
+import { Helmet } from "react-helmet-async";
 import SearchBar from "../../components/forms/SearchBar/SearchBar.jsx";
 import ProfileSection from "../../components/sections/ProfileSection/ProfileSection.jsx";
 import PaginationList from "../../components/PaginationList/PaginationList.jsx";
@@ -15,6 +17,7 @@ const SearchProfilePage = ({ navigate }) => {
   const [isLoading, setIsLoading] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
   const { t } = useTranslation();
+  const location = useLocation();
 
   const itemsPerPage = 9;
 
@@ -49,37 +52,43 @@ const SearchProfilePage = ({ navigate }) => {
   };
 
   return (
-    <div className="search-profile-container">
-      <title>{t("searchProfile.title")}</title>
+    <>
+      <Helmet>
+        <title>{t("searchProfile.title")}</title>
+        <meta property="og:title" content={t("searchProfile.title")} />
+        <meta property="og:url" content={location}/>
+      </Helmet>
+      <div className="search-profile-container">
 
-      <header className="search-profile-header">
-        <h1 className="search-profile-title">{t("searchProfile.title")}</h1>
-      </header>
+        <header className="search-profile-header">
+          <h1 className="search-profile-title">{t("searchProfile.title")}</h1>
+        </header>
 
-      <div className="search-bar-container">
-        <SearchBar onSearch={handleSearch} />
-      </div>
-
-      {isLoading ? (
-        <div className="loader-container">
-          <Loader width={200} height={200} />
+        <div className="search-bar-container">
+          <SearchBar onSearch={handleSearch} />
         </div>
-      ) : users.length > 1 ? (
-        <>
-          <ProfileSection users={users} navigate={navigate} />
 
-          <div className="paginator-list-container">
-            <PaginationList
-              currentPage={currentPage}
-              setCurrentPage={setCurrentPage}
-              totalPages={totalPages}
-            />
+        {isLoading ? (
+          <div className="loader-container">
+            <Loader width={200} height={200} />
           </div>
-        </>
-      ) : (
-        <NoResult type="user" />
-      )}
-    </div>
+        ) : users.length > 1 ? (
+          <>
+            <ProfileSection users={users} navigate={navigate} />
+
+            <div className="paginator-list-container">
+              <PaginationList
+                currentPage={currentPage}
+                setCurrentPage={setCurrentPage}
+                totalPages={totalPages}
+              />
+            </div>
+          </>
+        ) : (
+          <NoResult type="user" />
+        )}
+      </div>
+    </>
   );
 };
 

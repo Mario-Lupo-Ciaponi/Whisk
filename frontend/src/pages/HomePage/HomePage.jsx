@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
+import { Helmet } from "react-helmet-async";
 import { Toaster } from "react-hot-toast";
 import PostSection from "../../components/sections/PostSection/PostSection.jsx";
 import NoResult from "../../components/NoResult/NoResult.jsx";
@@ -8,12 +9,15 @@ import "./HomePage.css";
 import PaginationList from "../../components/PaginationList/PaginationList.jsx";
 import Loader from "../../components/Loader.jsx";
 
-const HomePage = ({ currentUser, navigate, setIsFilterVisible }) => {
+const HomePage = ({ currentUser, navigate, setIsFilterVisible, baseUrl }) => {
   const [posts, setPosts] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [totalPages, setTotalPages] = useState(0);
   const [isLoading, setIsLoading] = useState(false);
+
   const { t, i18n } = useTranslation();
+
+  const pageTitle = "Whisk";
 
   const itemsPerPage = 6;
 
@@ -35,19 +39,15 @@ const HomePage = ({ currentUser, navigate, setIsFilterVisible }) => {
     setIsLoading(false);
   };
 
-  useEffect(() => {
-    const getPosts = async () => {
+  const getPosts = async () => {
       setIsLoading(true);
 
       try {
         const response = await api.get("posts/", {
           params: {
             page: currentPage,
-            lang: i18n.language,
           },
         });
-
-        console.log(response.data);
 
         setPosts(response.data.results);
         setTotalPages(Math.ceil(response.data.count / itemsPerPage));
@@ -57,9 +57,6 @@ const HomePage = ({ currentUser, navigate, setIsFilterVisible }) => {
       setIsLoading(false);
     };
 
-    getPosts();
-  }, [currentPage]);
-
   const filterFeed = async (event) => {
     const selectValue = event.target.value;
 
@@ -67,9 +64,18 @@ const HomePage = ({ currentUser, navigate, setIsFilterVisible }) => {
     else await filterPosts(selectValue);
   };
 
+  useEffect(() => {
+    getPosts();
+  }, [currentPage]);
+
   return (
-    <div className="feed">
-      <title>Whisk</title>
+    <>
+      <Helmet>
+        <title>{pageTitle}</title>
+        <meta property="og:title" content={pageTitle} />
+        <meta property="og:url" content={baseUrl}/>
+      </Helmet>
+      <div className="feed">
       <Toaster position="top-center" />
 
       {isLoading ? (
@@ -108,6 +114,7 @@ const HomePage = ({ currentUser, navigate, setIsFilterVisible }) => {
         <NoResult type="post" />
       )}
     </div>
+    </>
   );
 };
 
