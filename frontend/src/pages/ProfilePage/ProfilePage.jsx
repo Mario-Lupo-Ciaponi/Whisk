@@ -16,7 +16,7 @@ const ProfilePage = ({ currentUser, baseUrl }) => {
   const location = useLocation();
 
   const pageTitle = user?.username ? user?.username : "Profile";
-  const pageUrl = `${baseUrl}/${location.pathname}`;
+  const pageUrl = `${baseUrl}${location.pathname}`;
 
   useEffect(() => {
     setIsLoading(true);

@@ -9,7 +9,7 @@ const ContactPage = ({ currentUser, baseUrl }) => {
   const location = useLocation();
 
   const pageTitle = t("contact.title");
-  const pageUrl = `${baseUrl}/${location.pathname}`;
+  const pageUrl = `${baseUrl}${location.pathname}`;
 
   return (
     <>

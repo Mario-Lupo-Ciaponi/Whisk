@@ -15,7 +15,7 @@ const CreatePostPage = ({
   const location = useLocation();
 
   const pageTitle = t("createPostPage.title");
-  const pageUrl = `${baseUrl}/${location.pathname}`;
+  const pageUrl = `${baseUrl}${location.pathname}`;
 
   return (
     <>

@@ -20,7 +20,7 @@ const SearchProfilePage = ({ navigate, baseUrl }) => {
   const location = useLocation();
 
   const pageTitle = t("searchProfile.title");
-  const pageUrl = `${baseUrl}/${location.pathname}`;
+  const pageUrl = `${baseUrl}${location.pathname}`;
 
   const itemsPerPage = 9;
 

@@ -18,7 +18,7 @@ const SavedPostsPage = ({ currentUser, navigate, baseUrl }) => {
   const location = useLocation();
 
   const pageTitle = t("savedPosts.title");
-  const pageUrl = `${baseUrl}/${location.pathname}`;
+  const pageUrl = `${baseUrl}${location.pathname}`;
 
   useEffect(() => {
     const fetchSavedPosts = async () => {

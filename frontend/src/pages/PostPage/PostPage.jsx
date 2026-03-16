@@ -14,7 +14,7 @@ const PostPage = ({ navigate, currentUser, setIsFilterVisible, baseUrl }) => {
   const location = useLocation();
 
   const pageTitle = post.title;
-  const pageUrl = `${baseUrl}/${location.pathname}`;
+  const pageUrl = `${baseUrl}${location.pathname}`;
 
   useEffect(() => {
     const fetchPost = async () => {

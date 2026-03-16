@@ -17,7 +17,7 @@ const AuthPage = ({ setAuthTokens, navigate, baseUrl }) => {
   const location = useLocation();
 
   const pageTitle = t("auth.pageTitle");
-  const pageUrl = `${baseUrl}/${location.pathname}`;
+  const pageUrl = `${baseUrl}${location.pathname}`;
 
   const toggleShowLogin = (event) =>
     setShowLogin("login" === event.target.value);
