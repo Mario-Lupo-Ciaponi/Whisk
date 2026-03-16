@@ -1,16 +1,22 @@
 import { useState, useEffect } from "react";
-import { useParams } from "react-router";
+import { useParams, useLocation } from "react-router";
+import { Helmet } from "react-helmet-async";
 import ProfileHero from "../../components/ProfileHero/ProfileHero.jsx";
 import ProfileForm from "../../components/forms/ProfileForm/ProfileForm.jsx";
 import Loader from "../../components/Loader.jsx";
 import api from "../../api/api.js";
 import "./ProfilePage.css";
 
-const ProfilePage = ({ currentUser }) => {
+const ProfilePage = ({ currentUser, baseUrl }) => {
   const { id } = useParams();
   const [user, setUser] = useState(null);
   const [shouldNotEdit, setShouldNotEdit] = useState(true);
   const [isLoading, setIsLoading] = useState(false);
+
+  const location = useLocation();
+
+  const pageTitle = user?.username ? user?.username : "Profile";
+  const pageUrl = `${baseUrl}/${location.pathname}`;
 
   useEffect(() => {
     setIsLoading(true);
@@ -38,17 +44,22 @@ const ProfilePage = ({ currentUser }) => {
   }
 
   return (
-    <div className="profile">
-      <title>{user?.username}</title>
-
-      <ProfileHero
-        currentUser={currentUser}
-        user={user}
-        shouldNotEdit={shouldNotEdit}
-        setShouldNotEdit={setShouldNotEdit}
-      />
-      <ProfileForm user={user} shouldNotEdit={shouldNotEdit} />
-    </div>
+    <>
+      <Helmet>
+        <title>{pageTitle}</title>
+        <meta property="og:title" content={pageTitle} />
+        <meta property="og:url" content={pageUrl} />
+      </Helmet>
+      <div className="profile">
+        <ProfileHero
+          currentUser={currentUser}
+          user={user}
+          shouldNotEdit={shouldNotEdit}
+          setShouldNotEdit={setShouldNotEdit}
+        />
+        <ProfileForm user={user} shouldNotEdit={shouldNotEdit} />
+      </div>
+    </>
   );
 };
 
