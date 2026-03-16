@@ -10,7 +10,7 @@ import Loader from "../../components/Loader.jsx";
 import api from "../../api/api.js";
 import "./SearchProfilePage.css";
 
-const SearchProfilePage = ({ navigate }) => {
+const SearchProfilePage = ({ navigate, baseUrl }) => {
   const [users, setUsers] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [totalPages, setTotalPages] = useState(0);
@@ -18,6 +18,9 @@ const SearchProfilePage = ({ navigate }) => {
   const [searchQuery, setSearchQuery] = useState("");
   const { t } = useTranslation();
   const location = useLocation();
+
+  const pageTitle = t("searchProfile.title");
+  const pageUrl = `${baseUrl}/${location.pathname}`;
 
   const itemsPerPage = 9;
 
@@ -54,9 +57,9 @@ const SearchProfilePage = ({ navigate }) => {
   return (
     <>
       <Helmet>
-        <title>{t("searchProfile.title")}</title>
-        <meta property="og:title" content={t("searchProfile.title")} />
-        <meta property="og:url" content={location} />
+        <title>{pageTitle}</title>
+        <meta property="og:title" content={pageTitle} />
+        <meta property="og:url" content={pageUrl} />
       </Helmet>
       <div className="search-profile-container">
         <header className="search-profile-header">
