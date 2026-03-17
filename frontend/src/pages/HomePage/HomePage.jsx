@@ -72,7 +72,7 @@ const HomePage = ({ currentUser, navigate, setIsFilterVisible, baseUrl }) => {
     <>
       <Helmet>
         <title>{pageTitle}</title>
-        <meta property="og:title" content={pageTitle} />
+        <meta property="og:title" content={`${pageTitle} - ${t("homepage.title")}`} />
         <meta property="og:url" content={baseUrl} />
       </Helmet>
       <div className="feed">
