@@ -24,6 +24,7 @@
   },
   "homepage": {
     "title": "Find Pets Worldwide",
+    "heading": "Lost pets",
     "feedSelect": {
       "all": "All",
       "groups": "Groups",

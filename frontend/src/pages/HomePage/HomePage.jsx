@@ -5,9 +5,9 @@ import { Toaster } from "react-hot-toast";
 import PostSection from "../../components/sections/PostSection/PostSection.jsx";
 import NoResult from "../../components/NoResult/NoResult.jsx";
 import api from "../../api/api.js";
-import "./HomePage.css";
 import PaginationList from "../../components/PaginationList/PaginationList.jsx";
 import Loader from "../../components/Loader.jsx";
+import "./HomePage.css";
 
 const HomePage = ({ currentUser, navigate, setIsFilterVisible, baseUrl }) => {
   const [posts, setPosts] = useState([]);
@@ -85,6 +85,11 @@ const HomePage = ({ currentUser, navigate, setIsFilterVisible, baseUrl }) => {
           <Loader width={200} height={200} />
         ) : posts.length > 0 ? (
           <>
+            <header className="home-header">
+              <h1 className="title">
+                {t("homepage.heading")}
+              </h1>
+            </header>
             <div className="feed-container">
               {currentUser && (
                 <select

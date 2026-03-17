@@ -22,6 +22,11 @@
   -moz-appearance: none;
   appearance: none;
   text-align: center;
+  margin-top: 2rem;
+}
+
+.home-header .title {
+  color: var(--tan-color);
 }
 
 @media screen and (max-width: 1024px) {
