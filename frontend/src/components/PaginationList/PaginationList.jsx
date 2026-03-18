@@ -14,6 +14,7 @@ const PaginationList = ({ currentPage, setCurrentPage, totalPages }) => {
         disabled={currentPage === 1}
         className="paginate-btn"
         onClick={goToPreviousPage}
+        aria-label="Go to the previous page"
       >
         <FontAwesomeIcon icon={faAngleLeft} />
       </button>
@@ -26,6 +27,7 @@ const PaginationList = ({ currentPage, setCurrentPage, totalPages }) => {
         disabled={currentPage === totalPages}
         className="paginate-btn"
         onClick={goToNextPage}
+        aria-label="Go to the next page"
       >
         <FontAwesomeIcon icon={faAngleRight} />
       </button>
