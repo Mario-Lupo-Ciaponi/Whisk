@@ -36,7 +36,11 @@ const HamburgerMenu = ({
 
   return (
     <div ref={menuRef} className={`hamburger-menu ${showMenu ? "active" : ""}`}>
-      <button onClick={closeMenu} className="close-menu-btn" aria-label="Close menu">
+      <button
+        onClick={closeMenu}
+        className="close-menu-btn"
+        aria-label="Close menu"
+      >
         <FontAwesomeIcon icon={faX} />
       </button>
 

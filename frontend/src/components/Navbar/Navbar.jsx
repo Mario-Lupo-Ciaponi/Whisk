@@ -152,7 +152,11 @@ const Navbar = ({ navigate, currentUser }) => {
         </div>
       )}
 
-      <button onClick={toggleShowHamburgerMenu} className="menu-btn" aria-label="Open menu">
+      <button
+        onClick={toggleShowHamburgerMenu}
+        className="menu-btn"
+        aria-label="Open menu"
+      >
         <FontAwesomeIcon icon={faBars} />
       </button>
 

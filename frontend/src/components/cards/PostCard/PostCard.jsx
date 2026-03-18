@@ -116,7 +116,7 @@ const PostCard = ({ post, currentUser, navigate, setIsFilterVisible }) => {
       </div>
 
       <div className="caption">
-        <h3 className="title">{post.title}</h3>
+        <h2 className="title">{post.title}</h2>
         <p className="description">{post.description}</p>
       </div>
       <hr className="divider" />

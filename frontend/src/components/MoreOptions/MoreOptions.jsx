@@ -85,7 +85,11 @@ const MoreOptions = ({
 
   return (
     <div className="more-options-container">
-      <button onClick={showActions} className="show-more" aria-label="Show post options">
+      <button
+        onClick={showActions}
+        className="show-more"
+        aria-label="Show post options"
+      >
         <FontAwesomeIcon icon={faEllipsisVertical} />
       </button>
       <ul ref={moreOptionsRef} className="more-options-menu">
