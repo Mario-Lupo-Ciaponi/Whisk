@@ -86,9 +86,7 @@ const HomePage = ({ currentUser, navigate, setIsFilterVisible, baseUrl }) => {
         ) : posts.length > 0 ? (
           <>
             <header className="home-header">
-              <h1 className="title">
-                {t("homepage.heading")}
-              </h1>
+              <h1 className="title">{t("homepage.heading")}</h1>
             </header>
             <div className="feed-container">
               {currentUser && (
