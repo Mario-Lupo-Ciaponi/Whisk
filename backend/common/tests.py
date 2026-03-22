@@ -47,3 +47,83 @@ class TestContactAPIView(APITestCase):
 
         self.assertEqual(len(mail.outbox), 0)
         self.assertIn("message", response.data)
+
+
+class TestGetUnreadNotificationsAPIView(APITestCase):
+    def setUp(self):
+        from django.contrib.auth import get_user_model
+        from cities_light.models import Country
+        
+        self.country = Country.objects.create(name="Test Country")
+
+        User = get_user_model()
+        self.user1 = User.objects.create_user(
+            username="user1",
+            email="user1@example.com",
+            password="testpassword1",
+            first_name="User",
+            last_name="One",
+            country=self.country,
+        )
+        self.user2 = User.objects.create_user(
+            username="user2",
+            email="user2@example.com",
+            password="testpassword2",
+            first_name="User",
+            last_name="Two",
+            country=self.country,
+        )
+        self.url = reverse("unread-notifications")
+
+    def create_notification(self, recipient, is_read=False):
+        from .models import Notification
+        from .choices import NotificationChoices
+        return Notification.objects.create(
+            recipient=recipient,
+            notification_type=NotificationChoices.choices[0][0] if len(NotificationChoices.choices) > 0 else 'test',
+            text="Test notification text",
+            is_read=is_read,
+        )
+
+    def test__unauthenticated_request__returns_401_or_403(self):
+        # Depending on DRF settings, it might return 401 or 403.
+        # If it returns 500, we might need to add permission_classes to the view.
+        response = self.client.get(self.url)
+        self.assertIn(response.status_code, [status.HTTP_401_UNAUTHORIZED, status.HTTP_403_FORBIDDEN])
+
+    def test__request_by_user_with_no_notifications__returns_empty_list(self):
+        self.client.force_authenticate(user=self.user1)
+        response = self.client.get(self.url)
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
+        self.assertEqual(len(response.data), 0)
+
+    def test__request_by_user_with_only_unread_notifications__returns_notifications(self):
+        self.create_notification(recipient=self.user1, is_read=False)
+        self.create_notification(recipient=self.user1, is_read=False)
+        
+        self.client.force_authenticate(user=self.user1)
+        response = self.client.get(self.url)
+        
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
+        self.assertEqual(len(response.data), 2)
+
+    def test__request_by_user_with_read_and_unread_notifications__returns_only_unread(self):
+        self.create_notification(recipient=self.user1, is_read=False)
+        self.create_notification(recipient=self.user1, is_read=True)
+        
+        self.client.force_authenticate(user=self.user1)
+        response = self.client.get(self.url)
+        
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
+        self.assertEqual(len(response.data), 1)
+        self.assertEqual(response.data[0]["is_read"], False)
+
+    def test__request_by_user__does_not_return_other_users_notifications(self):
+        self.create_notification(recipient=self.user1, is_read=False)
+        self.create_notification(recipient=self.user2, is_read=False)
+        
+        self.client.force_authenticate(user=self.user1)
+        response = self.client.get(self.url)
+        
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
+        self.assertEqual(len(response.data), 1)
