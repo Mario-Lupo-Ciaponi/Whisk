@@ -1,4 +1,5 @@
 from django.http import HttpRequest
+from django.shortcuts import get_object_or_404
 from rest_framework import status
 from rest_framework.generics import (
     ListCreateAPIView,
@@ -61,10 +62,9 @@ class PostRetrieveUpdateDestroyAPIView(PostAPIViewMixin, RetrieveUpdateDestroyAP
 
 class SavePostAPIView(APIView):
     def get_object(self, pk: int):
-        try:
-            return Post.objects.get(pk=pk)
-        except Post.DoesNotExist:
-            raise status.HTTP_404_NOT_FOUND
+        post = get_object_or_404(Post, pk=pk)
+
+        return post
 
     def post(self, request: HttpRequest, pk: int, format=None):
         user = request.user
