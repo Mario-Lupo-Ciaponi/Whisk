@@ -58,9 +58,6 @@ const MoreOptions = ({
     }
   };
 
-  // useEffect(() => {
-  //   console.log(currentUser)
-  // }, []);
 
   const deletePost = async () => {
     setIsPostDeleting(true);
@@ -102,17 +99,17 @@ const MoreOptions = ({
             )}
           </button>
         </li>
+        <li className="option-item">
+          <button onClick={savePost} className="option">
+            {isSavingLoading ? (
+              <Loader height={20} width={20} />
+            ) : (
+              t("moreOptions.save")
+            )}
+          </button>
+        </li>
         {post.author.id === currentUser?.id || currentUser?.is_staff ? (
           <>
-            <li className="option-item">
-              <button onClick={savePost} className="option">
-                {isSavingLoading ? (
-                  <Loader height={20} width={20} />
-                ) : (
-                  t("moreOptions.save")
-                )}
-              </button>
-            </li>
             <li className="option-item">
               <button onClick={changePostStatus} className="option">
                 {isChangingPostStatus ? (
