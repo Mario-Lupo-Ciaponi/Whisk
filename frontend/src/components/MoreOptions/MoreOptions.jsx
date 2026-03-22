@@ -58,7 +58,6 @@ const MoreOptions = ({
     }
   };
 
-
   const deletePost = async () => {
     setIsPostDeleting(true);
 

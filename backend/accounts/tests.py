@@ -188,3 +188,24 @@ class TestProfileUpdate(APITestCase):
 
         self.profile.refresh_from_db()
         self.assertEqual(self.update_data["bio"], self.profile.bio)
+
+class TestUserRetrieveAPIView(APITestCase):
+    def setUp(self):
+        self.country = Country.objects.create(name="Bulgaria", code2="BG")
+        self.user = User.objects.create_user(
+            username="TestRetrieve",
+            email="testret@gmail.com",
+            password="testpass",
+            country=self.country,
+        )
+        self.url = reverse("user", kwargs={"pk": self.user.pk})
+
+    def test__retrieve_user_with_valid_pk__returns_200(self):
+        response = self.client.get(self.url)
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
+        self.assertEqual(response.data["username"], self.user.username)
+
+    def test__retrieve_user_with_invalid_pk__returns_404(self):
+        url = reverse("user", kwargs={"pk": 9999})
+        response = self.client.get(url)
+        self.assertEqual(response.status_code, status.HTTP_404_NOT_FOUND)

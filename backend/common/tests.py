@@ -33,7 +33,7 @@ class TestContactAPIView(APITestCase):
         self.assertEqual(response.status_code, status.HTTP_200_OK)
 
         self.assertEqual(len(mail.outbox), 1)
-        self.assertEqual(mail.outbox[0].subject, self.data["subject"])
+        self.assertEqual(mail.outbox[0].subject, f"Email from {self.data['email']}")
 
     def test__send_contact_email_with_invalid_email__returns_400(self):
         response = self.client.post(self.url, self.invalid_data)
