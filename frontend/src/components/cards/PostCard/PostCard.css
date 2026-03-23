@@ -4,7 +4,6 @@
   background-color: var(--charcoal-color);
   color: var(--coffee-pot-color);
   box-shadow: 0 2px 16px rgba(0, 0, 0, 0.18);
-  overflow: hidden;
 }
 
 .post-card__header {
@@ -168,7 +167,9 @@
   padding: 0.5rem 1rem;
   border-radius: 0.5rem;
   cursor: pointer;
-  transition: background-color 200ms ease, color 200ms ease;
+  transition:
+    background-color 200ms ease,
+    color 200ms ease;
 }
 
 .post-card__action:hover {

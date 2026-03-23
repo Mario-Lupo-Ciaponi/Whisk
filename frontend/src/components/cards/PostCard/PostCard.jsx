@@ -75,7 +75,10 @@ const PostCard = ({ post, currentUser, navigate, setIsFilterVisible }) => {
     <article className="post-card" key={post.id}>
       <div className="post-card__header">
         <div className="post-card__author">
-          <Link className="post-card__avatar-link" to={`profile/${post.author.id}`}>
+          <Link
+            className="post-card__avatar-link"
+            to={`profile/${post.author.id}`}
+          >
             <img
               className="post-card__avatar"
               src={
@@ -87,11 +90,17 @@ const PostCard = ({ post, currentUser, navigate, setIsFilterVisible }) => {
             />
           </Link>
           <div className="post-card__author-info">
-            <Link className="post-card__author-name" to={`profile/${post.author.id}`}>
+            <Link
+              className="post-card__author-name"
+              to={`profile/${post.author.id}`}
+            >
               {post.author.username}
             </Link>
             <span className="post-card__author-location">
-              <FontAwesomeIcon icon={faLocationDot} className="post_card__location_icon" />
+              <FontAwesomeIcon
+                icon={faLocationDot}
+                className="post_card__location_icon"
+              />
               {post.city.name}
             </span>
           </div>
@@ -111,7 +120,9 @@ const PostCard = ({ post, currentUser, navigate, setIsFilterVisible }) => {
 
       <div className="post-card__image-wrapper">
         <img className="post-card__image" src={post.image} alt="post-image" />
-        <span className={`post-card__badge post-card__badge--${found ? "found" : "not-found"}`}>
+        <span
+          className={`post-card__badge post-card__badge--${found ? "found" : "not-found"}`}
+        >
           {statusText}
         </span>
       </div>
@@ -130,18 +141,26 @@ const PostCard = ({ post, currentUser, navigate, setIsFilterVisible }) => {
               day: "numeric",
             })}
           </span>
-          <span className="post-card__save-count">{saveCount} {t("postCard.saves")}</span>
+          <span className="post-card__save-count">
+            {saveCount} {t("postCard.saves")}
+          </span>
         </div>
       </div>
 
       <hr className="post-card__divider" />
 
       <div className="post-card__actions">
-        <button onClick={() => toggleSection("map")} className="post-card__action">
+        <button
+          onClick={() => toggleSection("map")}
+          className="post-card__action"
+        >
           <FontAwesomeIcon icon={faMapLocationDot} />
           <span>{t("postCard.map")}</span>
         </button>
-        <button onClick={() => toggleSection("comment")} className="post-card__action">
+        <button
+          onClick={() => toggleSection("comment")}
+          className="post-card__action"
+        >
           <FontAwesomeIcon icon={faComment} />
           <span>{t("postCard.comment")}</span>
         </button>
