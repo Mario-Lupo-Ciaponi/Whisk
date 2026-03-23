@@ -53,7 +53,9 @@ class GetUnreadNotificationsAPIView(APIView):
     permission_classes = [IsAuthenticated]
 
     def get(self, request):
-        notifications = Notification.objects.filter(
+        notifications = Notification.objects.select_related(
+            'sender', 'sender__profile', 'sender__country'
+        ).filter(
             recipient=self.request.user,
             is_read=False,
         )

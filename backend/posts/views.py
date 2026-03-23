@@ -11,7 +11,6 @@ from rest_framework.views import APIView
 from rest_framework.permissions import (
     IsAuthenticatedOrReadOnly,
     AllowAny,
-    IsAdminUser,
     IsAuthenticated,
 )
 from django_filters import rest_framework as filter
@@ -44,7 +43,11 @@ class PostListCreateAPIView(PostAPIViewMixin, ListCreateAPIView):
     ]
 
     def get_queryset(self):
-        post = Post.objects.all()
+        post = Post.objects.select_related(
+            'author', 'author__profile', 'author__country', 'city', 'city__country'
+        ).prefetch_related(
+            'locations', 'locations__author', 'comments', 'comments__author', 'saved_by'
+        )
 
         if self.request.user.is_authenticated:
             post = post.filter(city__country=self.request.user.country)
@@ -91,14 +94,18 @@ class SavePostListAPIView(ListAPIView):
     def get_queryset(self):
         user = self.request.user
 
-        return Post.objects.filter(saved_by=user)
+        return Post.objects.select_related(
+            'author', 'author__profile', 'author__country', 'city', 'city__country'
+        ).prefetch_related(
+            'locations', 'locations__author', 'comments', 'comments__author', 'saved_by'
+        ).filter(saved_by=user)
 
 
 # PetLocation related views
 
 
 class PetLocationListCreateAPIView(ListCreateAPIView):
-    queryset = PetLocation.objects.order_by("-is_valid", "created_at")
+    queryset = PetLocation.objects.select_related('post', 'author').order_by("-is_valid", "created_at")
     serializer_class = PetLocationModelSerializer
     permission_classes = [
         AllowAny,
@@ -126,7 +133,7 @@ class PetLocationListCreateAPIView(ListCreateAPIView):
 
 
 class PetLocationRetrieveUpdateDestroyAPIView(RetrieveUpdateDestroyAPIView):
-    queryset = PetLocation.objects.all()
+    queryset = PetLocation.objects.select_related('post', 'author').all()
     serializer_class = PetLocationModelSerializer
     permission_classes = [
         IsAuthenticatedOrReadOnly,
@@ -138,7 +145,7 @@ class PetLocationRetrieveUpdateDestroyAPIView(RetrieveUpdateDestroyAPIView):
 
 
 class CommentListCreateAPIView(ListCreateAPIView):
-    queryset = Comment.objects.order_by("-created_at")
+    queryset = Comment.objects.select_related('author', 'post').order_by("-created_at")
     serializer_class = CommentSerializer
     permission_classes = [
         IsAuthenticatedOrReadOnly,
@@ -149,7 +156,7 @@ class CommentListCreateAPIView(ListCreateAPIView):
 
 
 class CommentRetrieveUpdateDestroyAPIView(RetrieveUpdateDestroyAPIView):
-    queryset = Comment.objects.all()
+    queryset = Comment.objects.select_related('author', 'post').all()
     serializer_class = CommentSerializer
     permission_classes = [
         IsAuthenticatedOrReadOnly,

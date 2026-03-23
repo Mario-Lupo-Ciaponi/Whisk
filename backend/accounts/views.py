@@ -1,5 +1,4 @@
 from django.contrib.auth import get_user_model
-from django.shortcuts import render
 from rest_framework.generics import (
     CreateAPIView,
     RetrieveAPIView,
@@ -8,7 +7,6 @@ from rest_framework.generics import (
 )
 from rest_framework.parsers import MultiPartParser, FormParser, JSONParser
 from rest_framework.permissions import AllowAny, IsAuthenticated
-from django_filters import rest_framework as filter
 from rest_framework import filters
 
 from .models import Profile
@@ -36,13 +34,13 @@ class RegisterApiView(CreateAPIView):
 
 
 class UserRetrieveAPIView(RetrieveAPIView):
-    queryset = User.objects.all()
+    queryset = User.objects.select_related('profile', 'country').all()
     serializer_class = UserSerializer
     permission_classes = [AllowAny]
 
 
 class UserListAPIView(ListAPIView):
-    queryset = User.objects.all()
+    queryset = User.objects.select_related('profile', 'country').all()
     serializer_class = UserSerializer
     permission_classes = [AllowAny]
 
