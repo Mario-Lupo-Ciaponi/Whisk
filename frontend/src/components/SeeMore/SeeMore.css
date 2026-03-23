@@ -1,0 +1,14 @@
+.see-more__button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  margin-left: 0.3rem;
+  color: var(--tan-color);
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+.see-more__button:hover {
+  text-decoration: underline;
+}

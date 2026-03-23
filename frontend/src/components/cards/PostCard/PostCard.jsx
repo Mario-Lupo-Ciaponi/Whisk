@@ -5,10 +5,12 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Link } from "react-router";
 import {
   faMapLocationDot,
+  faLocationDot,
   faComment,
   faBookmark,
 } from "@fortawesome/free-solid-svg-icons";
 import MoreOptions from "../../MoreOptions/MoreOptions.jsx";
+import SeeMore from "../../SeeMore/SeeMore.jsx";
 import MapSection from "../../sections/MapSection/MapSection.jsx";
 import CommentArea from "../../CommentArea/CommentArea.jsx";
 import PostEditForm from "../../forms/PostEditForm/PostEditForm.jsx";
@@ -71,11 +73,11 @@ const PostCard = ({ post, currentUser, navigate, setIsFilterVisible }) => {
 
   return (
     <article className="post-card" key={post.id}>
-      <div className="top">
-        <div className="user-container">
-          <Link className="profile-link image" to={`profile/${post.author.id}`}>
+      <div className="post-card__header">
+        <div className="post-card__author">
+          <Link className="post-card__avatar-link" to={`profile/${post.author.id}`}>
             <img
-              className="profile-image"
+              className="post-card__avatar"
               src={
                 post.author.profile.profile_image
                   ? post.author.profile.profile_image
@@ -84,20 +86,16 @@ const PostCard = ({ post, currentUser, navigate, setIsFilterVisible }) => {
               alt="profile image"
             />
           </Link>
-          <p className="username">
-            <Link
-              className="profile-link username"
-              to={`profile/${post.author.id}`}
-            >
+          <div className="post-card__author-info">
+            <Link className="post-card__author-name" to={`profile/${post.author.id}`}>
               {post.author.username}
             </Link>
-          </p>
-          <span className="city">({post.city.name})</span>
-          <span className={`status ${found ? "found" : "not-found"}`}>
-            {statusText}
-          </span>
+            <span className="post-card__author-location">
+              <FontAwesomeIcon icon={faLocationDot} className="post_card__location_icon" />
+              {post.city.name}
+            </span>
+          </div>
         </div>
-
         <MoreOptions
           post={post}
           currentUser={currentUser}
@@ -111,33 +109,45 @@ const PostCard = ({ post, currentUser, navigate, setIsFilterVisible }) => {
         />
       </div>
 
-      <div className="image-container">
-        <img className="post-image" src={post.image} alt="post-image" />
+      <div className="post-card__image-wrapper">
+        <img className="post-card__image" src={post.image} alt="post-image" />
+        <span className={`post-card__badge post-card__badge--${found ? "found" : "not-found"}`}>
+          {statusText}
+        </span>
       </div>
 
-      <div className="caption">
-        <h2 className="title">{post.title}</h2>
-        <p className="description">{post.description}</p>
+      <div className="post-card__body">
+        <h2 className="post-card__title">{post.title}</h2>
+        <p className="post-card__description">
+          <SeeMore text={post.description} maxLength={30} />
+        </p>
+        <div className="post-card__meta">
+          <span className="post-card__time">
+            {new Date(post.posted_on).toLocaleString("en-US", {
+              hour: "numeric",
+              minute: "2-digit",
+              month: "short",
+              day: "numeric",
+            })}
+          </span>
+          <span className="post-card__save-count">{saveCount} {t("postCard.saves")}</span>
+        </div>
       </div>
-      <hr className="divider" />
-      <div className="actions">
-        <button
-          onClick={() => toggleSection("map")}
-          className="action mark-position"
-        >
+
+      <hr className="post-card__divider" />
+
+      <div className="post-card__actions">
+        <button onClick={() => toggleSection("map")} className="post-card__action">
           <FontAwesomeIcon icon={faMapLocationDot} />
-          <span className="count">{locationsCount}</span>
+          <span>{t("postCard.map")}</span>
         </button>
-        <button
-          onClick={() => toggleSection("comment")}
-          className="action comment-post"
-        >
+        <button onClick={() => toggleSection("comment")} className="post-card__action">
           <FontAwesomeIcon icon={faComment} />
-          <span className="count">{commentsCount}</span>
+          <span>{t("postCard.comment")}</span>
         </button>
-        <button onClick={savePost} className="action mark-position">
+        <button onClick={savePost} className="post-card__action">
           <FontAwesomeIcon icon={faBookmark} />
-          <span className="count">{saveCount}</span>
+          <span>{t("postCard.save")}</span>
         </button>
       </div>
 
