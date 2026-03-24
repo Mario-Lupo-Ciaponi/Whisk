@@ -20,18 +20,20 @@
   margin: 0 auto;
   padding: 0.875rem clamp(1rem, 4vw, 2.5rem);
   display: flex;
-  position: relative;
   align-items: center;
-  justify-content: space-between;
+  justify-content: flex-start;
   gap: 1rem;
   min-height: 4rem;
+  min-width: 0;
 }
 
-/* Brand / logo */
+/* Brand / logo — first flex column: grows like the right side so the nav stays visually centered */
 .navbar__brand {
   display: flex;
   align-items: center;
-  flex-shrink: 0;
+  justify-content: flex-start;
+  flex: 1 1 0;
+  min-width: 0;
   border-radius: 50%;
   transition:
     transform 0.2s ease,
@@ -57,29 +59,31 @@
   border: 2px solid color-mix(in srgb, var(--tan-color) 35%, white);
 }
 
-/* Primary navigation */
+/* Primary navigation — middle flex item (no absolute centering) */
 .navbar__links {
+  flex: 0 1 auto;
+  min-width: 0;
+  max-width: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
-  position: absolute;
-  left: 50%;
-  transform: translateX(-50%);
   flex-wrap: wrap;
-  gap: 0.25rem;
+  gap: 0.35rem;
   list-style: none;
   margin: 0;
-  padding: 0;
-  width: max-content;
+  padding: 0 clamp(0.25rem, 1vw, 0.75rem);
+  box-sizing: border-box;
 }
 
 .navbar__item {
   margin: 0;
+  min-width: 0;
 }
 
 .navbar__link {
   display: inline-flex;
   align-items: center;
+  justify-content: center;
   text-decoration: none;
   font-size: 0.9375rem;
   font-weight: 500;
@@ -87,6 +91,11 @@
   color: var(--coffee-pot-color);
   padding: 0.45rem 1rem;
   border-radius: 999px;
+  max-width: min(13.5rem, 100%);
+  text-align: center;
+  white-space: normal;
+  overflow-wrap: break-word;
+  hyphens: auto;
   transition:
     background-color 0.2s ease,
     color 0.2s ease,
@@ -112,16 +121,22 @@
     0 2px 8px color-mix(in srgb, var(--coffee-pot-color) 12%, transparent);
 }
 
-/* Logged-in toolbar */
+/* Logged-in toolbar — third flex column: mirrors .navbar__brand width budget */
 .navbar__account {
+  flex: 1 1 0;
+  /* Don’t squeeze below content width (BG strings are long) */
+  min-width: max-content;
   display: flex;
+  flex-wrap: nowrap;
   align-items: center;
   justify-content: flex-end;
   gap: 0.75rem;
-  flex-shrink: 0;
+  position: relative;
+  z-index: 1;
 }
 
 .navbar__notify {
+  flex-shrink: 0;
   position: relative;
   display: inline-flex;
   align-items: center;
@@ -177,9 +192,11 @@
 /* User dropdown */
 .navbar__dropdown {
   position: relative;
+  flex-shrink: 0;
 }
 
 .navbar__user-trigger {
+  flex-shrink: 0;
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
@@ -234,7 +251,7 @@
 .navbar__username {
   font-size: 0.875rem;
   font-weight: 600;
-  max-width: 8.5rem;
+  max-width: 7rem;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
@@ -243,7 +260,6 @@
 
 .navbar__menu {
   position: absolute;
-  top: calc(100% + 0.5rem);
   left: 50%;
   transform: translateX(-50%) translateY(-4px);
   display: none;
@@ -341,6 +357,7 @@
 }
 
 .navbar__cta {
+  flex-shrink: 0;
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -348,6 +365,7 @@
   border-radius: 999px;
   font-size: 0.875rem;
   font-weight: 600;
+  white-space: nowrap;
   text-decoration: none;
   color: white;
   background: linear-gradient(
@@ -377,14 +395,19 @@
 
 /* Guest */
 .navbar__guest {
+  flex: 1 1 0;
+  min-width: max-content;
   display: flex;
+  flex-wrap: nowrap;
   align-items: center;
   gap: 0.5rem;
-  flex-shrink: 0;
   justify-content: flex-end;
+  position: relative;
+  z-index: 1;
 }
 
 .navbar__login {
+  flex-shrink: 0;
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -421,6 +444,7 @@
 }
 
 .navbar__lang {
+  flex-shrink: 0;
   margin: 0;
   padding: 0.4rem 0.85rem;
   border-radius: 999px;
@@ -484,12 +508,29 @@
 /* Breakpoints */
 @media screen and (max-width: 1123px) {
   .navbar__inner {
+    justify-content: space-between;
     padding: 0.75rem clamp(0.85rem, 3vw, 1.5rem);
     min-height: 3.75rem;
   }
 
+  .navbar__brand {
+    flex: 0 0 auto;
+  }
+
+  .navbar__guest {
+    flex: 0 0 auto;
+    margin-left: auto;
+  }
+
   .navbar__menu-toggle {
     display: inline-flex;
+    flex: 0 0 auto;
+    margin-left: auto;
+  }
+
+  /* Guest present: pull the pair to the right with a single auto margin on guest */
+  .navbar__guest ~ .navbar__menu-toggle {
+    margin-left: 0;
   }
 
   .navbar__links,

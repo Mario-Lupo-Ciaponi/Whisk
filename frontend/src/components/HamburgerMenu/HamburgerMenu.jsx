@@ -69,7 +69,11 @@ const HamburgerMenu = ({
               </Link>
             </li>
             <li className="hamburger-menu__item">
-              <Link className="hamburger-menu__link" to="/about" onClick={closeMenu}>
+              <Link
+                className="hamburger-menu__link"
+                to="/about"
+                onClick={closeMenu}
+              >
                 {t("navbar.about")}
               </Link>
             </li>
