@@ -35,78 +35,131 @@ const HamburgerMenu = ({
   }, [showMenu, setShowMenu]);
 
   return (
-    <div ref={menuRef} className={`hamburger-menu ${showMenu ? "active" : ""}`}>
-      <button
-        onClick={closeMenu}
-        className="close-menu-btn"
-        aria-label="Close menu"
-      >
-        <FontAwesomeIcon icon={faX} />
-      </button>
-
-      <ul className="hamburger-links">
-        <li className="item">
-          <Link className="link" to="/">
-            {t("navbar.home")}
-          </Link>
-        </li>
-        <li className="item">
-          <Link className="link" to="/search-profile">
-            {t("navbar.searchProfile")}
-          </Link>
-        </li>
-        <li className="item">
-          <Link className="link" to="/about">
-            {t("navbar.about")}
-          </Link>
-        </li>
-        <li className="item">
-          <Link className="link" to="/contact">
-            {t("navbar.contact")}
-          </Link>
-        </li>
-        <li className="item">
-          <button onClick={changeLanguage} className="language-switch-btn">
-            {i18n.resolvedLanguage === "en" ? "English" : "Български"}
+    <div
+      ref={menuRef}
+      className={`hamburger-menu${showMenu ? " hamburger-menu--open" : ""}`}
+      aria-hidden={!showMenu}
+    >
+      <div className="hamburger-menu__panel">
+        <header className="hamburger-menu__header">
+          <button
+            type="button"
+            onClick={closeMenu}
+            className="hamburger-menu__close"
+            aria-label="Close menu"
+          >
+            <FontAwesomeIcon icon={faX} />
           </button>
-        </li>
+        </header>
 
-        {isLoggedIn ? (
-          <>
-            <li className="item">
-              <Link className="link" to="/create-post">
-                {t("navbar.createPost")}
+        <nav className="hamburger-menu__nav">
+          <ul className="hamburger-menu__list">
+            <li className="hamburger-menu__item">
+              <Link className="hamburger-menu__link" to="/" onClick={closeMenu}>
+                {t("navbar.home")}
               </Link>
             </li>
-            <li className="item">
-              <Link className="link" to="/notifications">
-                {t("navbar.notifications")}
+            <li className="hamburger-menu__item">
+              <Link
+                className="hamburger-menu__link"
+                to="/search-profile"
+                onClick={closeMenu}
+              >
+                {t("navbar.searchProfile")}
               </Link>
             </li>
-            <li className="item">
-              <Link className="link" to={`/profile/${currentUser?.id}`}>
-                {t("navbar.profile")}
+            <li className="hamburger-menu__item">
+              <Link className="hamburger-menu__link" to="/about" onClick={closeMenu}>
+                {t("navbar.about")}
               </Link>
             </li>
-            <li className="item">
-              <Link className="link" to="/saved-posts">
-                {t("navbar.savedPosts")}
+            <li className="hamburger-menu__item">
+              <Link
+                className="hamburger-menu__link"
+                to="/contact"
+                onClick={closeMenu}
+              >
+                {t("navbar.contact")}
               </Link>
             </li>
-            <li className="item">
-              <button onClick={logout} className="logout">
-                {t("navbar.logout")}
+            <li className="hamburger-menu__item">
+              <button
+                type="button"
+                onClick={changeLanguage}
+                className="hamburger-menu__control hamburger-menu__control--lang"
+              >
+                {i18n.resolvedLanguage === "en" ? "English" : "Български"}
               </button>
             </li>
-          </>
-        ) : (
-          <li className="item">
-            <Link className="link" to="/login">
-              {t("navbar.login")}
-            </Link>
-          </li>
-        )}
-      </ul>
+
+            <li
+              className="hamburger-menu__divider"
+              role="presentation"
+              aria-hidden="true"
+            />
+
+            {isLoggedIn ? (
+              <>
+                <li className="hamburger-menu__item">
+                  <Link
+                    className="hamburger-menu__link hamburger-menu__link--accent"
+                    to="/create-post"
+                    onClick={closeMenu}
+                  >
+                    {t("navbar.createPost")}
+                  </Link>
+                </li>
+                <li className="hamburger-menu__item">
+                  <Link
+                    className="hamburger-menu__link"
+                    to="/notifications"
+                    onClick={closeMenu}
+                  >
+                    {t("navbar.notifications")}
+                  </Link>
+                </li>
+                <li className="hamburger-menu__item">
+                  <Link
+                    className="hamburger-menu__link"
+                    to={`/profile/${currentUser?.id}`}
+                    onClick={closeMenu}
+                  >
+                    {t("navbar.profile")}
+                  </Link>
+                </li>
+                <li className="hamburger-menu__item">
+                  <Link
+                    className="hamburger-menu__link"
+                    to="/saved-posts"
+                    onClick={closeMenu}
+                  >
+                    {t("navbar.savedPosts")}
+                  </Link>
+                </li>
+                <li className="hamburger-menu__item">
+                  <button
+                    type="button"
+                    onClick={logout}
+                    className="hamburger-menu__control hamburger-menu__control--logout"
+                  >
+                    {t("navbar.logout")}
+                  </button>
+                </li>
+              </>
+            ) : (
+              <li className="hamburger-menu__item">
+                <Link
+                  className="hamburger-menu__link hamburger-menu__link--accent"
+                  to="/login"
+                  onClick={closeMenu}
+                >
+                  {t("navbar.login")}
+                </Link>
+              </li>
+            )}
+          </ul>
+        </nav>
+      </div>
     </div>
   );
 };

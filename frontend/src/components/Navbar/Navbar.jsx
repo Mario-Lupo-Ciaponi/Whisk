@@ -130,7 +130,9 @@ const Navbar = ({ navigate, currentUser }) => {
                     alt=""
                   />
                 </span>
-                <span className="navbar__username">{currentUser?.username}</span>
+                <span className="navbar__username">
+                  {currentUser?.username}
+                </span>
               </button>
 
               <ul className="navbar__menu" role="menu">

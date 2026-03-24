@@ -45,7 +45,9 @@ const Footer = ({ currentUser }) => {
 
       <div className="footer__divider"></div>
 
-      <p className="footer__copyright">{t("footer.rightsReserved", "© 2026 All Rights Reserved")}</p>
+      <p className="footer__copyright">
+        {t("footer.rightsReserved", "© 2026 All Rights Reserved")}
+      </p>
     </footer>
   );
 };

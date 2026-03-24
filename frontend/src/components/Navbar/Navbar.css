@@ -9,8 +9,10 @@
     color-mix(in srgb, var(--pewter-color) 92%, white) 0%,
     var(--pewter-color) 100%
   );
-  border-bottom: 1px solid color-mix(in srgb, var(--coffee-pot-color) 18%, transparent);
-  box-shadow: 0 4px 24px color-mix(in srgb, var(--coffee-pot-color) 12%, transparent);
+  border-bottom: 1px solid
+    color-mix(in srgb, var(--coffee-pot-color) 18%, transparent);
+  box-shadow: 0 4px 24px
+    color-mix(in srgb, var(--coffee-pot-color) 12%, transparent);
 }
 
 .navbar__inner {
@@ -189,7 +191,8 @@
   color: var(--coffee-pot-color);
   background-color: color-mix(in srgb, white 55%, var(--pewter-color));
   border: 1px solid color-mix(in srgb, var(--tan-color) 14%, transparent);
-  box-shadow: 0 2px 8px color-mix(in srgb, var(--coffee-pot-color) 8%, transparent);
+  box-shadow: 0 2px 8px
+    color-mix(in srgb, var(--coffee-pot-color) 8%, transparent);
   transition:
     background-color 0.2s ease,
     box-shadow 0.2s ease;
@@ -197,7 +200,8 @@
 
 .navbar__user-trigger:hover {
   background-color: color-mix(in srgb, white 40%, var(--pewter-color));
-  box-shadow: 0 4px 14px color-mix(in srgb, var(--coffee-pot-color) 14%, transparent);
+  box-shadow: 0 4px 14px
+    color-mix(in srgb, var(--coffee-pot-color) 14%, transparent);
 }
 
 .navbar__user-trigger:focus-visible {
@@ -390,7 +394,11 @@
   font-weight: 600;
   text-decoration: none;
   color: white;
-  background-color: color-mix(in srgb, var(--tan-color) 88%, var(--brown-color));
+  background-color: color-mix(
+    in srgb,
+    var(--tan-color) 88%,
+    var(--brown-color)
+  );
   box-shadow: 0 2px 10px color-mix(in srgb, var(--tan-color) 28%, transparent);
   transition:
     transform 0.2s ease,
@@ -399,7 +407,11 @@
 }
 
 .navbar__login:hover {
-  background-color: color-mix(in srgb, var(--brown-color) 70%, var(--tan-color));
+  background-color: color-mix(
+    in srgb,
+    var(--brown-color) 70%,
+    var(--tan-color)
+  );
   transform: translateY(-1px);
 }
 
@@ -426,7 +438,11 @@
 }
 
 .navbar__lang:hover {
-  background-color: color-mix(in srgb, var(--tan-color) 8%, var(--pewter-color));
+  background-color: color-mix(
+    in srgb,
+    var(--tan-color) 8%,
+    var(--pewter-color)
+  );
   border-color: var(--tan-color);
 }
 
