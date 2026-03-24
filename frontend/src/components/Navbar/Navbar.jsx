@@ -47,118 +47,167 @@ const Navbar = ({ navigate, currentUser }) => {
   const toggleShowHamburgerMenu = () => setShowHamburgerMenu(true);
 
   return (
-    <nav className="navbar">
-      <div className="logo-container">
-        <img className="logo" src={LogoImage} alt="logo" />
-      </div>
+    <nav className="navbar" aria-label="Primary">
+      <div className="navbar__inner">
+        <Link to="/" className="navbar__brand" aria-label={t("navbar.home")}>
+          <img className="navbar__logo" src={LogoImage} alt="" />
+        </Link>
 
-      <ul className="links">
-        <li className="item">
-          <NavLink to="/" end className="link">
-            {t("navbar.home")}
-          </NavLink>
-        </li>
-        <li className="item">
-          <NavLink to="/search-profile" className="link">
-            {t("navbar.searchProfile")}
-          </NavLink>
-        </li>
-        <li className="item">
-          <NavLink to="/about" className="link">
-            {t("navbar.about")}
-          </NavLink>
-        </li>
-        <li className="item">
-          <NavLink to="/contact" className="link">
-            {t("navbar.contact")}
-          </NavLink>
-        </li>
-      </ul>
+        <ul className="navbar__links">
+          <li className="navbar__item">
+            <NavLink
+              to="/"
+              end
+              className={({ isActive }) =>
+                `navbar__link${isActive ? " navbar__link--active" : ""}`
+              }
+            >
+              {t("navbar.home")}
+            </NavLink>
+          </li>
+          <li className="navbar__item">
+            <NavLink
+              to="/search-profile"
+              className={({ isActive }) =>
+                `navbar__link${isActive ? " navbar__link--active" : ""}`
+              }
+            >
+              {t("navbar.searchProfile")}
+            </NavLink>
+          </li>
+          <li className="navbar__item">
+            <NavLink
+              to="/about"
+              className={({ isActive }) =>
+                `navbar__link${isActive ? " navbar__link--active" : ""}`
+              }
+            >
+              {t("navbar.about")}
+            </NavLink>
+          </li>
+          <li className="navbar__item">
+            <NavLink
+              to="/contact"
+              className={({ isActive }) =>
+                `navbar__link${isActive ? " navbar__link--active" : ""}`
+              }
+            >
+              {t("navbar.contact")}
+            </NavLink>
+          </li>
+        </ul>
 
-      {isLoggedIn ? (
-        <div className="user-menu">
-          <Link to="/notifications" className="notifications">
-            <FontAwesomeIcon icon={faBell} />
-            {notificationCount && (
-              <span className="notification-count">{notificationCount}</span>
-            )}
-          </Link>
+        {isLoggedIn ? (
+          <div className="navbar__account">
+            <Link
+              to="/notifications"
+              className="navbar__notify"
+              aria-label={t("navbar.notifications")}
+            >
+              <span className="navbar__notify-icon" aria-hidden="true">
+                <FontAwesomeIcon icon={faBell} />
+              </span>
+              {notificationCount ? (
+                <span className="navbar__badge">{notificationCount}</span>
+              ) : null}
+            </Link>
 
-          <div className="dropdown user-options">
-            <button className="user-toggle">
-              <div className="image-container">
-                <img
-                  className="profile-image"
-                  src={
-                    currentUser?.profile.profile_image
-                      ? currentUser.profile.profile_image
-                      : "images/default-profile-img.jpeg"
-                  }
-                  alt="profile-image"
-                />
-              </div>
-              <span className="username">{currentUser?.username}</span>
-            </button>
+            <div className="navbar__dropdown">
+              <button
+                type="button"
+                className="navbar__user-trigger"
+                aria-haspopup="true"
+                aria-expanded="false"
+              >
+                <span className="navbar__avatar-ring">
+                  <img
+                    className="navbar__avatar"
+                    src={
+                      currentUser?.profile.profile_image
+                        ? currentUser.profile.profile_image
+                        : "images/default-profile-img.jpeg"
+                    }
+                    alt=""
+                  />
+                </span>
+                <span className="navbar__username">{currentUser?.username}</span>
+              </button>
 
-            <ul className="menu-list">
-              <li className="dropdown-item">
-                <Link
-                  to={`profile/${currentUser?.id}`}
-                  className="dropdown-link"
-                >
-                  {t("navbar.profile")}
-                </Link>
-              </li>
-              <li className="dropdown-item">
-                <Link to="/saved-posts" className="dropdown-link">
-                  {t("navbar.savedPosts")}
-                </Link>
-              </li>
-              <li className="dropdown-item">
-                <button onClick={logout} className="logout-btn">
-                  {isLoading ? (
-                    <Loader width={15} height={15} />
-                  ) : (
-                    t("navbar.logout")
-                  )}
-                </button>
-              </li>
-              <li className="dropdown-item">
-                <button
-                  onClick={changeLanguage}
-                  className="language-switch-btn"
-                >
-                  {i18n.resolvedLanguage === "en" ? "English" : "Български"}
-                </button>
-              </li>
-            </ul>
+              <ul className="navbar__menu" role="menu">
+                <li className="navbar__menu-item" role="none">
+                  <Link
+                    to={`profile/${currentUser?.id}`}
+                    className="navbar__menu-link"
+                    role="menuitem"
+                  >
+                    {t("navbar.profile")}
+                  </Link>
+                </li>
+                <li className="navbar__menu-item" role="none">
+                  <Link
+                    to="/saved-posts"
+                    className="navbar__menu-link"
+                    role="menuitem"
+                  >
+                    {t("navbar.savedPosts")}
+                  </Link>
+                </li>
+                <li className="navbar__menu-item" role="none">
+                  <button
+                    type="button"
+                    onClick={logout}
+                    className="navbar__menu-button navbar__menu-button--logout"
+                  >
+                    {isLoading ? (
+                      <Loader width={15} height={15} />
+                    ) : (
+                      t("navbar.logout")
+                    )}
+                  </button>
+                </li>
+                <li className="navbar__menu-item" role="none">
+                  <button
+                    type="button"
+                    onClick={changeLanguage}
+                    className="navbar__menu-button navbar__menu-button--lang"
+                  >
+                    {i18n.resolvedLanguage === "en" ? "English" : "Български"}
+                  </button>
+                </li>
+              </ul>
+            </div>
+
+            <Link className="navbar__cta" to="create-post/">
+              {t("navbar.createPost")}
+            </Link>
           </div>
+        ) : (
+          <div className="navbar__guest">
+            <Link to="/login" className="navbar__login">
+              {t("navbar.login")}
+            </Link>
 
-          <Link className="create-post-link" to="create-post/">
-            {t("navbar.createPost")}
-          </Link>
-        </div>
-      ) : (
-        <div className="auth-link-container">
-          <Link to="/login" className="login-btn auth-link">
-            {t("navbar.login")}
-          </Link>
+            {!showHamburgerMenu && (
+              <button
+                type="button"
+                onClick={changeLanguage}
+                className="navbar__lang"
+              >
+                {i18n.resolvedLanguage === "en" ? "English" : "Български"}
+              </button>
+            )}
+          </div>
+        )}
 
-          {!showHamburgerMenu && (
-            <button onClick={changeLanguage} className="language-switch-btn">
-              {i18n.resolvedLanguage === "en" ? "English" : "Български"}
-            </button>
-          )}
-        </div>
-      )}
-
-      <button
-        onClick={toggleShowHamburgerMenu}
-        className="menu-btn"
-        aria-label="Open menu"
-      >
-        <FontAwesomeIcon icon={faBars} />
-      </button>
+        <button
+          type="button"
+          onClick={toggleShowHamburgerMenu}
+          className="navbar__menu-toggle"
+          aria-label="Open menu"
+        >
+          <FontAwesomeIcon icon={faBars} />
+        </button>
+      </div>
 
       <HamburgerMenu
         isLoggedIn={isLoggedIn}

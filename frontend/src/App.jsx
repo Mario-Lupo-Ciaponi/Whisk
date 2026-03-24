@@ -151,7 +151,7 @@ const App = () => {
           />
         </Routes>
       </main>
-      <Footer />
+      <Footer currentUser={currentUser} />
       {isFilterVisible && <DarkOpacityFilter />}
     </>
   );

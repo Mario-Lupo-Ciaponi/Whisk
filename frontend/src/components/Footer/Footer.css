@@ -1,74 +1,120 @@
 .footer {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  gap: 2.5rem;
   background-color: var(--pewter-color);
-  padding: 2rem;
+  padding: 3rem 4rem 1.5rem 4rem;
   width: 100%;
   margin-top: auto;
+  font-family: Arial, sans-serif;
+  box-sizing: border-box;
 }
 
-.footer .wrapper {
+.footer__container {
   display: flex;
-  flex-direction: column;
+  justify-content: space-between;
   align-items: center;
-  gap: 1.5rem;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
-.footer .wrapper .logo {
-  width: 5rem;
-  height: 5rem;
-  aspect-ratio: 1 / 1;
-  border-radius: 50%;
-}
-
-.footer .wrapper .links {
+.footer__brand {
   display: flex;
-  gap: 2rem;
+  align-items: center;
+  gap: 0.75rem;
 }
 
-.footer .wrapper .links .item {
-  transition: transform 500ms ease-in-out;
+.footer__logo {
+  width: 2rem;
+  height: 2rem;
+  border-radius: 50%;
+  object-fit: contain;
 }
 
-.footer .wrapper .links .item:hover {
-  transform: scale(1.25);
-}
-
-.footer .wrapper .links .item .link {
-  text-decoration: none;
+.footer__brand-name {
+  font-size: 1.25rem;
+  font-weight: 700;
   color: var(--tan-color);
 }
 
-.footer .rights-reserved {
-  margin: 0 auto;
-  padding-top: 2.75rem;
-  border-top: var(--border-default-values) black;
-  width: 90%;
+.footer__links {
+  display: flex;
+  gap: 2rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.footer__link-item {
+  transition: opacity 200ms ease;
+}
+
+.footer__link-item:hover {
+  opacity: 0.8;
+}
+
+.footer__link {
+  text-decoration: none;
+  color: var(--tan-color);
+  font-size: 0.9rem;
+  font-weight: 500;
+  transition: color 200ms ease;
+}
+
+.footer__link:hover {
+  color: var(--lighter-brown-color);
+}
+
+.footer__divider {
+  width: 100%;
+  max-width: 1200px;
+  margin: 2.5rem auto 1.5rem auto;
+  height: 1px;
+  background-color: #333;
+}
+
+.footer__copyright {
   text-align: center;
-  font-size: 0.75rem;
+  color: var(--tan-color);
+  font-size: 0.8rem;
+  margin: 0;
 }
 
 @media screen and (max-width: 850px) {
   .footer {
-    gap: 1.25rem;
+    padding: 2.5rem 2rem 1.5rem;
   }
 
-  .footer .rights-reserved {
-    padding-top: 1.75rem;
+  .footer__container {
+    flex-direction: column;
+    gap: 1.75rem;
+  }
+
+  .footer__brand {
+    justify-content: center;
+  }
+
+  .footer__links {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1.5rem;
   }
 }
 
 @media screen and (max-width: 480px) {
-  .footer .wrapper .logo {
-    width: 3.75rem;
-    height: 3.75rem;
+  .footer {
+    padding: 2rem 1rem 1.5rem;
   }
 
-  .footer .wrapper .links {
+  .footer__links {
     flex-direction: column;
-    align-items: center;
-    gap: 1rem;
+    gap: 0.5rem;
+    width: 100%;
+    text-align: center;
+  }
+
+  .footer__link {
+    display: inline-block;
+    padding: 0.25rem;
   }
 }
