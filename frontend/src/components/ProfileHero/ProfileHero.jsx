@@ -14,9 +14,9 @@ const ProfileHero = ({
   const toggleShouldNotEdit = () => setShouldNotEdit(!shouldNotEdit);
 
   return (
-    <section className="hero-section">
-      <article className="profile-summary">
-        <div className="profile-image-container">
+    <section className="profile-hero">
+      <article className="profile-hero__summary">
+        <div className="profile-hero__avatar-wrap">
           <img
             src={
               user.profile.profile_image
@@ -24,7 +24,7 @@ const ProfileHero = ({
                 : "images/default-profile-img.jpeg"
             }
             alt="profile image"
-            className="profile-image"
+            className="profile-hero__avatar"
           />
 
           {currentUser?.id === user.id && (
@@ -32,14 +32,18 @@ const ProfileHero = ({
           )}
         </div>
 
-        <div className="name-wrapper">
-          <h2 className="username">{user.username}</h2>
-          <p className="email">{user.email}</p>
+        <div className="profile-hero__meta">
+          <h2 className="profile-hero__name">{user.username}</h2>
+          <p className="profile-hero__email">{user.email}</p>
         </div>
       </article>
 
       {currentUser?.id === user.id && (
-        <button onClick={toggleShouldNotEdit} className="edit-btn">
+        <button
+          type="button"
+          onClick={toggleShouldNotEdit}
+          className="profile-hero__edit"
+        >
           {shouldNotEdit ? t("profileHero.edit") : t("profileHero.stopEdit")}
         </button>
       )}

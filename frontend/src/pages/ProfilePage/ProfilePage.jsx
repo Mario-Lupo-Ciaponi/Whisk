@@ -37,7 +37,7 @@ const ProfilePage = ({ currentUser, baseUrl }) => {
 
   if (isLoading || !user) {
     return (
-      <div className="loader-container">
+      <div className="profile-page__loader loader-container">
         <Loader height={200} width={200} />
       </div>
     );
@@ -50,15 +50,17 @@ const ProfilePage = ({ currentUser, baseUrl }) => {
         <meta property="og:title" content={pageTitle} />
         <meta property="og:url" content={pageUrl} />
       </Helmet>
-      <div className="profile">
-        <ProfileHero
-          currentUser={currentUser}
-          user={user}
-          shouldNotEdit={shouldNotEdit}
-          setShouldNotEdit={setShouldNotEdit}
-        />
-        <ProfileForm user={user} shouldNotEdit={shouldNotEdit} />
-      </div>
+      <main className="profile-page">
+        <div className="profile-page__content">
+          <ProfileHero
+            currentUser={currentUser}
+            user={user}
+            shouldNotEdit={shouldNotEdit}
+            setShouldNotEdit={setShouldNotEdit}
+          />
+          <ProfileForm user={user} shouldNotEdit={shouldNotEdit} />
+        </div>
+      </main>
     </>
   );
 };

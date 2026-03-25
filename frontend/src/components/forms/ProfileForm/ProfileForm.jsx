@@ -48,17 +48,21 @@ const ProfileForm = ({ user, shouldNotEdit }) => {
   }, [user]);
 
   return (
-    <form onSubmit={editProfile} className="profile-form">
+    <form
+      onSubmit={editProfile}
+      className={`profile-form${shouldNotEdit ? " profile-form--readonly" : ""}`}
+    >
       <Toaster />
 
-      <div className="profile-fields">
-        <div className="profile-field">
-          <label className="profile-label" htmlFor="">
+      <div className="profile-form__grid">
+        <div className="profile-form__field">
+          <label className="profile-form__label" htmlFor="bio">
             {t("profileForm.bio")}
           </label>
           <input
+            id="bio"
             name="bio"
-            className="profile-input bio"
+            className="profile-form__control profile-form__control--input"
             disabled={shouldNotEdit}
             type="text"
             placeholder="Enter short bio"
@@ -69,13 +73,14 @@ const ProfileForm = ({ user, shouldNotEdit }) => {
           />
         </div>
 
-        <div className="profile-field">
-          <label className="profile-label" htmlFor="">
+        <div className="profile-form__field">
+          <label className="profile-form__label" htmlFor="account-type">
             {t("profileForm.accountType")}
           </label>
           <select
+            id="account-type"
             name="account-type"
-            className="profile-select type"
+            className="profile-form__control profile-form__control--select"
             disabled={shouldNotEdit}
             value={accountType}
             onChange={(event) => {
@@ -84,19 +89,19 @@ const ProfileForm = ({ user, shouldNotEdit }) => {
           >
             <option value="no type">{t("profileForm.noType")}</option>
             <option value="pet owner">{t("profileForm.petOwner")}</option>
-            <option value="volunteer">{t("profileForm.volunteer")}r</option>
+            <option value="volunteer">{t("profileForm.volunteer")}</option>
             <option value="shelter">{t("profileForm.shelter")}</option>
           </select>
         </div>
 
-        <div className="profile-field">
-          <label className="profile-label" htmlFor="">
+        <div className="profile-form__field">
+          <label className="profile-form__label" htmlFor="city">
             {t("profileForm.city")}
           </label>
           <select
-            name="city"
             id="city"
-            className="profile-select city"
+            name="city"
+            className="profile-form__control profile-form__control--select"
             disabled={shouldNotEdit}
             value={selectedCity}
             onChange={(event) => {
@@ -116,10 +121,13 @@ const ProfileForm = ({ user, shouldNotEdit }) => {
           </select>
         </div>
       </div>
+
       {!shouldNotEdit && (
-        <button type="submit" disabled={shouldNotEdit} className="submit-btn">
-          {t("profileForm.edit")}
-        </button>
+        <div className="profile-form__actions">
+          <button type="submit" className="profile-form__submit">
+            {t("profileForm.edit")}
+          </button>
+        </div>
       )}
     </form>
   );

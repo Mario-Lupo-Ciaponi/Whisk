@@ -1,83 +1,116 @@
 .profile-form {
   width: 100%;
+  padding: 1.5rem 1.35rem;
+  border-radius: 1rem;
+  background: linear-gradient(
+    180deg,
+    color-mix(in srgb, var(--pewter-color) 92%, white) 0%,
+    color-mix(in srgb, var(--pewter-color) 65%, white) 100%
+  );
+  border: 1px solid color-mix(in srgb, var(--tan-color) 18%, transparent);
+  box-shadow: 0 10px 30px color-mix(in srgb, var(--coffee-pot-color) 10%, transparent);
 }
 
-.profile-form .profile-fields {
+.profile-form--readonly {
+  opacity: 0.98;
+}
+
+.profile-form__grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.25rem 1.5rem;
+}
+
+.profile-form__field {
   display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: 2rem;
-  margin-bottom: 2rem;
+  flex-direction: column;
+  gap: 0.55rem;
+  min-width: 0;
 }
 
-.profile-form .profile-fields > * {
-  flex-basis: 48%;
+.profile-form__label {
+  font-weight: 700;
+  color: var(--tan-color);
+  font-size: 0.95rem;
 }
 
-.profile-form .profile-fields .profile-field .profile-label {
-  display: block;
-  margin-bottom: 0.5rem;
-}
-
-.profile-form .profile-fields .profile-field .profile-input,
-.profile-form .profile-fields .profile-field .profile-select {
+.profile-form__control {
   width: 100%;
-  padding: 0.5rem 1rem;
-  border-radius: 0.5rem;
-  border: none;
+  border-radius: 0.75rem;
+  border: 1px solid color-mix(in srgb, var(--tan-color) 22%, transparent);
   background-color: var(--light-gray-color);
+  padding: 0.7rem 0.95rem;
+  font: inherit;
+  color: var(--coffee-pot-color);
+  transition:
+    background-color 160ms ease,
+    border-color 160ms ease,
+    box-shadow 160ms ease;
 }
 
-.profile-form .submit-btn {
-  padding: 0.25rem 2rem;
+.profile-form__control::placeholder {
+  color: color-mix(in srgb, var(--coffee-pot-color) 55%, transparent);
+}
+
+.profile-form__control:focus-visible {
+  outline: none;
+  border-color: color-mix(in srgb, var(--tan-color) 60%, transparent);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--tan-color) 25%, transparent);
+}
+
+.profile-form__control:disabled {
+  cursor: not-allowed;
+  opacity: 0.88;
+  background-color: color-mix(in srgb, var(--light-gray-color) 80%, white);
+}
+
+.profile-form__actions {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 1.35rem;
+}
+
+.profile-form__submit {
+  padding: 0.7rem 1.25rem;
   border: none;
-  border-radius: 0.5rem;
+  border-radius: 0.85rem;
   background-color: var(--coffee-pot-color);
   color: white;
-  transition: background-color 500ms ease-in-out;
+  font-weight: 700;
+  cursor: pointer;
+  transition:
+    transform 160ms ease,
+    background-color 160ms ease,
+    box-shadow 160ms ease;
+  box-shadow: 0 8px 20px color-mix(in srgb, var(--coffee-pot-color) 18%, transparent);
 }
 
-.profile-form .submit-btn:hover {
+.profile-form__submit:hover:not(:disabled) {
   background-color: var(--tan-color);
+  transform: translateY(-1px);
+}
+
+.profile-form__submit:disabled {
+  opacity: 0.75;
+  cursor: not-allowed;
+  transform: none;
 }
 
 @media screen and (max-width: 768px) {
-  .profile-form .profile-fields {
-    gap: 1.5rem;
+  .profile-form {
+    padding: 1.25rem 1.1rem;
   }
 
-  .profile-form .profile-fields > * {
-    flex-basis: 45%;
-    flex-grow: 1;
-  }
-}
-
-@media screen and (max-width: 480px) {
-  .profile-form .profile-fields {
-    flex-direction: column;
-    align-items: stretch;
-    gap: 1.2rem;
+  .profile-form__grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
   }
 
-  .profile-form .profile-fields > * {
-    flex-basis: 100%;
+  .profile-form__actions {
+    justify-content: stretch;
   }
 
-  .profile-form .profile-fields .profile-field .profile-input,
-  .profile-form .profile-fields .profile-field .profile-select {
-    font-size: 16px;
-    padding: 0.8rem;
-  }
-
-  .profile-form .profile-fields .profile-field .profile-label {
-    font-size: 0.9rem;
-    margin-bottom: 0.3rem;
-  }
-
-  .profile-form .submit-btn {
+  .profile-form__submit {
     width: 100%;
-    padding: 0.8rem;
-    font-size: 1.1rem;
-    margin-top: 1rem;
   }
 }
