@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useTranslation } from "react-i18next";
 import toast from "react-hot-toast";
 import useNotifications from "../../hooks/useNotifications.js";
@@ -15,7 +15,7 @@ const Navbar = ({ navigate, currentUser }) => {
   const [showHamburgerMenu, setShowHamburgerMenu] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const { t, i18n } = useTranslation();
-  const { notifications, notificationCount } = useNotifications();
+  const { notificationCount } = useNotifications();
 
   const logout = async () => {
     setIsLoading(true);

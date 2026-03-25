@@ -8,7 +8,8 @@
     color-mix(in srgb, var(--pewter-color) 65%, white) 100%
   );
   border: 1px solid color-mix(in srgb, var(--tan-color) 18%, transparent);
-  box-shadow: 0 10px 30px color-mix(in srgb, var(--coffee-pot-color) 10%, transparent);
+  box-shadow: 0 10px 30px
+    color-mix(in srgb, var(--coffee-pot-color) 10%, transparent);
 }
 
 .profile-form--readonly {
@@ -82,7 +83,8 @@
     transform 160ms ease,
     background-color 160ms ease,
     box-shadow 160ms ease;
-  box-shadow: 0 8px 20px color-mix(in srgb, var(--coffee-pot-color) 18%, transparent);
+  box-shadow: 0 8px 20px
+    color-mix(in srgb, var(--coffee-pot-color) 18%, transparent);
 }
 
 .profile-form__submit:hover:not(:disabled) {

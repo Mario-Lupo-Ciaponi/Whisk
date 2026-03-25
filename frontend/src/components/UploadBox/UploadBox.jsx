@@ -65,41 +65,81 @@ const UploadBox = ({ image, setImage }) => {
   };
 
   return (
-    <div className="upload-container">
+    <div className="upload-box">
       <label
         htmlFor="image-upload"
-        className="drop-zone"
+        className="upload-box__dropzone"
         onDrop={handleDrop}
         onDragOver={handleDrag}
         onDragEnter={handleDrag}
       >
         {image ? (
           <>
-            <span className="file-name">{image.name}</span>
-            <button onClick={removeBtn} className="remove-btn">
-              {t("uploadBox.remove")}
-            </button>
+            <div className="upload-box__file">
+              <span className="upload-box__file-name">{image.name}</span>
+              <button
+                type="button"
+                onClick={removeBtn}
+                className="upload-box__remove"
+              >
+                {t("uploadBox.remove")}
+              </button>
+            </div>
           </>
         ) : (
           <>
-            <h3 className="drop-text">{t("uploadBox.dropText")}</h3>
+            <div className="upload-box__empty">
+              <div className="upload-box__icon" aria-hidden="true">
+                <svg
+                  width="32"
+                  height="32"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M12 16V4"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                  />
+                  <path
+                    d="M7 9L12 4L17 9"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  />
+                  <path
+                    d="M5 20H19"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                  />
+                </svg>
+              </div>
 
-            <div className="browse-btn">{t("uploadBox.browse")}</div>
+              <h3 className="upload-box__headline">{t("uploadBox.dropText")}</h3>
+              <p className="upload-box__subtext">
+                Clear photos help the community identify your pet
+              </p>
+              <span className="upload-box__browse">{t("uploadBox.browse")}</span>
+            </div>
           </>
         )}
 
         <input
           id="image-upload"
-          className="hidden-input"
+          className="upload-box__input"
           name="image-upload"
           type="file"
           onChange={handleChange}
         />
       </label>
 
-      <ul className="errors">
+      <ul className="upload-box__errors">
         {errors.map((error) => {
-          return <li className="error">{error}</li>;
+          return <li className="upload-box__error">{error}</li>;
         })}
       </ul>
     </div>

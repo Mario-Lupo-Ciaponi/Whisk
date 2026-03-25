@@ -79,73 +79,91 @@ const PostCreateForm = ({ currentUser, navigate }) => {
   }, [currentUser]);
 
   return (
-    <form className="create-post-form" onSubmit={createPost}>
+    <form className="post-create-form" onSubmit={createPost}>
       <Toaster position="bottom-center" />
 
-      <div className="post-field">
-        <label className="post-label" htmlFor="title">
-          {t("createPostPage.postForm.title")}
-        </label>
-        <input
-          id="title"
-          className="post-input"
-          name="title"
-          type="text"
-          onChange={(event) => {
-            setTitle(event.target.value);
-          }}
-        />
-      </div>
-      <div className="post-field">
-        <label className="post-label" htmlFor="description">
-          {t("createPostPage.postForm.description")}
-        </label>
-        <textarea
-          id="description"
-          className="post-input textarea"
-          name="description"
-          cols="30"
-          rows="5"
-          onChange={(event) => {
-            setDescription(event.target.value);
-          }}
-        ></textarea>
-      </div>
-      <div className="post-field">
-        <label className="post-label" htmlFor="city">
-          {t("createPostPage.postForm.city")}
-        </label>
+      <div className="post-create-form__stack">
+        <div className="post-create-form__field">
+          <label className="post-create-form__label" htmlFor="title">
+            {t("createPostPage.postForm.title")}
+          </label>
+          <input
+            id="title"
+            className="post-create-form__control"
+            name="title"
+            type="text"
+            onChange={(event) => {
+              setTitle(event.target.value);
+            }}
+          />
+        </div>
 
-        <select
-          name="city"
-          id="city"
-          className="post-input select"
-          onChange={(event) => {
-            setSelectedCity(event.target.value);
-          }}
-        >
-          <option className="select-option" disabled selected value>
-            {t("createPostPage.postForm.selectCity")}
-          </option>
-          {cities.map((city) => {
-            return (
-              <option className="select-option" value={city.id}>
-                {city.name}
-              </option>
-            );
-          })}
-        </select>
+        <div className="post-create-form__field">
+          <label className="post-create-form__label" htmlFor="description">
+            {t("createPostPage.postForm.description")}
+          </label>
+          <textarea
+            id="description"
+            className="post-create-form__control post-create-form__control--textarea"
+            name="description"
+            cols="30"
+            rows="5"
+            onChange={(event) => {
+              setDescription(event.target.value);
+            }}
+          ></textarea>
+        </div>
+
+        <div className="post-create-form__field">
+          <label className="post-create-form__label" htmlFor="city">
+            {t("createPostPage.postForm.city")}
+          </label>
+
+          <select
+            name="city"
+            id="city"
+            className="post-create-form__control post-create-form__control--select"
+            onChange={(event) => {
+              setSelectedCity(event.target.value);
+            }}
+          >
+            <option className="select-option" disabled selected value>
+              {t("createPostPage.postForm.selectCity")}
+            </option>
+            {cities.map((city) => {
+              return (
+                <option className="select-option" value={city.id}>
+                  {city.name}
+                </option>
+              );
+            })}
+          </select>
       </div>
 
-      <UploadBox image={image} setImage={setImage} />
+        <UploadBox image={image} setImage={setImage} />
 
-      <button className="submit-btn">
-        {isLoading ? (
-          <Loader height={30} width={30} />
-        ) : (
-          t("createPostPage.postForm.submit")
-        )}
-      </button>
+        <div className="post-create-form__actions">
+          <button
+            type="submit"
+            className="post-create-form__submit"
+            disabled={isLoading}
+          >
+            {isLoading ? (
+              <Loader height={30} width={30} />
+            ) : (
+              t("createPostPage.postForm.submit")
+            )}
+          </button>
+
+          <button
+            type="button"
+            className="post-create-form__cancel"
+            onClick={() => navigate("/")}
+          >
+            Cancel
+          </button>
+        </div>
+      </div>
     </form>
   );
 };
