@@ -1,12 +1,23 @@
 .profile-section {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 3rem;
-  justify-content: center;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
   padding: 2rem 0;
   width: 100%;
+  max-width: 480px;
+  margin: 0 auto;
 }
 
-.profile-section > * {
-  flex-basis: 320px;
+@media screen and (max-width: 768px) {
+  .profile-section {
+    gap: 1.5rem;
+    padding: 1.5rem 0;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .profile-section {
+    gap: 1rem;
+    padding: 1rem 0;
+  }
 }

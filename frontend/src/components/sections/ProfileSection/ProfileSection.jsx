@@ -5,7 +5,7 @@ const ProfileSection = ({ users, navigate }) => {
   return (
     <section className="profile-section">
       {users.map((user) => {
-        return <ProfileCard user={user} navigate={navigate} />;
+        return <ProfileCard key={user.id} user={user} navigate={navigate} />;
       })}
     </section>
   );

@@ -31,34 +31,40 @@ const ProfileCard = ({ user, navigate }) => {
 
   return (
     <article onClick={redirectToProfile} className="profile-card">
-      <div className="image-container">
-        <img
-          className="profile-image"
-          src={
-            userProfile.profile_image
-              ? userProfile.profile_image
-              : "images/default-profile-img.jpeg"
-          }
-          alt="profile image"
-        />
+      <div className="profile-card__header">
+        <div className="profile-card__image-wrapper">
+          <img
+            className="profile-card__image"
+            src={
+              userProfile.profile_image
+                ? userProfile.profile_image
+                : "images/default-profile-img.jpeg"
+            }
+            alt="profile image"
+          />
+          <div className="profile-card__status-indicator"></div>
+        </div>
       </div>
-      <div className="info-wrapper">
-        <h2 className="username">{user.username}</h2>
 
-        <div className="profile-meta">
-          {userProfile.account_type && (
-            <p className="profile-type">
-              {accountTypeIcons[userProfile.account_type]}
-            </p>
-          )}
+      <div className="profile-card__content">
+        <h2 className="profile-card__name">{user.username}</h2>
 
-          <div className="country-div">
-            <ReactCountryFlag countryCode={user.country.code2} />
-            <p className="country">{user.country.name}</p>
+        {userProfile.account_type && (
+          <div
+            className={`profile-card__badge profile-card__badge--${userProfile.account_type.replace(" ", "-")}`}
+          >
+            {accountTypeIcons[userProfile.account_type]}
           </div>
+        )}
+
+        <div className="profile-card__location">
+          <ReactCountryFlag countryCode={user.country.code2} />
+          <p className="profile-card__location-text">{user.country.name}</p>
         </div>
 
-        {userProfile.bio && <p className="profile-bio">{userProfile.bio}</p>}
+        {userProfile.bio && (
+          <p className="profile-card__bio">{userProfile.bio}</p>
+        )}
       </div>
     </article>
   );
