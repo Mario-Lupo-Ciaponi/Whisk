@@ -72,7 +72,8 @@
   color: white;
   cursor: pointer;
   background: var(--coffee-pot-color);
-  box-shadow: 0 12px 28px color-mix(in srgb, var(--coffee-pot-color) 20%, transparent);
+  box-shadow: 0 12px 28px
+    color-mix(in srgb, var(--coffee-pot-color) 20%, transparent);
   transition:
     transform 160ms ease,
     filter 160ms ease,
@@ -82,7 +83,8 @@
 .post-create-form__submit:hover:not(:disabled) {
   transform: translateY(-1px);
   filter: brightness(1.03);
-  box-shadow: 0 16px 34px color-mix(in srgb, var(--coffee-pot-color) 25%, transparent);
+  box-shadow: 0 16px 34px
+    color-mix(in srgb, var(--coffee-pot-color) 25%, transparent);
 }
 
 .post-create-form__submit:disabled {

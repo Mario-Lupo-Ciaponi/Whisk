@@ -119,11 +119,15 @@ const UploadBox = ({ image, setImage }) => {
                 </svg>
               </div>
 
-              <h3 className="upload-box__headline">{t("uploadBox.dropText")}</h3>
+              <h3 className="upload-box__headline">
+                {t("uploadBox.dropText")}
+              </h3>
               <p className="upload-box__subtext">
                 Clear photos help the community identify your pet
               </p>
-              <span className="upload-box__browse">{t("uploadBox.browse")}</span>
+              <span className="upload-box__browse">
+                {t("uploadBox.browse")}
+              </span>
             </div>
           </>
         )}

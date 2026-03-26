@@ -23,7 +23,8 @@
 
 .upload-box__dropzone:hover {
   border-color: var(--tan-color);
-  box-shadow: 0 16px 38px color-mix(in srgb, var(--coffee-pot-color) 14%, transparent);
+  box-shadow: 0 16px 38px
+    color-mix(in srgb, var(--coffee-pot-color) 14%, transparent);
   background: color-mix(in srgb, white 86%, var(--pewter-color));
 }
 
@@ -62,7 +63,6 @@
   font-size: 0.95rem;
   color: color-mix(in srgb, var(--coffee-pot-color) 85%, black 15%);
 }
-
 
 .upload-box__empty {
   display: flex;

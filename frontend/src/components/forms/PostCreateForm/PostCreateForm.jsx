@@ -138,7 +138,7 @@ const PostCreateForm = ({ currentUser, navigate }) => {
               );
             })}
           </select>
-      </div>
+        </div>
 
         <UploadBox image={image} setImage={setImage} />
 

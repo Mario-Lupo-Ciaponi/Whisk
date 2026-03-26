@@ -18,12 +18,14 @@ const ContactPage = ({ currentUser, baseUrl }) => {
         <meta property="og:title" content={pageTitle} />
         <meta property="og:url" content={pageUrl} />
       </Helmet>
-      <div className="contact-container">
-        <header className="contact-header">
-          <h1 className="contact-title">{t("contact.title")}</h1>
-        </header>
+      <div className="contact-page">
+        <div className="contact-page__card">
+          <header className="contact-page__header">
+            <h1 className="contact-page__title">{t("contact.title")}</h1>
+          </header>
 
-        <ContactForm currentUser={currentUser} />
+          <ContactForm currentUser={currentUser} />
+        </div>
       </div>
     </>
   );

@@ -12,7 +12,8 @@
   background: var(--pewter-color);
   border: 1px solid color-mix(in srgb, var(--tan-color) 18%, transparent);
   border-radius: 1.25rem;
-  box-shadow: 0 18px 60px color-mix(in srgb, var(--coffee-pot-color) 14%, transparent);
+  box-shadow: 0 18px 60px
+    color-mix(in srgb, var(--coffee-pot-color) 14%, transparent);
   overflow: hidden;
 }
 
