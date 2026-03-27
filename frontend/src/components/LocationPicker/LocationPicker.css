@@ -1,52 +1,70 @@
 .leaflet-container {
   margin-top: 0.5rem;
-  height: 300px;
+  height: 350px;
   width: 100% !important;
-  border-radius: 2rem;
+  border-radius: 1.25rem;
   display: block;
   z-index: 1;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 
 .add-location-btn {
-  margin: 1.5rem auto;
+  margin: 1.5rem auto 0;
   display: flex;
   align-items: center;
   justify-content: center;
-  min-width: 95px;
+  min-width: 120px;
   background-color: var(--brown-color);
   border: none;
-  border-radius: 2rem;
+  border-radius: 1.5rem;
   color: white;
-  padding: 0.5rem 1rem;
-  transition: background-color 500ms ease-in-out;
+  padding: 0.75rem 1.5rem;
+  transition:
+    background-color 200ms ease-in-out,
+    transform 200ms ease-in-out;
+  font-weight: 500;
+  font-size: 0.95rem;
+  cursor: pointer;
 }
 
 .add-location-btn:hover {
   background-color: var(--darker-brown-color);
+  transform: translateY(-2px);
 }
 
 .add-location-btn:active {
   background-color: var(--light-brown-color);
+  transform: translateY(0);
+}
+
+@media screen and (max-width: 1024px) {
+  .leaflet-container {
+    height: 320px;
+  }
 }
 
 @media screen and (max-width: 768px) {
   .leaflet-container {
-    border-radius: 1.5rem;
+    height: 300px;
+    border-radius: 1rem;
   }
 
   .add-location-btn {
-    padding: 0.5rem 1.5rem;
+    padding: 0.65rem 1.25rem;
+    font-size: 0.9rem;
+    min-width: 110px;
   }
 }
 
 @media screen and (max-width: 480px) {
   .leaflet-container {
     height: 250px;
-    border-radius: 1rem;
+    border-radius: 0.75rem;
   }
 
   .add-location-btn {
-    width: 80%;
-    padding: 0.75rem;
+    width: 85%;
+    padding: 0.7rem 1rem;
+    font-size: 0.85rem;
   }
 }

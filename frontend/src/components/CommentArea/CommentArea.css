@@ -9,10 +9,12 @@
   flex-direction: column;
   padding: 2rem;
   border-radius: 1.5rem;
-  min-width: 400px;
+  width: 500px;
+  max-width: 90vw;
   max-height: 80vh;
   overflow-y: auto;
   gap: 1.5rem;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
 }
 
 .comment-area--active {
@@ -29,23 +31,42 @@
   cursor: pointer;
   color: var(--tan-color);
   transition: color 200ms ease-in-out;
+  padding: 0.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.5rem;
+  height: 2.5rem;
 }
 
 .comment-area__close-btn:hover {
   color: var(--coffee-pot-color);
 }
 
+@media screen and (max-width: 1024px) {
+  .comment-area {
+    width: 450px;
+    max-width: 90vw;
+  }
+}
+
 @media screen and (max-width: 768px) {
   .comment-area {
-    min-width: 90%;
+    width: 85vw;
+    max-width: 450px;
     padding: 1.5rem;
+    border-radius: 1.25rem;
+    gap: 1.25rem;
   }
 }
 
 @media screen and (max-width: 480px) {
   .comment-area {
-    min-width: 95%;
+    width: 85vw;
+    max-width: 85vw;
     padding: 1.25rem;
-    max-height: 90vh;
+    max-height: 85vh;
+    border-radius: 1rem;
+    gap: 1rem;
   }
 }
