@@ -50,7 +50,8 @@
     "title": "Pet Location",
     "description": "Select a location where you have seen the pet",
     "showLocations": "Show Locations Provided",
-    "hideLocations": "Hide Locations Provided"
+    "hideLocations": "Hide Locations Provided",
+    "noLocations": "No locations found"
   },
   "locationPicker": {
     "selectLocation": "Please select a location!",
@@ -179,9 +180,12 @@
     "title": "Contact Us",
     "contactForm": {
       "subject": "Subject",
-      "email": "Email address",
+      "subjectPlaceholder": "What is this about?",
+      "email": "Email",
+      "emailPlaceholder": "your.email@example.com",
       "message": "Message",
-      "send": "Send",
+      "messagePlaceholder": "Tell us more about your inquiry...",
+      "send": "Send Message",
       "emailSent": "Email sent successfully!",
       "invalidData": "Invalid data submitted.",
       "allFieldsRequired": "All fields are required!"

@@ -22,7 +22,8 @@ const PostCard = ({ post, currentUser, navigate, setIsFilterVisible }) => {
   const [locations, setLocations] = useState([]);
   const [comments, setComments] = useState([]);
   const [found, setFound] = useState(post.found);
-  const [activeSection, setActiveSection] = useState("none");
+  const [isMapModalVisible, setIsMapModalVisible] = useState(false);
+  const [isCommentModalVisible, setIsCommentModalVisible] = useState(false);
   const [isEditFormVisible, setIsEditFormVisible] = useState(false);
   const [isSavingLoading, setIsSavingLoading] = useState(false);
   // Count states:
@@ -39,12 +40,14 @@ const PostCard = ({ post, currentUser, navigate, setIsFilterVisible }) => {
 
     getPostLocations();
     getComments();
-  }, []);
+  }, [post.locations, post.comments]);
 
   const statusText = found ? t("postCard.found") : t("postCard.notFound");
 
-  const toggleSection = (name) =>
-    setActiveSection((prev) => (prev === name ? "none" : name));
+  const openMapModal = () => setIsMapModalVisible(true);
+  const closeMapModal = () => setIsMapModalVisible(false);
+  const openCommentModal = () => setIsCommentModalVisible(true);
+  const closeCommentModal = () => setIsCommentModalVisible(false);
 
   const savePost = async () => {
     setIsSavingLoading(true);
@@ -150,17 +153,11 @@ const PostCard = ({ post, currentUser, navigate, setIsFilterVisible }) => {
       <hr className="post-card__divider" />
 
       <div className="post-card__actions">
-        <button
-          onClick={() => toggleSection("map")}
-          className="post-card__action"
-        >
+        <button onClick={openMapModal} className="post-card__action">
           <FontAwesomeIcon icon={faMapLocationDot} />
           <span>{t("postCard.map")}</span>
         </button>
-        <button
-          onClick={() => toggleSection("comment")}
-          className="post-card__action"
-        >
+        <button onClick={openCommentModal} className="post-card__action">
           <FontAwesomeIcon icon={faComment} />
           <span>{t("postCard.comment")}</span>
         </button>
@@ -171,7 +168,8 @@ const PostCard = ({ post, currentUser, navigate, setIsFilterVisible }) => {
       </div>
 
       <MapSection
-        activeSection={activeSection}
+        isVisible={isMapModalVisible}
+        onClose={closeMapModal}
         post={post}
         locations={locations}
         setLocations={setLocations}
@@ -181,13 +179,18 @@ const PostCard = ({ post, currentUser, navigate, setIsFilterVisible }) => {
       />
 
       <CommentArea
-        activeSection={activeSection}
+        isVisible={isCommentModalVisible}
+        onClose={closeCommentModal}
         post={post}
         comments={comments}
         setComments={setComments}
         setCommentsCount={setCommentsCount}
         navigate={navigate}
       />
+
+      {(isMapModalVisible || isCommentModalVisible || isEditFormVisible) && (
+        <DarkOpacityFilter />
+      )}
 
       {isEditFormVisible && (
         <PostEditForm

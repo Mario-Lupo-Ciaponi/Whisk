@@ -5,11 +5,12 @@ import LocationSection from "../LocationSection/LocationSection.jsx";
 import LocationPicker from "../../LocationPicker/LocationPicker.jsx";
 import api from "../../../api/api.js";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCaretDown, faCaretUp } from "@fortawesome/free-solid-svg-icons";
+import { faCaretDown, faCaretUp, faX } from "@fortawesome/free-solid-svg-icons";
 import "./MapSection.css";
 
 const MapSection = ({
-  activeSection,
+  isVisible,
+  onClose,
   post,
   locations,
   setLocations,
@@ -25,15 +26,19 @@ const MapSection = ({
 
   return (
     <section
-      className={`map-section ${activeSection === "map" ? "active" : "none"}`}
+      className={`map-section ${isVisible ? "map-section--active" : ""}`}
     >
+      <button onClick={onClose} className="map-section__close-btn">
+        <FontAwesomeIcon icon={faX} />
+      </button>
+
       {!post.found && (
         <>
           {!(currentUser?.id === post.author.id) && (
             <>
-              <header className="section-header">
-                <h3 className="section-title">{t("mapSection.title")}</h3>
-                <p className="section-description">
+              <header className="map-section__header">
+                <h3 className="map-section__title">{t("mapSection.title")}</h3>
+                <p className="map-section__description">
                   {t("mapSection.description")}
                 </p>
               </header>
@@ -41,30 +46,41 @@ const MapSection = ({
                 post={post}
                 setLocations={setLocations}
                 setLocationsCount={setLocationsCount}
-                activeSection={activeSection}
+                isVisible={isVisible}
               />
             </>
           )}
         </>
       )}
 
-      <div className="locations-wrapper">
-        <button className="show-locations-btn" onClick={toggleLocationSection}>
-          {showLocationSection
-            ? t("mapSection.hideLocations")
-            : t("mapSection.showLocations")}
-          <FontAwesomeIcon
-            icon={showLocationSection ? faCaretUp : faCaretDown}
-          />
-        </button>
+      <div className="map-section__locations-wrapper">
+        {locations.length > 0 ? (
+          <>
+            <button
+              className="map-section__toggle-btn"
+              onClick={toggleLocationSection}
+            >
+              {showLocationSection
+                ? t("mapSection.hideLocations")
+                : t("mapSection.showLocations")}
+              <FontAwesomeIcon
+                icon={showLocationSection ? faCaretUp : faCaretDown}
+              />
+            </button>
 
-        <LocationSection
-          post={post}
-          showSection={showLocationSection}
-          locations={locations}
-          currentUser={currentUser}
-          setFound={setFound}
-        />
+            <LocationSection
+              post={post}
+              showSection={showLocationSection}
+              locations={locations}
+              currentUser={currentUser}
+              setFound={setFound}
+            />
+          </>
+        ) : (
+          <p className="map-section__no-locations">
+            {t("mapSection.noLocations")}
+          </p>
+        )}
       </div>
     </section>
   );

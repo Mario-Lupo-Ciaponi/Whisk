@@ -43,7 +43,7 @@ const LocationPicker = ({
   post,
   setLocations,
   setLocationsCount,
-  activeSection,
+  isVisible,
 }) => {
   const [selectedPosition, setSelectedPosition] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
@@ -120,7 +120,7 @@ const LocationPicker = ({
         />
 
         <MapEvents onClick={setSelectedPosition} />
-        <RecalculateView trigger={activeSection} />
+        <RecalculateView trigger={isVisible} />
 
         {selectedPosition && <Marker position={selectedPosition} />}
       </MapContainer>
