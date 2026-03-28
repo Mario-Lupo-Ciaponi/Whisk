@@ -15,7 +15,6 @@ from pathlib import Path
 
 import os
 
-from django.conf.global_settings import EMAIL_BACKEND, EMAIL_PORT, EMAIL_HOST_PASSWORD
 from dotenv import load_dotenv
 
 import cloudinary
@@ -38,6 +37,7 @@ SECRET_KEY = os.getenv("SECRET_KEY")
 DEBUG = os.getenv("DEBUG") == "True"
 
 allowed_hosts = os.environ.get("ALLOWED_HOSTS")
+
 if allowed_hosts:
     ALLOWED_HOSTS = allowed_hosts.split(",")
 else:
@@ -103,7 +103,6 @@ TEMPLATES = [
 REST_FRAMEWORK = {
     "DEFAULT_FILTER_BACKENDS": (
         "django_filters.rest_framework.DjangoFilterBackend",
-        # ...
     ),
     "DEFAULT_AUTHENTICATION_CLASSES": (
         "rest_framework_simplejwt.authentication.JWTAuthentication",
@@ -211,8 +210,7 @@ cloudinary.config(
 # Email settings
 
 EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
-EMAIL_PORT = int(os.getenv("EMAIL_PORT"))
-
+EMAIL_PORT = int(os.getenv("EMAIL_PORT", "587"))
 EMAIL_HOST = "smtp.gmail.com"
 EMAIL_HOST_USER = os.getenv("EMAIL_HOST_USER")
 EMAIL_HOST_PASSWORD = os.getenv("EMAIL_HOST_PASSWORD")
@@ -238,6 +236,8 @@ if not DEBUG:
         "default-src": ("'self'",),
     }
     SECURE_REFERRER_POLICY = "strict-origin-when-cross-origin"
+    SECURE_BROWSER_XSS_FILTER = True
+    X_CONTENT_TYPE_OPTIONS = "nosniff"
 
 # City-light setting
 
