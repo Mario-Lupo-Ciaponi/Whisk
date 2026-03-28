@@ -11,6 +11,7 @@
 .feed-container {
   display: flex;
   justify-content: center;
+  width: 100%;
 }
 
 .feed-select {
@@ -22,15 +23,20 @@
   -moz-appearance: none;
   appearance: none;
   text-align: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
 }
 
-@media screen and (max-width: 1024px) {
-  .feed {
-    width: 90%;
-    max-width: 1200px;
-  }
+.feed-select:hover {
+  border-bottom-color: var(--tan-color, #8b6f47);
 }
 
+.feed-select:focus {
+  outline: none;
+  border-bottom-color: var(--coffee-pot-color, #6f5f4a);
+}
+
+/* Small Tablet and down - adjust font size */
 @media screen and (max-width: 768px) {
   .feed-select {
     font-size: 1.5rem;
@@ -38,10 +44,11 @@
   }
 }
 
+/* Mobile Portrait - adjust font size */
 @media screen and (max-width: 480px) {
   .feed-select {
-    width: 100%;
     font-size: 1.2rem;
     padding: 0.25rem 0;
+    border-bottom-width: 2px;
   }
 }

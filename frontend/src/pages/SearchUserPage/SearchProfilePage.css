@@ -1,49 +1,194 @@
+/* Search Profile Page Responsive Styles */
+
 .search-profile-container {
   display: flex;
   flex-direction: column;
   align-items: center;
   width: 100%;
-  padding: 1rem 0;
+  padding: 2.5rem 2rem 1rem;
+  min-height: 100vh;
 }
 
 .search-profile-container .search-profile-header {
   text-align: center;
-  margin: 1rem 0 2rem 0;
+  margin: 0 0 2rem 0;
   color: var(--tan-color);
+  width: 100%;
+}
+
+.search-profile-container .search-profile-title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin: 0;
+  line-height: 1.2;
+}
+
+.search-profile-container .search-profile-description {
+  font-size: 1.1rem;
+  color: var(--coffee-pot-color);
+  margin: 0.5rem 0 0;
 }
 
 .search-profile-container .search-bar-container,
 .search-profile-container .paginator-list-container {
   display: flex;
   justify-content: center;
+  width: 100%;
 }
 
-@media screen and (max-width: 768px) {
+.search-profile-container .search-bar-container {
+  margin-bottom: 1.5rem;
+  max-width: 600px;
+}
+
+.search-profile-container .paginator-list-container {
+  max-width: 1200px;
+}
+
+.search-profile-loader {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 3rem 1rem;
+  width: 100%;
+}
+
+.search-profile-empty {
+  text-align: center;
+  padding: 2rem 1rem;
+  color: var(--coffee-pot-color);
+}
+
+/* Desktop */
+@media screen and (min-width: 1025px) {
+  .search-profile-container {
+    padding: 2.5rem 2rem 1rem;
+  }
+
   .search-profile-container .search-profile-header {
-    margin: 1rem 0 1.5rem 0;
+    margin: 0 0 2rem 0;
   }
 
   .search-profile-container .search-profile-title {
-    font-size: 1.8rem;
+    font-size: 2.5rem;
+  }
+
+  .search-profile-container .search-bar-container {
+    margin-bottom: 1.5rem;
   }
 }
 
-@media screen and (max-width: 480px) {
+/* Tablet */
+@media screen and (max-width: 1024px) {
   .search-profile-container {
-    padding: 0 1rem;
+    padding: 2rem 1.5rem 1rem;
   }
 
   .search-profile-container .search-profile-header {
-    margin: 0.5rem 0 1rem 0;
+    margin: 0 0 1.75rem 0;
+  }
+
+  .search-profile-container .search-profile-title {
+    font-size: 2.2rem;
+  }
+
+  .search-profile-container .search-profile-description {
+    font-size: 1rem;
+  }
+
+  .search-profile-container .search-bar-container {
+    margin-bottom: 1.4rem;
+  }
+}
+
+/* Small Tablet */
+@media screen and (max-width: 768px) {
+  .search-profile-container {
+    padding: 1.75rem 1.25rem 0.75rem;
+    min-height: auto;
+  }
+
+  .search-profile-container .search-profile-header {
+    margin: 0 0 1.5rem 0;
+  }
+
+  .search-profile-container .search-profile-title {
+    font-size: 1.9rem;
+  }
+
+  .search-profile-container .search-profile-description {
+    font-size: 0.95rem;
+  }
+
+  .search-profile-container .search-bar-container {
+    width: 100%;
+    margin-bottom: 1.25rem;
+    max-width: 100%;
+  }
+
+  .search-profile-loader {
+    padding: 2rem 0.75rem;
+  }
+
+  .search-profile-empty {
+    padding: 1.5rem 0.75rem;
+  }
+}
+
+/* Mobile Landscape */
+@media screen and (max-width: 640px) {
+  .search-profile-container {
+    padding: 1.5rem 1rem 0.5rem;
+  }
+
+  .search-profile-container .search-profile-header {
+    margin: 0 0 1.25rem 0;
+  }
+
+  .search-profile-container .search-profile-title {
+    font-size: 1.7rem;
+  }
+
+  .search-profile-container .search-profile-description {
+    font-size: 0.9rem;
+  }
+
+  .search-profile-container .search-bar-container {
+    margin-bottom: 1.1rem;
+  }
+
+  .search-profile-loader {
+    padding: 1.5rem 0.5rem;
+  }
+
+  .search-profile-empty {
+    padding: 1.25rem 0.5rem;
+  }
+}
+
+/* Mobile Portrait */
+@media screen and (max-width: 480px) {
+  .search-profile-container {
+    width: 100%;
+    padding: 1.25rem 0.5rem 0.5rem;
+  }
+
+  .search-profile-container .search-profile-header {
+    margin: 0 0 1rem 0;
   }
 
   .search-profile-container .search-profile-title {
     font-size: 1.5rem;
   }
 
+  .search-profile-container .search-profile-description {
+    font-size: 0.85rem;
+  }
+
   .search-profile-container .search-bar-container {
     width: 100%;
-    margin-bottom: 1.5rem;
+    margin-bottom: 1rem;
+    max-width: 100%;
   }
 
   .search-profile-container svg,
@@ -54,6 +199,53 @@
 
   .search-profile-container .paginator-list-container {
     margin-top: 1.5rem;
-    padding-bottom: 2rem;
+    padding-bottom: 1.5rem;
+    width: 100%;
+  }
+
+  .search-profile-loader {
+    padding: 1.25rem 0.25rem;
+  }
+
+  .search-profile-empty {
+    padding: 1rem 0.25rem;
+    font-size: 0.9rem;
+  }
+}
+
+/* Extra Small Devices */
+@media screen and (max-width: 375px) {
+  .search-profile-container {
+    padding: 1rem 0.25rem 0.25rem;
+  }
+
+  .search-profile-container .search-profile-header {
+    margin: 0 0 0.75rem 0;
+  }
+
+  .search-profile-container .search-profile-title {
+    font-size: 1.3rem;
+  }
+
+  .search-profile-container .search-profile-description {
+    font-size: 0.8rem;
+  }
+
+  .search-profile-container .search-bar-container {
+    margin-bottom: 0.75rem;
+  }
+
+  .search-profile-container .paginator-list-container {
+    margin-top: 1rem;
+    padding-bottom: 1rem;
+  }
+
+  .search-profile-loader {
+    padding: 1rem 0.1rem;
+  }
+
+  .search-profile-empty {
+    padding: 0.75rem 0.1rem;
+    font-size: 0.8rem;
   }
 }

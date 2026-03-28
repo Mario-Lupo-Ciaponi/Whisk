@@ -4,7 +4,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding: 2rem 1rem;
+  padding: 2rem 1.5rem;
   min-height: 100vh;
 }
 
@@ -27,11 +27,74 @@
   font-size: 2.5rem;
   font-weight: 700;
   margin: 0;
+  line-height: 1.2;
+  letter-spacing: 0.01em;
 }
 
+.contact-page__description {
+  color: var(--coffee-pot-color);
+  font-size: 1.1rem;
+  margin: 0.75rem 0 0;
+  line-height: 1.55;
+}
+
+.contact-page__form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+/* Desktop */
+@media screen and (min-width: 1025px) {
+  .contact-page {
+    padding: 2rem 1.5rem;
+  }
+
+  .contact-page__card {
+    max-width: 850px;
+    padding: 3rem;
+    border-radius: 1.5rem;
+  }
+
+  .contact-page__title {
+    font-size: 2.5rem;
+  }
+}
+
+/* Tablet */
+@media screen and (max-width: 1024px) {
+  .contact-page {
+    padding: 1.75rem 1.25rem;
+  }
+
+  .contact-page__card {
+    max-width: 100%;
+    padding: 2.5rem;
+    border-radius: 1.25rem;
+  }
+
+  .contact-page__header {
+    margin-bottom: 2.25rem;
+  }
+
+  .contact-page__title {
+    font-size: 2.2rem;
+  }
+
+  .contact-page__description {
+    font-size: 1rem;
+  }
+
+  .contact-page__form {
+    gap: 1.4rem;
+  }
+}
+
+/* Small Tablet */
 @media screen and (max-width: 768px) {
   .contact-page {
-    padding: 1rem;
+    padding: 1.5rem 1rem;
+    min-height: auto;
   }
 
   .contact-page__card {
@@ -39,19 +102,62 @@
     border-radius: 1rem;
   }
 
+  .contact-page__header {
+    margin-bottom: 2rem;
+  }
+
   .contact-page__title {
     font-size: 2rem;
   }
+
+  .contact-page__description {
+    font-size: 0.95rem;
+  }
+
+  .contact-page__form {
+    gap: 1.25rem;
+  }
 }
 
+/* Mobile Landscape */
+@media screen and (max-width: 640px) {
+  .contact-page {
+    padding: 1.25rem 0.75rem;
+  }
+
+  .contact-page__card {
+    padding: 1.5rem;
+    border-radius: 0.85rem;
+  }
+
+  .contact-page__header {
+    margin-bottom: 1.75rem;
+  }
+
+  .contact-page__title {
+    font-size: 1.8rem;
+  }
+
+  .contact-page__description {
+    font-size: 0.9rem;
+  }
+
+  .contact-page__form {
+    gap: 1.1rem;
+  }
+}
+
+/* Mobile Portrait */
 @media screen and (max-width: 480px) {
   .contact-page {
-    padding: 0.5rem;
+    width: 100%;
+    padding: 1rem 0.5rem;
   }
 
   .contact-page__card {
     padding: 1.5rem;
     border-radius: 0.75rem;
+    width: 100%;
   }
 
   .contact-page__header {
@@ -60,5 +166,42 @@
 
   .contact-page__title {
     font-size: 1.75rem;
+  }
+
+  .contact-page__description {
+    font-size: 0.85rem;
+  }
+
+  .contact-page__form {
+    gap: 1rem;
+  }
+}
+
+/* Extra Small Devices */
+@media screen and (max-width: 375px) {
+  .contact-page {
+    padding: 0.75rem 0.25rem;
+  }
+
+  .contact-page__card {
+    padding: 1.25rem;
+    border-radius: 0.6rem;
+  }
+
+  .contact-page__header {
+    margin-bottom: 1.25rem;
+  }
+
+  .contact-page__title {
+    font-size: 1.5rem;
+  }
+
+  .contact-page__description {
+    font-size: 0.8rem;
+    margin: 0.5rem 0 0;
+  }
+
+  .contact-page__form {
+    gap: 0.9rem;
   }
 }

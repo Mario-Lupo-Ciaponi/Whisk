@@ -4,4 +4,53 @@
   align-items: center;
   justify-content: center;
   padding: 3rem;
+  min-height: 100vh;
+}
+
+/* Desktop */
+@media screen and (min-width: 1025px) {
+  .post-container {
+    padding: 3rem 2rem;
+  }
+}
+
+/* Tablet */
+@media screen and (max-width: 1024px) {
+  .post-container {
+    padding: 2.5rem 1.5rem;
+  }
+}
+
+/* Small Tablet */
+@media screen and (max-width: 768px) {
+  .post-container {
+    padding: 2rem 1rem;
+    min-height: auto;
+  }
+}
+
+/* Mobile Landscape */
+@media screen and (max-width: 640px) {
+  .post-container {
+    padding: 1.5rem 0.75rem;
+  }
+}
+
+/* Mobile Portrait */
+@media screen and (max-width: 480px) {
+  .post-container {
+    width: 100%;
+    padding: 1rem 0.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    justify-content: flex-start;
+  }
+}
+
+/* Extra Small Devices */
+@media screen and (max-width: 375px) {
+  .post-container {
+    padding: 0.75rem 0.25rem;
+  }
 }

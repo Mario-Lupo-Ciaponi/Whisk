@@ -2,6 +2,7 @@
   max-width: 980px;
   margin: 0 auto;
   padding: 2.5rem 1.5rem 3rem;
+  width: 100%;
 }
 
 .profile-page__content {
@@ -16,22 +17,87 @@
   padding: 3.25rem 1rem;
 }
 
+/* Desktop */
+@media screen and (min-width: 1025px) {
+  .profile-page {
+    max-width: 980px;
+    padding: 2.5rem 1.5rem 3rem;
+  }
+}
+
+/* Tablet */
+@media screen and (max-width: 1024px) {
+  .profile-page {
+    max-width: 100%;
+    padding: 2rem 1.25rem 2.5rem;
+  }
+
+  .profile-page__content {
+    gap: 1.1rem;
+  }
+
+  .profile-page__loader {
+    padding: 2.5rem 1rem;
+  }
+}
+
+/* Small Tablet */
 @media screen and (max-width: 768px) {
   .profile-page {
-    padding: 2rem 1.25rem 2.25rem;
+    padding: 1.75rem 1rem 2.25rem;
   }
 
   .profile-page__content {
     gap: 1rem;
   }
+
+  .profile-page__loader {
+    padding: 2rem 0.75rem;
+  }
 }
 
+/* Mobile Landscape */
+@media screen and (max-width: 640px) {
+  .profile-page {
+    padding: 1.5rem 0.75rem 2rem;
+  }
+
+  .profile-page__content {
+    gap: 0.95rem;
+  }
+
+  .profile-page__loader {
+    padding: 1.75rem 0.5rem;
+  }
+}
+
+/* Mobile Portrait */
 @media screen and (max-width: 480px) {
   .profile-page {
-    padding: 1.25rem 1rem 1.75rem;
+    padding: 1.25rem 0.75rem 1.75rem;
+    margin: 0;
   }
 
   .profile-page__content {
     gap: 0.9rem;
+  }
+
+  .profile-page__loader {
+    padding: 1.5rem 0.5rem;
+  }
+}
+
+/* Extra Small Devices */
+@media screen and (max-width: 375px) {
+  .profile-page {
+    padding: 1rem 0.5rem 1.5rem;
+  }
+
+  .profile-page__content {
+    gap: 0.8rem;
+  }
+
+  .profile-page__loader {
+    padding: 1.25rem 0.25rem;
   }
 }

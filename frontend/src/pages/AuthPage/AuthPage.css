@@ -4,6 +4,8 @@
   justify-content: center;
   padding: 3rem;
   margin: 2rem 0;
+  min-height: 100vh;
+  align-items: center;
 }
 
 .auth-wrapper .auth-card {
@@ -15,11 +17,13 @@
   border-radius: 1.3rem;
   width: 40%;
   max-width: 485px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
 }
 
 .auth-wrapper .auth-card .segmented-control {
   display: flex;
   align-self: normal;
+  width: 100%;
 }
 
 .auth-wrapper .auth-card .segmented-control .toggle-option {
@@ -28,6 +32,13 @@
   text-align: center;
   background-color: #7a8bae;
   padding: 0.4rem;
+  border-radius: 0.25rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.auth-wrapper .auth-card .segmented-control .toggle-option:hover {
+  background-color: #8a9bbe;
 }
 
 .auth-wrapper .auth-card .segmented-control .toggle-option.active {
@@ -38,6 +49,7 @@
   display: block;
   color: #2c3e50;
   cursor: pointer;
+  font-weight: 500;
 }
 
 .auth-wrapper .auth-card .segmented-control .toggle-option .control-input {
@@ -50,22 +62,113 @@
 
 .auth-wrapper .auth-card .auth-header .auth-title {
   color: #74503c;
+  font-size: 2rem;
+  margin: 0;
 }
 
+/* Desktop */
+@media screen and (min-width: 1025px) {
+  .auth-wrapper {
+    padding: 3rem 2rem;
+    margin: 2rem 0;
+  }
+
+  .auth-wrapper .auth-card {
+    width: 40%;
+    max-width: 485px;
+    padding: 1.5rem 2rem;
+  }
+}
+
+/* Tablet */
+@media screen and (max-width: 1024px) {
+  .auth-wrapper {
+    padding: 2.5rem 1.5rem;
+    margin: 1.5rem 0;
+    min-height: auto;
+  }
+
+  .auth-wrapper .auth-card {
+    width: 60%;
+    max-width: 450px;
+    padding: 1.5rem 1.75rem;
+  }
+
+  .auth-wrapper .auth-card .auth-header .auth-title {
+    font-size: 1.8rem;
+  }
+}
+
+/* Small Tablet */
 @media screen and (max-width: 768px) {
   .auth-wrapper {
-    padding: 2rem 1rem;
+    padding: 2rem 1.25rem;
+    margin: 1.25rem 0;
   }
 
   .auth-wrapper .auth-card {
     width: 75%;
+    max-width: 100%;
     padding: 1.5rem;
+  }
+
+  .auth-wrapper .auth-card .auth-header {
+    margin: 1.25rem 0;
+  }
+
+  .auth-wrapper .auth-card .auth-header .auth-title {
+    font-size: 1.6rem;
+  }
+
+  .auth-wrapper .auth-card .segmented-control .toggle-option {
+    padding: 0.5rem;
+  }
+
+  .auth-wrapper .auth-card .segmented-control .toggle-option .control-label {
+    font-size: 0.95rem;
   }
 }
 
+/* Mobile Landscape */
+@media screen and (max-width: 640px) {
+  .auth-wrapper {
+    padding: 1.5rem 1rem;
+    margin: 1rem 0;
+  }
+
+  .auth-wrapper .auth-card {
+    width: 85%;
+    padding: 1.25rem;
+    border-radius: 1.1rem;
+  }
+
+  .auth-wrapper .auth-card .auth-header {
+    margin: 1rem 0;
+  }
+
+  .auth-wrapper .auth-card .auth-header .auth-title {
+    font-size: 1.4rem;
+  }
+
+  .auth-wrapper .auth-card .segmented-control .toggle-option {
+    padding: 0.6rem 0.5rem;
+  }
+
+  .auth-wrapper .auth-card .segmented-control .toggle-option .control-label {
+    font-size: 0.9rem;
+  }
+}
+
+/* Mobile Portrait */
 @media screen and (max-width: 480px) {
   .auth-wrapper {
+    width: 100%;
     padding: 1rem 0.5rem;
+    margin: 0.5rem 0;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    padding-top: 2rem;
   }
 
   .auth-wrapper .auth-card {
@@ -74,20 +177,55 @@
     border-radius: 1rem;
   }
 
+  .auth-wrapper .auth-card .segmented-control {
+    margin-bottom: 0.75rem;
+  }
+
   .auth-wrapper .auth-card .segmented-control .toggle-option {
-    padding: 0.7rem;
+    padding: 0.7rem 0.25rem;
+    border-radius: 0.2rem;
   }
 
   .auth-wrapper .auth-card .segmented-control .toggle-option .control-label {
-    font-size: 1.1rem;
+    font-size: 1rem;
     font-weight: 600;
   }
 
   .auth-wrapper .auth-card .auth-header {
-    margin: 1rem 0;
+    margin: 0.75rem 0;
   }
 
   .auth-wrapper .auth-card .auth-header .auth-title {
-    font-size: 1.5rem;
+    font-size: 1.3rem;
+  }
+}
+
+/* Extra Small Devices */
+@media screen and (max-width: 375px) {
+  .auth-wrapper {
+    padding: 0.75rem 0.25rem;
+    padding-top: 1.5rem;
+  }
+
+  .auth-wrapper .auth-card {
+    width: 98%;
+    padding: 0.75rem;
+    border-radius: 0.9rem;
+  }
+
+  .auth-wrapper .auth-card .segmented-control .toggle-option {
+    padding: 0.5rem 0.2rem;
+  }
+
+  .auth-wrapper .auth-card .segmented-control .toggle-option .control-label {
+    font-size: 0.85rem;
+  }
+
+  .auth-wrapper .auth-card .auth-header {
+    margin: 0.5rem 0;
+  }
+
+  .auth-wrapper .auth-card .auth-header .auth-title {
+    font-size: 1.1rem;
   }
 }
