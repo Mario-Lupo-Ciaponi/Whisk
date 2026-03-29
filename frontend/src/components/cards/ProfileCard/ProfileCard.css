@@ -39,17 +39,6 @@
   display: block;
 }
 
-.profile-card__status-indicator {
-  position: absolute;
-  bottom: 8px;
-  right: 8px;
-  width: 24px;
-  height: 24px;
-  background-color: #2ecc71;
-  border: 3px solid var(--pewter-color);
-  border-radius: 50%;
-}
-
 .profile-card__content {
   display: flex;
   flex-direction: column;
@@ -79,6 +68,7 @@
 .profile-card__badge svg {
   width: 14px;
   height: 14px;
+  flex-shrink: 0;
 }
 
 /* Pet Owner - Brown/Tan theme */
@@ -140,25 +130,55 @@
   .profile-card__name {
     font-size: 1.1rem;
   }
+
+  .profile-card__badge {
+    font-size: 0.85rem;
+    padding: 0.35rem 0.9rem;
+  }
+
+  .profile-card__badge svg {
+    width: 13px;
+    height: 13px;
+  }
 }
 
 @media screen and (max-width: 480px) {
   .profile-card {
-    padding: 1.25rem;
-    gap: 1rem;
+    padding: 1rem;
+    gap: 0.75rem;
   }
 
   .profile-card__image-wrapper {
-    width: 100px;
-    height: 100px;
+    width: 90px;
+    height: 90px;
+  }
+
+  .profile-card__status-indicator {
+    width: 20px;
+    height: 20px;
+    border-width: 2px;
   }
 
   .profile-card__name {
-    font-size: 1.1rem;
+    font-size: 1rem;
   }
 
   .profile-card__badge {
+    font-size: 0.75rem;
+    padding: 0.3rem 0.7rem;
+    gap: 0.35rem;
+  }
+
+  .profile-card__badge svg {
+    width: 11px;
+    height: 11px;
+  }
+
+  .profile-card__location-text {
+    font-size: 0.85rem;
+  }
+
+  .profile-card__bio {
     font-size: 0.8rem;
-    padding: 0.3rem 0.8rem;
   }
 }

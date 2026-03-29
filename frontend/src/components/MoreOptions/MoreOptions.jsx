@@ -1,11 +1,11 @@
-import { useState, useRef, useEffect } from "react";
+import { useState, useRef } from "react";
 import { useTranslation } from "react-i18next";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEllipsisVertical } from "@fortawesome/free-solid-svg-icons";
 import toast from "react-hot-toast";
 import api from "../../api/api.js";
-import "./MoreOptions.css";
 import Loader from "../Loader.jsx";
+import "./MoreOptions.css";
 
 const MoreOptions = ({
   post,

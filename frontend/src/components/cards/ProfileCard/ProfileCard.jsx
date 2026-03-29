@@ -42,7 +42,6 @@ const ProfileCard = ({ user, navigate }) => {
             }
             alt="profile image"
           />
-          <div className="profile-card__status-indicator"></div>
         </div>
       </div>
 

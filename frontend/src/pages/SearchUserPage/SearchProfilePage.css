@@ -191,12 +191,6 @@
     max-width: 100%;
   }
 
-  .search-profile-container svg,
-  .search-profile-container .loader-wrapper {
-    width: 100px !important;
-    height: 100px !important;
-  }
-
   .search-profile-container .paginator-list-container {
     margin-top: 1.5rem;
     padding-bottom: 1.5rem;
