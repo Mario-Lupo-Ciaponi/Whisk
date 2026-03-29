@@ -121,7 +121,8 @@ const ContactForm = ({ currentUser }) => {
         ></textarea>
       </div>
 
-      <button className="contact-form__submit-btn">
+      {/* Temporarily disable submit button until backend is ready to receive contact form submissions */}
+      <button disabled className="contact-form__submit-btn">
         {isLoading ? (
           <Loader width={20} height={20} />
         ) : (
