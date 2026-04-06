@@ -1,5 +1,5 @@
 .notification-card {
-  font-size: 1.1rem;
+  font-size: var(--text-lg);
 }
 
 .notification-card .link {

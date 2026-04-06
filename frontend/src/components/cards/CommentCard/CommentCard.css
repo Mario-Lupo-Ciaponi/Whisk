@@ -1,18 +1,18 @@
 .comment-card {
   display: flex;
-  gap: 1rem;
+  gap: var(--spacing-base);
 }
 
 .comment-card .profile-image {
   width: var(--profile-image-width-and-height);
   height: var(--profile-image-width-and-height);
-  border-radius: 2rem;
+  border-radius: var(--radius-xl);
 }
 
 .comment-card .comment-wrapper {
   flex-grow: 2;
   display: flex;
-  gap: 0.25rem;
+  gap: var(--spacing-xs);
   flex-direction: column;
   align-self: flex-start;
 }
@@ -20,11 +20,11 @@
 .comment-card .comment-wrapper .comment-header {
   display: flex;
   align-items: center;
-  gap: 0.3rem;
+  gap: var(--spacing-xs);
 }
 
 .comment-card .comment-wrapper .comment-header .username {
-  font-size: 1.1rem;
+  font-size: var(--text-lg);
 }
 
 .comment-card
@@ -33,7 +33,7 @@
   .username
   .profile-link.username {
   color: var(--coffee-pot-color);
-  transition: color 500ms ease-in-out;
+  transition: var(--transition-color);
 }
 
 .comment-card
@@ -45,23 +45,23 @@
 }
 
 .comment-card .comment-wrapper .comment-header .date-created {
-  font-size: 0.9rem;
+  font-size: var(--text-sm);
   color: var(--tan-color);
   font-style: italic;
 }
 
 .comment-card .comment-wrapper .content {
-  padding-left: 0.5rem;
+  padding-left: var(--spacing-sm);
   border-left: 2px solid var(--coffee-pot-color);
 }
 
 @media screen and (max-width: 768px) {
   .comment-card {
-    gap: 0.75rem;
+    gap: var(--spacing-md);
   }
 
   .comment-card .comment-wrapper .comment-header .username {
-    font-size: 1rem;
+    font-size: var(--text-base);
   }
 }
 
@@ -77,6 +77,6 @@
   }
 
   .comment-card .comment-wrapper .comment-header .date-created {
-    font-size: 0.8rem;
+    font-size: var(--text-xs);
   }
 }

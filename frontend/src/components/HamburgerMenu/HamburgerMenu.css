@@ -12,7 +12,7 @@
   flex-direction: column;
   pointer-events: none;
   transform: translateX(100%);
-  transition: transform 0.38s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: transform 0.38s var(--easing-ease-in-out);
 }
 
 .hamburger-menu--open {
@@ -45,7 +45,7 @@
   display: flex;
   align-items: center;
   justify-content: flex-end;
-  padding: 1rem 1rem 0.75rem;
+  padding: var(--spacing-base) var(--spacing-base) var(--spacing-md);
 }
 
 .hamburger-menu__close {
@@ -57,18 +57,13 @@
   margin: 0;
   padding: 0;
   border: 1px solid color-mix(in srgb, var(--tan-color) 22%, transparent);
-  border-radius: 0.75rem;
-  font-size: 1.15rem;
+  border-radius: var(--radius-lg);
+  font-size: var(--text-lg);
   color: var(--tan-color);
   cursor: pointer;
   background-color: color-mix(in srgb, white 40%, var(--pewter-color));
-  box-shadow: 0 2px 10px
-    color-mix(in srgb, var(--coffee-pot-color) 10%, transparent);
-  transition:
-    background-color 0.2s ease,
-    transform 0.2s ease,
-    color 0.2s ease,
-    box-shadow 0.2s ease;
+  box-shadow: var(--shadow-sm);
+  transition: var(--transition-all);
 }
 
 .hamburger-menu__close:hover {
@@ -87,7 +82,7 @@
   min-height: 0;
   overflow-y: auto;
   overscroll-behavior: contain;
-  padding: 0.5rem 1rem 1.5rem;
+  padding: var(--spacing-sm) var(--spacing-base) var(--spacing-xl);
   -webkit-overflow-scrolling: touch;
 }
 
@@ -97,7 +92,7 @@
   padding: 0;
   display: flex;
   flex-direction: column;
-  gap: 0.35rem;
+  gap: var(--spacing-xs);
 }
 
 .hamburger-menu__item {
@@ -107,7 +102,7 @@
 .hamburger-menu__link {
   display: block;
   width: 100%;
-  padding: 0.85rem 1rem;
+  padding: var(--spacing-md) var(--spacing-base);
   border-radius: var(--radius-md);
   font-size: var(--text-base);
   font-weight: 500;
@@ -130,7 +125,7 @@
 
 .hamburger-menu__link:focus-visible {
   outline: 2px solid var(--tan-color);
-  outline-offset: 2px;
+  outline-offset: var(--spacing-xs);
 }
 
 .hamburger-menu__link--active {
@@ -179,7 +174,7 @@
     var(--tan-color) 0%,
     color-mix(in srgb, var(--tan-color) 72%, var(--coffee-pot-color)) 100%
   );
-  box-shadow: 0 4px 16px color-mix(in srgb, var(--tan-color) 32%, transparent);
+  box-shadow: var(--shadow-md);
 }
 
 .hamburger-menu__link--accent:hover {
@@ -192,18 +187,15 @@
 .hamburger-menu__control {
   width: 100%;
   margin: 0;
-  padding: 0.85rem 1rem;
-  border-radius: 0.75rem;
+  padding: var(--spacing-md) var(--spacing-base);
+  border-radius: var(--radius-md);
   font: inherit;
-  font-size: 1rem;
+  font-size: var(--text-base);
   font-weight: 500;
   text-align: center;
   cursor: pointer;
   border: 1px solid color-mix(in srgb, var(--tan-color) 18%, transparent);
-  transition:
-    background-color 0.2s ease,
-    color 0.2s ease,
-    box-shadow 0.2s ease;
+  transition: var(--transition-all);
 }
 
 .hamburger-menu__control--lang {
@@ -217,12 +209,11 @@
     var(--tan-color) 10%,
     var(--pewter-color)
   );
-  box-shadow: 0 4px 14px
-    color-mix(in srgb, var(--coffee-pot-color) 10%, transparent);
+  box-shadow: var(--shadow-base);
 }
 
 .hamburger-menu__control--logout {
-  margin-top: 0.25rem;
+  margin-top: var(--spacing-xs);
   color: var(--red-color);
   background-color: color-mix(
     in srgb,
@@ -242,7 +233,7 @@
 
 .hamburger-menu__control:focus-visible {
   outline: 2px solid var(--tan-color);
-  outline-offset: 2px;
+  outline-offset: var(--spacing-xs);
 }
 
 .hamburger-menu__control--logout:focus-visible {

@@ -1,9 +1,9 @@
 .location-card {
   display: flex;
   align-items: center;
-  gap: 0.5rem;
-  border-radius: 0.4rem;
-  padding: 0.2rem;
+  gap: var(--spacing-sm);
+  border-radius: var(--radius-xs);
+  padding: var(--spacing-xs);
 }
 
 .location-card.valid {
@@ -14,7 +14,7 @@
   width: var(--profile-image-width-and-height);
   height: var(--profile-image-width-and-height);
   min-width: 2rem;
-  border-radius: 2rem;
+  border-radius: var(--radius-full);
   overflow: hidden;
   display: flex;
   align-items: center;
@@ -24,7 +24,7 @@
 .location-card .profile-image-container .profile-image {
   width: 100%;
   aspect-ratio: 1 / 1;
-  border-radius: 2rem;
+  border-radius: var(--radius-full);
 }
 
 .location-card .location-info-wrapper .pointed-by-text .username {
@@ -37,7 +37,7 @@
   .username
   .profile-link.username {
   color: var(--coffee-pot-color);
-  transition: color 500ms ease-in-out;
+  transition: var(--transition-color);
 }
 
 .location-card
@@ -50,7 +50,7 @@
 
 .location-card .location-info-wrapper .pointed-by-text .location-url {
   color: var(--light-brown-color);
-  transition: color 500ms ease-in-out;
+  transition: var(--transition-color);
 }
 
 .location-card .location-info-wrapper .pointed-by-text .location-url:hover {
@@ -59,11 +59,11 @@
 
 .location-card .found-btn {
   border: none;
-  border-radius: 5rem;
+  border-radius: var(--radius-full);
   background: var(--coffee-pot-color);
   color: white;
-  padding: 0.25rem 0.5rem;
-  transition: background-color 500ms ease-in-out;
+  padding: var(--spacing-xs) var(--spacing-sm);
+  transition: var(--transition-all);
 }
 
 .location-card .found-btn:hover {
@@ -72,15 +72,15 @@
 
 @media screen and (max-width: 768px) {
   .location-card {
-    gap: 0.75rem;
+    gap: var(--spacing-md);
   }
 
   .location-card .location-info-wrapper {
-    font-size: 0.95rem;
+    font-size: var(--text-base);
   }
 
   .location-card .found-btn {
-    padding: 0.4rem 0.8rem;
+    padding: var(--spacing-sm) var(--spacing-md);
   }
 }
 
@@ -100,13 +100,13 @@
   }
 
   .location-card .found-btn {
-    margin-top: 0.5rem;
+    margin-top: var(--spacing-sm);
   }
 }
 
 @media screen and (max-width: 360px) {
   .location-card .location-info-wrapper .pointed-by-text .location-url {
-    font-size: 0.8rem;
-    padding-bottom: 0.75rem;
+    font-size: var(--text-xs);
+    padding-bottom: var(--spacing-md);
   }
 }
