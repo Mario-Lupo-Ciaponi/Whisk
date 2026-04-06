@@ -26,12 +26,12 @@ from .filters import PostFilter
 from .mixins import PostAPIViewMixin
 from .pagination import PostResultsSetPagination
 from .throttles import LocationCreateThrottle, LocationCreateAnonThrottle
+from .utils import get_image_base64_from_url, get_mimetype_from_url, analyze_image
+
 from common.permissions import IsOwnerOrSuperUser
 
-# TODO: add mixins for repeated code
 
 # Post related views
-
 
 class PostListCreateAPIView(PostAPIViewMixin, ListCreateAPIView):
     filter_backends = [filter.DjangoFilterBackend]
@@ -55,7 +55,19 @@ class PostListCreateAPIView(PostAPIViewMixin, ListCreateAPIView):
         return post
 
     def perform_create(self, serializer):
-        serializer.save(author=self.request.user)
+        post = serializer.save(author=self.request.user)
+
+        if post.image:
+            try:
+                image_base64 = get_image_base64_from_url(post.image.url)
+                mime_type = get_mimetype_from_url(post.image.url)
+
+                animal_type = analyze_image(image_base64, mime_type)
+
+                post.animal_type = animal_type
+                post.save()
+            except Exception as e:
+                post.animal_type = None
 
 
 class PostRetrieveUpdateDestroyAPIView(PostAPIViewMixin, RetrieveUpdateDestroyAPIView):
@@ -109,7 +121,7 @@ class PetLocationListCreateAPIView(ListCreateAPIView):
     serializer_class = PetLocationModelSerializer
     permission_classes = [
         AllowAny,
-    ]  # TODO: add proper permission classes!
+    ]
 
     def get_throttles(self):
         if self.request.method == "POST" or not self.request.user.is_staff:
@@ -138,7 +150,7 @@ class PetLocationRetrieveUpdateDestroyAPIView(RetrieveUpdateDestroyAPIView):
     permission_classes = [
         IsAuthenticatedOrReadOnly,
         IsOwnerOrSuperUser,
-    ]  # TODO: add permission that checks weather the user is the author of the post or location
+    ]
 
 
 # Comment related views

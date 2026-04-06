@@ -83,14 +83,12 @@
 }
 
 .post-card__badge {
-  position: absolute;
-  top: 0.75rem;
-  left: 0.75rem;
   padding: 0.3rem 0.8rem;
   border-radius: 1.5rem;
   font-size: 0.8rem;
   font-weight: 600;
   letter-spacing: 0.02em;
+  display: inline-block;
 }
 
 .post-card__badge--found {
@@ -101,6 +99,27 @@
 .post-card__badge--not-found {
   background-color: #fde8e8;
   color: var(--red-color);
+}
+
+.post-card__badges-container {
+  position: absolute;
+  top: 0.75rem;
+  left: 0.75rem;
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+
+.post-card__animal-type-badge {
+  padding: 0.3rem 0.8rem;
+  border-radius: 1.5rem;
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  background-color: #e8f0fe;
+  color: #1967d2;
+  text-transform: capitalize;
+  display: inline-block;
 }
 
 .post-card__body {

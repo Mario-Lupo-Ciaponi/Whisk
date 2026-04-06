@@ -146,6 +146,9 @@ class PostModelSerializer(serializers.ModelSerializer):
             ProfanityCheckValidator(),
         ]
     )
+    animal_type = serializers.CharField(
+        read_only=True,
+    )
     author = UserSerializer(
         read_only=True,
     )
@@ -178,6 +181,7 @@ class PostModelSerializer(serializers.ModelSerializer):
             "id",
             "title",
             "description",
+            "animal_type",
             "city",
             "city_id",
             "found",

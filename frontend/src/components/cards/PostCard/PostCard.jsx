@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState, useEffect } from "react";
 import { useTranslation } from "react-i18next";
 import toast from "react-hot-toast";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -123,11 +123,20 @@ const PostCard = ({ post, currentUser, navigate, setIsFilterVisible }) => {
 
       <div className="post-card__image-wrapper">
         <img className="post-card__image" src={post.image} alt="post-image" />
-        <span
-          className={`post-card__badge post-card__badge--${found ? "found" : "not-found"}`}
-        >
-          {statusText}
-        </span>
+
+        <div className="post-card__badges-container">
+          <span
+            className={`post-card__badge post-card__badge--${found ? "found" : "not-found"}`}
+          >
+            {statusText}
+          </span>
+          {
+            post.animal_type &&
+              <span className="post-card__animal-type-badge">
+               {post.animal_type}
+              </span>
+          }
+        </div>
       </div>
 
       <div className="post-card__body">

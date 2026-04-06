@@ -22,6 +22,11 @@ class Post(models.Model):
         max_length=100,
     )
     description = models.TextField()
+    animal_type = models.CharField(
+        max_length=100,
+        null=True,
+        blank=True,
+    )
     city = models.ForeignKey(
         "cities_light.City",
         on_delete=models.CASCADE,
