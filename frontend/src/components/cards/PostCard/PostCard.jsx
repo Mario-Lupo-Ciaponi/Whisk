@@ -130,12 +130,11 @@ const PostCard = ({ post, currentUser, navigate, setIsFilterVisible }) => {
           >
             {statusText}
           </span>
-          {
-            post.animal_type &&
-              <span className="post-card__animal-type-badge">
-               {post.animal_type}
-              </span>
-          }
+          {post.animal_type && (
+            <span className="post-card__animal-type-badge">
+              {post.animal_type}
+            </span>
+          )}
         </div>
       </div>
 

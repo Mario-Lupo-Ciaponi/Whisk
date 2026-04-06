@@ -1,4 +1,5 @@
 :root {
+  /* Brand Colors */
   --tan-color: #74503c;
   --pewter-color: #eaeaf1;
   --gray-color: #bebebe;
@@ -22,11 +23,12 @@
   --light-info-color: #88d1ef;
   --ember-color: #ffbf00;
 
+  /* Borders & Layout */
   --border-default-values: 1px solid;
-
   --post-bottom-section-padding: 0.5rem 1rem;
-
   --profile-image-width-and-height: 2.5rem;
+
+  /* Shadows - from design-system.css will override/extend these */
 }
 
 body {

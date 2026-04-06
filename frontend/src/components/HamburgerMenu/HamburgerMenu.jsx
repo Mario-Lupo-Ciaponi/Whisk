@@ -1,5 +1,5 @@
 import { useEffect, useRef } from "react";
-import { Link } from "react-router";
+import { Link, NavLink } from "react-router";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faX } from "@fortawesome/free-solid-svg-icons";
 import "./HamburgerMenu.css";
@@ -55,36 +55,49 @@ const HamburgerMenu = ({
         <nav className="hamburger-menu__nav">
           <ul className="hamburger-menu__list">
             <li className="hamburger-menu__item">
-              <Link className="hamburger-menu__link" to="/" onClick={closeMenu}>
+              <NavLink
+                className={({ isActive }) =>
+                  `hamburger-menu__link${isActive ? " hamburger-menu__link--active" : ""}`
+                }
+                to="/"
+                end
+                onClick={closeMenu}
+              >
                 {t("navbar.home")}
-              </Link>
+              </NavLink>
             </li>
             <li className="hamburger-menu__item">
-              <Link
-                className="hamburger-menu__link"
+              <NavLink
+                className={({ isActive }) =>
+                  `hamburger-menu__link${isActive ? " hamburger-menu__link--active" : ""}`
+                }
                 to="/search-profile"
                 onClick={closeMenu}
               >
                 {t("navbar.searchProfile")}
-              </Link>
+              </NavLink>
             </li>
             <li className="hamburger-menu__item">
-              <Link
-                className="hamburger-menu__link"
+              <NavLink
+                className={({ isActive }) =>
+                  `hamburger-menu__link${isActive ? " hamburger-menu__link--active" : ""}`
+                }
                 to="/about"
                 onClick={closeMenu}
               >
                 {t("navbar.about")}
-              </Link>
+              </NavLink>
             </li>
             <li className="hamburger-menu__item">
-              <Link
-                className="hamburger-menu__link"
+              <NavLink
+                className={({ isActive }) =>
+                  `hamburger-menu__link${isActive ? " hamburger-menu__link--active" : ""}`
+                }
                 to="/contact"
                 onClick={closeMenu}
               >
                 {t("navbar.contact")}
-              </Link>
+              </NavLink>
             </li>
             <li className="hamburger-menu__item">
               <button

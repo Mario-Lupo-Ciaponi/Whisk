@@ -108,33 +108,67 @@
   display: block;
   width: 100%;
   padding: 0.85rem 1rem;
-  border-radius: 0.75rem;
-  font-size: 1rem;
+  border-radius: var(--radius-md);
+  font-size: var(--text-base);
   font-weight: 500;
-  letter-spacing: 0.01em;
+  letter-spacing: var(--letter-spacing-wide);
   text-align: center;
   text-decoration: none;
   color: var(--coffee-pot-color);
   background-color: color-mix(in srgb, white 28%, transparent);
   border: 1px solid transparent;
-  transition:
-    background-color 0.2s ease,
-    color 0.2s ease,
-    border-color 0.2s ease,
-    box-shadow 0.2s ease;
+  transition: var(--transition-all);
+  position: relative;
 }
 
 .hamburger-menu__link:hover {
   color: var(--tan-color);
   background-color: color-mix(in srgb, white 14%, var(--pewter-color));
   border-color: color-mix(in srgb, var(--tan-color) 14%, transparent);
-  box-shadow: 0 4px 14px
-    color-mix(in srgb, var(--coffee-pot-color) 12%, transparent);
+  box-shadow: var(--shadow-base);
 }
 
 .hamburger-menu__link:focus-visible {
   outline: 2px solid var(--tan-color);
   outline-offset: 2px;
+}
+
+.hamburger-menu__link--active {
+  color: var(--tan-color);
+  font-weight: 600;
+  background-color: color-mix(
+    in srgb,
+    var(--tan-color) 8%,
+    var(--pewter-color)
+  );
+  border-color: var(--tan-color);
+  box-shadow:
+    var(--shadow-sm),
+    inset 0 0 0 1px color-mix(in srgb, var(--tan-color) 18%, transparent);
+}
+
+.hamburger-menu__link--active::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 4px;
+  height: 24px;
+  background-color: var(--tan-color);
+  border-radius: 0 var(--radius-lg) var(--radius-lg) 0;
+  animation: slideRight var(--transition-base) var(--easing-ease-out);
+}
+
+@keyframes slideRight {
+  from {
+    opacity: 0;
+    width: 0;
+  }
+  to {
+    opacity: 1;
+    width: 4px;
+  }
 }
 
 .hamburger-menu__link--accent {

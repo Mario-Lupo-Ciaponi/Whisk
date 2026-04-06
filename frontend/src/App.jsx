@@ -4,6 +4,7 @@ import { Routes, Route, useNavigate } from "react-router";
 import PrivateRoutes from "./utils/PrivateRoutes.jsx";
 import Navbar from "./components/Navbar/Navbar.jsx";
 import Footer from "./components/Footer/Footer.jsx";
+import ScrollToTop from "./components/ScrollToTop/ScrollToTop.jsx";
 import HomePage from "./pages/HomePage/HomePage.jsx";
 import CreatePostPage from "./pages/CreatePostPage/CreatePostPage.jsx";
 import CreateGroupPage from "./pages/CreateGroupPage/CreateGroupPage.jsx";
@@ -22,12 +23,12 @@ import api from "./api/api.js";
 import "./App.css";
 
 const App = () => {
-  const [authTokens, setAuthTokens] = useState(null);
   const navigate = useNavigate();
   const [errors, setErrors] = useState({});
   const [currentUser, setCurrentUser] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
   const [isFilterVisible, setIsFilterVisible] = useState(false);
+  const [, setAuthTokens] = useState(null);
 
   const { t } = useTranslation();
 
@@ -152,6 +153,7 @@ const App = () => {
         </Routes>
       </main>
       <Footer currentUser={currentUser} />
+      <ScrollToTop />
       {isFilterVisible && <DarkOpacityFilter />}
     </>
   );

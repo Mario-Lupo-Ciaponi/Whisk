@@ -5,6 +5,7 @@ import { HelmetProvider } from "react-helmet-async";
 import "./i18n.js";
 import "./index.css";
 import "./styles/reset.css";
+import "./styles/design-system.css";
 import "./styles/typography.css";
 import App from "./App.jsx";
 

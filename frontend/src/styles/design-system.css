@@ -1,0 +1,280 @@
+/* ============================================================================
+   DESIGN SYSTEM - Consistent spacing, typography, shadows, and transitions
+   ============================================================================ */
+
+:root {
+  /* SPACING SYSTEM - Base unit: 0.25rem (4px) */
+  --spacing-xs: 0.25rem; /* 4px */
+  --spacing-sm: 0.5rem; /* 8px */
+  --spacing-md: 0.75rem; /* 12px */
+  --spacing-base: 1rem; /* 16px */
+  --spacing-lg: 1.25rem; /* 20px */
+  --spacing-xl: 1.5rem; /* 24px */
+  --spacing-2xl: 2rem; /* 32px */
+  --spacing-3xl: 2.5rem; /* 40px */
+  --spacing-4xl: 3rem; /* 48px */
+
+  /* TYPOGRAPHY SCALE - Based on 16px base */
+  /* Font sizes */
+  --text-xs: 0.75rem; /* 12px - small helper text */
+  --text-sm: 0.875rem; /* 14px - body small, labels */
+  --text-base: 1rem; /* 16px - body default */
+  --text-lg: 1.125rem; /* 18px - body large */
+  --text-xl: 1.25rem; /* 20px - heading 6 / subheading */
+  --text-2xl: 1.5rem; /* 24px - heading 5 */
+  --text-3xl: 1.875rem; /* 30px - heading 4 */
+  --text-4xl: 2.25rem; /* 36px - heading 3 */
+  --text-5xl: 3rem; /* 48px - heading 2 */
+  --text-6xl: 3.75rem; /* 60px - heading 1 */
+
+  /* Line heights */
+  --line-height-tight: 1.25;
+  --line-height-normal: 1.5;
+  --line-height-relaxed: 1.75;
+  --line-height-loose: 2;
+
+  /* Letter spacing */
+  --letter-spacing-tight: -0.02em;
+  --letter-spacing-normal: 0;
+  --letter-spacing-wide: 0.02em;
+
+  /* SHADOW SYSTEM */
+  --shadow-none: none;
+  --shadow-xs: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  --shadow-sm: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+  --shadow-base:
+    0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  --shadow-md:
+    0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  --shadow-lg:
+    0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  --shadow-xl: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+
+  /* TRANSITIONS - Consistent motion */
+  --transition-fast: 150ms;
+  --transition-base: 200ms;
+  --transition-slow: 300ms;
+  --easing-ease-in: cubic-bezier(0.4, 0, 1, 1);
+  --easing-ease-out: cubic-bezier(0, 0, 0.2, 1);
+  --easing-ease-in-out: cubic-bezier(0.4, 0, 0.2, 1);
+
+  /* Common transitions */
+  --transition-all: all var(--transition-base) var(--easing-ease-in-out);
+  --transition-color: color var(--transition-base) var(--easing-ease-in-out);
+  --transition-bg: background-color var(--transition-base)
+    var(--easing-ease-in-out);
+  --transition-border: border-color var(--transition-base)
+    var(--easing-ease-in-out);
+  --transition-opacity: opacity var(--transition-base) var(--easing-ease-in-out);
+  --transition-transform: transform var(--transition-base)
+    var(--easing-ease-in-out);
+  --transition-shadow: box-shadow var(--transition-base)
+    var(--easing-ease-in-out);
+
+  /* BORDER RADIUS - Consistent roundness */
+  --radius-xs: 0.25rem; /* 4px */
+  --radius-sm: 0.375rem; /* 6px */
+  --radius-base: 0.5rem; /* 8px */
+  --radius-md: 0.75rem; /* 12px */
+  --radius-lg: 1rem; /* 16px */
+  --radius-xl: 1.5rem; /* 24px */
+  --radius-full: 9999px; /* Full rounded */
+}
+
+/* ============================================================================
+   TYPOGRAPHY STYLES
+   ============================================================================ */
+
+h1 {
+  font-size: var(--text-6xl);
+  line-height: var(--line-height-tight);
+  letter-spacing: var(--letter-spacing-tight);
+  font-weight: 700;
+}
+
+h2 {
+  font-size: var(--text-5xl);
+  line-height: var(--line-height-tight);
+  letter-spacing: var(--letter-spacing-tight);
+  font-weight: 700;
+}
+
+h3 {
+  font-size: var(--text-4xl);
+  line-height: var(--line-height-tight);
+  letter-spacing: var(--letter-spacing-tight);
+  font-weight: 600;
+}
+
+h4 {
+  font-size: var(--text-3xl);
+  line-height: var(--line-height-tight);
+  letter-spacing: var(--letter-spacing-normal);
+  font-weight: 600;
+}
+
+h5 {
+  font-size: var(--text-2xl);
+  line-height: var(--line-height-normal);
+  letter-spacing: var(--letter-spacing-normal);
+  font-weight: 600;
+}
+
+h6 {
+  font-size: var(--text-xl);
+  line-height: var(--line-height-normal);
+  letter-spacing: var(--letter-spacing-normal);
+  font-weight: 600;
+}
+
+body {
+  font-size: var(--text-base);
+  line-height: var(--line-height-normal);
+  letter-spacing: var(--letter-spacing-normal);
+}
+
+small {
+  font-size: var(--text-sm);
+}
+
+/* ============================================================================
+   RESPONSIVE TYPOGRAPHY
+   ============================================================================ */
+
+@media screen and (max-width: 768px) {
+  h1 {
+    font-size: var(--text-5xl);
+  }
+
+  h2 {
+    font-size: var(--text-4xl);
+  }
+
+  h3 {
+    font-size: var(--text-3xl);
+  }
+
+  h4 {
+    font-size: var(--text-2xl);
+  }
+
+  h5 {
+    font-size: var(--text-xl);
+  }
+
+  h6 {
+    font-size: var(--text-lg);
+  }
+}
+
+@media screen and (max-width: 480px) {
+  h1 {
+    font-size: var(--text-4xl);
+  }
+
+  h2 {
+    font-size: var(--text-3xl);
+  }
+
+  h3 {
+    font-size: var(--text-2xl);
+  }
+
+  h4 {
+    font-size: var(--text-xl);
+  }
+
+  h5 {
+    font-size: var(--text-lg);
+  }
+
+  h6 {
+    font-size: var(--text-base);
+  }
+}
+
+/* ============================================================================
+   MOTION & ANIMATIONS
+   ============================================================================ */
+
+@media (prefers-reduced-motion: no-preference) {
+  /* Fade in animation */
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+  /* Fade out animation */
+  @keyframes fadeOut {
+    from {
+      opacity: 1;
+    }
+    to {
+      opacity: 0;
+    }
+  }
+
+  /* Slide up animation */
+  @keyframes slideUp {
+    from {
+      opacity: 0;
+      transform: translateY(0.5rem);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  /* Slide down animation */
+  @keyframes slideDown {
+    from {
+      opacity: 0;
+      transform: translateY(-0.5rem);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  /* Scale in animation */
+  @keyframes scaleIn {
+    from {
+      opacity: 0;
+      transform: scale(0.95);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+
+  /* Stagger animation for lists */
+  @keyframes staggerFadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(0.25rem);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+}
+
+/* Utilities for focus states */
+.focus-ring {
+  outline: 2px solid transparent;
+  outline-offset: 2px;
+  transition: var(--transition-color);
+}
+
+.focus-ring:focus-visible {
+  outline: 2px solid var(--tan-color);
+  outline-offset: 2px;
+}

@@ -11,13 +11,14 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  margin: 1.5rem;
+  margin: var(--spacing-xl);
 }
 
 #root .app-loader {
   height: 100vh;
-  gap: 1rem;
+  gap: var(--spacing-base);
   flex-direction: column;
+  animation: fadeIn var(--transition-slow) var(--easing-ease-out);
 }
 
 #root .app-loader .loading-text {
@@ -31,11 +32,22 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
+  animation: fadeIn var(--transition-slow) var(--easing-ease-out);
 }
 
 @media screen and (max-width: 480px) {
   #root .app-loader .loading-text {
     color: var(--tan-color);
     font-size: 2.5rem;
+  }
+}
+
+/* Page transition animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
   }
 }
