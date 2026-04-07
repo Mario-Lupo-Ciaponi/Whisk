@@ -1,17 +1,97 @@
 .notification-card {
-  font-size: var(--text-lg);
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-base);
+  padding: var(--spacing-md) var(--spacing-lg);
+  background-color: #ffffff;
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-sm);
+  transition: var(--transition-shadow);
+  font-size: var(--text-base);
+  margin-bottom: var(--spacing-sm);
+}
+
+.notification-card:hover {
+  box-shadow: var(--shadow-md);
+}
+
+.notification-card__profile-image {
+  width: var(--profile-image-width-and-height, 2.5rem);
+  height: var(--profile-image-width-and-height, 2.5rem);
+  border-radius: var(--radius-full);
+  object-fit: cover;
+}
+
+.notification-card__content-wrapper {
+  flex-grow: 1;
 }
 
 .notification-card__content {
   margin: 0;
+  color: var(--dark-gray-color);
+  line-height: var(--line-height-normal);
 }
 
-.notification-card__link {
+.notification-card__sender-name {
+  font-weight: 700;
+  color: var(--darker-brown-color);
+  text-decoration: none;
+  font-size: var(--text-lg);
+}
+
+.notification-card__sender-name:hover {
+  color: var(--tan-color);
+}
+
+.notification-card__text {
+  color: var(--coffee-pot-color);
+  font-size: var(--text-lg);
+}
+
+.notification-card__link,
+.notification-card__post-link {
   color: var(--purple-color);
+  text-decoration: none;
+  font-size: var(--text-lg);
+}
+
+.notification-card__link:hover,
+.notification-card__post-link:hover {
+  text-decoration: underline;
 }
 
 .notification-card__delete-btn {
   background: none;
   border: none;
   cursor: pointer;
+  color: var(--gray-color);
+  padding: var(--spacing-xs);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: var(--transition-color);
+  margin-left: auto;
+}
+
+.notification-card__delete-btn:hover {
+  color: var(--red-color);
+}
+
+@media screen and (max-width: 480px) {
+  .notification-card {
+    padding: var(--spacing-sm);
+    gap: var(--spacing-sm);
+  }
+
+  .notification-card__profile-image {
+    width: 2rem;
+    height: 2rem;
+  }
+
+  .notification-card__sender-name,
+  .notification-card__text,
+  .notification-card__link,
+  .notification-card__post-link {
+    font-size: var(--text-base);
+  }
 }

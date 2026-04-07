@@ -17,7 +17,7 @@ const NotificationCard = ({ notification, setNotifications }) => {
     try {
       await api.delete(`notifications/${notification.id}/delete/`);
 
-      setNotifications(prev => prev.filter(n => n !== notification));
+      setNotifications((prev) => prev.filter((n) => n !== notification));
 
       toast.success(t("notificationCard.deletedSuccessfully"));
     } catch {
@@ -29,25 +29,40 @@ const NotificationCard = ({ notification, setNotifications }) => {
 
   return (
     <article className="notification-card">
-      <p className="notification-card__content">
-        {notification.sender ? (
+      <Link className="notification-card__profile-link" to={`/profile/${notification.sender?.id}`}>
+        <img
+          src={
+            notification.sender?.profile?.profile_image
+              ? notification.sender.profile.profile_image
+              : "/images/default-profile-img.jpeg"
+          }
+          alt="profile-image"
+          className="notification-card__profile-image"
+        />
+      </Link>
+
+      <div className="notification-card__content-wrapper">
+        <p className="notification-card__content">
+          {notification.sender ? (
+            <Link
+              className="notification-card__link notification-card__sender-name"
+              to={`/profile/${notification.sender.id}`}
+            >
+              {notification.sender.username}
+            </Link>
+          ) : (
+            <span className="notification-card__sender-name">Anonymous user</span>
+          )}{" "}
+          <span className="notification-card__text">{notification.text}</span>{" "}
           <Link
-            className="notification-card__link"
-            to={`/profile/${notification.sender.id}`}
+            className="notification-card__link notification-card__post-link"
+            to={`/post/${notification.post_id}`}
           >
-            {notification.sender.username}
+            Post
           </Link>
-        ) : (
-          "Anonymous user"
-        )}{" "}
-        {notification.text}{" "}
-        <Link
-          className="notification-card__link"
-          to={`/post/${notification.post_id}`}
-        >
-          Post
-        </Link>
-      </p>
+        </p>
+      </div>
+
       <button
         onClick={deleteNotification}
         className="notification-card__delete-btn"

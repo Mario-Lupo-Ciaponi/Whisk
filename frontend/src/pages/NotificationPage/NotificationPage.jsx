@@ -25,7 +25,7 @@ const NotificationPage = ({ baseUrl }) => {
         <meta property="og:url" content={pageUrl} />
       </Helmet>
       <div className="notification-page">
-          <Toaster position={"top-center"} />
+        <Toaster position={"top-center"} />
         <header className="notification-header">
           <h1 className="notification-title">
             {t("notificationPage.heading")}
@@ -36,7 +36,10 @@ const NotificationPage = ({ baseUrl }) => {
             <Loader height={150} width={150} />
           </div>
         ) : notifications.length > 0 ? (
-          <NotificationSection notifications={notifications} setNotifications={setNotifications} />
+          <NotificationSection
+            notifications={notifications}
+            setNotifications={setNotifications}
+          />
         ) : (
           <NoResult type="notifications" />
         )}
