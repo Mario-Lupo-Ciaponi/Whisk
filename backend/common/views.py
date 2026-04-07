@@ -5,6 +5,7 @@ from django_filters import rest_framework as filter
 from cities_light.models import City, Country
 from rest_framework.response import Response
 from rest_framework.views import APIView
+from rest_framework.generics import DestroyAPIView
 from rest_framework.permissions import IsAuthenticated
 
 from .models import Notification
@@ -14,6 +15,7 @@ from .serializers import (
     ContactSerializer,
     NotificationSerializer,
 )
+from .permissions import IsOwnerOrSuperUser
 from .mails import send_contact_email
 
 
@@ -63,3 +65,12 @@ class GetUnreadNotificationsAPIView(APIView):
         serializer = NotificationSerializer(notifications, many=True)
 
         return Response(serializer.data)
+
+
+class DeleteNotificationAPIView(DestroyAPIView):
+    queryset = Notification.objects.all()
+    serializer_class = NotificationSerializer
+    permission_classes = [
+        IsAuthenticated,
+        IsOwnerOrSuperUser,
+    ]

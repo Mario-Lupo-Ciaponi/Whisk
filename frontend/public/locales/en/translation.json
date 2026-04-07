@@ -195,6 +195,9 @@
     "title": "Notification",
     "heading": "Your notifications"
   },
+  "notificationCard": {
+    "deletedSuccessfully": "Notification deleted successfully!"
+  },
   "noResult": {
     "post": {
       "title": "No posts found",

@@ -14,6 +14,11 @@ urlpatterns = [
                     views.GetUnreadNotificationsAPIView.as_view(),
                     name="unread-notifications",
                 ),
+                path(
+                    "<int:pk>/delete/",
+                    views.DeleteNotificationAPIView.as_view(),
+                    name="delete-notification",
+                ),
             ]
         ),
     ),

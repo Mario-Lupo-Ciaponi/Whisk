@@ -193,6 +193,9 @@
     "title": "Известия",
     "heading": "Вашите известия"
   },
+  "notificationCard": {
+    "deletedSuccessfully": "Известието е изтрито успешно!"
+  },
   "noResult": {
     "post": {
       "title": "Не са намерени публикации",

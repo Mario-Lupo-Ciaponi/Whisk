@@ -32,6 +32,7 @@ const useNotifications = () => {
 
   return {
     notifications,
+    setNotifications,
     notificationCount: notifications.length,
     isLoading,
   };
