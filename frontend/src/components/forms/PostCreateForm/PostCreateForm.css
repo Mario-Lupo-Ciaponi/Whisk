@@ -1,38 +1,35 @@
 .post-create-form {
   width: 100%;
-  padding: 0 1.8rem 1.8rem;
+  padding: var(--spacing-xs) var(--spacing-xl) var(--spacing-xl);
 }
 
 .post-create-form__stack {
   display: flex;
   flex-direction: column;
-  gap: 1.25rem;
+  gap: var(--spacing-md);
 }
 
 .post-create-form__field {
   display: flex;
   flex-direction: column;
-  gap: 0.55rem;
+  gap: var(--spacing-xs);
 }
 
 .post-create-form__label {
   font-weight: 800;
   color: var(--tan-color);
-  font-size: 0.95rem;
+  font-size: var(--text-base);
 }
 
 .post-create-form__control {
   width: 100%;
-  border-radius: 0.9rem;
+  border-radius: var(--radius-lg);
   border: 1px solid color-mix(in srgb, var(--tan-color) 25%, transparent);
   background-color: color-mix(in srgb, white 65%, var(--light-gray-color));
-  padding: 0.85rem 1rem;
+  padding: var(--spacing-md) var(--spacing-base);
   font: inherit;
   color: var(--coffee-pot-color);
-  transition:
-    box-shadow 160ms ease,
-    border-color 160ms ease,
-    background-color 160ms ease;
+  transition: var(--transition-all);
 }
 
 .post-create-form__control::placeholder {
@@ -56,28 +53,24 @@
 
 .post-create-form__actions {
   display: flex;
-  gap: 1rem;
+  gap: var(--spacing-base);
   align-items: center;
   justify-content: flex-start;
-  margin-top: 0.25rem;
+  margin-top: var(--spacing-xs);
 }
 
 .post-create-form__submit {
   flex: 1;
   border: none;
-  border-radius: 999px;
-  padding: 0.95rem 1.2rem;
+  border-radius: var(--radius-full);
+  padding: var(--spacing-md) var(--spacing-lg);
   font-weight: 900;
-  font-size: 1.05rem;
+  font-size: var(--text-lg);
   color: white;
   cursor: pointer;
   background: var(--coffee-pot-color);
-  box-shadow: 0 12px 28px
-    color-mix(in srgb, var(--coffee-pot-color) 20%, transparent);
-  transition:
-    transform 160ms ease,
-    filter 160ms ease,
-    box-shadow 160ms ease;
+  box-shadow: var(--shadow-md);
+  transition: var(--transition-all);
 }
 
 .post-create-form__submit:hover:not(:disabled) {
@@ -96,17 +89,14 @@
 .post-create-form__cancel {
   border: 1px solid color-mix(in srgb, var(--tan-color) 18%, transparent);
   background-color: color-mix(in srgb, white 55%, var(--pewter-color));
-  border-radius: 999px;
-  padding: 0.9rem 1.1rem;
+  border-radius: var(--radius-full);
+  padding: var(--spacing-md) var(--spacing-lg);
   color: var(--coffee-pot-color);
   font-weight: 800;
   cursor: pointer;
   flex: 0 0 auto;
   min-width: 8.75rem;
-  transition:
-    background-color 160ms ease,
-    transform 160ms ease,
-    border-color 160ms ease;
+  transition: var(--transition-all);
 }
 
 .post-create-form__cancel:hover {
@@ -122,7 +112,7 @@
 
 @media screen and (max-width: 768px) {
   .post-create-form {
-    padding: 0 1.1rem 1.35rem;
+    padding: var(--spacing-xs) var(--spacing-lg) var(--spacing-lg);
   }
 
   .post-create-form__actions {

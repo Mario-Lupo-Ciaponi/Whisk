@@ -1,15 +1,14 @@
 .profile-form {
   width: 100%;
-  padding: 1.5rem 1.35rem;
-  border-radius: 1rem;
+  padding: var(--spacing-lg) var(--spacing-lg);
+  border-radius: var(--radius-lg);
   background: linear-gradient(
     180deg,
     color-mix(in srgb, var(--pewter-color) 92%, white) 0%,
     color-mix(in srgb, var(--pewter-color) 65%, white) 100%
   );
   border: 1px solid color-mix(in srgb, var(--tan-color) 18%, transparent);
-  box-shadow: 0 10px 30px
-    color-mix(in srgb, var(--coffee-pot-color) 10%, transparent);
+  box-shadow: var(--shadow-sm);
 }
 
 .profile-form--readonly {
@@ -19,34 +18,31 @@
 .profile-form__grid {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 1.25rem 1.5rem;
+  gap: var(--spacing-md) var(--spacing-lg);
 }
 
 .profile-form__field {
   display: flex;
   flex-direction: column;
-  gap: 0.55rem;
+  gap: var(--spacing-xs);
   min-width: 0;
 }
 
 .profile-form__label {
   font-weight: 700;
   color: var(--tan-color);
-  font-size: 0.95rem;
+  font-size: var(--text-base);
 }
 
 .profile-form__control {
   width: 100%;
-  border-radius: 0.75rem;
+  border-radius: var(--radius-lg);
   border: 1px solid color-mix(in srgb, var(--tan-color) 22%, transparent);
   background-color: var(--light-gray-color);
-  padding: 0.7rem 0.95rem;
+  padding: var(--spacing-md) var(--spacing-md);
   font: inherit;
   color: var(--coffee-pot-color);
-  transition:
-    background-color 160ms ease,
-    border-color 160ms ease,
-    box-shadow 160ms ease;
+  transition: var(--transition-all);
 }
 
 .profile-form__control::placeholder {
@@ -68,23 +64,19 @@
 .profile-form__actions {
   display: flex;
   justify-content: flex-end;
-  margin-top: 1.35rem;
+  margin-top: var(--spacing-lg);
 }
 
 .profile-form__submit {
-  padding: 0.7rem 1.25rem;
+  padding: var(--spacing-md) var(--spacing-lg);
   border: none;
-  border-radius: 0.85rem;
+  border-radius: var(--radius-lg);
   background-color: var(--coffee-pot-color);
   color: white;
   font-weight: 700;
   cursor: pointer;
-  transition:
-    transform 160ms ease,
-    background-color 160ms ease,
-    box-shadow 160ms ease;
-  box-shadow: 0 8px 20px
-    color-mix(in srgb, var(--coffee-pot-color) 18%, transparent);
+  transition: var(--transition-all);
+  box-shadow: var(--shadow-sm);
 }
 
 .profile-form__submit:hover:not(:disabled) {
@@ -100,12 +92,12 @@
 
 @media screen and (max-width: 768px) {
   .profile-form {
-    padding: 1.25rem 1.1rem;
+    padding: var(--spacing-md) var(--spacing-lg);
   }
 
   .profile-form__grid {
     grid-template-columns: 1fr;
-    gap: 1rem;
+    gap: var(--spacing-base);
   }
 
   .profile-form__actions {

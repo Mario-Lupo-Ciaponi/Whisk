@@ -1,16 +1,16 @@
 .search-bar {
-  padding: 0.5rem;
+  padding: var(--spacing-sm);
   background-color: var(--charcoal-color);
   display: flex;
   justify-content: space-between;
   align-items: center;
-  border-radius: 0.5rem;
-  transition: all 300ms ease;
+  border-radius: var(--radius-sm);
+  transition: var(--transition-all);
 }
 
 .search-bar .input-query {
   flex-grow: 1;
-  padding: 0.2rem 1rem;
+  padding: var(--spacing-xs) var(--spacing-base);
   border: var(--border-default-values) var(--gray-color);
   min-width: 0;
 }
@@ -26,40 +26,41 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 0 0.3rem 0 0.8rem;
+  padding: var(--spacing-xs) var(--spacing-xs) var(--spacing-xs)
+    var(--spacing-md);
 }
 
 @media screen and (max-width: 768px) {
   .search-bar {
     height: 4rem;
-    padding: 0 0.5rem;
+    padding: var(--spacing-xs);
     align-items: center;
   }
 
   .search-bar .input-query {
     height: 30px;
-    padding: 0 0.8rem;
+    padding: var(--spacing-xs) var(--spacing-md);
   }
 }
 
 @media screen and (max-width: 480px) {
   .search-bar {
     height: 3rem;
-    padding: 0 0.3rem;
+    padding: var(--spacing-xs);
     gap: 0;
   }
 
   .search-bar .input-query {
     height: 28px;
-    font-size: 16px;
+    font-size: var(--text-base);
     line-height: 1;
-    padding: 0 0.5rem;
-    border-radius: 0.2rem;
+    padding: var(--spacing-xs);
+    border-radius: var(--radius-xs);
   }
 
   .search-bar .search-btn {
     height: 28px;
-    padding: 0 0.6rem;
-    font-size: 0.9rem;
+    padding: var(--spacing-xs) var(--spacing-md);
+    font-size: var(--text-sm);
   }
 }

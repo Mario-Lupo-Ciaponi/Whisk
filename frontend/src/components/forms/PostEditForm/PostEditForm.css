@@ -12,7 +12,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 1rem;
+  padding: var(--spacing-base);
   min-width: 400px;
   min-height: 450px;
 }
@@ -30,18 +30,18 @@
 }
 
 .form-container .edit-post-form {
-  padding: 1rem 2rem;
+  padding: var(--spacing-base) var(--spacing-2xl);
   display: flex;
   flex-direction: column;
-  gap: 0.75rem;
+  gap: var(--spacing-md);
 }
 
 .form-container .edit-post-form .post-field .post-input {
   background: none;
-  border-radius: 0.31rem;
+  border-radius: var(--radius-xs);
   border: var(--border-default-values) var(--tan-color);
   width: 100%;
-  padding: 0.65rem 1rem;
+  padding: var(--spacing-md) var(--spacing-base);
 }
 
 .form-container .edit-post-form .post-field .post-input:focus {
@@ -58,12 +58,12 @@
 }
 
 .form-container .edit-post-form .edit-btn {
-  padding: 0.25rem 2rem;
+  padding: var(--spacing-xs) var(--spacing-2xl);
   border: none;
-  border-radius: 0.5rem;
+  border-radius: var(--radius-sm);
   background-color: var(--coffee-pot-color);
   color: white;
-  transition: background-color 500ms ease-in-out;
+  transition: var(--transition-all);
   display: flex;
   justify-content: center;
 }
@@ -87,11 +87,11 @@
   }
 
   .form-container .edit-post-form .post-field {
-    padding: 1rem;
+    padding: var(--spacing-base);
   }
 
   .form-container .edit-post-form .post-field .post-input {
-    font-size: 1rem;
+    font-size: var(--text-base);
   }
 
   .form-container .edit-post-form .post-field .post-input.textarea {
