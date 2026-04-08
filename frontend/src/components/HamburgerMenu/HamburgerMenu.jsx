@@ -1,9 +1,10 @@
 import { useEffect, useRef } from "react";
+import { useTranslation } from "react-i18next";
 import { Link, NavLink } from "react-router";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faX } from "@fortawesome/free-solid-svg-icons";
+import { LANGS } from "../../data/constants.js";
 import "./HamburgerMenu.css";
-import { useTranslation } from "react-i18next";
 
 const HamburgerMenu = ({
   isLoggedIn,
@@ -100,13 +101,18 @@ const HamburgerMenu = ({
               </NavLink>
             </li>
             <li className="hamburger-menu__item">
-              <button
-                type="button"
-                onClick={changeLanguage}
+              <select
+                value={i18n.resolvedLanguage || "en"}
+                onChange={changeLanguage}
                 className="hamburger-menu__control hamburger-menu__control--lang"
+                aria-label="Change Language"
               >
-                {i18n.resolvedLanguage === "en" ? "English" : "Български"}
-              </button>
+                {LANGS.map((lng) => (
+                  <option key={lng.code} value={lng.code}>
+                    {lng.name}
+                  </option>
+                ))}
+              </select>
             </li>
 
             <li

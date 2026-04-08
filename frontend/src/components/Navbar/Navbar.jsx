@@ -7,6 +7,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import HamburgerMenu from "../HamburgerMenu/HamburgerMenu.jsx";
 import Loader from "../Loader.jsx";
 import api from "../../api/api.js";
+import { LANGS } from "../../data/constants.js";
 import { faBell, faBars } from "@fortawesome/free-solid-svg-icons";
 import LogoImage from "../../assets/logo.png";
 import "./Navbar.css";
@@ -37,10 +38,7 @@ const Navbar = ({ navigate, currentUser }) => {
     }
   };
 
-  const changeLanguage = () => {
-    if (i18n.language === "en") i18n.changeLanguage("bg");
-    else i18n.changeLanguage("en");
-  };
+  const changeLanguage = (e) => i18n.changeLanguage(e.target.value);
 
   const isLoggedIn = localStorage.getItem("access") !== null;
 
@@ -168,13 +166,18 @@ const Navbar = ({ navigate, currentUser }) => {
                   </button>
                 </li>
                 <li className="navbar__menu-item" role="none">
-                  <button
-                    type="button"
-                    onClick={changeLanguage}
+                  <select
+                    value={i18n.resolvedLanguage || "en"}
+                    onChange={changeLanguage}
                     className="navbar__menu-button navbar__menu-button--lang"
+                    aria-label="Change Language"
                   >
-                    {i18n.resolvedLanguage === "en" ? "English" : "Български"}
-                  </button>
+                    {LANGS.map((lng) => (
+                      <option key={lng.code} value={lng.code}>
+                        {lng.name}
+                      </option>
+                    ))}
+                  </select>
                 </li>
               </ul>
             </div>
@@ -190,13 +193,18 @@ const Navbar = ({ navigate, currentUser }) => {
             </Link>
 
             {!showHamburgerMenu && (
-              <button
-                type="button"
-                onClick={changeLanguage}
+              <select
+                value={i18n.resolvedLanguage || "en"}
+                onChange={changeLanguage}
                 className="navbar__lang"
+                aria-label="Change Language"
               >
-                {i18n.resolvedLanguage === "en" ? "English" : "Български"}
-              </button>
+                {LANGS.map((lng) => (
+                  <option key={lng.code} value={lng.code}>
+                    {lng.name}
+                  </option>
+                ))}
+              </select>
             )}
           </div>
         )}
