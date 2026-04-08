@@ -1,0 +1,218 @@
+{
+  "app": {
+    "pageLoading": "Seite wird geladen... "
+  },
+  "navbar": {
+    "home": "Startseite",
+    "searchProfile": "Profil Suchen",
+    "about": "Über uns",
+    "contact": "Kontakt",
+    "notifications": "Benachrichtigungen",
+    "profile": "Profil",
+    "savedPosts": "Gespeicherte Beiträge",
+    "logout": "Abmelden",
+    "createPost": "Beitrag Erstellen",
+    "login": "Anmelden"
+  },
+  "footer": {
+    "home": "Startseite",
+    "searchProfile": "Profil Suchen",
+    "about": "Über uns",
+    "createPost": "Beitrag Erstellen",
+    "contact": "Kontakt",
+    "rightsReserved": "© 2025-2026 Mario Lupo Fausto Ciaponi. Alle Rechte vorbehalten"
+  },
+  "homepage": {
+    "title": "Finde Haustiere Weltweit",
+    "heading": "Verlorene Haustiere",
+    "feedSelect": {
+      "all": "Alle",
+      "groups": "Gruppen",
+      "city": "Stadt"
+    }
+  },
+  "postCard": {
+    "found": "Gefunden",
+    "save": "Speichern",
+    "saves": "Speicherungen",
+    "map": "Karte",
+    "comment": "Kommentieren",
+    "notFound": "Nicht Gefunden",
+    "postSaved": "Beitrag erfolgreich gespeichert!",
+    "postUnsaved": "Beitrag erfolgreich aus Gespeicherten entfernt!",
+    "notAuthenticated": "Sie sind nicht authentifiziert. Bitte melden Sie sich an!",
+    "somethingWentWrong": "Etwas ist schiefgelaufen. Bitte versuchen Sie es später erneut!"
+  },
+  "savedPosts": {
+    "title": "Gespeicherte Beiträge"
+  },
+  "mapSection": {
+    "title": "Haustier Standort",
+    "description": "Wählen Sie einen Ort aus, an dem Sie das Haustier gesehen haben",
+    "showLocations": "Angegebene Standorte Anzeigen",
+    "hideLocations": "Angegebene Standorte Verbergen",
+    "noLocations": "Keine Standorte gefunden"
+  },
+  "locationPicker": {
+    "selectLocation": "Bitte wählen Sie einen Standort aus!",
+    "addLocation": "Standort Hinzufügen",
+    "locationAdded": "Position erfolgreich hinzugefügt!",
+    "tooManyRequests": "Sie fügen Standorte zu schnell hinzu. Bitte warten Sie, bevor Sie einen weiteren hinzufügen.",
+    "error": "Etwas ist schiefgelaufen. Bitte versuchen Sie es später erneut!"
+  },
+  "locationCard": {
+    "anonymousUser": "Anonymer Benutzer",
+    "pointedLocation": "hat auf die folgende Position hingewiesen:",
+    "found": "Gefunden"
+  },
+  "comments": {
+    "emptyContent": "Der Inhalt des Kommentars darf nicht leer sein!",
+    "commentSuccess": "Erfolgreich einen Kommentar zum Beitrag hinterlassen!",
+    "loginRequired": "Sie müssen authentifiziert sein, um zu kommentieren. Bitte melden Sie sich zuerst an!",
+    "placeholder": "Fügen Sie einen Kommentar hinzu...",
+    "submit": "Kommentieren"
+  },
+  "moreOptions": {
+    "save": "Speichern",
+    "share": "Teilen",
+    "changeStatus": "Status Ändern",
+    "edit": "Bearbeiten",
+    "delete": "Löschen",
+    "copied": "Beitrag in die Zwischenablage kopiert!",
+    "statusChanged": "Beitragsstatus zu {{status}} geändert",
+    "deleted": "Beitrag erfolgreich gelöscht!"
+  },
+  "pagination": {
+    "pageOf": "Seite {{current}} von {{total}}"
+  },
+  "createPostPage": {
+    "title": "Beitrag Erstellen",
+    "description": "Teilen Sie so viele Details wie möglich mit, um den Nachbarn zu helfen, Ihr Haustier zu identifizieren. Erwähnen Sie besondere Merkmale, die Farbe des Halsbandes, den Charakter (sind sie schüchtern oder freundlich?) und genau, wo sie zuletzt gesehen wurden. Jedes Detail hilft, sie nach Hause zu bringen!",
+    "postForm": {
+      "title": "Titel:",
+      "description": "Beschreibung:",
+      "city": "Stadt:",
+      "selectCity": "Auswählen",
+      "submit": "Senden",
+      "allFieldsRequired": "Alle Felder sind erforderlich",
+      "success": "Beitrag erfolgreich erstellt!",
+      "authError": "Sie sind nicht authentifiziert. Bitte Melden Sie sich an!",
+      "serverError": "Bei uns ist etwas schiefgelaufen. Bitte versuchen Sie es später erneut!",
+      "invalidData": "Ungültige Daten übermittelt."
+    }
+  },
+  "uploadBox": {
+    "dropText": "Ziehen Sie ein Bild hierher oder klicken Sie zum Hochladen",
+    "browse": "Durchsuchen",
+    "remove": "Bild entfernen",
+    "errors": {
+      "fileType": "Datei muss vom Typ Bild sein.",
+      "aspectRatio": "Das Bild ist zu lang oder zu breit. Bitte verwenden Sie ein standardmäßigeres Seitenverhältnis.",
+      "sizeLimit": "Die Bildgröße darf 5 MB nicht überschreiten."
+    }
+  },
+  "auth": {
+    "pageTitle": "Betreten Sie Ihr Konto",
+    "login": "Anmelden",
+    "register": "Registrieren",
+    "allFieldsRequired": "Alle Felder sind erforderlich!",
+    "invalidData": "Ungültige Daten übermittelt.",
+    "loginForm": {
+      "username": "Benutzername",
+      "password": "Passwort",
+      "login": "Anmelden",
+      "incorrectCredentials": "Benutzername oder Passwort falsch!"
+    },
+    "registerForm": {
+      "username": "Benutzername",
+      "email": "E-Mail",
+      "country": "Land",
+      "selectCountry": "-- wählen Sie ein Land aus --",
+      "password": "Passwort",
+      "repeatPassword": "Passwort Wiederholen",
+      "registrationSuccess": "Registrierung erfolgreich! Bitte melden Sie sich an!"
+    }
+  },
+  "searchProfile": {
+    "title": "Profile Suchen"
+  },
+  "searchBar": {
+    "placeholder": "Suchen..."
+  },
+  "mapSearchField": {
+    "searchLabel": "Adresse eingeben"
+  },
+  "profileCard": {
+    "petOwner": "Tierbesitzer",
+    "volunteer": "Freiwilliger",
+    "shelter": "Tierheim"
+  },
+  "profileHero": {
+    "edit": "Bearbeiten",
+    "stopEdit": "Bearbeitung Beenden"
+  },
+  "profileForm": {
+    "bio": "Biografie:",
+    "accountType": "Kontotyp:",
+    "city": "Stadt:",
+    "noType": "Nicht angeben",
+    "edit": "Bearbeiten",
+    "noCity": "Keine Stadt",
+    "petOwner": "Tierbesitzer",
+    "volunteer": "Freiwilliger",
+    "shelter": "Tierheim",
+    "enterBio": "Kurze Biografie eingeben"
+  },
+  "about": {
+    "pageTitle": "Über dieses Projekt",
+    "platformTitle": "Über diese Plattform",
+    "platformDescription": "Wir helfen, verlorene Haustiere mit den Menschen wieder zusammenzubringen, die sie lieben – überall auf der Welt. Diese Plattform wurde von einem Studenten mit einer klaren Mission entwickelt: Es für verlorene Haustiere einfacher zu machen, ihren Weg nach Hause zu finden. Wenn ein Haustier vermisst wird, zählt jede Sekunde. Ich wollte ein fokussiertes, praktisches Werkzeug aufbauen, das die Unterstützung der Gemeinde mit präziser Ortungstechnologie verbindet. Jeder Beitrag, der in der App geteilt wird, enthält eine interaktive Kartenfunktion, mit der die Benutzer den genauen Standort markieren können, der mit einem verlorenen oder gefundenen Haustier in Verbindung steht. Die Koordinaten sind direkt mit Google Maps verbunden, sodass andere das Gebiet schnell und genau ansteuern können. Das Ziel ist einfach – Verwirrung reduzieren, Sichtbarkeit erhöhen und die Chancen auf ein sicheres Wiedersehen verbessern.",
+    "whoTitle": "Für wen das ist",
+    "whoIntro": "Diese Plattform wurde gebaut für:",
+    "who1": "Tierbesitzer, die nach ihren verlorenen Begleitern suchen",
+    "who2": "Einzelpersonen oder Tierheime, die ein Tier gefunden haben und dessen Besitzer aufspüren möchten",
+    "who3": "Jeden, der bereit ist zu helfen, Tiere und Familien wiederzuvereinigen",
+    "whoEnding": "Egal ob Sie posten, suchen oder unterstützen, Sie sind Teil einer Gemeinschaft, die auf dasselbe Ziel hinarbeitet.",
+    "whyTitle": "Warum ich es gebaut habe",
+    "whyDescription": "Ich habe gesehen, wie verstreut und ineffizient Suchaktionen für Haustiere auf allgemeinen Social-Media-Plattformen sein können. Wichtige Details zum Standort gehen oft unter und die Koordinierung wird schwierig. Ich wollte einen speziellen Raum schaffen, in dem jeder Beitrag um ein Handeln herum aufgebaut ist – insbesondere in Bezug auf die Standortgenauigkeit. Diese Plattform ist fokussiert, zweckgebunden und verbessert sich stetig mit Blick auf ihre Nutzer. Mein Ziel ist es, ein globales Netzwerk von Menschen aufzubauen, die bereit sind zu helfen, wenn ein Tier verschwindet. Indem wir Technologie mit dem Mitgefühl der Gemeinde kombinieren, können wir die Suche nach verlorenen Tieren schneller, klarer und effektiver machen. Jedes Wiedersehen zählt."
+  },
+  "contact": {
+    "title": "Kontaktiere uns",
+    "contactForm": {
+      "subject": "Betreff",
+      "subjectPlaceholder": "Worum geht es?",
+      "email": "E-Mail",
+      "emailPlaceholder": "deine.email@beispiel.com",
+      "message": "Nachricht",
+      "messagePlaceholder": "Erzählen Sie uns mehr über Ihre Anfrage...",
+      "send": "Nachricht Senden",
+      "emailSent": "E-Mail erfolgreich gesendet!",
+      "invalidData": "Ungültige Daten übermittelt.",
+      "allFieldsRequired": "Alle Felder sind erforderlich!"
+    }
+  },
+  "notificationPage": {
+    "title": "Benachrichtigung",
+    "heading": "Ihre Benachrichtigungen"
+  },
+  "notificationCard": {
+    "deletedSuccessfully": "Benachrichtigung erfolgreich gelöscht!"
+  },
+  "noResult": {
+    "post": {
+      "title": "Keine Beiträge gefunden",
+      "description": "Es scheint, als könnten wir die Beiträge, nach denen Sie gesucht haben, nicht finden!"
+    },
+    "user": {
+      "title": "Keine Benutzer gefunden",
+      "description": "Es scheint, als könnten wir die Benutzer, nach denen Sie gesucht haben, nicht finden!"
+    },
+    "notifications": {
+      "title": "Keine Benachrichtigungen",
+      "description": "Derzeit gibt es keine Benachrichtigungen. Versuchen Sie es später noch einmal."
+    }
+  },
+  "errors": {
+    "somethingWentWrong": "Etwas ist schiefgelaufen!"
+  }
+}

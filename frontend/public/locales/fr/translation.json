@@ -1,0 +1,218 @@
+{
+  "app": {
+    "pageLoading": "Chargement de la page... "
+  },
+  "navbar": {
+    "home": "Accueil",
+    "searchProfile": "Rechercher un Profil",
+    "about": "À propos",
+    "contact": "Contact",
+    "notifications": "Notifications",
+    "profile": "Profil",
+    "savedPosts": "Publications Sauvegardées",
+    "logout": "Déconnexion",
+    "createPost": "Créer une Publication",
+    "login": "Connexion"
+  },
+  "footer": {
+    "home": "Accueil",
+    "searchProfile": "Rechercher un Profil",
+    "about": "À propos",
+    "createPost": "Créer une Publication",
+    "contact": "Contact",
+    "rightsReserved": "© 2025-2026 Mario Lupo Fausto Ciaponi. Tous droits réservés"
+  },
+  "homepage": {
+    "title": "Trouver des Animaux de Compagnie dans le Monde Entier",
+    "heading": "Animaux perdus",
+    "feedSelect": {
+      "all": "Tous",
+      "groups": "Groupes",
+      "city": "Ville"
+    }
+  },
+  "postCard": {
+    "found": "Trouvé",
+    "save": "Sauvegarder",
+    "saves": "Sauvegardes",
+    "map": "Carte",
+    "comment": "Commenter",
+    "notFound": "Non Trouvé",
+    "postSaved": "Publication sauvegardée avec succès !",
+    "postUnsaved": "Publication retirée des sauvegardes avec succès !",
+    "notAuthenticated": "Vous n'êtes pas authentifié. Veuillez vous connecter !",
+    "somethingWentWrong": "Quelque chose s'est mal passé. Veuillez réessayer plus tard !"
+  },
+  "savedPosts": {
+    "title": "Publications sauvegardées"
+  },
+  "mapSection": {
+    "title": "Emplacement de l'Animal",
+    "description": "Sélectionnez un emplacement où vous avez vu l'animal",
+    "showLocations": "Afficher les Emplacements Indiqués",
+    "hideLocations": "Masquer les Emplacements Indiqués",
+    "noLocations": "Aucun emplacement trouvé"
+  },
+  "locationPicker": {
+    "selectLocation": "Veuillez sélectionner un emplacement !",
+    "addLocation": "Ajouter un Emplacement",
+    "locationAdded": "Position ajoutée avec succès !",
+    "tooManyRequests": "Vous ajoutez des emplacements trop rapidement. Veuillez patienter avant d'en ajouter un autre.",
+    "error": "Quelque chose s'est mal passé. Veuillez réessayer plus tard !"
+  },
+  "locationCard": {
+    "anonymousUser": "Utilisateur anonyme",
+    "pointedLocation": "a signalé la position suivante :",
+    "found": "Trouvé"
+  },
+  "comments": {
+    "emptyContent": "Le contenu du commentaire ne doit pas être vide !",
+    "commentSuccess": "Commentaire sur la publication ajouté avec succès !",
+    "loginRequired": "Vous devez être authentifié pour commenter. Veuillez vous connecter d'abord !",
+    "placeholder": "Ajouter un commentaire...",
+    "submit": "Commenter"
+  },
+  "moreOptions": {
+    "save": "Sauvegarder",
+    "share": "Partager",
+    "changeStatus": "Changer le Statut",
+    "edit": "Modifier",
+    "delete": "Supprimer",
+    "copied": "Publication copiée dans le presse-papiers !",
+    "statusChanged": "Statut de la publication changé en {{status}}",
+    "deleted": "Publication supprimée avec succès !"
+  },
+  "pagination": {
+    "pageOf": "Page {{current}} sur {{total}}"
+  },
+  "createPostPage": {
+    "title": "Créer une Publication",
+    "description": "Partagez autant de détails que possible pour aider vos voisins à identifier votre animal. Mentionnez les marques uniques, la couleur de leur collier, leur tempérament (sont-ils timides ou amicaux ?) et exactement où ils ont été vus pour la dernière fois. Chaque détail aide à les ramener à la maison !",
+    "postForm": {
+      "title": "Titre :",
+      "description": "Description :",
+      "city": "Ville :",
+      "selectCity": "Sélectionner",
+      "submit": "Soumettre",
+      "allFieldsRequired": "Tous les champs sont obligatoires",
+      "success": "Publication créée avec succès !",
+      "authError": "Vous n'êtes pas authentifié. Veuillez vous Connecter !",
+      "serverError": "Un problème est survenu de notre côté. Veuillez réessayer plus tard !",
+      "invalidData": "Données soumises invalides."
+    }
+  },
+  "uploadBox": {
+    "dropText": "Déposez une image ici ou cliquez pour télécharger",
+    "browse": "Parcourir",
+    "remove": "Supprimer l'image",
+    "errors": {
+      "fileType": "Le fichier doit être une image.",
+      "aspectRatio": "L'image est trop longue ou trop large. Veuillez utiliser un format plus standard.",
+      "sizeLimit": "La taille de l'image ne doit pas dépasser 5 Mo."
+    }
+  },
+  "auth": {
+    "pageTitle": "Accédez à votre compte",
+    "login": "Connexion",
+    "register": "S'inscrire",
+    "allFieldsRequired": "Tous les champs sont obligatoires !",
+    "invalidData": "Données soumises invalides.",
+    "loginForm": {
+      "username": "Nom d'utilisateur",
+      "password": "Mot de passe",
+      "login": "Connexion",
+      "incorrectCredentials": "Nom d'utilisateur ou mot de passe incorrect !"
+    },
+    "registerForm": {
+      "username": "Nom d'utilisateur",
+      "email": "Email",
+      "country": "Pays",
+      "selectCountry": "-- sélectionner un pays --",
+      "password": "Mot de passe",
+      "repeatPassword": "Confirmer le Mot de passe",
+      "registrationSuccess": "Inscription réussie ! Veuillez vous connecter !"
+    }
+  },
+  "searchProfile": {
+    "title": "Rechercher des Profils"
+  },
+  "searchBar": {
+    "placeholder": "Rechercher..."
+  },
+  "mapSearchField": {
+    "searchLabel": "Entrez l'adresse"
+  },
+  "profileCard": {
+    "petOwner": "Propriétaire d'Animal",
+    "volunteer": "Bénévole",
+    "shelter": "Refuge"
+  },
+  "profileHero": {
+    "edit": "Modifier",
+    "stopEdit": "Arrêter la Modification"
+  },
+  "profileForm": {
+    "bio": "Bio :",
+    "accountType": "Type de compte :",
+    "city": "Ville :",
+    "noType": "Ne pas spécifier",
+    "edit": "Modifier",
+    "noCity": "Pas de ville",
+    "petOwner": "Propriétaire d'Animal",
+    "volunteer": "Bénévole",
+    "shelter": "Refuge",
+    "enterBio": "Entrez une courte bio"
+  },
+  "about": {
+    "pageTitle": "À propos de ce Projet",
+    "platformTitle": "À propos de Cette Plateforme",
+    "platformDescription": "Aider à réunir les animaux perdus avec les personnes qui les aiment — partout dans le monde. Cette plateforme a été créée par un étudiant avec une mission claire : faciliter le retour à la maison des animaux perdus. Lorsqu'un animal disparaît, chaque seconde compte. Je voulais construire un outil ciblé et pratique qui combine le soutien de la communauté avec une technologie de localisation précise. Chaque publication partagée sur l'application comprend une fonctionnalité de carte interactive où les utilisateurs peuvent marquer l'emplacement exact lié à un animal perdu ou trouvé. Les coordonnées se connectent directement à Google Maps, permettant à d'autres de se rendre dans la zone rapidement et avec précision. Le but est simple : réduire la confusion, augmenter la visibilité et améliorer les chances de retrouvailles en toute sécurité.",
+    "whoTitle": "Pour Qui C'est Fait",
+    "whoIntro": "Cette plateforme est construite pour :",
+    "who1": "Les propriétaires d'animaux à la recherche de leurs compagnons perdus",
+    "who2": "Les personnes ou refuges qui ont trouvé un animal et souhaitent retrouver son propriétaire",
+    "who3": "Toute personne prête à aider à réunir les animaux et les familles",
+    "whoEnding": "Que vous publiiez, cherchiez ou souteniez, vous faites partie d'une communauté qui travaille vers le même objectif.",
+    "whyTitle": "Pourquoi Je l'ai Construit",
+    "whyDescription": "J'ai vu à quel point les recherches d'animaux perdus peuvent être dispersées et inefficaces sur les plateformes de médias sociaux générales. Les détails importants sur l'emplacement s'y perdent souvent et la coordination devient difficile. Je voulais créer un espace dédié où chaque publication est structurée autour de l'action — en particulier la précision de l'emplacement. Cette plateforme est ciblée, orientée vers un but et s'améliore continuellement en pensant à ses utilisateurs. Mon objectif est de développer un réseau mondial de personnes prêtes à aider lorsqu'un animal disparaît. En combinant la technologie avec la compassion de la communauté, nous pouvons rendre les recherches d'animaux perdus plus rapides, plus claires et plus efficaces. Chaque retrouvaille compte."
+  },
+  "contact": {
+    "title": "Contactez-nous",
+    "contactForm": {
+      "subject": "Sujet",
+      "subjectPlaceholder": "De quoi s'agit-il ?",
+      "email": "Email",
+      "emailPlaceholder": "votre.email@exemple.com",
+      "message": "Message",
+      "messagePlaceholder": "Dites-nous en plus sur votre demande...",
+      "send": "Envoyer le Message",
+      "emailSent": "Email envoyé avec succès !",
+      "invalidData": "Données soumises invalides.",
+      "allFieldsRequired": "Tous les champs sont obligatoires !"
+    }
+  },
+  "notificationPage": {
+    "title": "Notification",
+    "heading": "Vos notifications"
+  },
+  "notificationCard": {
+    "deletedSuccessfully": "Notification supprimée avec succès !"
+  },
+  "noResult": {
+    "post": {
+      "title": "Aucune publication trouvée",
+      "description": "Il semble que nous n'ayons pas pu trouver les publications que vous cherchiez !"
+    },
+    "user": {
+      "title": "Aucun utilisateur trouvé",
+      "description": "Il semble que nous n'ayons pas pu trouver les utilisateurs que vous cherchiez !"
+    },
+    "notifications": {
+      "title": "Aucune notification",
+      "description": "Actuellement, il n'y a pas de notifications. Essayez de vérifier plus tard."
+    }
+  },
+  "errors": {
+    "somethingWentWrong": "Quelque chose s'est mal passé !"
+  }
+}

@@ -1,0 +1,218 @@
+{
+  "app": {
+    "pageLoading": "Pagina in caricamento... "
+  },
+  "navbar": {
+    "home": "Home",
+    "searchProfile": "Cerca Profilo",
+    "about": "Chi Siamo",
+    "contact": "Contatti",
+    "notifications": "Notifiche",
+    "profile": "Profilo",
+    "savedPosts": "Post Salvati",
+    "logout": "Esci",
+    "createPost": "Crea Post",
+    "login": "Accedi"
+  },
+  "footer": {
+    "home": "Home",
+    "searchProfile": "Cerca Profilo",
+    "about": "Chi Siamo",
+    "createPost": "Crea Post",
+    "contact": "Contatti",
+    "rightsReserved": "© 2025-2026 Mario Lupo Fausto Ciaponi. Tutti i diritti riservati"
+  },
+  "homepage": {
+    "title": "Trova Animali Domestici in Tutto il Mondo",
+    "heading": "Animali smarriti",
+    "feedSelect": {
+      "all": "Tutti",
+      "groups": "Gruppi",
+      "city": "Città"
+    }
+  },
+  "postCard": {
+    "found": "Trovato",
+    "save": "Salva",
+    "saves": "Salvataggi",
+    "map": "Mappa",
+    "comment": "Commenta",
+    "notFound": "Non Trovato",
+    "postSaved": "Post salvato con successo!",
+    "postUnsaved": "Post rimosso dai salvati con successo!",
+    "notAuthenticated": "Non sei autenticato. Per favore, accedi!",
+    "somethingWentWrong": "Qualcosa è andato storto. Per favore riprova più tardi!"
+  },
+  "savedPosts": {
+    "title": "Post salvati"
+  },
+  "mapSection": {
+    "title": "Posizione dell'Animale",
+    "description": "Seleziona una posizione in cui hai visto l'animale",
+    "showLocations": "Mostra le Posizioni Segnalate",
+    "hideLocations": "Nascondi le Posizioni Segnalate",
+    "noLocations": "Nessuna posizione trovata"
+  },
+  "locationPicker": {
+    "selectLocation": "Per favore seleziona una posizione!",
+    "addLocation": "Aggiungi Posizione",
+    "locationAdded": "Posizione aggiunta con successo!",
+    "tooManyRequests": "Stai aggiungendo posizioni troppo velocemente. Attendi prima di aggiungerne un'altra.",
+    "error": "Qualcosa è andato storto. Per favore riprova più tardi!"
+  },
+  "locationCard": {
+    "anonymousUser": "Utente anonimo",
+    "pointedLocation": "ha segnalato la seguente posizione:",
+    "found": "Trovato"
+  },
+  "comments": {
+    "emptyContent": "Il contenuto del commento non può essere vuoto!",
+    "commentSuccess": "Commentato sul post con successo!",
+    "loginRequired": "Devi essere autenticato per commentare. Per favore accedi prima!",
+    "placeholder": "Aggiungi un commento...",
+    "submit": "Commenta"
+  },
+  "moreOptions": {
+    "save": "Salva",
+    "share": "Condividi",
+    "changeStatus": "Cambia Stato",
+    "edit": "Modifica",
+    "delete": "Elimina",
+    "copied": "Post copiato negli appunti!",
+    "statusChanged": "Stato del post cambiato in {{status}}",
+    "deleted": "Post eliminato con successo!"
+  },
+  "pagination": {
+    "pageOf": "Pagina {{current}} di {{total}}"
+  },
+  "createPostPage": {
+    "title": "Crea Post",
+    "description": "Condividi il maggior numero di dettagli possibile per aiutare i vicini a identificare il tuo animale. Menziona segni distintivi, il colore del collare, il temperamento (è timido o amichevole?) e il punto esatto in cui è stato visto l'ultima volta. Ogni dettaglio aiuta a riportarlo a casa!",
+    "postForm": {
+      "title": "Titolo:",
+      "description": "Descrizione:",
+      "city": "Città:",
+      "selectCity": "Seleziona",
+      "submit": "Invia",
+      "allFieldsRequired": "Tutti i campi sono obbligatori",
+      "success": "Post creato con successo!",
+      "authError": "Non sei autenticato. Per favore Accedi!",
+      "serverError": "Qualcosa è andato storto da parte nostra. Per favore riprova più tardi!",
+      "invalidData": "Dati inviati non validi."
+    }
+  },
+  "uploadBox": {
+    "dropText": "Trascina qui un'immagine o clicca per caricare",
+    "browse": "Sfoglia",
+    "remove": "Rimuovi immagine",
+    "errors": {
+      "fileType": "Il file deve essere un'immagine.",
+      "aspectRatio": "L'immagine è troppo lunga o troppo larga. Usa un formato più standard.",
+      "sizeLimit": "Le dimensioni dell'immagine non devono superare i 5 MB."
+    }
+  },
+  "auth": {
+    "pageTitle": "Accedi al tuo account",
+    "login": "Accedi",
+    "register": "Registrati",
+    "allFieldsRequired": "Tutti i campi sono obbligatori!",
+    "invalidData": "Dati inviati non validi.",
+    "loginForm": {
+      "username": "Nome utente",
+      "password": "Password",
+      "login": "Accedi",
+      "incorrectCredentials": "Nome utente o password non corretti!"
+    },
+    "registerForm": {
+      "username": "Nome utente",
+      "email": "Email",
+      "country": "Paese",
+      "selectCountry": "-- seleziona un paese --",
+      "password": "Password",
+      "repeatPassword": "Ripeti Password",
+      "registrationSuccess": "Registrazione completata! Per favore accedi!"
+    }
+  },
+  "searchProfile": {
+    "title": "Cerca Profili"
+  },
+  "searchBar": {
+    "placeholder": "Cerca..."
+  },
+  "mapSearchField": {
+    "searchLabel": "Inserisci indirizzo"
+  },
+  "profileCard": {
+    "petOwner": "Proprietario",
+    "volunteer": "Volontario",
+    "shelter": "Rifugio"
+  },
+  "profileHero": {
+    "edit": "Modifica",
+    "stopEdit": "Smetti di Modificare"
+  },
+  "profileForm": {
+    "bio": "Bio:",
+    "accountType": "Tipo di account:",
+    "city": "Città:",
+    "noType": "Non specificato",
+    "edit": "Modifica",
+    "noCity": "Nessuna città",
+    "petOwner": "Proprietario",
+    "volunteer": "Volontario",
+    "shelter": "Rifugio",
+    "enterBio": "Inserisci una breve bio"
+  },
+  "about": {
+    "pageTitle": "Informazioni sul Progetto",
+    "platformTitle": "Informazioni sulla Piattaforma",
+    "platformDescription": "Aiutiamo a ricongiungere gli animali smarriti con le persone che li amano — ovunque nel mondo. Questa piattaforma è stata creata da uno studente con una missione chiara: rendere più facile per gli animali smarriti ritrovare la strada di casa. Quando un animale scompare, ogni secondo è prezioso. Volevo costruire uno strumento pratico e mirato che unisse il supporto della comunità con la tecnologia di localizzazione precisa. Ogni post condiviso sull'app include una funzione mappa interattiva in cui gli utenti possono segnare la posizione esatta relativa a un animale smarrito o trovato. Le coordinate si collegano direttamente a Google Maps, permettendo ad altri di raggiungere l'area in modo rapido e preciso. L'obiettivo è semplice — ridurre la confusione, aumentare la visibilità e migliorare le probabilità di un ricongiungimento sicuro.",
+    "whoTitle": "A Chi È Rivolto",
+    "whoIntro": "Questa piattaforma è costruita per:",
+    "who1": "Proprietari di animali alla ricerca dei loro compagni smarriti",
+    "who2": "Singoli o rifugi che hanno trovato un animale e vogliono rintracciarne il proprietario",
+    "who3": "Chiunque sia disposto ad aiutare a riunire gli animali e le loro famiglie",
+    "whoEnding": "Che tu stia pubblicando, cercando o supportando, fai parte di una comunità che lavora per lo stesso scopo.",
+    "whyTitle": "Perché L'ho Creato",
+    "whyDescription": "Ho visto quanto possano essere dispersive e inefficaci le ricerche di animali smarriti sui social media generici. I dettagli importanti sulla posizione spesso si perdono e il coordinamento diventa difficile. Volevo creare uno spazio dedicato in cui ogni post fosse strutturato per agire — specialmente per la precisione della posizione. Questa piattaforma è focalizzata, orientata a uno scopo e in continuo miglioramento, pensando ai suoi utenti. Il mio obiettivo è creare una rete globale di persone pronte ad aiutare quando un animale scompare. Unendo la comprensione della comunità con la tecnologia, possiamo rendere le ricerche di animali smarriti più veloci, chiare ed efficaci. Ogni ricongiungimento conta."
+  },
+  "contact": {
+    "title": "Contattaci",
+    "contactForm": {
+      "subject": "Oggetto",
+      "subjectPlaceholder": "Di cosa si tratta?",
+      "email": "Email",
+      "emailPlaceholder": "tua.email@esempio.com",
+      "message": "Messaggio",
+      "messagePlaceholder": "Raccontaci di più sulla tua richiesta...",
+      "send": "Invia Messaggio",
+      "emailSent": "Email inviata con successo!",
+      "invalidData": "Dati inviati non validi.",
+      "allFieldsRequired": "Tutti i campi sono obbligatori!"
+    }
+  },
+  "notificationPage": {
+    "title": "Notifiche",
+    "heading": "Le tue notifiche"
+  },
+  "notificationCard": {
+    "deletedSuccessfully": "Notifica eliminata con successo!"
+  },
+  "noResult": {
+    "post": {
+      "title": "Nessun post trovato",
+      "description": "Sembra che non siamo riusciti a trovare i post che cercavi!"
+    },
+    "user": {
+      "title": "Nessun utente trovato",
+      "description": "Sembra che non siamo riusciti a trovare gli utenti che cercavi!"
+    },
+    "notifications": {
+      "title": "Nessuna notifica",
+      "description": "Attualmente non ci sono notifiche. Prova a controllare più tardi."
+    }
+  },
+  "errors": {
+    "somethingWentWrong": "Qualcosa è andato storto!"
+  }
+}

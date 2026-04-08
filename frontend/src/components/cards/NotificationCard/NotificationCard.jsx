@@ -29,7 +29,10 @@ const NotificationCard = ({ notification, setNotifications }) => {
 
   return (
     <article className="notification-card">
-      <Link className="notification-card__profile-link" to={`/profile/${notification.sender?.id}`}>
+      <Link
+        className="notification-card__profile-link"
+        to={`/profile/${notification.sender?.id}`}
+      >
         <img
           src={
             notification.sender?.profile?.profile_image
@@ -51,7 +54,9 @@ const NotificationCard = ({ notification, setNotifications }) => {
               {notification.sender.username}
             </Link>
           ) : (
-            <span className="notification-card__sender-name">Anonymous user</span>
+            <span className="notification-card__sender-name">
+              Anonymous user
+            </span>
           )}{" "}
           <span className="notification-card__text">{notification.text}</span>{" "}
           <Link
