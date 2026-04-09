@@ -3,6 +3,7 @@ import { useTranslation } from "react-i18next";
 import { Helmet } from "react-helmet-async";
 import toast, { Toaster } from "react-hot-toast";
 import StatusFilter from "../../components/StatusFilter/StatusFilter.jsx";
+import DateSort from "../../components/DateSort/DateSort.jsx";
 import PostSection from "../../components/sections/PostSection/PostSection.jsx";
 import NoResult from "../../components/NoResult/NoResult.jsx";
 import api from "../../api/api.js";
@@ -15,6 +16,7 @@ const HomePage = ({ currentUser, navigate, setIsFilterVisible, baseUrl }) => {
   const [currentPage, setCurrentPage] = useState(1);
   const [totalPages, setTotalPages] = useState(0);
   const [selectedStatus, setSelectedStatus] = useState("all");
+  const [selectedOrdering, setSelectedOrdering] = useState("-posted_on");
   const [isLoading, setIsLoading] = useState(false);
 
   const { t } = useTranslation();
@@ -25,6 +27,8 @@ const HomePage = ({ currentUser, navigate, setIsFilterVisible, baseUrl }) => {
 
   const onChangeStatus = (event) => setSelectedStatus(event.target.value);
 
+  const onOrderChange = (event) => setSelectedOrdering(event.target.value);
+
   useEffect(() => {
     const getPosts = async () => {
       setIsLoading(true);
@@ -34,19 +38,20 @@ const HomePage = ({ currentUser, navigate, setIsFilterVisible, baseUrl }) => {
           params: {
             found: selectedStatus,
             page: currentPage,
+            ordering: selectedOrdering,
           },
         });
 
         setPosts(response.data.results);
         setTotalPages(Math.ceil(response.data.count / itemsPerPage));
       } catch (error) {
-        console.log(error);
+        toast.error(t("errors.somethingWentWrong"));
       }
       setIsLoading(false);
     };
 
     getPosts();
-  }, [currentPage, selectedStatus]);
+  }, [currentPage, selectedStatus, selectedOrdering]);
 
   return (
     <>
@@ -67,7 +72,11 @@ const HomePage = ({ currentUser, navigate, setIsFilterVisible, baseUrl }) => {
           <>
             <header className="home-header">
               <h1 className="title">{t("homepage.heading")}</h1>
-              <StatusFilter selectedStatus={selectedStatus} onStatusChange={onChangeStatus} />
+              <StatusFilter
+                selectedStatus={selectedStatus}
+                onStatusChange={onChangeStatus}
+              />
+              <DateSort onOrderChange={onOrderChange} selectedOrder={selectedOrdering} />
             </header>
 
             <PostSection

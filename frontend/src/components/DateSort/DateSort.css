@@ -1,19 +1,17 @@
-.status-filter-container {
-  display: flex;
-  justify-content: center;
-  width: 100%;
+.date-sort-container {
+  display: inline-flex;
   margin: 1rem 0;
 }
 
-.status-filter-wrapper {
+.date-sort-wrapper {
   position: relative;
   display: inline-block;
-  min-width: 200px;
+  min-width: 160px;
   /* Add subtle drop shadow to wrapper */
   filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.05));
 }
 
-.status-filter-select {
+.date-sort-select {
   /* Remove default browser styles */
   appearance: none;
   -webkit-appearance: none;
@@ -36,11 +34,11 @@
 }
 
 /* Hover and Focus States */
-.status-filter-select:hover {
+.date-sort-select:hover {
   background-color: var(--light-gray-color);
 }
 
-.status-filter-select:focus {
+.date-sort-select:focus {
   background-color: white;
   border-color: var(--tan-color);
   /* Glowing outline effect using box-shadow */
@@ -48,7 +46,7 @@
 }
 
 /* Custom SVG Arrow Formatting */
-.status-filter-arrow {
+.date-sort-arrow {
   position: absolute;
   right: 1.25rem;
   top: 50%;
@@ -61,13 +59,17 @@
   transition: color 0.2s ease;
 }
 
-.status-filter-select:focus + .status-filter-arrow {
+.date-sort-select:focus + .date-sort-arrow {
   color: var(--tan-color);
 }
 
 /* Responsive adjustment for smartphones */
 @media (max-width: 576px) {
-  .status-filter-wrapper {
+  .date-sort-container {
+    width: 100%;
+  }
+
+  .date-sort-wrapper {
     width: 100%; /* Stretches to fill container on mobile */
   }
 }
