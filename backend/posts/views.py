@@ -13,6 +13,7 @@ from rest_framework.permissions import (
     AllowAny,
     IsAuthenticated,
 )
+from rest_framework.filters import OrderingFilter
 from django_filters import rest_framework as filter
 from rest_framework.parsers import MultiPartParser, FormParser
 
@@ -34,8 +35,12 @@ from common.permissions import IsOwnerOrSuperUser
 # Post related views
 
 class PostListCreateAPIView(PostAPIViewMixin, ListCreateAPIView):
-    filter_backends = [filter.DjangoFilterBackend]
+    filter_backends = [
+        filter.DjangoFilterBackend,
+        OrderingFilter,
+    ]
     filterset_class = PostFilter
+    ordering_fields = ["posted_on"]
     pagination_class = PostResultsSetPagination
     parser_classes = [
         MultiPartParser,
