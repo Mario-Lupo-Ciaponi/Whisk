@@ -1,0 +1,73 @@
+.status-filter-container {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  margin: 1rem 0;
+}
+
+.status-filter-wrapper {
+  position: relative;
+  display: inline-block;
+  min-width: 200px;
+  /* Add subtle drop shadow to wrapper */
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.05));
+}
+
+.status-filter-select {
+  /* Remove default browser styles */
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+
+  width: 100%;
+  background-color: var(--pewter-color);
+  color: var(--dark-gray-color);
+  padding: 0.75rem 2.5rem 0.75rem 1.25rem;
+  font-size: 0.95rem;
+  font-weight: 500;
+  
+  /* Modern rounded rectangle look */
+  border: 2px solid transparent;
+  border-radius: 12px;
+  
+  cursor: pointer;
+  outline: none;
+  transition: all 0.2s ease;
+}
+
+/* Hover and Focus States */
+.status-filter-select:hover {
+  background-color: var(--light-gray-color);
+}
+
+.status-filter-select:focus {
+  background-color: white;
+  border-color: var(--tan-color);
+  /* Glowing outline effect using box-shadow */
+  box-shadow: 0 0 0 3px rgba(116, 80, 60, 0.15); 
+}
+
+/* Custom SVG Arrow Formatting */
+.status-filter-arrow {
+  position: absolute;
+  right: 1.25rem;
+  top: 50%;
+  transform: translateY(-50%);
+  pointer-events: none; /* Crucial so clicks pass through to the select */
+  color: var(--dark-gray-color);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: color 0.2s ease;
+}
+
+.status-filter-select:focus + .status-filter-arrow {
+  color: var(--tan-color);
+}
+
+/* Responsive adjustment for smartphones */
+@media (max-width: 576px) {
+  .status-filter-wrapper {
+    width: 100%; /* Stretches to fill container on mobile */
+  }
+}

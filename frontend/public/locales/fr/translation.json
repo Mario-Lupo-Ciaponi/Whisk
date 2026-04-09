@@ -214,5 +214,8 @@
   },
   "errors": {
     "somethingWentWrong": "Quelque chose s'est mal passé !"
-  }
+  },
+  "all": "Tous",
+  "lostPets": "Animaux perdus",
+  "foundPets": "Animaux trouvés"
 }

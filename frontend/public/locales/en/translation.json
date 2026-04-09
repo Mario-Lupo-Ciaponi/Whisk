@@ -214,5 +214,8 @@
   },
   "errors": {
     "somethingWentWrong": "Something went wrong!"
-  }
+  },
+  "all": "All",
+  "lostPets": "Lost Pets",
+  "foundPets": "Found Pets"
 }
