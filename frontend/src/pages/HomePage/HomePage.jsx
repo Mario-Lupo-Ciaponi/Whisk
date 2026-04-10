@@ -72,11 +72,16 @@ const HomePage = ({ currentUser, navigate, setIsFilterVisible, baseUrl }) => {
           <>
             <header className="home-header">
               <h1 className="title">{t("homepage.heading")}</h1>
-              <StatusFilter
-                selectedStatus={selectedStatus}
-                onStatusChange={onChangeStatus}
-              />
-              <DateSort onOrderChange={onOrderChange} selectedOrder={selectedOrdering} />
+              <div className="home-header-controls">
+                <StatusFilter
+                  selectedStatus={selectedStatus}
+                  onStatusChange={onChangeStatus}
+                />
+                <DateSort
+                  onOrderChange={onOrderChange}
+                  selectedOrder={selectedOrdering}
+                />
+              </div>
             </header>
 
             <PostSection
