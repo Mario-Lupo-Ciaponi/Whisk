@@ -13,7 +13,7 @@ from rest_framework.permissions import (
     AllowAny,
     IsAuthenticated,
 )
-from rest_framework.filters import OrderingFilter
+from rest_framework.filters import OrderingFilter, SearchFilter
 from django_filters import rest_framework as filter
 from rest_framework.parsers import MultiPartParser, FormParser
 
@@ -38,9 +38,11 @@ class PostListCreateAPIView(PostAPIViewMixin, ListCreateAPIView):
     filter_backends = [
         filter.DjangoFilterBackend,
         OrderingFilter,
+        SearchFilter,
     ]
     filterset_class = PostFilter
     ordering_fields = ["posted_on"]
+    search_fields = ["^city__name",] # ^ == starts with
     pagination_class = PostResultsSetPagination
     parser_classes = [
         MultiPartParser,
