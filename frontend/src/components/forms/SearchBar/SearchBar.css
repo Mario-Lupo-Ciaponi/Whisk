@@ -1,6 +1,6 @@
 .search-bar {
   padding: var(--spacing-sm);
-  background-color: var(--charcoal-color);
+  background-color: var(--pewter-color);
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -20,8 +20,8 @@
 }
 
 .search-bar .search-btn {
-  color: white;
-  background-color: var(--charcoal-color);
+  color: black;
+  background-color: var(--pewter-color);
   border: none;
   display: flex;
   align-items: center;

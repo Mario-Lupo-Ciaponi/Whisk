@@ -2,10 +2,9 @@ import { useState } from "react";
 import { useTranslation } from "react-i18next";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
-import api from "../../../api/api.js";
 import "./SearchBar.css";
 
-const SearchBar = ({ onSearch }) => {
+const SearchBar = ({ onSearch, placeholder }) => {
   const [tempQuery, setTempQuery] = useState("");
   const { t } = useTranslation();
 
@@ -23,7 +22,7 @@ const SearchBar = ({ onSearch }) => {
         onChange={(event) => {
           setTempQuery(event.target.value);
         }}
-        placeholder={t("searchBar.placeholder")}
+        placeholder={placeholder ? placeholder : t("searchBar.placeholder")}
         className="input-query"
         type="text"
       />

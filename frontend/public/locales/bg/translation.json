@@ -136,7 +136,8 @@
     "title": "Търсене на профили"
   },
   "searchBar": {
-    "placeholder": "Търсене..."
+    "placeholder": "Търсене...",
+    "cityPlaceholder": "Търсене по град"
   },
   "mapSearchField": {
     "searchLabel": "Въведете адрес"

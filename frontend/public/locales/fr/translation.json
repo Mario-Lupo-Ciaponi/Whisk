@@ -137,7 +137,8 @@
     "title": "Rechercher des Profils"
   },
   "searchBar": {
-    "placeholder": "Rechercher..."
+    "placeholder": "Rechercher...",
+    "cityPlaceholder": "Rechercher par ville"
   },
   "mapSearchField": {
     "searchLabel": "Entrez l'adresse"

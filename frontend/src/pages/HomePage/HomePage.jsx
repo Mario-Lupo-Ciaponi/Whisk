@@ -4,6 +4,7 @@ import { Helmet } from "react-helmet-async";
 import toast, { Toaster } from "react-hot-toast";
 import StatusFilter from "../../components/StatusFilter/StatusFilter.jsx";
 import DateSort from "../../components/DateSort/DateSort.jsx";
+import SearchBar from "../../components/forms/SearchBar/SearchBar.jsx";
 import PostSection from "../../components/sections/PostSection/PostSection.jsx";
 import NoResult from "../../components/NoResult/NoResult.jsx";
 import api from "../../api/api.js";
@@ -17,6 +18,7 @@ const HomePage = ({ currentUser, navigate, setIsFilterVisible, baseUrl }) => {
   const [totalPages, setTotalPages] = useState(0);
   const [selectedStatus, setSelectedStatus] = useState("all");
   const [selectedOrdering, setSelectedOrdering] = useState("-posted_on");
+  const [cityQuery, setCityQuery] = useState("");
   const [isLoading, setIsLoading] = useState(false);
 
   const { t } = useTranslation();
@@ -29,6 +31,8 @@ const HomePage = ({ currentUser, navigate, setIsFilterVisible, baseUrl }) => {
 
   const onOrderChange = (event) => setSelectedOrdering(event.target.value);
 
+  const handleCitySearch = (query) => setCityQuery(query);
+
   useEffect(() => {
     const getPosts = async () => {
       setIsLoading(true);
@@ -39,6 +43,7 @@ const HomePage = ({ currentUser, navigate, setIsFilterVisible, baseUrl }) => {
             found: selectedStatus,
             page: currentPage,
             ordering: selectedOrdering,
+            search: cityQuery,
           },
         });
 
@@ -51,7 +56,7 @@ const HomePage = ({ currentUser, navigate, setIsFilterVisible, baseUrl }) => {
     };
 
     getPosts();
-  }, [currentPage, selectedStatus, selectedOrdering]);
+  }, [currentPage, selectedStatus, selectedOrdering, cityQuery]);
 
   return (
     <>
@@ -80,6 +85,10 @@ const HomePage = ({ currentUser, navigate, setIsFilterVisible, baseUrl }) => {
                 <DateSort
                   onOrderChange={onOrderChange}
                   selectedOrder={selectedOrdering}
+                />
+                <SearchBar
+                  onSearch={handleCitySearch}
+                  placeholder={t("searchBar.cityPlaceholder")}
                 />
               </div>
             </header>
