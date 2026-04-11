@@ -1,5 +1,7 @@
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faUser, faLock } from "@fortawesome/free-solid-svg-icons";
 import toast from "react-hot-toast";
 import PasswordToggle from "../../PasswordToggle/PasswordToggle.jsx";
 import Loader from "../../Loader.jsx";
@@ -66,7 +68,9 @@ const LoginForm = ({
 
   return (
     <form onSubmit={handleLogin} className="login-form auth-form">
-      <h2 className="auth-heading">{t("auth.loginForm.welcomeBack", "Welcome back")}</h2>
+      <h2 className="auth-heading">
+        {t("auth.loginForm.welcomeBack", "Welcome back")}
+      </h2>
 
       <div className="auth-field">
         <label htmlFor="username" className="auth-label">
@@ -74,9 +78,7 @@ const LoginForm = ({
         </label>
         <div className="input-wrapper">
           <span className="input-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
-              <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/>
-            </svg>
+            <FontAwesomeIcon icon={faUser} />
           </span>
           <input
             id="username"
@@ -84,7 +86,10 @@ const LoginForm = ({
             type="text"
             value={username}
             className="auth-input"
-            placeholder={t("auth.loginForm.usernamePlaceholder", "Enter your username")}
+            placeholder={t(
+              "auth.loginForm.usernamePlaceholder",
+              "Enter your username",
+            )}
             onChange={(e) => setUsername(e.target.value)}
             required
           />
@@ -97,9 +102,7 @@ const LoginForm = ({
         </label>
         <div className="input-wrapper">
           <span className="input-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
-              <rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/>
-            </svg>
+            <FontAwesomeIcon icon={faLock} />
           </span>
           <input
             id="password"
@@ -107,12 +110,18 @@ const LoginForm = ({
             type={showPassword ? "text" : "password"}
             value={password}
             className="auth-input"
-            placeholder={t("auth.loginForm.passwordPlaceholder", "Enter your password")}
+            placeholder={t(
+              "auth.loginForm.passwordPlaceholder",
+              "Enter your password",
+            )}
             onChange={(e) => setPassword(e.target.value)}
             autoComplete="off"
             required
           />
-          <PasswordToggle showPassword={showPassword} setShowPassword={setShowPassword} />
+          <PasswordToggle
+            showPassword={showPassword}
+            setShowPassword={setShowPassword}
+          />
         </div>
       </div>
 

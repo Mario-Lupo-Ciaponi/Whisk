@@ -1,5 +1,7 @@
 import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faUser, faEnvelope, faGlobe, faLock } from "@fortawesome/free-solid-svg-icons";
 import toast from "react-hot-toast";
 import PasswordToggle from "../../PasswordToggle/PasswordToggle.jsx";
 import Loader from "../../Loader.jsx";
@@ -86,7 +88,9 @@ const RegisterForm = ({ setShowLogin, showPassword, setShowPassword }) => {
       onSubmit={handleRegister}
       className={`register-form auth-form ${isLoading ? "loading" : ""}`}
     >
-      <h2 className="auth-heading">{t("auth.registerForm.createAccount", "Create your account")}</h2>
+      <h2 className="auth-heading">
+        {t("auth.registerForm.createAccount", "Create your account")}
+      </h2>
 
       {isLoading ? (
         <div className="loader-container">
@@ -101,9 +105,7 @@ const RegisterForm = ({ setShowLogin, showPassword, setShowPassword }) => {
             </label>
             <div className="input-wrapper">
               <span className="input-icon">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
-                  <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" /><circle cx="12" cy="7" r="4" />
-                </svg>
+                <FontAwesomeIcon icon={faUser} />
               </span>
               <input
                 id="username"
@@ -111,7 +113,10 @@ const RegisterForm = ({ setShowLogin, showPassword, setShowPassword }) => {
                 type="text"
                 value={username}
                 className="auth-input"
-                placeholder={t("auth.registerForm.usernamePlaceholder", "Choose a username")}
+                placeholder={t(
+                  "auth.registerForm.usernamePlaceholder",
+                  "Choose a username",
+                )}
                 onChange={(e) => setUsername(e.target.value)}
                 required
               />
@@ -125,9 +130,7 @@ const RegisterForm = ({ setShowLogin, showPassword, setShowPassword }) => {
             </label>
             <div className="input-wrapper">
               <span className="input-icon">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
-                  <rect width="20" height="16" x="2" y="4" rx="2" /><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" />
-                </svg>
+                <FontAwesomeIcon icon={faEnvelope} />
               </span>
               <input
                 id="email"
@@ -135,7 +138,10 @@ const RegisterForm = ({ setShowLogin, showPassword, setShowPassword }) => {
                 type="email"
                 value={email}
                 className="auth-input"
-                placeholder={t("auth.registerForm.emailPlaceholder", "Enter your email")}
+                placeholder={t(
+                  "auth.registerForm.emailPlaceholder",
+                  "Enter your email",
+                )}
                 onChange={(e) => setEmail(e.target.value)}
                 required
               />
@@ -149,9 +155,7 @@ const RegisterForm = ({ setShowLogin, showPassword, setShowPassword }) => {
             </label>
             <div className="input-wrapper">
               <span className="input-icon">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
-                  <circle cx="12" cy="12" r="10" /><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20" /><path d="M2 12h20" />
-                </svg>
+                <FontAwesomeIcon icon={faGlobe} />
               </span>
               <select
                 id="country"
@@ -161,7 +165,9 @@ const RegisterForm = ({ setShowLogin, showPassword, setShowPassword }) => {
                 onChange={(e) => setCountrySelected(e.target.value)}
                 required
               >
-                <option disabled value="">{t("auth.registerForm.selectCountry")}</option>
+                <option disabled value="">
+                  {t("auth.registerForm.selectCountry")}
+                </option>
                 {allCountries.map((country) => (
                   <option key={country.id} value={country.id}>
                     {country.name}
@@ -178,9 +184,7 @@ const RegisterForm = ({ setShowLogin, showPassword, setShowPassword }) => {
             </label>
             <div className="input-wrapper">
               <span className="input-icon">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
-                  <rect x="3" y="11" width="18" height="11" rx="2" ry="2" /><path d="M7 11V7a5 5 0 0 1 10 0v4" />
-                </svg>
+                <FontAwesomeIcon icon={faLock} />
               </span>
               <input
                 id="password1"
@@ -188,12 +192,18 @@ const RegisterForm = ({ setShowLogin, showPassword, setShowPassword }) => {
                 type={showPassword ? "text" : "password"}
                 value={firstPassword}
                 className="auth-input"
-                placeholder={t("auth.registerForm.passwordPlaceholder", "Create a password")}
+                placeholder={t(
+                  "auth.registerForm.passwordPlaceholder",
+                  "Create a password",
+                )}
                 onChange={(e) => setFirstPassword(e.target.value)}
                 autoComplete="off"
                 required
               />
-              <PasswordToggle showPassword={showPassword} setShowPassword={setShowPassword} />
+              <PasswordToggle
+                showPassword={showPassword}
+                setShowPassword={setShowPassword}
+              />
             </div>
           </div>
 
@@ -204,9 +214,7 @@ const RegisterForm = ({ setShowLogin, showPassword, setShowPassword }) => {
             </label>
             <div className="input-wrapper">
               <span className="input-icon">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
-                  <rect x="3" y="11" width="18" height="11" rx="2" ry="2" /><path d="M7 11V7a5 5 0 0 1 10 0v4" />
-                </svg>
+                <FontAwesomeIcon icon={faLock} />
               </span>
               <input
                 id="password2"
@@ -214,12 +222,18 @@ const RegisterForm = ({ setShowLogin, showPassword, setShowPassword }) => {
                 type={showPassword ? "text" : "password"}
                 value={secondPassword}
                 className="auth-input"
-                placeholder={t("auth.registerForm.repeatPasswordPlaceholder", "Confirm your password")}
+                placeholder={t(
+                  "auth.registerForm.repeatPasswordPlaceholder",
+                  "Confirm your password",
+                )}
                 onChange={(e) => setSecondPassword(e.target.value)}
                 autoComplete="off"
                 required
               />
-              <PasswordToggle showPassword={showPassword} setShowPassword={setShowPassword} />
+              <PasswordToggle
+                showPassword={showPassword}
+                setShowPassword={setShowPassword}
+              />
             </div>
           </div>
 

@@ -37,7 +37,9 @@
   /* underline indicator */
   border-bottom: 3px solid transparent;
   margin-bottom: -2px; /* overlap the parent border */
-  transition: border-color 0.2s ease, color 0.2s ease;
+  transition:
+    border-color 0.2s ease,
+    color 0.2s ease;
 }
 
 .auth-wrapper .auth-card .segmented-control .toggle-option.active {
@@ -53,7 +55,11 @@
   transition: color 0.2s ease;
 }
 
-.auth-wrapper .auth-card .segmented-control .toggle-option.active .control-label {
+.auth-wrapper
+  .auth-card
+  .segmented-control
+  .toggle-option.active
+  .control-label {
   color: var(--tan-color);
 }
 

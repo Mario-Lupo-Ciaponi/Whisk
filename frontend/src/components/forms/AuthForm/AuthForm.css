@@ -50,7 +50,9 @@
   background-color: var(--pewter-color);
   border: 1.5px solid var(--dark-pewter-color);
   border-radius: 999px; /* pill shape matching design */
-  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
 }
 
 .input-wrapper:focus-within {
@@ -116,7 +118,10 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: background-color 0.2s ease, transform 0.15s ease, box-shadow 0.2s ease;
+  transition:
+    background-color 0.2s ease,
+    transform 0.15s ease,
+    box-shadow 0.2s ease;
   box-shadow: 0 4px 12px rgba(116, 80, 60, 0.25);
 }
 

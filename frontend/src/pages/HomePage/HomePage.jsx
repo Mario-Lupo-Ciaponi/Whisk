@@ -72,23 +72,22 @@ const HomePage = ({ currentUser, navigate, setIsFilterVisible, baseUrl }) => {
         <Toaster position="top-center" />
 
         <header className="home-header">
-              <h1 className="title">{t("homepage.heading")}</h1>
-              <div className="home-header-controls">
-                <StatusFilter
-                  selectedStatus={selectedStatus}
-                  onStatusChange={onChangeStatus}
-                />
-                <SearchBar
-                  onSearch={handleCitySearch}
-                  placeholder={t("searchBar.cityPlaceholder")}
-                />
-                <DateSort
-                  onOrderChange={onOrderChange}
-                  selectedOrder={selectedOrdering}
-                />
-
-              </div>
-            </header>
+          <h1 className="title">{t("homepage.heading")}</h1>
+          <div className="home-header-controls">
+            <StatusFilter
+              selectedStatus={selectedStatus}
+              onStatusChange={onChangeStatus}
+            />
+            <SearchBar
+              onSearch={handleCitySearch}
+              placeholder={t("searchBar.cityPlaceholder")}
+            />
+            <DateSort
+              onOrderChange={onOrderChange}
+              selectedOrder={selectedOrdering}
+            />
+          </div>
+        </header>
 
         {isLoading ? (
           <Loader width={200} height={200} />
