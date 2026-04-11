@@ -121,7 +121,10 @@
       "username": "Nome utente",
       "password": "Password",
       "login": "Accedi",
-      "incorrectCredentials": "Nome utente o password non corretti!"
+      "incorrectCredentials": "Nome utente o password non corretti!",
+      "welcomeBack": "Ben tornato",
+      "usernamePlaceholder": "Inserisci il tuo nome utente",
+      "passwordPlaceholder": "Inserisci la tua password"
     },
     "registerForm": {
       "username": "Nome utente",
@@ -130,7 +133,12 @@
       "selectCountry": "-- seleziona un paese --",
       "password": "Password",
       "repeatPassword": "Ripeti Password",
-      "registrationSuccess": "Registrazione completata! Per favore accedi!"
+      "registrationSuccess": "Registrazione completata! Per favore accedi!",
+      "createAccount": "Crea il tuo account",
+      "usernamePlaceholder": "Scegli un nome utente",
+      "emailPlaceholder": "Inserisci la tua email",
+      "passwordPlaceholder": "Crea una password",
+      "repeatPasswordPlaceholder": "Conferma la tua password"
     }
   },
   "searchProfile": {

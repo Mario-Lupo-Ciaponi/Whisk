@@ -121,7 +121,10 @@
       "username": "Nom d'utilisateur",
       "password": "Mot de passe",
       "login": "Connexion",
-      "incorrectCredentials": "Nom d'utilisateur ou mot de passe incorrect !"
+      "incorrectCredentials": "Nom d'utilisateur ou mot de passe incorrect !",
+      "welcomeBack": "Bon retour",
+      "usernamePlaceholder": "Entrez votre nom d'utilisateur",
+      "passwordPlaceholder": "Entrez votre mot de passe"
     },
     "registerForm": {
       "username": "Nom d'utilisateur",
@@ -130,7 +133,12 @@
       "selectCountry": "-- sélectionner un pays --",
       "password": "Mot de passe",
       "repeatPassword": "Confirmer le Mot de passe",
-      "registrationSuccess": "Inscription réussie ! Veuillez vous connecter !"
+      "registrationSuccess": "Inscription réussie ! Veuillez vous connecter !",
+      "createAccount": "Créez votre compte",
+      "usernamePlaceholder": "Choisissez un nom d'utilisateur",
+      "emailPlaceholder": "Entrez votre e-mail",
+      "passwordPlaceholder": "Créez un mot de passe",
+      "repeatPasswordPlaceholder": "Confirmez votre mot de passe"
     }
   },
   "searchProfile": {

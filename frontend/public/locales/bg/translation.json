@@ -120,7 +120,10 @@
     "loginForm": {
       "username": "Потребителско име",
       "password": "Парола",
-      "incorrectCredentials": "Невалидно потребителско име или парола!"
+      "incorrectCredentials": "Невалидно потребителско име или парола!",
+      "welcomeBack": "Добре дошли отново",
+      "usernamePlaceholder": "Въведете потребителското си име",
+      "passwordPlaceholder": "Въведете паролата си"
     },
     "registerForm": {
       "username": "Потребителско име",
@@ -129,7 +132,12 @@
       "selectCountry": "-- изберете държава --",
       "password": "Парола",
       "repeatPassword": "Повторете паролата",
-      "registrationSuccess": "Регистрацията е успешна! Моля влезте в профила си!"
+      "registrationSuccess": "Регистрацията е успешна! Моля влезте в профила си!",
+      "createAccount": "Създайте профил",
+      "usernamePlaceholder": "Изберете потребителско име",
+      "emailPlaceholder": "Въведете своя имейл",
+      "passwordPlaceholder": "Създайте парола",
+      "repeatPasswordPlaceholder": "Потвърдете паролата си"
     }
   },
   "searchProfile": {

@@ -66,46 +66,53 @@ const LoginForm = ({
 
   return (
     <form onSubmit={handleLogin} className="login-form auth-form">
+      <h2 className="auth-heading">{t("auth.loginForm.welcomeBack", "Welcome back")}</h2>
+
       <div className="auth-field">
         <label htmlFor="username" className="auth-label">
           {t("auth.loginForm.username")}
         </label>
-        <input
-          id="username"
-          name="username"
-          type="text"
-          value={username}
-          className={"auth-input"}
-          onChange={(event) => {
-            setUsername(event.target.value);
-          }}
-          required
-        />
+        <div className="input-wrapper">
+          <span className="input-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+              <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/>
+            </svg>
+          </span>
+          <input
+            id="username"
+            name="username"
+            type="text"
+            value={username}
+            className="auth-input"
+            placeholder={t("auth.loginForm.usernamePlaceholder", "Enter your username")}
+            onChange={(e) => setUsername(e.target.value)}
+            required
+          />
+        </div>
       </div>
 
       <div className="auth-field">
         <label htmlFor="password" className="auth-label">
           {t("auth.loginForm.password")}
         </label>
-
-        <div className="input-container">
+        <div className="input-wrapper">
+          <span className="input-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+              <rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/>
+            </svg>
+          </span>
           <input
             id="password"
             name="password"
             type={showPassword ? "text" : "password"}
             value={password}
-            className={"auth-input"}
-            onChange={(event) => {
-              setPassword(event.target.value);
-            }}
+            className="auth-input"
+            placeholder={t("auth.loginForm.passwordPlaceholder", "Enter your password")}
+            onChange={(e) => setPassword(e.target.value)}
             autoComplete="off"
             required
           />
-
-          <PasswordToggle
-            showPassword={showPassword}
-            setShowPassword={setShowPassword}
-          />
+          <PasswordToggle showPassword={showPassword} setShowPassword={setShowPassword} />
         </div>
       </div>
 

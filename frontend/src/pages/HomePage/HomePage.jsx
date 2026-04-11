@@ -71,28 +71,29 @@ const HomePage = ({ currentUser, navigate, setIsFilterVisible, baseUrl }) => {
       <div className="feed">
         <Toaster position="top-center" />
 
-        {isLoading ? (
-          <Loader width={200} height={200} />
-        ) : posts.length > 0 ? (
-          <>
-            <header className="home-header">
+        <header className="home-header">
               <h1 className="title">{t("homepage.heading")}</h1>
               <div className="home-header-controls">
                 <StatusFilter
                   selectedStatus={selectedStatus}
                   onStatusChange={onChangeStatus}
                 />
-                <DateSort
-                  onOrderChange={onOrderChange}
-                  selectedOrder={selectedOrdering}
-                />
                 <SearchBar
                   onSearch={handleCitySearch}
                   placeholder={t("searchBar.cityPlaceholder")}
                 />
+                <DateSort
+                  onOrderChange={onOrderChange}
+                  selectedOrder={selectedOrdering}
+                />
+
               </div>
             </header>
 
+        {isLoading ? (
+          <Loader width={200} height={200} />
+        ) : posts.length > 0 ? (
+          <>
             <PostSection
               posts={posts}
               currentUser={currentUser}

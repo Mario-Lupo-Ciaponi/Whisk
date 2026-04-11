@@ -1,102 +1,148 @@
+/* ── Auth Form Base ── */
 .auth-form {
   display: flex;
   flex-direction: column;
-  gap: var(--spacing-md);
+  gap: 1.25rem;
   width: 100%;
-  max-width: 400px;
+  max-width: 420px;
   margin: 0 auto;
-}
-
-.auth-form.register-form {
-  min-height: 400px;
 }
 
 .auth-form.register-form.loading {
   align-items: center;
+  min-height: 400px;
 }
 
 .auth-form .loader-container {
   flex: 1;
-}
-
-.auth-form .auth-field .auth-label {
-  display: block;
-  color: var(--brown-color);
-}
-
-.auth-form .auth-field .input-container {
-  position: relative;
-}
-
-.auth-form .auth-field .auth-input {
-  background: none;
-  width: 100%;
-  border: var(--border-default-values) var(--brown-color);
-  border-radius: var(--radius-sm);
-  font-size: var(--text-xl);
-  color: var(--brown-color);
-  padding-left: var(--spacing-sm);
-}
-
-.auth-form .auth-field .auth-input.error-input {
-  border: var(--border-default-values) var(--red-color);
-}
-
-.auth-form .auth-field .auth-input.error-input:focus {
-  outline: var(--border-default-values) var(--red-color);
-}
-
-.auth-form .submit-btn {
-  background-color: var(--brown-color);
-  border: none;
-  border-radius: var(--radius-2xl);
-  color: white;
-  margin-top: var(--spacing-base);
-  padding: var(--spacing-sm);
-  transition: var(--transition-all);
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
-.auth-form .submit-btn:hover {
-  background-color: var(--dark-brown-color);
+/* ── Heading ── */
+.auth-heading {
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: var(--darker-brown-color);
+  margin: 0 0 0.5rem;
 }
 
-@media screen and (max-width: 768px) {
-  .auth-form {
-    width: 90%;
-    gap: var(--spacing-md);
-  }
-
-  .auth-form .submit-btn {
-    padding: var(--spacing-md);
-    font-size: var(--text-lg);
-  }
+/* ── Field Layout ── */
+.auth-field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
 }
 
+.auth-label {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--darker-brown-color);
+  letter-spacing: 0.01em;
+}
+
+/* ── Input Wrapper (icon + input + optional toggle) ── */
+.input-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  background-color: var(--pewter-color);
+  border: 1.5px solid var(--dark-pewter-color);
+  border-radius: 999px; /* pill shape matching design */
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.input-wrapper:focus-within {
+  border-color: var(--tan-color);
+  box-shadow: 0 0 0 3px rgba(116, 80, 60, 0.12);
+  background-color: #fff;
+}
+
+/* Leading icon */
+.input-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 2.5rem;
+  color: var(--darker-pewter-color);
+  pointer-events: none;
+}
+
+.input-icon svg {
+  width: 1.1rem;
+  height: 1.1rem;
+}
+
+/* Input / Select inside wrapper */
+.auth-input {
+  flex: 1;
+  background: transparent;
+  border: none;
+  outline: none;
+  padding: 0.8rem 1rem 0.8rem 0;
+  font-size: 0.95rem;
+  color: var(--dark-gray-color);
+  width: 100%;
+  min-width: 0; /* prevent flex overflow */
+}
+
+.auth-input::placeholder {
+  color: var(--darker-pewter-color);
+}
+
+/* Country select specific — hide default arrow, keep pill */
+.auth-select {
+  appearance: none;
+  -webkit-appearance: none;
+  cursor: pointer;
+  padding-right: 1rem;
+}
+
+/* ── Submit Button ── */
+.submit-btn {
+  width: 100%;
+  padding: 0.85rem;
+  margin-top: 0.5rem;
+  background-color: var(--tan-color);
+  color: #fff;
+  font-size: 1rem;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  border: none;
+  border-radius: 999px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.2s ease, transform 0.15s ease, box-shadow 0.2s ease;
+  box-shadow: 0 4px 12px rgba(116, 80, 60, 0.25);
+}
+
+.submit-btn:hover {
+  background-color: var(--brown-color);
+  transform: translateY(-1px);
+  box-shadow: 0 6px 16px rgba(116, 80, 60, 0.35);
+}
+
+.submit-btn:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 8px rgba(116, 80, 60, 0.2);
+}
+
+/* ── Responsive ── */
 @media screen and (max-width: 480px) {
-  .auth-form {
-    width: 100%;
-    gap: var(--spacing-md);
+  .auth-heading {
+    font-size: 1.35rem;
   }
 
-  .auth-form .auth-field .auth-label {
-    font-size: var(--text-base);
-    margin-bottom: var(--spacing-xs);
+  .auth-input {
+    font-size: 0.9rem;
   }
 
-  .auth-form .auth-field .auth-input {
-    font-size: var(--text-base);
-    padding: var(--spacing-md);
-    border-radius: var(--radius-xs);
-  }
-
-  .auth-form .submit-btn {
-    width: 100%;
-    margin-top: var(--spacing-lg);
-    padding: var(--spacing-md);
-    font-size: var(--text-xl);
-    border-radius: var(--radius-lg);
+  .submit-btn {
+    font-size: 0.95rem;
+    padding: 0.75rem;
   }
 }

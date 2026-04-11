@@ -20,50 +20,45 @@
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
 }
 
+/* ── Segmented Tab Control ── */
 .auth-wrapper .auth-card .segmented-control {
   display: flex;
-  align-self: normal;
   width: 100%;
+  border-bottom: 2px solid var(--light-gray-color);
+  margin-bottom: 1.5rem;
 }
 
 .auth-wrapper .auth-card .segmented-control .toggle-option {
-  width: 48%;
   flex: 1;
   text-align: center;
-  background-color: #7a8bae;
-  padding: 0.4rem;
-  border-radius: 0.25rem;
+  padding: 0.75rem 0.5rem;
   cursor: pointer;
-  transition: all 0.3s ease;
-}
-
-.auth-wrapper .auth-card .segmented-control .toggle-option:hover {
-  background-color: #8a9bbe;
+  position: relative;
+  /* underline indicator */
+  border-bottom: 3px solid transparent;
+  margin-bottom: -2px; /* overlap the parent border */
+  transition: border-color 0.2s ease, color 0.2s ease;
 }
 
 .auth-wrapper .auth-card .segmented-control .toggle-option.active {
-  background-color: #b0c4de;
+  border-bottom-color: var(--tan-color);
 }
 
 .auth-wrapper .auth-card .segmented-control .toggle-option .control-label {
   display: block;
-  color: #2c3e50;
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--dark-gray-color);
   cursor: pointer;
-  font-weight: 500;
+  transition: color 0.2s ease;
+}
+
+.auth-wrapper .auth-card .segmented-control .toggle-option.active .control-label {
+  color: var(--tan-color);
 }
 
 .auth-wrapper .auth-card .segmented-control .toggle-option .control-input {
   display: none;
-}
-
-.auth-wrapper .auth-card .auth-header {
-  margin: 1.5rem 0;
-}
-
-.auth-wrapper .auth-card .auth-header .auth-title {
-  color: #74503c;
-  font-size: 2rem;
-  margin: 0;
 }
 
 /* Desktop */
