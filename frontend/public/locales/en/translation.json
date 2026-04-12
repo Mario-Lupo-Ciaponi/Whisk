@@ -41,7 +41,9 @@
     "postSaved": "Post saved successfully!",
     "postUnsaved": "Post unsaved successfully!",
     "notAuthenticated": "You are not authenticated. Please login!",
-    "somethingWentWrong": "Something went wrong. Please try again later!"
+    "somethingWentWrong": "Something went wrong. Please try again later!",
+    "translate": "Translate",
+    "translationSuccess": "Translated successfully!"
   },
   "savedPosts": {
     "title": "Saved posts"

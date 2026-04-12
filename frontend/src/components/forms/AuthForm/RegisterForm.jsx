@@ -1,7 +1,12 @@
 import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faUser, faEnvelope, faGlobe, faLock } from "@fortawesome/free-solid-svg-icons";
+import {
+  faUser,
+  faEnvelope,
+  faGlobe,
+  faLock,
+} from "@fortawesome/free-solid-svg-icons";
 import toast from "react-hot-toast";
 import PasswordToggle from "../../PasswordToggle/PasswordToggle.jsx";
 import Loader from "../../Loader.jsx";

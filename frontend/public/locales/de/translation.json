@@ -41,7 +41,9 @@
     "postSaved": "Beitrag erfolgreich gespeichert!",
     "postUnsaved": "Beitrag erfolgreich aus Gespeicherten entfernt!",
     "notAuthenticated": "Sie sind nicht authentifiziert. Bitte melden Sie sich an!",
-    "somethingWentWrong": "Etwas ist schiefgelaufen. Bitte versuchen Sie es später erneut!"
+    "somethingWentWrong": "Etwas ist schiefgelaufen. Bitte versuchen Sie es später erneut!",
+    "translate": "Übersetzen",
+    "translationSuccess": "Erfolgreich übersetzt!"
   },
   "savedPosts": {
     "title": "Gespeicherte Beiträge"

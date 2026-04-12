@@ -41,7 +41,9 @@
     "postSaved": "Publication sauvegardée avec succès !",
     "postUnsaved": "Publication retirée des sauvegardes avec succès !",
     "notAuthenticated": "Vous n'êtes pas authentifié. Veuillez vous connecter !",
-    "somethingWentWrong": "Quelque chose s'est mal passé. Veuillez réessayer plus tard !"
+    "somethingWentWrong": "Quelque chose s'est mal passé. Veuillez réessayer plus tard !",
+    "translate": "Traduire",
+    "translationSuccess": "Traduit avec succès !"
   },
   "savedPosts": {
     "title": "Publications sauvegardées"

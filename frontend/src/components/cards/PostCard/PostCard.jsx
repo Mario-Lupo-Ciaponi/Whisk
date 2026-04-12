@@ -8,6 +8,7 @@ import {
   faLocationDot,
   faComment,
   faBookmark,
+  faLanguage,
 } from "@fortawesome/free-solid-svg-icons";
 import MoreOptions from "../../MoreOptions/MoreOptions.jsx";
 import SeeMore from "../../SeeMore/SeeMore.jsx";
@@ -17,8 +18,11 @@ import PostEditForm from "../../forms/PostEditForm/PostEditForm.jsx";
 import DarkOpacityFilter from "../../DarkOpacityFilter/DarkOpacityFilter.jsx";
 import api from "../../../api/api.js";
 import "./PostCard.css";
+import Loader from "../../Loader.jsx";
 
 const PostCard = ({ post, currentUser, navigate, setIsFilterVisible }) => {
+  const [title, setTitle] = useState(post.title);
+  const [description, setDescription] = useState(post.description);
   const [locations, setLocations] = useState([]);
   const [comments, setComments] = useState([]);
   const [found, setFound] = useState(post.found);
@@ -26,12 +30,13 @@ const PostCard = ({ post, currentUser, navigate, setIsFilterVisible }) => {
   const [isCommentModalVisible, setIsCommentModalVisible] = useState(false);
   const [isEditFormVisible, setIsEditFormVisible] = useState(false);
   const [isSavingLoading, setIsSavingLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
   // Count states:
   const [locationsCount, setLocationsCount] = useState(post.locations_count);
   const [commentsCount, setCommentsCount] = useState(post.comments_count);
   const [saveCount, setSaveCount] = useState(post.save_count);
 
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
 
   useEffect(() => {
     const getPostLocations = () => setLocations(post.locations);
@@ -48,6 +53,38 @@ const PostCard = ({ post, currentUser, navigate, setIsFilterVisible }) => {
   const closeMapModal = () => setIsMapModalVisible(false);
   const openCommentModal = () => setIsCommentModalVisible(true);
   const closeCommentModal = () => setIsCommentModalVisible(false);
+
+  const translatePost = async () => {
+    const langblyApiBaseUrl = "https://api.langbly.com/language/translate/v2";
+    const langblyApiKey = import.meta.env.VITE_LANGBLY_API_KEY;
+
+    setIsLoading(true);
+
+    try {
+      const response = await api.post(langblyApiBaseUrl,
+          {
+          "q": [title, description],
+          "target": i18n.language,
+        }, {
+        headers: {
+          "Content-Type": "application/json",
+          "X-API-Key": langblyApiKey,
+        },
+      })
+
+      const translatedTitle = response.data.data.translations[0].translatedText;
+      const translatedDescription = response.data.data.translations[1].translatedText;
+
+      setTitle(translatedTitle);
+      setDescription(translatedDescription);
+
+      toast.success(t("postCard.translationSuccess", "Translated successfully!"));
+    } catch (e) {
+      toast.error(t("errors.somethingWentWrong"));
+    } finally {
+      setIsLoading(false);
+    }
+  }
 
   const savePost = async () => {
     setIsSavingLoading(true);
@@ -108,17 +145,27 @@ const PostCard = ({ post, currentUser, navigate, setIsFilterVisible }) => {
             </span>
           </div>
         </div>
-        <MoreOptions
-          post={post}
-          currentUser={currentUser}
-          setIsEditFormVisible={setIsEditFormVisible}
-          setIsFilterVisible={setIsFilterVisible}
-          found={found}
-          setFound={setFound}
-          statusText={statusText}
-          isSavingLoading={isSavingLoading}
-          savePost={savePost}
-        />
+        <div className="post-card__header-actions">
+          <button  onClick={translatePost} className="post-card__translate-btn">
+            <FontAwesomeIcon icon={faLanguage} />
+            <span className="post-card__translate-text">
+              {
+              isLoading ? <Loader width={15} height={15} /> : t("postCard.translate", "Translate")
+              }
+            </span>
+          </button>
+          <MoreOptions
+            post={post}
+            currentUser={currentUser}
+            setIsEditFormVisible={setIsEditFormVisible}
+            setIsFilterVisible={setIsFilterVisible}
+            found={found}
+            setFound={setFound}
+            statusText={statusText}
+            isSavingLoading={isSavingLoading}
+            savePost={savePost}
+          />
+        </div>
       </div>
 
       <div className="post-card__image-wrapper">
@@ -139,9 +186,9 @@ const PostCard = ({ post, currentUser, navigate, setIsFilterVisible }) => {
       </div>
 
       <div className="post-card__body">
-        <h2 className="post-card__title">{post.title}</h2>
+        <h2 className="post-card__title">{title}</h2>
         <p className="post-card__description">
-          <SeeMore text={post.description} maxLength={30} />
+          <SeeMore text={description} maxLength={30} />
         </p>
         <div className="post-card__meta">
           <span className="post-card__time">

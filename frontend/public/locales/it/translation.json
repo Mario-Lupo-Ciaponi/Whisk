@@ -41,7 +41,9 @@
     "postSaved": "Post salvato con successo!",
     "postUnsaved": "Post rimosso dai salvati con successo!",
     "notAuthenticated": "Non sei autenticato. Per favore, accedi!",
-    "somethingWentWrong": "Qualcosa è andato storto. Per favore riprova più tardi!"
+    "somethingWentWrong": "Qualcosa è andato storto. Per favore riprova più tardi!",
+    "translate": "Traduci",
+    "translationSuccess": "Tradotto con successo!"
   },
   "savedPosts": {
     "title": "Post salvati"
