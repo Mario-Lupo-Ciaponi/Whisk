@@ -43,7 +43,9 @@
     "notAuthenticated": "Non sei autenticato. Per favore, accedi!",
     "somethingWentWrong": "Qualcosa è andato storto. Per favore riprova più tardi!",
     "translate": "Traduci",
-    "translationSuccess": "Tradotto con successo!"
+    "translationSuccess": "Tradotto con successo!",
+    "backtranslate": "Traduci indietro",
+    "backtranslationSuccess": "Tradotto indietro con successo!"
   },
   "savedPosts": {
     "title": "Post salvati"

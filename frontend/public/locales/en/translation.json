@@ -43,7 +43,9 @@
     "notAuthenticated": "You are not authenticated. Please login!",
     "somethingWentWrong": "Something went wrong. Please try again later!",
     "translate": "Translate",
-    "translationSuccess": "Translated successfully!"
+    "translationSuccess": "Translated successfully!",
+    "backtranslate": "Backtranslate",
+    "backtranslationSuccess": "Backtranslated successfully!"
   },
   "savedPosts": {
     "title": "Saved posts"

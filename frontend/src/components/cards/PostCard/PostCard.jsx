@@ -31,6 +31,7 @@ const PostCard = ({ post, currentUser, navigate, setIsFilterVisible }) => {
   const [isEditFormVisible, setIsEditFormVisible] = useState(false);
   const [isSavingLoading, setIsSavingLoading] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
+  const [isPostTranslated, setIsPostTranslated] = useState(false);
   // Count states:
   const [locationsCount, setLocationsCount] = useState(post.locations_count);
   const [commentsCount, setCommentsCount] = useState(post.comments_count);
@@ -61,30 +62,54 @@ const PostCard = ({ post, currentUser, navigate, setIsFilterVisible }) => {
     setIsLoading(true);
 
     try {
-      const response = await api.post(langblyApiBaseUrl,
-          {
-          "q": [title, description],
-          "target": i18n.language,
-        }, {
-        headers: {
-          "Content-Type": "application/json",
-          "X-API-Key": langblyApiKey,
+      const response = await api.post(
+        langblyApiBaseUrl,
+        {
+          q: [title, description],
+          target: i18n.language,
         },
-      })
+        {
+          headers: {
+            "Content-Type": "application/json",
+            "X-API-Key": langblyApiKey,
+          },
+        },
+      );
 
       const translatedTitle = response.data.data.translations[0].translatedText;
-      const translatedDescription = response.data.data.translations[1].translatedText;
+      const translatedDescription =
+        response.data.data.translations[1].translatedText;
 
       setTitle(translatedTitle);
       setDescription(translatedDescription);
 
-      toast.success(t("postCard.translationSuccess", "Translated successfully!"));
+      toast.success(
+        t("postCard.translationSuccess", "Translated successfully!"),
+      );
+
+      setIsPostTranslated(true);
     } catch (e) {
       toast.error(t("errors.somethingWentWrong"));
     } finally {
       setIsLoading(false);
     }
-  }
+  };
+
+  const backtranslatePost = () => {
+    setTitle(post.title);
+    setDescription(post.description);
+
+    toast.success(t("postCard.backtranslationSuccess", "Backtranslated successfully!"));
+    setIsPostTranslated(false);
+  };
+
+  const managePostTrasnlation = async () => {
+    if (isPostTranslated) {
+      backtranslatePost();
+    } else {
+      await translatePost();
+    }
+  };
 
   const savePost = async () => {
     setIsSavingLoading(true);
@@ -146,12 +171,14 @@ const PostCard = ({ post, currentUser, navigate, setIsFilterVisible }) => {
           </div>
         </div>
         <div className="post-card__header-actions">
-          <button  onClick={translatePost} className="post-card__translate-btn">
+          <button onClick={managePostTrasnlation} className="post-card__translate-btn">
             <FontAwesomeIcon icon={faLanguage} />
             <span className="post-card__translate-text">
-              {
-              isLoading ? <Loader width={15} height={15} /> : t("postCard.translate", "Translate")
-              }
+              {isLoading ? (
+                <Loader width={15} height={15} />
+              ) : (
+                (isPostTranslated ? t("postCard.backtranslate", "Backtranslate") : t("postCard.translate", "Translate"))
+              )}
             </span>
           </button>
           <MoreOptions

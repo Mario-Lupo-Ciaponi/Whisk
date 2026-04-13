@@ -43,7 +43,9 @@
     "notAuthenticated": "Не сте влезли. Моля, влезте в акаунта си!",
     "somethingWentWrong": "Възникна грешка. Моля, опитайте по-късно!",
     "translate": "Превод",
-    "translationSuccess": "Успешно преведено!"
+    "translationSuccess": "Успешно преведено!",
+    "backtranslate": "Върни превода",
+    "backtranslationSuccess": "Преводът е върнат успешно!"
   },
   "savedPosts": {
     "title": "Запазени публикации"

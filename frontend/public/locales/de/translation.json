@@ -43,7 +43,9 @@
     "notAuthenticated": "Sie sind nicht authentifiziert. Bitte melden Sie sich an!",
     "somethingWentWrong": "Etwas ist schiefgelaufen. Bitte versuchen Sie es später erneut!",
     "translate": "Übersetzen",
-    "translationSuccess": "Erfolgreich übersetzt!"
+    "translationSuccess": "Erfolgreich übersetzt!",
+    "backtranslate": "Zurück übersetzen",
+    "backtranslationSuccess": "Erfolgreich zurück übersetzt!"
   },
   "savedPosts": {
     "title": "Gespeicherte Beiträge"
